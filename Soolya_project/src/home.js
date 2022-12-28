@@ -518,6 +518,10 @@ function Home(){
 
        {/* z-index in carousel */}
 
+       <div>
+        <h5>Hello.. This is me! </h5>
+       </div>
+
        <div className="download_div">
         <div className="download_inline">
           
