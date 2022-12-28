@@ -519,9 +519,6 @@ function Home(){
 
        {/* z-index in carousel */}
 
-       <div>
-        <h5>Hello.. This is me! </h5>
-       </div>
 
        <div className="download_div">
         <div className="download_inline">
@@ -548,6 +545,8 @@ function Home(){
         </div>
       </div>
        
+
+       <h1>vignesh...</h1>
 
     </div>
         </div>
