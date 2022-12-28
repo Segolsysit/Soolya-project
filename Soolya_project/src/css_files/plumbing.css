@@ -86,3 +86,11 @@
    width:90px;
    height: 35px;
 } 
+
+.no{
+    border: 1px solid black;
+    width: 650px;
+    margin-top: 30% ;
+    text-align: center;
+    color: red;
+}

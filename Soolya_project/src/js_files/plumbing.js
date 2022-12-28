@@ -3,6 +3,7 @@ import ganapathy_raj from "../images/3.jpg";
 import praveen from "../images/2.jpg";
 import santhosh_kumar from "../images/1.jpg";
 import rating from "../images/ratings.png";
+import { useEffect, useState } from "react";
 
 
 function Plumbing(){
@@ -12,6 +13,7 @@ function Plumbing(){
         id:1,
         img:ganapathy_raj,
         name:"Ganapathy raj",
+        type:"plumber",
         timing:"Timing : 9.30 AM - 6 PM",
         address:"553/A, Sanganoor Main Road Ganapathy Pudur, Coimbatore-641006."
         },
@@ -19,6 +21,7 @@ function Plumbing(){
          id:2,
          img:praveen,
          name:"Praveen",
+         type:"electrician",
          timing:"Timing : 10 AM - 7:30 PM",
          address:"806 Wisdom Tree Neelambur, Coimbatore-641062."
         },
@@ -26,6 +29,7 @@ function Plumbing(){
         id:3,
         img:santhosh_kumar,
         name:"Santhosh Kumar",
+        type:"electrician",
         timing:"Timing : 24 hrs",
         address:"3/59, Gandhipuram 3th Street Gandhipuram, Coimbatore-641012.",
         },
@@ -33,11 +37,24 @@ function Plumbing(){
             id:4,
             img:santhosh_kumar,
             name:"Santhosh Kumar",
+         type:"plumber",
             timing:"Timing : 24 hrs",
             address:"3/59, Gandhipuram 3th Street Gandhipuram, Coimbatore-641012.",
             }
 
-]
+];
+
+//search
+const [get, setGet]=useState("")
+
+ useEffect(()=>{
+setGet(localStorage.getItem("search"))
+},[])
+
+
+const filter = array.filter((arr)=>{
+    return get === arr.type;
+})
     return(
         <div> 
 
@@ -49,10 +66,9 @@ function Plumbing(){
                 
             </div>
            {/* <div className="plumber_page"> */}
-                
                     <div className="plumber_div_2">
 
-{array.map((a)=>(
+{filter.length === 0 ?<div className="no"> <h1>No Data</h1> </div>: filter.map((a)=>(
 
 
                         <div className="plumber_profile">
@@ -65,6 +81,7 @@ function Plumbing(){
                             <div className="plumber_bio">
                                 <div>
                                     <h4>{a.name}</h4>
+                                    <h5><b><u>{a.type}</u></b></h5>
                                 </div>
                                 <div className="d_flex">
                                     <h5>Ratings</h5>

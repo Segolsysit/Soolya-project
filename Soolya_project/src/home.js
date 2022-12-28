@@ -47,7 +47,8 @@ import "slick-carousel/slick/slick-theme.css";
 // import owl_3 from "./images/3.jpg";
 import frame_line from "./images/frame_img.png";
 import Slider from 'react-slick';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
@@ -68,6 +69,22 @@ function Home(){
         }
       };
      
+//search option
+
+const [search, setSearch] = useState("");
+
+const nav = useNavigate();
+      function chg(e){
+// console.log(e.target.value);
+setSearch(e.target.value);
+      }
+
+function btn(){
+    // console.log(search);
+    localStorage.setItem("search",search)
+nav('/plumbing')
+}
+
     return(
         <div>
             
@@ -131,10 +148,10 @@ function Home(){
                     </select>
                 </div>
                 <div className="search_div">
-                    <input className="locality_search" type="search" placeholder="search your service category"></input>
+                    <input className="locality_search" type="search" placeholder="search your service category" onChange={chg}></input>
                 </div>
                 <div className="button_div">
-                    <button className="locality_search_button"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass"></i>Search</button>
+                    <button className="locality_search_button" onClick={btn}><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass"></i>Search</button>
                 </div>
             </div>
        </div>
