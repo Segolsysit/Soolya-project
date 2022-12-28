@@ -73,6 +73,7 @@ function Home(){
             
 
     <div class="sub_body">
+        <h1>sample welcome to modified by senthil</h1>
         <div>
             <div className="sub_header">
                 <ul className="sub_header__unorder">
