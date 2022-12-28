@@ -30,6 +30,10 @@ import ac_installation from "./images/ac-installation-demo.png";
 
 
 
+import playstore from "./images/playstore.png";
+import appstore from "./images/appstore.png";
+import phone_image from "./images/download_phone_img.png";
+
 
 // import carousel_slide_2 from "./images/two.jpg";
 
@@ -514,6 +518,30 @@ function Home(){
 
        {/* z-index in carousel */}
 
+       <div className="download_div">
+        <div className="download_inline">
+          
+            <div className="download_inline_bio">
+                <div>
+                <h2>Download our app</h2>
+                </div>
+                <div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                </p>
+                </div>
+                <div>
+                    <button className="download_btn"><img src={playstore} alt="download-1"></img></button>
+                    <button className="download_btn"><img src={appstore} alt="download-2"></img></button>
+
+                </div>
+            </div>
+            <div>
+                <img className="download_img" src={phone_image} alt="phone_photo"></img>
+            </div>
+
+        </div>
+      </div>
        
 
     </div>

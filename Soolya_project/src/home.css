@@ -487,6 +487,49 @@ text-decoration: none;
 } */
 
 
+.download_div{
+  padding: 20px 10px 20px 10px;
+}
+
+
+
+.download_inline{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.download_inline_bio {
+     text-align: center;
+}
+
+.download_inline_bio h2{
+  font-weight: 500;
+  font-size:40px;
+}
+
+.download_inline_bio div{
+   padding-top: 20px;
+}
+
+
+.download_btn{
+  width: 200px;
+  height:65px;
+  margin-left: 30px;
+  padding: 0px;
+  border-radius: 18px;
+}
+
+.download_btn img{
+  width: 196px;
+  height:61px;
+}
+
+.download_img{
+  width: 400px;
+  height:400px;
+}
 
 /* page finished */
 
