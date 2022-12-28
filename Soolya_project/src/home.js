@@ -75,6 +75,8 @@ function Home(){
     <div class="sub_body">
         <h1>sample welcome to modified by senthil</h1>
         <h1>sample welcome to modified by senthil</h1>
+        <h1>sample welcome to modified by senthil</h1>
+
 
         <div>
             <div className="sub_header">
