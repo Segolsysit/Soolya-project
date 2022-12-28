@@ -73,8 +73,7 @@ function Home(){
             
 
     <div class="sub_body">
-        <h1>sample welcome to modified by senthil</h1>
-        <h1>hai</h1>
+    
         <div>
             <div className="sub_header">
                 <ul className="sub_header__unorder">
@@ -546,8 +545,6 @@ function Home(){
         </div>
       </div>
        
-
-      <h1>underrated</h1>
 
     </div>
         </div>
