@@ -39,19 +39,21 @@ function Plumbing(){
 
 ]
     return(
-        <div > 
-
-{array.map((a)=>(
+        <div> 
 
 
 
-<div className="plumber_page container w-50">
+
+<div className="plumber_page">
             <div className="plumber_div_1">
                 
             </div>
            {/* <div className="plumber_page"> */}
                 
                     <div className="plumber_div_2">
+
+{array.map((a)=>(
+
 
                         <div className="plumber_profile">
 
@@ -85,6 +87,9 @@ function Plumbing(){
                             </div>
 
                         </div>
+
+))}
+
 
                         {/* <div className="plumber_profile">
                             <div className="plumber_profile_inner">
@@ -159,7 +164,6 @@ function Plumbing(){
 
 
 
-))}
         </div>
     );
 }
