@@ -13,10 +13,10 @@ function App() {
         <div>
             <Header></Header>
            <Routes>
-                <Route path="/" element={<Home></Home>}></Route>
+                <Route path="/"  element={<Home></Home>}></Route>
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
-                <Route path="/plumbing" element={<Plumbing></Plumbing>}></Route>
+                <Route path="/plumbing" element={<Plumbing ></Plumbing>}></Route>
             </Routes>
             <br></br>
             <Footer></Footer>

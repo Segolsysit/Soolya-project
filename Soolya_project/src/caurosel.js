@@ -93,7 +93,7 @@ function Caurosel() {
                         <div className="header_content_div">
                             <form>
                                 <input id="search_bar" type="text" placeholder="Search for services"></input>
-                                <button className="search_button"><i id="search_icon" class="fa-solid fa-magnifying-glass"></i></button>
+                                <button className="search_button"><i id="search_icon" className="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>
                         <div className="header_content_div">
@@ -111,23 +111,23 @@ function Caurosel() {
                         <div className="header_content_div">
                             <ul className="header_unorder">
 
-                                <li className="header_list"><a href="self"><i id="header_icon" class="fa-solid fa-bell"></i></a></li>
-                                <li className="header_list"><a href="self"><i id="header_icon" class="fa-solid fa-crown"></i></a></li>
-                                <li className="header_list"><a href="self"><i id="header_icon" class="fa-solid fa-cart-plus"></i></a></li>
+                                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-bell"></i></a></li>
+                                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-crown"></i></a></li>
+                                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-cart-plus"></i></a></li>
                                {/* offcanvas list */}
-                                <button class="btn btn-primary" id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                <li className="header_list"><i id="header_icon" class="fa-solid fa-list-ul"></i></li>
+                                <button className="btn btn-primary" id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                <li className="header_list"><i id="header_icon" className="fa-solid fa-list-ul"></i></li>
                                 </button> 
-                                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                    <div class="offcanvas-header">
-                                        {/* <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
+                                <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                    <div className="offcanvas-header">
+                                        {/* <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
                                         <h4>Menu</h4>
                                     </div>
-                                    <div class="offcanvas-body">
+                                    <div className="offcanvas-body">
                                         <button className="offcanvas_menu_btn">
                                             <div className="offcanvas_menu_item">
                                             <div className="offcanvas_menu_item_img_bor">
-                                                <i class="fa-regular fa-user"></i>
+                                                <i className="fa-regular fa-user"></i>
                                             </div>
                                             <div className="offcanvas_menu_item_name">
                                                 <h6>Profile</h6>
@@ -137,7 +137,7 @@ function Caurosel() {
                                         <button className="offcanvas_menu_btn">
                                             <div className="offcanvas_menu_item">
                                             <div className="offcanvas_menu_item_img">
-                                                <i class="fa-solid fa-comment-dots"></i>
+                                                <i className="fa-solid fa-comment-dots"></i>
                                             </div>
                                             <div className="offcanvas_menu_item_name">
                                                 <h6>Inbox</h6>
@@ -149,7 +149,7 @@ function Caurosel() {
                             </ul>
                         </div>
                         <div className="header_content_div">
-                            <button type="button" className="sign_in__buttton"><i id="sign_icon" class="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
+                            <button type="button" className="sign_in__buttton"><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
                         </div>
                     </div>
 
@@ -157,7 +157,7 @@ function Caurosel() {
                 </div>
             </div>
 
-            <div class="sub_body">
+            <div className="sub_body">
                 <div>
                     <div className="sub_header">
                         <ul className="sub_header__unorder">
@@ -174,24 +174,24 @@ function Caurosel() {
                 {/* header finished */}
                 <div>
                     <div className="carousel_div">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src={slider_1} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
+                        <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+                            <div className="carousel-inner">
+                                <div className="carousel-item active">
+                                    <img src={slider_1} id="carousel_image" className="d-block w-100" alt="slider-1"></img>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src={slider_2} id="carousel_image" class="d-block w-100" alt="slider-2"></img>
+                                <div className="carousel-item">
+                                    <img src={slider_2} id="carousel_image" className="d-block w-100" alt="slider-2"></img>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src={slider_3} id="carousel_image" class="d-block w-100" alt="slider-3"></img>
+                                <div className="carousel-item">
+                                    <img src={slider_3} id="carousel_image" className="d-block w-100" alt="slider-3"></img>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src={slider_4} id="carousel_image" class="d-block w-100" alt="slider-3"></img>
+                                <div className="carousel-item">
+                                    <img src={slider_4} id="carousel_image" className="d-block w-100" alt="slider-3"></img>
                                 </div>
                             </div>
                             <div>
-                                <span className="carousel-left-icon" data-bs-target="#carouselExampleControls" data-bs-slide="prev"><i id="carousel_right_icon" class="fa-solid fa-chevron-left"></i></span>
-                                <span className="carousel-right-icon" data-bs-target="#carouselExampleControls" data-bs-slide="next"><i id="carousel_left_icon" class="fa-solid fa-chevron-right"></i></span>
+                                <span className="carousel-left-icon" data-bs-target="#carouselExampleControls" data-bs-slide="prev"><i id="carousel_right_icon" className="fa-solid fa-chevron-left"></i></span>
+                                <span className="carousel-right-icon" data-bs-target="#carouselExampleControls" data-bs-slide="next"><i id="carousel_left_icon" className="fa-solid fa-chevron-right"></i></span>
                             </div>
                         </div>
                     </div>
@@ -256,7 +256,7 @@ function Caurosel() {
 
                 <div className="scroll_div">
                     <button className="scroll_up">
-                        <i id="scroll_up_icon" class="fa-solid fa-arrow-up"></i>
+                        <i id="scroll_up_icon" className="fa-solid fa-arrow-up"></i>
                     </button>
                 </div>
 
@@ -319,15 +319,15 @@ function Caurosel() {
                         </div>
                         <div className="video_line_sub_para">
                             <div>
-                                <h4><i class="fa-solid fa-leaf"></i> Top-Rated Company</h4>
+                                <h4><i className="fa-solid fa-leaf"></i> Top-Rated Company</h4>
                                 <p>We hold a successful track record of satisfying our customers and getting back their bond money.</p>
                             </div>
                             <div>
-                                <h4><i class="fa-solid fa-leaf"></i> Superior Quality</h4>
+                                <h4><i className="fa-solid fa-leaf"></i> Superior Quality</h4>
                                 <p>We use the most excellent quality tools and equipment to get all the dust and dirt out of your premises.</p>
                             </div>
                             <div>
-                                <h4><i class="fa-solid fa-leaf"></i> Eco-Friendly Products</h4>
+                                <h4><i className="fa-solid fa-leaf"></i> Eco-Friendly Products</h4>
                                 <p>We use biodegradable products which do not harm the environment, pets or humans in any way.</p>
                             </div>
                         </div>
@@ -378,7 +378,7 @@ function Caurosel() {
                                     <p>Are you familiar with the various types of chemical drain cleaners used in plumbing?
                                     </p>
                                     <span>
-                                        <i class="fa-solid fa-caret-down"></i>
+                                        <i className="fa-solid fa-caret-down"></i>
                                     </span>
                                 </label>
                                 <input type="radio" name="accortion" id="question-three"></input>
@@ -450,10 +450,10 @@ function Caurosel() {
                             <div className="social_links">
                                 <div>
                                     <h4>Social links</h4>
-                                    <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="https://www.twitter.com/"><i class="fa-brands fa-twitter"></i></a>
-                                    <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                                    <a href="https://www.facebook.com/"><i className="fa-brands fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></a>
+                                    <a href="https://www.twitter.com/"><i className="fa-brands fa-twitter"></i></a>
+                                    <a href="https://www.youtube.com/"><i className="fa-brands fa-youtube"></i></a>
                                 </div>
                                 <div className="border_div">
 
@@ -470,15 +470,15 @@ function Caurosel() {
                         <h2>Address</h2>
                         <div className="div_content">
                             <div className="place">
-                                <i class="fa-solid fa-location-dot"></i>
+                                <i className="fa-solid fa-location-dot"></i>
                                 <span>Rangampalayam,Erode</span>
                             </div>
                             <div className="phone">
-                                <i class="fa-solid fa-phone"></i>
+                                <i className="fa-solid fa-phone"></i>
                                 <span>+91-7674872834</span>
                             </div>
                             <div className="email">
-                                <i class="fa-solid fa-envelope"></i>
+                                <i className="fa-solid fa-envelope"></i>
                                 <span>abc@gmail.com</span>
                             </div>
                         </div>
@@ -576,11 +576,11 @@ function Caurosel() {
 
 
 
-                {/* <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row">
-                    <div class="col-lg-4 small-header">
+                {/* <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+            <div className="carousel-item active">
+                <div className="row">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -595,7 +595,7 @@ function Caurosel() {
                 </div>
 
                     </div>
-                    <div class="col-lg-4 small-header">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -610,7 +610,7 @@ function Caurosel() {
                 </div>
              
                     </div>
-                    <div class="col-lg-4 small-header">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -627,9 +627,9 @@ function Caurosel() {
                 </div>
 
             </div>
-            <div class="carousel-item">
-                <div class="row">
-                  <div class="col-lg-4 small-header">
+            <div className="carousel-item">
+                <div className="row">
+                  <div className="col-lg-4 small-header">
                   <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -644,7 +644,7 @@ function Caurosel() {
                 </div>
 
                     </div>
-                    <div class="col-lg-4 small-header">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -659,7 +659,7 @@ function Caurosel() {
                 </div>
 
                     </div>
-                    <div class="col-lg-4 small-header">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -676,9 +676,9 @@ function Caurosel() {
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-lg-4 small-header">
+            <div className="carousel-item">
+                <div className="row">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -693,7 +693,7 @@ function Caurosel() {
                 </div>
 
                     </div>
-                    <div class="col-lg-4 small-header">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -708,7 +708,7 @@ function Caurosel() {
                 </div>
 
                     </div>
-                    <div class="col-lg-4 small-header">
+                    <div className="col-lg-4 small-header">
                     <div className="carousel_box">
                     <a href="_self">
                         <div className="carosel_box_image">
@@ -726,15 +726,15 @@ function Caurosel() {
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
         </button>
                 </div> */}
 

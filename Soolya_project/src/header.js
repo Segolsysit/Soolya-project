@@ -42,7 +42,7 @@ function Header(){
         {/* <div className="header_content_div">
             <form>
                 <input id="search_bar" type="text" placeholder="Search for services"></input>
-                <button className="search_button"><i id="search_icon" class="fa-solid fa-magnifying-glass"></i></button>
+                <button className="search_button"><i id="search_icon" className="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div> */}
 {/* 
@@ -69,26 +69,26 @@ function Header(){
         {/* <div className="header_content_div">
             <ul className="header_unorder">
 
-                <li className="header_list"><a href="self"><i id="header_icon" class="fa-solid fa-bell"></i></a></li>
-                <li className="header_list"><a href="self"><i id="header_icon" class="fa-solid fa-crown"></i></a></li>
-                <li className="header_list"><a href="self"><i id="header_icon" class="fa-solid fa-cart-plus"></i></a></li> 
+                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-bell"></i></a></li>
+                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-crown"></i></a></li>
+                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-cart-plus"></i></a></li> 
             
             </ul> 
         </div> */}
         <div className="header_content_div">
-            <button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" class="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
+            <button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
             <button id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     {/* <li className="header_list"> */}
-                        <i id="menu_space" class="fa-solid fa-list-ul"></i>
+                        <i id="menu_space" className="fa-solid fa-list-ul"></i>
                         Menu
                     {/* </li> */}
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        {/* <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
+                <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div className="offcanvas-header">
+                        {/* <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
                         <h4>Menu</h4>
                     </div>
-                    <div class="offcanvas-body">
+                    <div className="offcanvas-body">
                         <button className="offcanvas_menu_btn">
                             <div className="offcanvas_menu_item">
                                 <div className="offcanvas_menu_item_img">

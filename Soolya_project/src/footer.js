@@ -16,10 +16,10 @@ function Footer(){
                     <div className="social_links">
                         <div>
                             <h4>Social links</h4>
-                            <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="https://www.twitter.com/"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/"><i className="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.twitter.com/"><i className="fa-brands fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/"><i className="fa-brands fa-youtube"></i></a>
                         </div>
                         <div className="border_div">
 
@@ -36,15 +36,15 @@ function Footer(){
                 <h2>Address</h2>
                 <div className="div_content">
                     <div className="place">
-                        <i class="fa-solid fa-location-dot"></i>
+                        <i className="fa-solid fa-location-dot"></i>
                         <span>Rangampalayam,Erode</span>
                     </div>
                     <div className="phone">
-                        <i class="fa-solid fa-phone"></i>
+                        <i className="fa-solid fa-phone"></i>
                         <span>+91-7674872834</span>
                     </div>
                     <div className="email">
-                        <i class="fa-solid fa-envelope"></i>
+                        <i className="fa-solid fa-envelope"></i>
                         <span>abc@gmail.com</span>
                     </div>
                 </div>

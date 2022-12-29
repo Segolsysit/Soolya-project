@@ -53,7 +53,7 @@ import { useState } from 'react';
 
 
 
-function Home(){
+function Home(props){
     const settings = {
         className: "center",
         infinite: true,
@@ -72,6 +72,8 @@ function Home(){
 //search option
 
 const [search, setSearch] = useState("");
+const [district, setDistrict] = useState("");
+
 
 const nav = useNavigate();
       function chg(e){
@@ -80,11 +82,15 @@ setSearch(e.target.value);
       }
 
 function btn(){
-    // console.log(search);
     localStorage.setItem("search",search)
+    localStorage.setItem("dist",district)
+    // props.pass(search)
 nav('/plumbing')
 }
 
+function dist(e){
+    setDistrict(e.target.value)
+}
     return(
         <div>
             
@@ -93,7 +99,7 @@ nav('/plumbing')
         <div>
             <div className="sub_header">
                 <ul className="sub_header__unorder">
-                    <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumbing">Plumbing</NavLink></li>
+                    <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumbing" onClick={()=>{localStorage.setItem("search",""); localStorage.setItem("dist",'') }}>Plumbing</NavLink></li>
                     <li className="sub_header__list"><a className="sub_header__link" href="_self">Electrician</a></li>
                     <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home Appliances</a></li>
                     <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
@@ -142,9 +148,11 @@ nav('/plumbing')
             </div>
             <div className="z_index_search">
                 <div className="select_div">
-                    <select className="locality">
+                    <select className="locality" onChange={dist} >
                         <option selected disabled>Select District</option>
-                        <option>Erode</option>
+                        <option value="erode">Erode</option>
+                        <option value="Coimbatore">coimbatore</option>
+
                     </select>
                 </div>
                 <div className="search_div">
@@ -154,6 +162,8 @@ nav('/plumbing')
                     <button className="locality_search_button" onClick={btn}><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass"></i>Search</button>
                 </div>
             </div>
+
+             
        </div>
        </div>
 
