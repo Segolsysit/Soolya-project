@@ -8,7 +8,13 @@
 } */
 
 /* sub body  */
-
+body{
+  /* overflow-y: hidden; */
+  overflow-y: scroll; 
+ }
+ body::-webkit-scrollbar {
+  display: none;
+}
 ul li{
 list-style-type: none;
 }
