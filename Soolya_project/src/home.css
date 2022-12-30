@@ -8,13 +8,17 @@
 } */
 
 /* sub body  */
-body{
-  /* overflow-y: hidden; */
-  overflow-y: scroll; 
- }
- body::-webkit-scrollbar {
-  display: none;
+
+ ::-webkit-scrollbar {
+   width:10px;
 }
+
+::-webkit-scrollbar-thumb{
+  border-radius: 30px;
+  background-color:#8d8585;
+}
+
+
 ul li{
 list-style-type: none;
 }
@@ -201,6 +205,7 @@ text-decoration: none;
 
 .owl_carou_1{
   padding: 0px 10px 10px 10px;
+  background-color: #fff;
 }
 
 .owl_carou_2{
@@ -536,6 +541,19 @@ text-decoration: none;
   width: 400px;
   height:400px;
 }
+
+
+/* modal box */
+
+.modal-header{
+  background-color:rgb(230, 61, 61); 
+  /* height: 50px; */
+}
+
+.modal-footer{
+   height:62px;
+}
+
 
 /* page finished */
 
