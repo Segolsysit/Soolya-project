@@ -17,7 +17,7 @@ function Plumbing(props) {
             type: "plumber",
             timing: "Timing : 9.30 AM - 6 PM",
             address: "553/A, Sanganoor Main Road Ganapathy Pudur, erode-641006.",
-            district:"erode"
+            district: "erode"
 
         },
         {
@@ -27,7 +27,7 @@ function Plumbing(props) {
             type: "electrician",
             timing: "Timing : 10 AM - 7:30 PM",
             address: "806 Wisdom Tree Neelambur, erode-638 011.",
-            district:"erode"
+            district: "erode"
 
         },
         {
@@ -37,7 +37,7 @@ function Plumbing(props) {
             type: "electrician",
             timing: "Timing : 24 hrs",
             address: "3/59, Gandhipuram 3th Street Gandhipuram, Coimbatore-641012.",
-            district:"Coimbatore"
+            district: "Coimbatore"
 
         },
         {
@@ -47,7 +47,7 @@ function Plumbing(props) {
             type: "plumber",
             timing: "Timing : 24 hrs",
             address: "3/59, Gandhipuram 3th Street Gandhipuram, Coimbatore-641012.",
-            district:"Coimbatore"
+            district: "Coimbatore"
         }
 
     ];
@@ -65,7 +65,8 @@ function Plumbing(props) {
     }
     const [get, setGet] = useState("")
     const [district, setDistrict] = useState("")
-
+ 
+    
 
     useEffect(() => {
         setGet(localStorage.getItem("search"));
@@ -74,39 +75,39 @@ function Plumbing(props) {
 
     let filter;
 
-if(get.length === 0 || get.length === undefined){
-   filter = array.filter((arr) => {
-        
-            return district === arr.district;
-            
-        })
-    }else if(district.length === 0 ||district.length === undefined){
+    if (get.length === 0) {
         filter = array.filter((arr) => {
-        
+
+            return district === arr.district;
+
+        })
+    } else if (district.length === 0) {
+        filter = array.filter((arr) => {
+
             return get === arr.type;
-            
+
         })
 
     }
-    else if((get.length === 0 || get.length === undefined) && (district.length === 0 ||district.length === undefined)){
+    else if (get.length === 0 && district.length === 0) {
         filter = array.filter((arr) => {
-        
+
             return district === arr.district || get === arr.type
-            
+
         })
-    }else{
+    } else {
         filter = array.filter((arr) => {
-        
+
             return district === arr.district && get === arr.type
-            
+
         })
     }
-        // return get === arr.type;
+    // return get === arr.type;
     // })
-//    const filter1 = filter.filter((fil)=>{
-//     return get === fil.type;
-//    })
-   
+    //    const filter1 = filter.filter((fil)=>{
+    //     return get === fil.type;
+    //    })
+
     return (
         <div>
 
@@ -121,7 +122,8 @@ if(get.length === 0 || get.length === undefined){
                 <div className="plumber_div_2">
                     <button onClick={back}>home page</button>
 
-                    {filter.length === 0 ? array.map((a) => (
+                    {filter.length === 0 ? 
+                    array.map((a) => (
 
                         <div className="plumber_profile" key={a.id}>
 
@@ -156,7 +158,7 @@ if(get.length === 0 || get.length === undefined){
                             </div>
 
                         </div>)) :
-                         filter.map((a) => (
+                        filter.map((a) => (
 
 
                             <div className="plumber_profile" key={a.id}>
