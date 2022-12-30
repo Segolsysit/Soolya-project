@@ -54,6 +54,17 @@ import { useState } from 'react';
 
 
 function Home(props) {
+
+    // scroll up btn
+      const scrollToUp =()=>{
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })
+      };
+    // scroll up btn finished 
+
+
     const settings = {
         className: "center",
         infinite: true,
@@ -89,11 +100,27 @@ function Home(props) {
             nav('/plumbing')
         }
         else {
-
+return (<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" id="one_w">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        search the correct word....
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      {/* <button type="button" class="btn btn-primary">Understood</button> */}
+    </div>
+  </div>
+</div>
+</div>)
             // return alert("search the correct word....");
-            const modal = document.getElementById("one_w");
+            // const modal = document.getElementById("staticBackdrop");
             
-            console.log(modal);
+            // console.log(modal);
 
             // return modal;
         }
@@ -104,6 +131,7 @@ function Home(props) {
     }
     return (
         <div>
+
 
 
             <div class="sub_body">
@@ -170,7 +198,7 @@ function Home(props) {
                                     <input className="locality_search" type="search" placeholder="search your service category" onChange={chg}></input>
                                 </div>
                                 <div className="button_div">
-                                    <button className="locality_search_button" onClick={btn}><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass"></i>Search</button>
+                                    <button className="locality_search_button" onClick={btn} data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
                                 </div>
                             </div>
 
@@ -470,7 +498,7 @@ function Home(props) {
 
 
                 <div className="scroll_div">
-                    <button className="scroll_up" >
+                    <button className="scroll_up" onClick={scrollToUp}>
                         <i id="scroll_up_icon" class="fa-solid fa-arrow-up"></i>
                     </button>
                 </div>
@@ -585,12 +613,12 @@ function Home(props) {
 
 
 
-            
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+{/*             
+<button type="button" class="btn btn-primary" >
   Launch static backdrop modal
-</button>
+</button> */}
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{/* <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" id="one_w">
     <div class="modal-content">
       <div class="modal-header">
@@ -603,10 +631,10 @@ function Home(props) {
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         {/* <button type="button" class="btn btn-primary">Understood</button> */}
-      </div>
+      {/* </div>
     </div>
   </div>
-</div>
+</div> */}
 
 
 
