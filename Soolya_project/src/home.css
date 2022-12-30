@@ -195,6 +195,7 @@ text-decoration: none;
 
 .owl_carou_1{
   padding: 0px 10px 10px 10px;
+  background-color: #fff;
 }
 
 .owl_carou_2{
@@ -530,6 +531,19 @@ text-decoration: none;
   width: 400px;
   height:400px;
 }
+
+
+/* modal box */
+
+.modal-header{
+  background-color:rgb(230, 61, 61); 
+  /* height: 50px; */
+}
+
+.modal-footer{
+   height:62px;
+}
+
 
 /* page finished */
 
