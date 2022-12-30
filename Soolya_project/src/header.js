@@ -19,6 +19,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 function Header(){
     
+   
     const nav = useNavigate();
 
     return(
@@ -51,7 +52,6 @@ function Header(){
 
             </div>
         </div> */}
-        
         <div className="header_content_div">
             <div className="service_man">
                 {/* <a className="service_man__register" href="self">Become a Service man</a> */}
