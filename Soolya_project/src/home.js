@@ -84,12 +84,21 @@ function Home(props) {
 
     const [search, setSearch] = useState("");
     const [district, setDistrict] = useState("");
+    const [show,setShow] = useState(false);
 
+//    let check =  "plumber" ||  "electrician";
 
     const nav = useNavigate();
     function chg(e) {
         // console.log(e.target.value);
         setSearch(e.target.value);
+        if(e.target.value ===""){
+            setShow(false)
+        }else{
+            setShow(true);
+
+        }
+
     }
 
     function btn() {
@@ -99,36 +108,42 @@ function Home(props) {
             // props.pass(search)
             nav('/plumbing')
         }
-        else {
-return (<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" id="one_w">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-        search the correct word....
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      {/* <button type="button" class="btn btn-primary">Understood</button> */}
-    </div>
-  </div>
-</div>
-</div>)
+        // else {
+
             // return alert("search the correct word....");
             // const modal = document.getElementById("staticBackdrop");
             
             // console.log(modal);
 
             // return modal;
-        }
+        // }
     }
 
     function dist(e) {
         setDistrict(e.target.value)
     }
+
+// function model(){
+//     return "modal";
+    // if(search === "plumber" || search ===  "electrician"){
+    // // search.length > 0 ? ""  : "modal"{
+    //     return "";
+    // }else if(search === ""){
+    //     return "modal"
+    // }
+// }
+
+
+let modalName;
+if(search.length === 0){
+
+// }
+// if(search.length > 0 || search !== "plumber" || search !== "electrician"){
+    modalName ="type any"
+}else{
+    modalName="search the correct word...."
+}
+
     return (
         <div>
 
@@ -195,13 +210,23 @@ return (<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" da
                                     </select>
                                 </div>
                                 <div className="search_div">
-                                    <input className="locality_search" type="search" placeholder="search your service category" onChange={chg}></input>
+                                    <input className="locality_search" type="search" placeholder="search your service category" onChange={chg} value={search}></input>
                                 </div>
                                 <div className="button_div">
-                                    <button className="locality_search_button" onClick={btn} data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
+                                    <button className="locality_search_button" onClick={btn}  data-bs-toggle={(search === "electrician" || search === "plumber" || district.length > 0 ? ""  : "modal") } data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
                                 </div>
+                                
                             </div>
-
+                           {show ? <div className='suggest'>
+                            {props.array.map((arr)=>(
+                        //  <NavLink to="/plumbing">
+                            <div className='sugg' onClick={()=>setSearch(arr.type)}><p>{arr.type}</p></div>
+                            // </NavLink>
+                                
+                            ))}
+                           {/* <NavLink to="/plumbing"><div className='sugg'><p>plumber</p></div></NavLink>
+                            <p><NavLink to="/plumbing">electrician</NavLink></p> */}
+                                </div> :<div></div>}
 
                         </div>
                     </div>
@@ -618,7 +643,7 @@ return (<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" da
   Launch static backdrop modal
 </button> */}
 
-{/* <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" id="one_w">
     <div class="modal-content">
       <div class="modal-header">
@@ -626,15 +651,15 @@ return (<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" da
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          search the correct word....
+         {modalName}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        {/* <button type="button" class="btn btn-primary">Understood</button> */}
-      {/* </div>
+        {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+       </div>
     </div>
   </div>
-</div> */}
+</div>
 
 
 

@@ -554,6 +554,25 @@ text-decoration: none;
    height:62px;
 }
 
+/* suggest */
+
+.suggest{
+  /* margin-top: -80px; */
+  margin-bottom: 10px;
+  width: 400px;
+  height: fit-content;
+  background-color: #f0f0f0;
+  margin:auto;
+}
+
+.sugg{
+  background-color: lightgray;
+}
+
+.sugg:hover{
+  background-color: black;
+}
+
 
 /* page finished */
 
