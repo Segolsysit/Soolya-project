@@ -389,6 +389,16 @@ else{
                 </div>
 
                 {/* two ad */}
+                
+                  <div className="scroll_div">
+                    <button className="scroll_up" onClick={scrollToUp}>
+                        <i id="scroll_up_icon" class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+
+            
+             
+
 
                 <div className="owl_carou_2">
                     <div className="advertise_phase" class="row">
@@ -531,11 +541,7 @@ else{
                 {/* service category div */}
 
 
-                <div className="scroll_div">
-                    <button className="scroll_up" onClick={scrollToUp}>
-                        <i id="scroll_up_icon" class="fa-solid fa-arrow-up"></i>
-                    </button>
-                </div>
+              
 
 
                 {/* <div className="service_category">
