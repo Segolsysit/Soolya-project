@@ -73,16 +73,19 @@
   }
   
   .email_box{
-    width:190px;
+    width:100%;
+    max-width:190px;
   }
   
   .footer_button{
     border: 1px solid grey;
     padding: 1px 10px 1px 10px;
+    width:100%;
+    max-width: 190px;
   }
   
   .policy {
-    background-color: #2874f0;
+    background-color: #010102;
   }
   .policy ul {
     list-style-type: none;

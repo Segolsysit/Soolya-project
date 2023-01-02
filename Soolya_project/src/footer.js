@@ -62,7 +62,7 @@ function Footer(){
                     </textarea>
                 </div>
                 <div>
-                    <button type="submit" className="footer_button btn btn-outline-primary w-100 ">
+                    <button type="submit" className="footer_button btn btn-outline-primary">
                         send
                     </button>
                 </div>
