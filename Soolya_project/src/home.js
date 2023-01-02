@@ -144,6 +144,15 @@ if(search.length === 0){
     modalName="search the correct word...."
 }
 
+
+const filter = props.array.filter((arr)=>{
+    if(search.length > 0 || arr.type !== search){
+    return arr.type.match(search);
+}
+else{
+    return <h1>no results</h1>
+}
+})
     return (
         <div>
 
@@ -218,7 +227,7 @@ if(search.length === 0){
                                 
                             </div>
                            {show ? <div className='suggest'>
-                            {props.array.map((arr)=>(
+                            {filter.map((arr)=>(
                         //  <NavLink to="/plumbing">
                             <div className='sugg' onClick={()=>setSearch(arr.type)}><p>{arr.type}</p></div>
                             // </NavLink>
