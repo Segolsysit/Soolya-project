@@ -159,7 +159,7 @@ if(search.length === 0){
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">AC repair services</a></li>
-                            <li className="sub_header__list"><a className="sub_header__link" href="_slef">& more</a></li>
+                            <li className="sub_header__list"><a className="sub_header__link" href="/plumber_profile">& more</a></li>
                         </ul>
                     </div>
                 </div>
