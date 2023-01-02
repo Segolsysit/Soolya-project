@@ -13,6 +13,7 @@ let array =props.array;
 
     const nav = useNavigate();
 
+
     function back() {
         localStorage.setItem('search', "")
         localStorage.setItem('dist', "")
@@ -110,7 +111,7 @@ let array =props.array;
                                 </div>
 
                                 <div className="plumber_booking">
-                                    <button className="plumber_booking_btn">Book Now</button>
+                                    <button className="plumber_booking_btn"onClick={()=>nav('/plumber_profile')}>View more</button>
                                 </div>
                             </div>
 
@@ -146,7 +147,7 @@ let array =props.array;
                                     </div>
 
                                     <div className="plumber_booking">
-                                        <button className="plumber_booking_btn">Book Now</button>
+                                        <button className="plumber_booking_btn">View more</button>
                                     </div>
                                 </div>
 
