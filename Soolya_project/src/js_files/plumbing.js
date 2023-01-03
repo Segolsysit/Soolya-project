@@ -111,7 +111,7 @@ let array =props.array;
                                 </div>
 
                                 <div className="plumber_booking">
-                                    <button className="plumber_booking_btn"onClick={()=>nav('/plumber_profile')}>View more</button>
+                                    <button className="plumber_booking_btn" onClick={()=>nav('/plumber_profile')}>View more</button>
                                 </div>
                             </div>
 
