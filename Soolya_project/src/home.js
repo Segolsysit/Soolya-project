@@ -103,11 +103,16 @@ function Home(props) {
     }
 
     function btn() {
-        if (search === "plumber" || (district === "erode") || (district === "Coimbatore") || (search === "electrician")) {
+        if (search === "plumber" || (district === "erode") || (district === "Coimbatore")) {
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
             // props.pass(search)
             nav('/plumbing')
+        }else if(search === "electrician" || (district === "erode") || (district === "Coimbatore")){
+            localStorage.setItem("search", search)
+            localStorage.setItem("dist", district)
+            // props.pass(search)
+            nav('/electrician')
         }
         // else {
 
@@ -145,15 +150,14 @@ if(search.length === 0){
     modalName="search the correct word...."
 }
 
+let filter;
+// if(search.length > 0){
 
-const filter = props.array.filter((arr)=>{
-    if(search.length > 0 || arr.type !== search){
+ filter =props.array.filter((arr)=>{
     return arr.type.match(search);
-}
-else{
-    return <h1>no results</h1>
-}
 })
+// }
+
     return (
         <div>
 
@@ -163,8 +167,8 @@ else{
                 <div>
                     <div className="sub_header">
                         <ul className="sub_header__unorder">
-                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumbing" onClick={() => { localStorage.setItem("search", ""); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
-                            <li className="sub_header__list"><a className="sub_header__link" href="_self">Electrician</a></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumbing" onClick={() => { localStorage.setItem("search", "plumber"); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}>Electrician</NavLink></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home Appliances</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
@@ -228,12 +232,16 @@ else{
                                 
                             </div>
                            {show ? <div className='suggest'>
-                            {filter.map((arr)=>(
-                        //  <NavLink to="/plumbing">
-                            <div className='sugg' onClick={()=>setSearch(arr.type)}><p>{arr.type}</p></div>
-                            // </NavLink>
-                                
+                             
+                           {filter.map((arr)=>(
+                        //  <NavLink to="/plumbing"
+                        <div className='sugg'>
+                         <p  onClick={()=>{setSearch(arr.type); setShow(false)}}>{arr.type}</p> 
+                            
+                            </div>
                             ))}
+
+                            {/* // </NavLink> */}
                            {/* <NavLink to="/plumbing"><div className='sugg'><p>plumber</p></div></NavLink>
                             <p><NavLink to="/plumbing">electrician</NavLink></p> */}
                                 </div> :<div></div>}
@@ -280,7 +288,7 @@ else{
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                                <img alt="demo" src={electrician}></img>
+                                              <NavLink   to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                             </div>
                                             <div className="carousel_box_content">
                                                 <h5>Electrician</h5>
@@ -332,7 +340,8 @@ else{
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                                <img alt="demo" src={electrician_work}></img>
+                                              <NavLink   to="/plumbing" onClick={() => { localStorage.setItem("search", "plumber"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                {/* <img alt="demo" src={electrician_work}></img> */}
                                             </div>
                                             <div className="carousel_box_content">
                                                 <h5>Plumbing</h5>
