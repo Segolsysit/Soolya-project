@@ -62,6 +62,10 @@ function App() {
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/plumbing" element={<Plumbing array={array}></Plumbing>}></Route>
+                <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route>
+
+                <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
+
             </Routes>
             <br></br>
             <Footer></Footer>
