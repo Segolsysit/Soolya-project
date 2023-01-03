@@ -172,7 +172,7 @@ let filter;
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">AC repair services</a></li>
-                            <li className="sub_header__list"><a className="sub_header__link" href="_slef">& more</a></li>
+                            <li className="sub_header__list"><a className="sub_header__link" href="_self">& more</a></li>
                         </ul>
                     </div>
                 </div>
@@ -345,7 +345,7 @@ let filter;
                                             <div className="carousel_box_content">
                                                 <h5>Plumbing</h5>
                                                 <h3>From ₹150</h3>
-                                                <button>Book now</button>
+                                                <button onClick={()=>nav('/plumber_profile')}>Book now</button>
                                             </div>
                                         </div>
                                     </div>
