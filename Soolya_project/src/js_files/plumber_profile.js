@@ -1,6 +1,7 @@
 import "../css_files/plumber_profile.css";
 import plumber_banner from "../images/1.jpg";
 import photo from "../images/3.jpg";
+import photo2 from "../images/2.jpg";
 
 
 function PlumberProfile() {
@@ -8,185 +9,185 @@ function PlumberProfile() {
         <div>
 
 
-
-            <div>
-                <div>
-                    <img className="plumber_profile_banner" src={plumber_banner} alt="profile_data"></img>
-                </div>
-
-
-                <div className="plumber_profile_bio">
-
-
+            <div className="profile_page">
+                <div className="profile_page_main_div">
                     <div>
-                        <div className="img_wrapper">
-                             <div>
-                                <img className="company_images" src={photo} alt="demo_bn"></img>
-                             </div>
-                             <div>
-                                <img className="company_images" src={photo} alt="demo_bn"></img>
-                             </div>
-                             <div>
-                                <img className="company_images" src={photo} alt="demo_bn"></img>
-                             </div>
-                             <div>
-                                <img className="company_images" src={photo} alt="demo_bn"></img>
-                             </div>
-                             <div>
-                                <img className="company_images" src={photo} alt="demo_bn"></img>
-                             </div>
-                             <div>
-                                <img className="company_images" src={photo} alt="demo_bn"></img>
-                             </div>
-                             <div>
-                                <img className="company_images" src={photo} alt="demo_bn"></img>
-                             </div>
-                        </div>
-
-                        <div>
-                            <address>
-                            Cts NO, 301/A 301B, 301/C, Marol Village Road, Andheri East, Mumbai - 400059, Opposite Deepti Wines 
-                            </address>
-                        </div>
-
-                        <div>
-                            <div>
-                                <h6>Hours of operations</h6>
-                            </div>
-                            <div>
-                                <p>
-                                Today:10.00 am - 8.00 pm
-                                </p>
-                            </div>
-                        </div>
+                        <img className="plumber_profile_banner" src={plumber_banner} alt="profile_data"></img>
                     </div>
 
 
+                    <div className="plumber_profile_address_side">
 
 
-                    <div>
-                        <div className="plumber_profile_bio_btn_inline">
+                        <div>
                             <div>
+                                 <h5>Photos</h5>
+                            </div>
+
+                            <div className="img_wrapper">
+                                <div>
+                                    <img className="company_images" src={photo} alt="demo_bn"></img>
+                                </div>
+                                <div>
+                                    <img className="company_images" src={plumber_banner} alt="demo_bn"></img>
+                                </div>
+                                <div>
+                                    <img className="company_images" src={photo2} alt="demo_bn"></img>
+                                </div>
+                                <div>
+                                    <img className="company_images" src={photo} alt="demo_bn"></img>
+                                </div>
+                                <div>
+                                    <img className="company_images" src={photo} alt="demo_bn"></img>
+                                </div>
+                                <div>
+                                    <img className="company_images" src={photo} alt="demo_bn"></img>
+                                </div>
+                                <div>
+                                    <img className="company_images" src={photo} alt="demo_bn"></img>
+                                </div>
+                            </div>
+
+                            <div>
+                                <address>
+                                    Cts NO, 301/A 301B, 301/C, Marol Village Road, Andheri East, Mumbai - 400059, Opposite Deepti Wines
+                                </address>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <h6>Hours of operations</h6>
+                                </div>
+                                <div>
+                                    <p>
+                                        Today:10.00 am - 8.00 pm
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div className="plumber_profile_bio_side">
+                            <div className="plumber_profile_bio_btn_inline">
+                                <div>
+                                    <button className="bio_side_inline_btn">
+                                        <div>
+                                            <h5>Reviews</h5>
+                                            <p>demo reviews</p>
+                                        </div>
+                                        <div>
+                                            <i id="hover_arrow_inline_btn" class="fa-solid fa-chevron-right"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div>
+                                    <button className="bio_side_inline_btn">
+                                        <div>
+                                            <h5>More Information</h5>
+                                            <p>Address,services..</p>
+                                        </div>
+                                        <div>
+                                            <i id="hover_arrow_inline_btn" class="fa-solid fa-chevron-right"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div>
+                                    <button className="bio_side_inline_btn">
+                                        <div>
+                                            <h5>Hours of Operation</h5>
+                                            <p>Today:10.00 am - 8.00 pm</p>
+                                        </div>
+                                        <div>
+                                            <i id="hover_arrow_inline_btn" class="fa-solid fa-chevron-right"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="book_now_btn">
+                                <button>Book Now</button>
+                            </div>
+
+                            <div className="review_div">
                                 <button>
-                                    <h4>Reviews</h4>
-                                    <p>demo reviews</p>
+                                    Write a Review
+                                </button>
+                                <button>
+                                    Reviews & Ratings
                                 </button>
                             </div>
-                            <div>
-                                <button>
-                                    <h4>More Information</h4>
-                                    <p>Address,services..</p>
-                                </button>
+
+                            <div className="review_box">
+                                <div>
+                                    <h4>Add Review</h4>
+                                </div>
+                                <div>
+                                    <textarea className="review_box_cont" rows={5} placeholder="Be specific and relevant to the place you're reviewing and describe what other visitor are likely to experience. Be authentic and describe why you liked or disliked">
+                                    </textarea>
+                                </div>
+                                <div>
+                                    <button>
+                                        submit  
+                                    </button>
+                                </div>
                             </div>
+
                             <div>
-                                <button>
-                                    <h4>Hours of Operation</h4>
-                                    <p>Today:10.00 am - 8.00 pm</p>
-                                </button>
+                                <div className="tag_style">
+                                    <h3>Business Information</h3>
+                                </div>
+                                <div>
+
+                                    <h5> New Jai Maa Bhavani Tiles and Plumbing in Dombivli East, Thane, Mumbai </h5>
+                                    <p>New Jai Maa Bhavani Tiles and Plumbing in Thane, Mumbai is one of the leading businesses in the Plumbers. Also known for Plumbers, Tiling Contractors, Tile Contractors, Tile Fixing Services, Ceramic Tile Contractors and much more. Find Address, Contact Number, Reviews & Ratings, Photos, Maps of New Jai Maa Bhavani Tiles and Plumbing, Thane, Mumbai.
+
+                                        A leaking pipe flooding your apartment? Looking forward to installing new plumbing fixtures in your new home? Then Plumbers are the professionals you need to contact. They are highly skilled in installing several piping systems in your home and repairing various fittings in case of a problem. Completing any industrial, commercial or industrial project is impossible without them.
+
+                                        If you are looking for a good plumber to take care of the piping in any of your properties, then look no further than New Jai Maa Bhavani Tiles and Plumbing located in Dombivli East, Mumbai. Established in 2004, New Jai Maa Bhavani Tiles and Plumbing has served many satisfied clients.
+                                    </p>
+
+                                    <h5> New Jai Maa Bhavani Tiles and Plumbing in Dombivli East, Thane, Mumbai </h5>
+                                    <p>New Jai Maa Bhavani Tiles and Plumbing in Thane, Mumbai is one of the leading businesses in the Plumbers. Also known for Plumbers, Tiling Contractors, Tile Contractors, Tile Fixing Services, Ceramic Tile Contractors and much more. Find Address, Contact Number, Reviews & Ratings, Photos, Maps of New Jai Maa Bhavani Tiles and Plumbing, Thane, Mumbai.
+
+                                        A leaking pipe flooding your apartment? Looking forward to installing new plumbing fixtures in your new home? Then Plumbers are the professionals you need to contact. They are highly skilled in installing several piping systems in your home and repairing various fittings in case of a problem. Completing any industrial, commercial or industrial project is impossible without them.
+
+                                        If you are looking for a good plumber to take care of the piping in any of your properties, then look no further than New Jai Maa Bhavani Tiles and Plumbing located in Dombivli East, Mumbai. Established in 2004, New Jai Maa Bhavani Tiles and Plumbing has served many satisfied clients.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <button>Book Now</button>
-                        </div>
-
-                        <div>
-                            <button>
-                                Write a Review
-                            </button>
-                            <button>
-                                Reviews & Ratings
-                            </button>
-                        </div>
-
-                        <div>
                             <div>
-                                <h3>Business Information</h3>
-                            </div>
-                            <div>
-                                <p>
-                                    Reviews
-                                    AAMINNice workshop......
-                                    Hours Of Operation
-                                    Today :10:00 am - 8:00 pm(View all)
-                                    More Information
-                                    Phone number, Address, Official website, Get Directions/Map etc .
-                                    Enquire Now
-                                    WRITE A REVIEWREVIEWS & RATINGS
-                                    Please rate your experienceAdd ReviewReview Guidelines
-                                    Be specific and relevant to the place you're reviewing and describe what other visitor are likely to experience. Be authentic and describe why you liked or disliked the place. Include aspects like the ambience, service quality, value for money, credibility of the vendor & timely delivery,
-                                    Share with friends Facebook TwitterAttach Photos to this Review (Optional)Submit
-                                    Business Information
+                                <div className="tag_style">
+                                    <h3>Frequently Asked Question</h3>
+                                </div>
+                                <div>
 
-                                    F. G. Automobiles in Andheri East, Mumbai
-                                    F. G. Automobiles in Mumbai is one of the leading businesses in the Car Repair & Services-Honda. Also known for Car Repair & Services, Car Washing Services, Car Battery Jump Start Services, Car Repair & Services-Tata, Car Repair & Services-Honda, Car AC Repair & Services, Car Repair & Services-Mahindra, Car Repair & Services-Toyota and much more. Find Address, Contact Number, Reviews & Ratings, Photos, Maps of F. G. Automobiles, Mumbai.
+                                    <h5>1. What are the average visiting charges of New Jai Maa Bhavani Tiles and Plumbing?</h5>
+                                    <p>New Jai Maa Bhavani Tiles and Plumbing charges an average visiting fee of Rs..</p>
 
-                                    Location and Overview:
-                                    Established in the year 2018, F. G. Automobiles in Andheri East, Mumbai is a top player in the category Car Repair & Services-Honda in the Mumbai. This well-known establishment acts as a one-stop destination servicing customers both local and from other parts of Mumbai. Over the course of its journey, this business has established a firm foothold in it’s industry. The belief that customer satisfaction is as important as their products and services, have helped this establishment garner a vast base of customers, which continues to grow by the day. This business employs individuals that are dedicated towards their respective roles and put in a lot of effort to achieve the common vision and larger goals of the company. In the near future, this business aims to expand its line of products and services and cater to a larger client base. In Mumbai, this establishment occupies a prominent location in Andheri East. It is an effortless task in commuting to this establishment as there are various modes of transport readily available. It is at Marol Village Road, Opposite Deepti Wines, which makes it easy for first-time visitors in locating this establishment. It is known to provide top service in the following categories: Car Repair & Services, Car Washing Services, Car Battery Jump Start Services, Car Repair & Services-Tata, Car Repair & Services-Honda, Car AC Repair & Services, Car Repair & Services-Mahindra, Car Repair & Services-Toyota.
+                                    <h5>2. Do the technicians at New Jai Maa Bhavani Tiles and Plumbing bring their own plumbing tools for projects?</h5>
+                                    <p>Yes, typically all plumbing companies provide their technicians with the plumbing tools.</p>
 
-                                    Products and Services offered:
-                                    F. G. Automobiles in Andheri East has a wide range of products and / or services to cater to the varied requirements of their customers. The staff at this establishment are courteous and prompt at providing any assistance. They readily answer any queries or questions that you may have. Pay for the product or service with ease by using any of the available modes of payment, such as Cash, Master Card, Visa Card, Credit Card. This establishment is functional from 10:00 - 20:00.
+                                    <h5>3. How can I get in touch with New Jai Maa Bhavani Tiles and Plumbing in Dombivli East?</h5>
+                                    <p>To get in touch with New Jai Maa Bhavani Tiles and Plumbing, you can call them on the number provided during their working hours from Monday:- 9:30 am - 10:30 pm, Tuesday:- 9:30 am - 10:30 pm, Wednesday:- 9:30 am - 10:30 pm, thu:- 9:30 am - 10:30 pm, Friday:- 9:30 am - 10:30 pm, Saturday:- 9:30 am - 10:30 pm, Sunday:- 9:30 am - 10:30 pm.</p>
 
-                                    Please scroll to the top for the address and contact details of F. G. Automobiles at Andheri East, Mumbai.v
-                                </p>
-                            </div>
-                        </div>
+                                    <h5>4. How long does New Jai Maa Bhavani Tiles and Plumbing take to complete a project?</h5>
+                                    <p>The time taken to complete a project depends on the amount of work. It is suggested that you consult New Jai Maa Bhavani Tiles and Plumbing for more details regarding this.</p>
 
-                        <div>
-                            <div>
-                                <h3>Frequently Asked Question</h3>
-                            </div>
-                            <div>
-                                <p>
-                                    Reviews
-                                    AAMINNice workshop......
-                                    Hours Of Operation
-                                    Today :10:00 am - 8:00 pm(View all)
-                                    More Information
-                                    Phone number, Address, Official website, Get Directions/Map etc .
-                                    Enquire Now
-                                    WRITE A REVIEWREVIEWS & RATINGS
-                                    Please rate your experienceAdd ReviewReview Guidelines
-                                    Be specific and relevant to the place you're reviewing and describe what other visitor are likely to experience. Be authentic and describe why you liked or disliked the place. Include aspects like the ambience, service quality, value for money, credibility of the vendor & timely delivery,
-                                    Share with friends Facebook TwitterAttach Photos to this Review (Optional)Submit
-                                    Business Information
+                                    <h5>5. Is it essential to book services in advance at New Jai Maa Bhavani Tiles and Plumbing?</h5>
+                                    <p>Some plumbers are readily available if you need them to fix a minor issue. However, if it is a big project, we suggest you contact New Jai Maa Bhavani Tiles and Plumbing and book their services in advance.</p>
 
-                                    F. G. Automobiles in Andheri East, Mumbai
-                                    F. G. Automobiles in Mumbai is one of the leading businesses in the Car Repair & Services-Honda. Also known for Car Repair & Services, Car Washing Services, Car Battery Jump Start Services, Car Repair & Services-Tata, Car Repair & Services-Honda, Car AC Repair & Services, Car Repair & Services-Mahindra, Car Repair & Services-Toyota and much more. Find Address, Contact Number, Reviews & Ratings, Photos, Maps of F. G. Automobiles, Mumbai.
 
-                                    Location and Overview:
-                                    Established in the year 2018, F. G. Automobiles in Andheri East, Mumbai is a top player in the category Car Repair & Services-Honda in the Mumbai. This well-known establishment acts as a one-stop destination servicing customers both local and from other parts of Mumbai. Over the course of its journey, this business has established a firm foothold in it’s industry. The belief that customer satisfaction is as important as their products and services, have helped this establishment garner a vast base of customers, which continues to grow by the day. This business employs individuals that are dedicated towards their respective roles and put in a lot of effort to achieve the common vision and larger goals of the company. In the near future, this business aims to expand its line of products and services and cater to a larger client base. In Mumbai, this establishment occupies a prominent location in Andheri East. It is an effortless task in commuting to this establishment as there are various modes of transport readily available. It is at Marol Village Road, Opposite Deepti Wines, which makes it easy for first-time visitors in locating this establishment. It is known to provide top service in the following categories: Car Repair & Services, Car Washing Services, Car Battery Jump Start Services, Car Repair & Services-Tata, Car Repair & Services-Honda, Car AC Repair & Services, Car Repair & Services-Mahindra, Car Repair & Services-Toyota.
-
-                                    Products and Services offered:
-                                    F. G. Automobiles in Andheri East has a wide range of products and / or services to cater to the varied requirements of their customers. The staff at this establishment are courteous and prompt at providing any assistance. They readily answer any queries or questions that you may have. Pay for the product or service with ease by using any of the available modes of payment, such as Cash, Master Card, Visa Card, Credit Card. This establishment is functional from 10:00 - 20:00.
-
-                                    Please scroll to the top for the address and contact details of F. G. Automobiles at Andheri East, Mumbai.
-
-                                    Frequently Asked Question
-                                    1. What are the various mode of payment accepted here ?
-                                    You can make payment Via Cash, Credit Card, Visa Card, Master Card, Cash on Delivery, Card on Delivery, Debit Cards, UPI, Paytm, PhonePe, G Pay, IMPS.
-
-                                    2. Which is the nearest landmark ?
-                                    You can easily locate the establishment as it is in close proximity to Opposite Deepti Wines
-
-                                    3. What are its hours of operation ?
-                                    The establishment is functional on
-                                    Monday:- 10:00 Am - 8:00 Pm
-                                    Tuesday:- 10:00 Am - 8:00 Pm
-                                    Wednesday:- 10:00 Am - 8:00 Pm
-                                    Thursday:- 10:00 Am - 8:00 Pm
-                                    Friday:- 10:00 Am - 8:00 Pm
-                                    Saturday:- 10:00 Am - 8:00 Pm
-                                    Sunday:- 10:00 Am - 8:00 Pm
-                                </p>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
             </div>
-
 
 
         </div>
