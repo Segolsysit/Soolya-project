@@ -9,6 +9,7 @@ import SignUp from './signUp';
 import ganapathy_raj from "./images/3.jpg";
 import praveen from "./images/2.jpg";
 import santhosh_kumar from "./images/1.jpg";
+import Electrician from './js_files/electrician';
 function App() {
     const array = [
         {
@@ -60,6 +61,8 @@ function App() {
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/plumbing" element={<Plumbing array={array}></Plumbing>}></Route>
+                <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route>
+
             </Routes>
             <br></br>
             <Footer></Footer>
