@@ -62,8 +62,7 @@ function App() {
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/plumbing" element={<Plumbing array={array}></Plumbing>}></Route>
-         
-
+           
             </Routes>
             <br></br>
             <Footer></Footer>
