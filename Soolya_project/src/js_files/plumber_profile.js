@@ -21,7 +21,7 @@ function PlumberProfile() {
 
                         <div>
                             <div>
-                                 <h5>Photos</h5>
+                                <h5>Photos</h5>
                             </div>
 
                             <div className="img_wrapper">
@@ -73,7 +73,7 @@ function PlumberProfile() {
                             <div className="plumber_profile_bio_btn_inline">
                                 <div>
                                     <button className="bio_side_inline_btn">
-                                        <div>
+                                        <div className="inline_btn_cont">
                                             <h5>Reviews</h5>
                                             <p>demo reviews</p>
                                         </div>
@@ -84,7 +84,7 @@ function PlumberProfile() {
                                 </div>
                                 <div>
                                     <button className="bio_side_inline_btn">
-                                        <div>
+                                        <div className="inline_btn_cont">
                                             <h5>More Information</h5>
                                             <p>Address,services..</p>
                                         </div>
@@ -95,7 +95,7 @@ function PlumberProfile() {
                                 </div>
                                 <div>
                                     <button className="bio_side_inline_btn">
-                                        <div>
+                                        <div className="inline_btn_cont">
                                             <h5>Hours of Operation</h5>
                                             <p>Today:10.00 am - 8.00 pm</p>
                                         </div>
@@ -110,16 +110,49 @@ function PlumberProfile() {
                                 <button>Book Now</button>
                             </div>
 
-                            <div className="review_div">
+                            {/* <div className="review_div">
                                 <button>
                                     Write a Review
                                 </button>
                                 <button>
                                     Reviews & Ratings
                                 </button>
+                            </div> */}
+
+                            <div className="review_div">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"> Write a Review</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Reviews & Ratings</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        
+                            <div className="review_box">
+                                <div>
+                                    <h4 className="review_box_heading">Add Review</h4>
+                                </div>
+                                <div>
+                                    <textarea className="review_box_cont" rows={5} placeholder="Be specific and relevant to the place you're reviewing and describe what other visitor are likely to experience. Be authentic and describe why you liked or disliked">
+                                    </textarea>
+                                </div>
+                                <div>
+                                    <button className="review_submit_btn">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                                </div>
+                        
                             </div>
 
-                            <div className="review_box">
+
+                            {/* <div className="review_box">
                                 <div>
                                     <h4>Add Review</h4>
                                 </div>
@@ -129,16 +162,16 @@ function PlumberProfile() {
                                 </div>
                                 <div>
                                     <button>
-                                        submit  
+                                        submit
                                     </button>
                                 </div>
-                            </div>
+                            </div> */}
 
-                            <div>
+                            <div className="business_info_div">
                                 <div className="tag_style">
                                     <h3>Business Information</h3>
                                 </div>
-                                <div>
+                                <div  className="business_info_cont">
 
                                     <h5> New Jai Maa Bhavani Tiles and Plumbing in Dombivli East, Thane, Mumbai </h5>
                                     <p>New Jai Maa Bhavani Tiles and Plumbing in Thane, Mumbai is one of the leading businesses in the Plumbers. Also known for Plumbers, Tiling Contractors, Tile Contractors, Tile Fixing Services, Ceramic Tile Contractors and much more. Find Address, Contact Number, Reviews & Ratings, Photos, Maps of New Jai Maa Bhavani Tiles and Plumbing, Thane, Mumbai.
@@ -158,11 +191,11 @@ function PlumberProfile() {
                                 </div>
                             </div>
 
-                            <div>
+                            <div className="business_info_div">
                                 <div className="tag_style">
                                     <h3>Frequently Asked Question</h3>
                                 </div>
-                                <div>
+                                <div  className="business_info_cont">
 
                                     <h5>1. What are the average visiting charges of New Jai Maa Bhavani Tiles and Plumbing?</h5>
                                     <p>New Jai Maa Bhavani Tiles and Plumbing charges an average visiting fee of Rs..</p>

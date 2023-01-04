@@ -51,11 +51,22 @@
       width:230px;
       height:100px;
       outline:none;
-      border: 1px solid grey;
+      border: 1px solid rgb(219, 219, 219);
+      background-color: #fff;
       border-radius: 3px;
       display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.inline_btn_cont h5{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.inline_btn_cont p{
+    color:#666;
+    font-size: 13px;
 }
 
 #hover_arrow_inline_btn{
@@ -69,8 +80,8 @@
 }
 
 .book_now_btn button{
-    width:200px;
-    height:60px;
+    width:190px;
+    height:55px;
     font-size: 20px;
     outline:none;
     border: none;
@@ -80,26 +91,75 @@
     font-weight: 500;
 }
 
-.review_div button{
+.nav-item{
         width: 50%;
         font-size: 25px;
         outline: none;
 }
 
+.nav-link{
+    width:100%;
+}
+
 .review_box{
-    border:1px solid grey;
+    border:1px solid #dee2e6;
+    border-top: none;
+    padding: 15px;
+}
+
+.review_box_heading {
+     font-size: 20px;
+     color:#666;
 }
 
 .review_box div{
-    padding: 10px;
+    padding-top: 7px;
+    /* line-height: 30px; */
 }
 
 
 .review_box_cont{
     width: 100%;
+    outline: none;
+    border: 1px solid #666;
+}
+
+.review_submit_btn{
+    width:180px;
+    height:40px;
+    background-color: #2874f0;
+    color:#fff;
+    font-weight: 500;
+    outline:none;
+    border: 1px solid #2874f0;
+    border-radius: 3px;
+}
+
+
+.business_info_div{
+    padding-top:10px;
+}
+
+.business_info_div div{
+    padding-top: 10px;
 }
 
 .tag_style{
-    border: 1px solid black;
+    border: 1px solid #f1f3f6;
     background-color: #f1f3f6;
+}
+
+.tag_style h3{
+    text-indent: 20px;
+    font-size: 18px;
+}
+
+.business_info_cont h5{
+    font-size: 18px;
+}
+
+.business_info_cont p{
+  font-size: 13px;
+  color: #666;
+  /* text-indent: 20px; */
 }
