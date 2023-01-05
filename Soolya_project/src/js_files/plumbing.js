@@ -17,8 +17,6 @@ let array =props.array;
     function back() {
         localStorage.setItem('search', "")
         localStorage.setItem('dist', "")
-
-
         nav('/')
     }
     const [get, setGet] = useState("")
@@ -32,7 +30,22 @@ let array =props.array;
     }, [])
 
     let filter;
+//     if(district === "Coimbatore"){
+//         filter = array.filter((arr) => {
+    
+//         return arr.district === district &&  arr.type === get;
+    
+    
+//         })
+//     }
+// else if(district === "erode" && (get === "plumber")){
+//     filter = array.filter((arr) => {
 
+//     return arr.district === "erode" && arr.type==="plumber";
+
+
+//     })
+// }
     if (get.length === 0) {
         filter = array.filter((arr) => {
 
@@ -53,7 +66,8 @@ let array =props.array;
             return district === arr.district || get === arr.type
 
         })
-    } else {
+    }
+    else {
         filter = array.filter((arr) => {
 
             return district === arr.district && get === arr.type
@@ -66,6 +80,14 @@ let array =props.array;
     //     return get === fil.type;
     //    })
 
+function chg(e){
+    // setGet(localStorage.setItem("search","plumber"));
+    
+    // setDistrict("erode")
+    setDistrict(e.target.value)
+    console.log(e.target.value);
+}
+   
     return (
         <div>
 
@@ -74,7 +96,15 @@ let array =props.array;
 
             <div className="plumber_page">
                 <div className="plumber_div_1">
-
+                 {/* <button onClick={chg}>change</button> */}
+                <select value={district} onChange={chg}>
+                <option value="">
+                    select
+                </option>
+                    <option >erode</option>
+                    <option >coimbatore</option>
+                </select>
+                 {/* <button onClick={fil}>search</button>  */}
                 </div>
                 {/* <div className="plumber_page"> */}
                 <div className="plumber_div_2">
@@ -115,7 +145,7 @@ let array =props.array;
                                 </div>
                             </div>
 
-                        </div>)) :
+                        </div>)) : 
                         filter.map((a) => (
 
 
