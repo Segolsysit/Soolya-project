@@ -1,5 +1,6 @@
 .profile_page{
     padding: 80px 50px 0px 50px;
+    /* padding: 80px 0px 0px 300px; */
 }
 
 .profile_page_main_div{
@@ -25,6 +26,28 @@
 .plumber_name{
     color:#fff;
     font-weight: 500;
+}
+
+#share_btn{
+    /* height:40px;
+    width: 100px;
+    font-weight: 500; */
+    background-color: none;
+    outline: none;
+    border:none;
+}
+
+#share_profile{
+    font-size: 18px;
+    margin-left: 3px;
+}
+
+#modal_width{
+    width: 200px;
+}
+
+.share_profile_link{
+    display: flex;
 }
 
 .plumber_profile_address_side{
@@ -67,19 +90,20 @@
 
 .bio_side_inline_btn{
       width:230px;
-      height:100px;
+      height:80px;
       outline:none;
       border: 1px solid rgb(219, 219, 219);
       background-color: #fff;
       border-radius:10px;
       display: flex;
-    justify-content: space-around;
-    align-items: center;
+      justify-content: space-around;
+      align-items: center; 
 }
 
 .inline_btn_cont h5{
     font-size: 20px;
     font-weight: 500;
+    color:rgb(73, 73, 73);
 }
 
 .inline_btn_cont p{
@@ -95,7 +119,7 @@
 
 .book_now_btn{
    text-align: center;
-   padding: 20px 0px 20px 0px;
+   padding: 30px 0px 30px 0px;
 }
 
 #book_now_arrow{
@@ -105,13 +129,13 @@
 }
 
 .book_now_btn button{
-    width:190px;
-    height:55px;
+    width:175px;
+    height: 50px;
     font-size: 20px;
     outline:none;
     border: none;
     color: #fff;
-    background-color:rgb(214, 33, 33);
+    background-color:rgb(182, 47, 47);
     border-radius: 25px;
     font-weight: 500;
 }

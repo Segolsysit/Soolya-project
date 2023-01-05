@@ -13,19 +13,89 @@ function PlumberProfile() {
                 <div className="profile_page_main_div">
                     <div className="plumber_profile_relative">
                         <img className="plumber_profile_banner" src={plumber_banner} alt="profile_data"></img>
-                    <div className="plumber_profile_absolute">
-                        <div className="plumber_name">
-                            <div>
-                                <h1>New Jai Maa Bhavani Tiles and Plumbing</h1>
+                        <div className="plumber_profile_absolute">
+                            <div className="plumber_name">
+                                <div>
+                                    <div>
+                                        <h1>New Jai Maa Bhavani Tiles and Plumbing</h1>
+                                    </div>
+                                </div>
+                                
+                                    {/* <div>
+                                        <button  id="share_btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm">
+                                           Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
+                                        </button>
+
+                                        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered ">
+                                                <div id="modal_width" class="modal-content">
+                                                    <div className="share_profile_link">
+                                                        <button href="https://www.facebook.com/"><i className="fa-brands fa-facebook-f"></i></button>
+                                                        <button href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></button>
+                                                        <button href="https://www.twitter.com/"><i className="fa-brands fa-twitter"></i></button>
+                                                        <button href="https://www.youtube.com/"><i className="fa-brands fa-youtube"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> */}
+
+
+{/* 
+<button type="button"  id="share_btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+       Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
+</button>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+             <h4>Share with Friends</h4>
+        </div>
+    
+      <div class="modal-body">
+            <div className="share_profile_link">
+                <button href="https://www.facebook.com/"><i className="fa-brands fa-facebook-f"></i></button>
+                <button href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></button>
+                <button href="https://www.twitter.com/"><i className="fa-brands fa-twitter"></i></button>
+                <button href="https://www.youtube.com/"><i className="fa-brands fa-youtube"></i></button>
+            </div>
+      </div>
+   
+    </div>
+  </div>
+</div> */}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
                             </div>
-                            <div>
-           
-                            </div>
-                            
                         </div>
                     </div>
-                    </div>
-                  
+
 
 
                     <div className="plumber_profile_address_side">
@@ -61,6 +131,9 @@ function PlumberProfile() {
                             </div>
 
                             <div>
+                                <div>
+                                    <h5>Address</h5>
+                                </div>
                                 <address>
                                     Cts NO, 301/A 301B, 301/C, Marol Village Road, Andheri East, Mumbai - 400059, Opposite Deepti Wines
                                 </address>
@@ -87,7 +160,7 @@ function PlumberProfile() {
                                     <button className="bio_side_inline_btn">
                                         <div className="inline_btn_cont">
                                             <h5>Reviews</h5>
-                                            <p>demo reviews</p>
+                                            {/* <p>demo reviews</p> */}
                                         </div>
                                         <div>
                                             <i id="hover_arrow_inline_btn" class="fa-solid fa-chevron-right"></i>
@@ -98,7 +171,7 @@ function PlumberProfile() {
                                     <button className="bio_side_inline_btn">
                                         <div className="inline_btn_cont">
                                             <h5>More Information</h5>
-                                            <p>Address,services..</p>
+                                            {/* <p>Address,services..</p> */}
                                         </div>
                                         <div>
                                             <i id="hover_arrow_inline_btn" class="fa-solid fa-chevron-right"></i>
@@ -109,7 +182,7 @@ function PlumberProfile() {
                                     <button className="bio_side_inline_btn">
                                         <div className="inline_btn_cont">
                                             <h5>Hours of Operation</h5>
-                                            <p>Today:10.00 am - 8.00 pm</p>
+                                            {/* <p>Today:10.00 am - 8.00 pm</p> */}
                                         </div>
                                         <div>
                                             <i id="hover_arrow_inline_btn" class="fa-solid fa-chevron-right"></i>
@@ -137,39 +210,39 @@ function PlumberProfile() {
                             <div className="review_div">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                           <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-                                                <i id="review_box_icon" class="fa-regular fa-pen-to-square"></i>
-                                                 Write a Review
-                                            </button>
+                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                                            <i id="review_box_icon" class="fa-regular fa-pen-to-square"></i>
+                                            Write a Review
+                                        </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                                        <i id="review_box_icon" class="fa-regular fa-comment"></i>
-                                        Reviews & Ratings
+                                            <i id="review_box_icon" class="fa-regular fa-comment"></i>
+                                            Reviews & Ratings
                                         </button>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        
-                            <div className="review_box">
-                                <div>
-                                    <h4 className="review_box_heading">Add Review</h4>
-                                </div>
-                                <div>
-                                    <textarea className="review_box_cont" rows={5} placeholder="Be specific and relevant to the place you're reviewing and describe what other visitor are likely to experience. Be authentic and describe why you liked or disliked">
-                                    </textarea>
-                                </div>
-                                <div>
-                                    <button className="review_submit_btn">
-                                        Submit
-                                    </button>
-                                </div>
-                            </div>
+
+                                        <div className="review_box">
+                                            <div>
+                                                <h4 className="review_box_heading">Add Review</h4>
+                                            </div>
+                                            <div>
+                                                <textarea className="review_box_cont" rows={5} placeholder="Be specific and relevant to the place you're reviewing and describe what other visitor are likely to experience. Be authentic and describe why you liked or disliked">
+                                                </textarea>
+                                            </div>
+                                            <div>
+                                                <button className="review_submit_btn">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
                                 </div>
-                        
+
                             </div>
 
 
@@ -192,7 +265,7 @@ function PlumberProfile() {
                                 <div className="tag_style">
                                     <h3>Business Information</h3>
                                 </div>
-                                <div  className="business_info_cont">
+                                <div className="business_info_cont">
 
                                     <h5> New Jai Maa Bhavani Tiles and Plumbing in Dombivli East, Thane, Mumbai </h5>
                                     <p>New Jai Maa Bhavani Tiles and Plumbing in Thane, Mumbai is one of the leading businesses in the Plumbers. Also known for Plumbers, Tiling Contractors, Tile Contractors, Tile Fixing Services, Ceramic Tile Contractors and much more. Find Address, Contact Number, Reviews & Ratings, Photos, Maps of New Jai Maa Bhavani Tiles and Plumbing, Thane, Mumbai.
@@ -216,7 +289,7 @@ function PlumberProfile() {
                                 <div className="tag_style">
                                     <h3>Frequently Asked Question</h3>
                                 </div>
-                                <div  className="business_info_cont">
+                                <div className="business_info_cont">
 
                                     <h5>1. What are the average visiting charges of New Jai Maa Bhavani Tiles and Plumbing?</h5>
                                     <p>New Jai Maa Bhavani Tiles and Plumbing charges an average visiting fee of Rs..</p>
