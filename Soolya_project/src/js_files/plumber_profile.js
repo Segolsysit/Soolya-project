@@ -11,9 +11,21 @@ function PlumberProfile() {
 
             <div className="profile_page">
                 <div className="profile_page_main_div">
-                    <div>
+                    <div className="plumber_profile_relative">
                         <img className="plumber_profile_banner" src={plumber_banner} alt="profile_data"></img>
+                    <div className="plumber_profile_absolute">
+                        <div className="plumber_name">
+                            <div>
+                                <h1>New Jai Maa Bhavani Tiles and Plumbing</h1>
+                            </div>
+                            <div>
+           
+                            </div>
+                            
+                        </div>
                     </div>
+                    </div>
+                  
 
 
                     <div className="plumber_profile_address_side">
@@ -107,7 +119,10 @@ function PlumberProfile() {
                             </div>
 
                             <div className="book_now_btn">
-                                <button>Book Now</button>
+                                <button>
+                                    Book Now
+                                    <i id="book_now_arrow" class="fa-solid fa-chevron-right"></i>
+                                </button>
                             </div>
 
                             {/* <div className="review_div">
@@ -122,10 +137,16 @@ function PlumberProfile() {
                             <div className="review_div">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"> Write a Review</button>
+                                           <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                                                <i id="review_box_icon" class="fa-regular fa-pen-to-square"></i>
+                                                 Write a Review
+                                            </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Reviews & Ratings</button>
+                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                        <i id="review_box_icon" class="fa-regular fa-comment"></i>
+                                        Reviews & Ratings
+                                        </button>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">

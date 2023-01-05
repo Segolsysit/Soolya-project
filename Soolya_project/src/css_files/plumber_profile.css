@@ -3,13 +3,28 @@
 }
 
 .profile_page_main_div{
-    background-color:rgba(255, 255, 255, 0.884);
-    
+    background-color:rgba(255, 255, 255, 0.884);    
 }
 
 .plumber_profile_banner{
     width:100%;
     height:450px;
+    opacity: 0.92;
+}
+
+.plumber_profile_relative{
+    position: relative;
+}
+
+.plumber_profile_absolute{
+    position: absolute;
+    top:40px;
+    left:10px;
+}
+
+.plumber_name{
+    color:#fff;
+    font-weight: 500;
 }
 
 .plumber_profile_address_side{
@@ -37,14 +52,17 @@
 }
 
 .plumber_profile_bio_side{
-    border: 1px solid grey;
+    border: 1px solid #dee2e6;
     background-color: #fff;
     padding: 10px;
 }
 
+
+
 .plumber_profile_bio_btn_inline{
     display: flex;
     justify-content: space-around;
+    padding-top: 10px;
 }
 
 .bio_side_inline_btn{
@@ -53,7 +71,7 @@
       outline:none;
       border: 1px solid rgb(219, 219, 219);
       background-color: #fff;
-      border-radius: 3px;
+      border-radius:10px;
       display: flex;
     justify-content: space-around;
     align-items: center;
@@ -71,12 +89,19 @@
 
 #hover_arrow_inline_btn{
     font-size: 22px;
+    color:#666;
     padding: 0px 10px 0px 10px;
 }
 
 .book_now_btn{
    text-align: center;
-   padding: 15px 0px 15px 0px;
+   padding: 20px 0px 20px 0px;
+}
+
+#book_now_arrow{
+    color:#fff;
+    font-size: 15px;
+    margin-left: 15px;
 }
 
 .book_now_btn button{
@@ -87,7 +112,7 @@
     border: none;
     color: #fff;
     background-color:rgb(214, 33, 33);
-    border-radius: 7px;
+    border-radius: 25px;
     font-weight: 500;
 }
 
@@ -101,11 +126,21 @@
     width:100%;
 }
 
+
 .review_box{
     border:1px solid #dee2e6;
     border-top: none;
     padding: 15px;
 }
+
+#review_box_icon{
+    margin-right: 10px;
+    /* color:#dee2e6; */
+}
+
+/* .tab-pane{
+    border-top: 5px solid #2874f0;
+} */
 
 .review_box_heading {
      font-size: 20px;
@@ -121,7 +156,7 @@
 .review_box_cont{
     width: 100%;
     outline: none;
-    border: 1px solid #666;
+    border: 1px solid #bebebe;
 }
 
 .review_submit_btn{
@@ -137,7 +172,7 @@
 
 
 .business_info_div{
-    padding-top:10px;
+    padding-top:20px;
 }
 
 .business_info_div div{
