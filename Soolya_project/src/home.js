@@ -103,7 +103,7 @@ function Home(props) {
     }
 
     function btn() {
-        if (search === "plumber" || (district === "erode") || (district === "Coimbatore")) {
+        if (search === "plumbing" || (district === "erode") || (district === "Coimbatore")) {
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
             // props.pass(search)
@@ -111,7 +111,7 @@ function Home(props) {
         }else if(search === "electrician" || (district === "erode") || (district === "Coimbatore")){
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
-            // props.pass(search)
+        //     // props.pass(search)
             nav('/electrician')
         }
         // else {
@@ -146,9 +146,13 @@ if(search.length === 0){
 // }
 // if(search.length > 0 || search !== "plumber" || search !== "electrician"){
     modalName ="type any"
-}else{
+}else {
     modalName="search the correct word...."
+  
 }
+// else{
+//     modalName = null;
+// }
 
 let filter;
 // if(search.length > 0){
@@ -167,7 +171,7 @@ let filter;
                 <div>
                     <div className="sub_header">
                         <ul className="sub_header__unorder">
-                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumbing" onClick={() => { localStorage.setItem("search", "plumber"); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumbing" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}>Electrician</NavLink></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home Appliances</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
@@ -227,7 +231,7 @@ let filter;
                                     <input className="locality_search" type="search" placeholder="search your service category" onChange={chg} value={search}></input>
                                 </div>
                                 <div className="button_div">
-                                    <button className="locality_search_button" onClick={btn}  data-bs-toggle={(search === "electrician" || search === "plumber" || district.length > 0 ? ""  : "modal") } data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
+                                    <button className="locality_search_button" onClick={btn}  data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? ""  : "modal") } data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
                                 </div>
                                 
                             </div>

@@ -9,7 +9,7 @@ import SignUp from './signUp';
 import ganapathy_raj from "./images/3.jpg";
 import praveen from "./images/2.jpg";
 import santhosh_kumar from "./images/1.jpg";
-import Electrician from './js_files/electrician';
+// import Electrician from './js_files/electrician';
 import PlumberProfile from './js_files/plumber_profile';
 function App() {
     const array = [
@@ -17,7 +17,7 @@ function App() {
             id: 1,
             img: ganapathy_raj,
             name: "Ganapathy raj",
-            type: "plumber",
+            type: "plumbing",
             timing: "Timing : 9.30 AM - 6 PM",
             address: "553/A, Sanganoor Main Road Ganapathy Pudur, erode-641006.",
             district: "erode"
@@ -47,7 +47,7 @@ function App() {
             id: 4,
             img: santhosh_kumar,
             name: "Santhosh Kumar",
-            type: "plumber",
+            type: "plumbing",
             timing: "Timing : 24 hrs",
             address: "3/59, Gandhipuram 3th Street Gandhipuram, Coimbatore-641012.",
             district: "Coimbatore"
@@ -61,8 +61,11 @@ function App() {
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
-                <Route path="/plumbing" element={<Plumbing array={array}></Plumbing>}></Route>
-                <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route>
+                {array.map((arr)=>(
+                <Route path={arr.type} element={<Plumbing array={array}></Plumbing>}></Route>
+
+                ))}
+                {/* <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route> */}
 
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
 
