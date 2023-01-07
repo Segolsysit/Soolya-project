@@ -3,6 +3,11 @@ import plumber_banner from "../images/1.jpg";
 import photo from "../images/3.jpg";
 import photo2 from "../images/2.jpg";
 
+import fb from "../images/share_profile_facebook.png";
+import insta from "../images/share_profile_instagram.png";
+import twitt from "../images/share_profile_twitter.png";
+import copy_link from "../images/share_profile_copy_link.png";
+
 
 function PlumberProfile() {
     return (
@@ -27,22 +32,18 @@ Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
 </button>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      {/* <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div> */}
+  <div id="share_profile_modal_width" class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content"> 
       <div class="modal-body">
         <div className="share_profile_cont">
             <div>
-                <h4 className="share_profile_heading">share with your friends</h4>
+                <h4 className="share_profile_heading">Share with your friends</h4>
             </div>
             <div>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button id="share_profile_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
                 </button>
             </div>
         </div>
@@ -50,37 +51,44 @@ Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
             <h5 className="share_profile_select_heading">Select from the options below</h5>
         </div>
         <div className="share_profile_link">
-            <div>
-                <button>
-                    <i className="fa-brands fa-facebook-f"></i>
-                </button>
-                <h5>Facebook</h5> 
-            </div>
-            <div>
-                <button>
-                    <i className="fa-brands fa-instagram"></i>
-                </button>
-                <h5>Facebook</h5> 
-            </div>
-            <div>
-                <button>
-                    <i className="fa-brands fa-twitter"></i>
-                </button>
-                <h5>Facebook</h5> 
-            </div>
-            <div>
-                <button>
-                    <i className="fa-solid fa-link"></i>
-                </button>
-                <h5>Facebook</h5> 
-            </div>
+            <button className="share_profile_link_btn">
+                <div className="share_profile_link_div">
+                    <div className="share_profile_img_div">
+                        <img  src={fb} alt="facebook_link"></img>
+                    </div>
+                </div>
+                Facebook
+            </button>
+            <button className="share_profile_link_btn">
+                <div className="share_profile_link_div">
+                    <div className="share_profile_img_div">
+                        <img  src={insta} alt="instagram_link"></img>
+                    </div>
+                </div>
+                Instagram
+            </button>
+            <button className="share_profile_link_btn">
+                <div className="share_profile_link_div">
+                    <div className="share_profile_img_div">
+                        <img  src={twitt} alt="twitter_link"></img>
+                    </div>
+                </div>
+                Twitter
+            </button>
+            <button className="share_profile_link_btn">
+                <div className="share_profile_link_div">
+                    <div className="share_profile_img_div">
+                        <img  src={copy_link} alt="copy_link"></img>
+                    </div>
+                </div>
+                Copy Link
+            </button>
         
         </div>
       </div>
-      <div class="modal-footer">
+      {/* <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        {/* <button type="button" class="btn btn-primary">Save changes</button> */}
-      </div>
+      </div> */}
     </div>
   </div>
 </div>

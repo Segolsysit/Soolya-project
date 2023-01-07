@@ -1,5 +1,6 @@
 import './header.css';
 import logo from "./images/logo.png";
+// import logo from "./images/logo_1.png";
 
 // offcanvas menu item images
 import profile from "./images/user.png";
