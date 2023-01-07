@@ -21,71 +21,65 @@ function PlumberProfile() {
                                     </div>
                                 </div>
                                 
-                                    {/* <div>
-                                        <button  id="share_btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm">
-                                           Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
-                                        </button>
 
-                                        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered ">
-                                                <div id="modal_width" class="modal-content">
-                                                    <div className="share_profile_link">
-                                                        <button href="https://www.facebook.com/"><i className="fa-brands fa-facebook-f"></i></button>
-                                                        <button href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></button>
-                                                        <button href="https://www.twitter.com/"><i className="fa-brands fa-twitter"></i></button>
-                                                        <button href="https://www.youtube.com/"><i className="fa-brands fa-youtube"></i></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
-
-
-{/* 
-<button type="button"  id="share_btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-       Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
-</button>
-
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-             <h4>Share with Friends</h4>
-        </div>
-    
-      <div class="modal-body">
-            <div className="share_profile_link">
-                <button href="https://www.facebook.com/"><i className="fa-brands fa-facebook-f"></i></button>
-                <button href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></button>
-                <button href="https://www.twitter.com/"><i className="fa-brands fa-twitter"></i></button>
-                <button href="https://www.youtube.com/"><i className="fa-brands fa-youtube"></i></button>
-            </div>
-      </div>
-   
-    </div>
-  </div>
-</div> */}
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-  Launch demo modal
+<button  id="share_btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
 </button>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+      {/* <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
+      </div> */}
       <div class="modal-body">
-        ...
+        <div className="share_profile_cont">
+            <div>
+                <h4 className="share_profile_heading">share with your friends</h4>
+            </div>
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <div>
+            <h5 className="share_profile_select_heading">Select from the options below</h5>
+        </div>
+        <div className="share_profile_link">
+            <div>
+                <button>
+                    <i className="fa-brands fa-facebook-f"></i>
+                </button>
+                <h5>Facebook</h5> 
+            </div>
+            <div>
+                <button>
+                    <i className="fa-brands fa-instagram"></i>
+                </button>
+                <h5>Facebook</h5> 
+            </div>
+            <div>
+                <button>
+                    <i className="fa-brands fa-twitter"></i>
+                </button>
+                <h5>Facebook</h5> 
+            </div>
+            <div>
+                <button>
+                    <i className="fa-solid fa-link"></i>
+                </button>
+                <h5>Facebook</h5> 
+            </div>
+        
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        {/* <button type="button" class="btn btn-primary">Save changes</button> */}
       </div>
     </div>
   </div>

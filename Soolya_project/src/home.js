@@ -57,12 +57,12 @@ import { useState } from 'react';
 function Home(props) {
 
     // scroll up btn
-      const scrollToUp =()=>{
+    const scrollToUp = () => {
         window.scrollTo({
-            top:0,
-            behavior:'smooth'
+            top: 0,
+            behavior: 'smooth'
         })
-      };
+    };
     // scroll up btn finished 
 
 
@@ -85,17 +85,17 @@ function Home(props) {
 
     const [search, setSearch] = useState("");
     const [district, setDistrict] = useState("");
-    const [show,setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-//    let check =  "plumber" ||  "electrician";
+    //    let check =  "plumber" ||  "electrician";
 
     const nav = useNavigate();
     function chg(e) {
         // console.log(e.target.value);
         setSearch(e.target.value);
-        if(e.target.value ===""){
+        if (e.target.value === "") {
             setShow(false)
-        }else{
+        } else {
             setShow(true);
 
         }
@@ -108,20 +108,20 @@ function Home(props) {
             localStorage.setItem("dist", district)
             // props.pass(search)
             nav('/plumbing')
-        }else if(search === "electrician" || (district === "erode") || (district === "Coimbatore")){
+        } else if (search === "electrician" || (district === "erode") || (district === "Coimbatore")) {
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
-        //     // props.pass(search)
+            //     // props.pass(search)
             nav('/electrician')
         }
         // else {
 
-            // return alert("search the correct word....");
-            // const modal = document.getElementById("staticBackdrop");
-            
-            // console.log(modal);
+        // return alert("search the correct word....");
+        // const modal = document.getElementById("staticBackdrop");
 
-            // return modal;
+        // console.log(modal);
+
+        // return modal;
         // }
     }
 
@@ -129,38 +129,38 @@ function Home(props) {
         setDistrict(e.target.value)
     }
 
-// function model(){
-//     return "modal";
+    // function model(){
+    //     return "modal";
     // if(search === "plumber" || search ===  "electrician"){
     // // search.length > 0 ? ""  : "modal"{
     //     return "";
     // }else if(search === ""){
     //     return "modal"
     // }
-// }
+    // }
 
 
-let modalName;
-if(search.length === 0){
+    let modalName;
+    if (search.length === 0) {
 
-// }
-// if(search.length > 0 || search !== "plumber" || search !== "electrician"){
-    modalName ="type any"
-}else {
-    modalName="search the correct word...."
-  
-}
-// else{
-//     modalName = null;
-// }
+        // }
+        // if(search.length > 0 || search !== "plumber" || search !== "electrician"){
+        modalName = "type any"
+    } else {
+        modalName = "search the correct word...."
 
-let filter;
-// if(search.length > 0){
+    }
+    // else{
+    //     modalName = null;
+    // }
 
- filter =props.array.filter((arr)=>{
-    return arr.type.match(search);
-})
-// }
+    let filter;
+    // if(search.length > 0){
+
+    filter = props.array.filter((arr) => {
+        return arr.type.match(search);
+    })
+    // }
 
     return (
         <div>
@@ -209,16 +209,16 @@ let filter;
 
                     <div className="carousel_z_index_div " >
                         <div className="caruosel_z_index">
-                            <div>
+                            <div >
                                 <h2 className="z_index_title">World's Largest NoBrokerage Handyman Site</h2>
                             </div>
-                            <div>
+                            <div id="gap">
                                 <span className="z_index_offer">
                                     {/* <img className="z_index_offer_img" src={plumbing_offer}></img> */}
                                     <h6 className="z_index_offer_cont">Plumbing work | 50% off</h6>
                                 </span>
                             </div>
-                            <div className="z_index_search">
+                            <div className="z_index_search" id="gap">
                                 <div className="select_div">
                                     <select className="locality" onChange={dist} >
                                         <option selected disabled>Select District</option>
@@ -228,27 +228,27 @@ let filter;
                                     </select>
                                 </div>
                                 <div className="search_div">
-                                    <input className="locality_search" type="search" placeholder="search your service category" onChange={chg} value={search}></input>
+                                    <input id="search" className="locality_search" type="search" placeholder="search your service category" onChange={chg} value={search}></input>
                                 </div>
                                 <div className="button_div">
-                                    <button className="locality_search_button" onClick={btn}  data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? ""  : "modal") } data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
+                                    <button className="locality_search_button" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
                                 </div>
-                                
-                            </div>
-                           {show ? <div className='suggest'>
-                             
-                           {filter.map((arr)=>(
-                        //  <NavLink to="/plumbing"
-                        <div className='sugg'>
-                         <p  onClick={()=>{setSearch(arr.type); setShow(false)}}>{arr.type}</p> 
-                            
-                            </div>
-                            ))}
 
-                            {/* // </NavLink> */}
-                           {/* <NavLink to="/plumbing"><div className='sugg'><p>plumber</p></div></NavLink>
+                            </div>
+                            {show ? <label for="search" className='suggest'>
+
+                                {filter.map((arr) => (
+                                    //  <NavLink to="/plumbing"
+                                    <div className='sugg'>
+                                        <span onClick={() => { setSearch(arr.type); setShow(false) }}>{arr.type}</span>
+
+                                    </div>
+                                ))}
+
+                                {/* // </NavLink> */}
+                                {/* <NavLink to="/plumbing"><div className='sugg'><p>plumber</p></div></NavLink>
                             <p><NavLink to="/plumbing">electrician</NavLink></p> */}
-                                </div> :<div></div>}
+                            </label> : <div></div>}
 
                         </div>
                     </div>
@@ -292,7 +292,7 @@ let filter;
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                              <NavLink   to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                <NavLink to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                             </div>
                                             <div className="carousel_box_content">
                                                 <h5>Electrician</h5>
@@ -344,13 +344,13 @@ let filter;
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                              <NavLink   to="/plumbing" onClick={() => { localStorage.setItem("search", "plumber"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                <NavLink to="/plumbing" onClick={() => { localStorage.setItem("search", "plumber"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                                 {/* <img alt="demo" src={electrician_work}></img> */}
                                             </div>
                                             <div className="carousel_box_content">
                                                 <h5>Plumbing</h5>
                                                 <h3>From ₹150</h3>
-                                                <button onClick={()=>nav('/plumber_profile')}>Book now</button>
+                                                <button onClick={() => nav('/plumber_profile')}>Book now</button>
                                             </div>
                                         </div>
                                     </div>
@@ -403,15 +403,15 @@ let filter;
                 </div>
 
                 {/* two ad */}
-                
-                  <div className="scroll_div">
+
+                <div className="scroll_div">
                     <button className="scroll_up" onClick={scrollToUp}>
                         <i id="scroll_up_icon" class="fa-solid fa-arrow-up"></i>
                     </button>
                 </div>
 
-            
-             
+
+
 
 
                 <div className="owl_carou_2">
@@ -555,7 +555,7 @@ let filter;
                 {/* service category div */}
 
 
-              
+
 
 
                 {/* <div className="service_category">
@@ -667,28 +667,28 @@ let filter;
 
 
 
-{/*             
+                {/*             
 <button type="button" class="btn btn-primary" >
   Launch static backdrop modal
 </button> */}
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" id="one_w">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-         {modalName}
-      </div>
-      <div class="modal-footer">
-        {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
-       </div>
-    </div>
-  </div>
-</div>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="one_w">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {modalName}
+                            </div>
+                            <div class="modal-footer">
+                                {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 

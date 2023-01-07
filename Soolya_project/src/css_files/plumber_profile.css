@@ -28,6 +28,21 @@
     font-weight: 500;
 }
 
+/* share profile modal */
+
+.share_profile_cont{
+    display: flex;
+    justify-content: space-between;
+}
+
+.share_profile_heading{
+    color:black;
+}
+
+.share_profile_select_heading{
+    color:#666;
+}
+
 #share_btn{
     /* height:40px;
     width: 100px;
@@ -40,10 +55,6 @@
 #share_profile{
     font-size: 18px;
     margin-left: 3px;
-}
-
-#modal_width{
-    width: 200px;
 }
 
 .share_profile_link{
