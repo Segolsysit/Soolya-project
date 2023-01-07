@@ -101,18 +101,26 @@ function Home(props) {
         }
 
     }
-
+    function dist(e) {
+        setDistrict(e.target.value)
+    }
     function btn() {
         if (search === "plumbing" || (district === "erode") || (district === "Coimbatore")) {
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
             // props.pass(search)
-            nav('/plumbing')
+            // props.array.map((ar)=>{
+                nav('/plumbing')
+
+            // })
         }else if(search === "electrician" || (district === "erode") || (district === "Coimbatore")){
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
         //     // props.pass(search)
-            nav('/electrician')
+        // props.array.map((ar)=>{
+           return nav('/electrician')
+
+        // })
         }
         // else {
 
@@ -125,9 +133,7 @@ function Home(props) {
         // }
     }
 
-    function dist(e) {
-        setDistrict(e.target.value)
-    }
+    
 
 // function model(){
 //     return "modal";
@@ -146,8 +152,10 @@ if(search.length === 0){
 // }
 // if(search.length > 0 || search !== "plumber" || search !== "electrician"){
     modalName ="type any"
+    
 }else {
     modalName="search the correct word...."
+    // setSearch("")
   
 }
 // else{
@@ -223,7 +231,7 @@ let filter;
                                     <select className="locality" onChange={dist} >
                                         <option selected disabled>Select District</option>
                                         <option value="erode">Erode</option>
-                                        <option value="Coimbatore">coimbatore</option>
+                                        <option value="Coimbatore">Coimbatore</option>
 
                                     </select>
                                 </div>
