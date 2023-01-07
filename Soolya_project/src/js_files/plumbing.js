@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 
 function Plumbing(props) {
-let array =props.array;
-    
+    let array = props.array;
+
 
     //search
 
@@ -21,8 +21,8 @@ let array =props.array;
     }
     const [get, setGet] = useState("")
     const [district, setDistrict] = useState("")
- 
-    
+
+
 
     useEffect(() => {
         setGet(localStorage.getItem("search"));
@@ -30,22 +30,22 @@ let array =props.array;
     }, [])
 
     let filter;
-//     if(district === "Coimbatore"){
-//         filter = array.filter((arr) => {
-    
-//         return arr.district === district &&  arr.type === get;
-    
-    
-//         })
-//     }
-// else if(district === "erode" && (get === "plumber")){
-//     filter = array.filter((arr) => {
+    //     if(district === "Coimbatore"){
+    //         filter = array.filter((arr) => {
 
-//     return arr.district === "erode" && arr.type==="plumber";
+    //         return arr.district === district &&  arr.type === get;
 
 
-//     })
-// }
+    //         })
+    //     }
+    // else if(district === "erode" && (get === "plumber")){
+    //     filter = array.filter((arr) => {
+
+    //     return arr.district === "erode" && arr.type==="plumber";
+
+
+    //     })
+    // }
     if (get.length === 0) {
         filter = array.filter((arr) => {
 
@@ -80,14 +80,14 @@ let array =props.array;
     //     return get === fil.type;
     //    })
 
-function chg(e){
-    // setGet(localStorage.setItem("search","plumber"));
-    
-    // setDistrict("erode")
-    setDistrict(e.target.value)
-    console.log(e.target.value);
-}
-   
+    function chg(e) {
+        // setGet(localStorage.setItem("search","plumber"));
+
+        // setDistrict("erode")
+        setDistrict(e.target.value)
+        console.log(e.target.value);
+    }
+
     return (
         <div>
 
@@ -95,57 +95,60 @@ function chg(e){
 
 
             <div className="plumber_page">
-                <div className="plumber_div_1">
-                 {/* <button onClick={chg}>change</button> */}
-                <select value={district} onChange={chg}>
+                <div className="plumber_div_1" value={district} onChange={chg}>
+                    {/* <button onClick={chg}>change</button> */}
+                    <input type="radio" value="erode" name="district" id="erd"></input>
+                    <label htmlFor="erd">erode</label>
+                    <input type="radio" value="Coimbatore" name="district" id="cbr"></input>
+                    <label htmlFor="cbr">Coimbatore</label>                {/* <select value={district} onChange={chg}>
                 <option value="">
                     select
                 </option>
-                    <option >erode</option>
-                    <option >coimbatore</option>
-                </select>
-                 {/* <button onClick={fil}>search</button>  */}
+                    <option value="erode">erode</option>
+                    <option value="Coimbatore">coimbatore</option>
+                </select> */}
+                    {/* <button onClick={fil}>search</button>  */}
                 </div>
                 {/* <div className="plumber_page"> */}
                 <div className="plumber_div_2">
                     <button onClick={back}>home page</button>
 
-                    {filter.length === 0 ? 
-                    array.map((a) => (
+                    {filter.length === 0 ?
+                        array.map((a) => (
 
-                        <div className="plumber_profile" key={a.id}>
+                            <div className="plumber_profile" key={a.id}>
 
-                            <div className="plumber_profile_inner">
-                                <div className="plumber_image_size">
-                                    <img className="plumber_img" src={a.img} alt="plumber_man"></img>
+                                <div className="plumber_profile_inner">
+                                    <div className="plumber_image_size">
+                                        <img className="plumber_img" src={a.img} alt="plumber_man"></img>
+                                    </div>
+
+                                    <div className="plumber_bio">
+                                        <div>
+                                            <h4>{a.name}</h4>
+                                            <h5><b><u>{a.type}</u></b></h5>
+                                        </div>
+                                        <div className="d_flex">
+                                            <h5>Ratings</h5>
+                                            <img className="ratings_image" src={rating} alt="plumber_man"></img>
+                                        </div>
+                                        <div>
+                                            <h6>{a.timing}</h6>
+                                        </div>
+                                        <div className="d_flex">
+                                            <i className="fa-solid fa-location-dot"></i>
+                                            <address className="profile_address">
+                                                {a.address}
+                                            </address>
+                                        </div>
+                                    </div>
+
+                                    <div className="plumber_booking">
+                                        <button className="plumber_booking_btn" onClick={() => nav('/plumber_profile')}>View more</button>
+                                    </div>
                                 </div>
 
-                                <div className="plumber_bio">
-                                    <div>
-                                        <h4>{a.name}</h4>
-                                        <h5><b><u>{a.type}</u></b></h5>
-                                    </div>
-                                    <div className="d_flex">
-                                        <h5>Ratings</h5>
-                                        <img className="ratings_image" src={rating} alt="plumber_man"></img>
-                                    </div>
-                                    <div>
-                                        <h6>{a.timing}</h6>
-                                    </div>
-                                    <div className="d_flex">
-                                        <i className="fa-solid fa-location-dot"></i>
-                                        <address className="profile_address">
-                                            {a.address}
-                                        </address>
-                                    </div>
-                                </div>
-
-                                <div className="plumber_booking">
-                                    <button className="plumber_booking_btn" onClick={()=>nav('/plumber_profile')}>View more</button>
-                                </div>
-                            </div>
-
-                        </div>)) : 
+                            </div>)) :
                         filter.map((a) => (
 
 
@@ -177,7 +180,7 @@ function chg(e){
                                     </div>
 
                                     <div className="plumber_booking">
-                                        <button className="plumber_booking_btn" onClick={()=>nav('/plumber_profile')}>View more</button>
+                                        <button className="plumber_booking_btn" onClick={() => nav('/plumber_profile')}>View more</button>
                                     </div>
                                 </div>
 
@@ -251,9 +254,9 @@ function chg(e){
 
                          */}
                 </div>
-                
 
-                
+
+
                 <div className="plumber_div_3">
 
                 </div>
