@@ -101,17 +101,22 @@ function Home(props) {
         }
 
     }
-
+    function dist(e) {
+        setDistrict(e.target.value)
+    }
     function btn() {
         if (search === "plumbing" || (district === "erode") || (district === "Coimbatore")) {
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
             // props.pass(search)
-            nav('/plumbing')
-        } else if (search === "electrician" || (district === "erode") || (district === "Coimbatore")) {
+            // props.array.map((ar)=>{
+                nav('/plumbing')
+
+            // })
+        }else if(search === "electrician" || (district === "erode") || (district === "Coimbatore")){
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
-            //     // props.pass(search)
+        //     // props.pass(search)
             nav('/electrician')
         }
         // else {
@@ -125,9 +130,7 @@ function Home(props) {
         // }
     }
 
-    function dist(e) {
-        setDistrict(e.target.value)
-    }
+    
 
     // function model(){
     //     return "modal";
@@ -143,16 +146,16 @@ function Home(props) {
     let modalName;
     if (search.length === 0) {
 
-        // }
-        // if(search.length > 0 || search !== "plumber" || search !== "electrician"){
-        modalName = "type any"
-    } else {
-        modalName = "search the correct word...."
-
-    }
-    // else{
-    //     modalName = null;
-    // }
+// }
+// if(search.length > 0 || search !== "plumber" || search !== "electrician"){
+    modalName ="type any"
+}else {
+    modalName="search the correct word...."
+  
+}
+// else{
+//     modalName = null;
+// }
 
     let filter;
     // if(search.length > 0){
@@ -223,7 +226,7 @@ function Home(props) {
                                     <select className="locality" onChange={dist} >
                                         <option selected disabled>Select District</option>
                                         <option value="erode">Erode</option>
-                                        <option value="Coimbatore">coimbatore</option>
+                                        <option value="Coimbatore">Coimbatore</option>
 
                                     </select>
                                 </div>
