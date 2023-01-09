@@ -193,8 +193,8 @@ text-decoration: none;
 
 .suggest{
   background-color: #f0f0f0;
-  border: 1px solid black; 
-  /* border-top: none;   */
+  /* border: 1px solid black; 
+  border-top: none; */
   width:400px;
 }
 
@@ -204,6 +204,9 @@ text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid gray; 
+  border-top: none;
+  border-bottom: none;
 }
 
 .sugg p{
