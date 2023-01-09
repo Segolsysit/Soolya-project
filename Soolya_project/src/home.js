@@ -242,8 +242,8 @@ function Home(props) {
 
                                 {filter.map((arr) => (
                                     //  <NavLink to="/plumbing"
-                                    <div className='sugg'>
-                                        <span onClick={() => { setSearch(arr.type); setShow(false) }}>{arr.type}</span>
+                                    <div className='sugg' onClick={() => { setSearch(arr.type); setShow(false) }}>
+                                        <span >{arr.type}</span>
 
                                     </div>
                                 ))}
@@ -347,7 +347,7 @@ function Home(props) {
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                                <NavLink to="/plumbing" onClick={() => { localStorage.setItem("search", "plumber"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                <NavLink to="/plumbing" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                                 {/* <img alt="demo" src={electrician_work}></img> */}
                                             </div>
                                             <div className="carousel_box_content">
