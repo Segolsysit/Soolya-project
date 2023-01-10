@@ -30,21 +30,56 @@ function SignIn(){
                         </label>
                         <input className="data_input" type="text" placeholder="Enter email or phone number"></input>
                     </div>
+
+                    <div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>Enter email or phone number</h6>
+                        </div>
+                    </div>
+
                     <div className="form_input">
                         <label>
                             Password
                         </label>
                         <input className="data_input"  type="password" placeholder="********"></input>
                     </div>
-                    <div className="form_checkbox">
+
+                    <div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>Enter password</h6>
+                        </div>
+                    </div>
+
+                    <div id="d_flex_center" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h5>Custom error message</h5>
+                        </div>
+                    </div>
+                 
+                   <div className="form_checkbox">
                         <div className="form_checkbox">
                             <input type="checkbox" for="rem"></input>
                             <label className="form_checkbox_label">Remember me?</label>
                         </div>
                         <div>
-                            <a className="forget_pass" href="_self">Forgot Password?</a>
+                            <button className="forget_pass" href="_self">Forgot Password?</button>
                         </div>
                     </div>
+                   
+                   <div id="spinner_roll">
+                        <div class="spinner-border text-primary" role="status">
+                        </div>
+                    </div>
+
                     <div className="form_sign_in_button_div">
                         <button className="form_sign_in_button">sign in</button>
                     </div>

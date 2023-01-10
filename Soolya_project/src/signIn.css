@@ -1,6 +1,6 @@
 
 .sign_in{
-  margin-top: 120px;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   /* align-items: center; */
@@ -10,7 +10,7 @@
 .sign_in_div{
   width:100%;
   max-width:800px;
-  height:550px;
+  height:600px;
 }
 
 .sign_in_logo_div{
@@ -30,14 +30,14 @@
     line-height: 40px;
   } */
 
-  .form_div div{
+  /* .form_div div{
       margin-top: 10px;
-      /* line-height: 30px; */
-  }
+  } */
   
   .form_input{
     border-bottom: 1px solid grey;
     line-height: 40px;
+    margin-top: 13px;
   }
 
   .form_input label{
@@ -53,9 +53,40 @@
     background-color: transparent;
   }
   
+
+#d_flex{
+  display: flex;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+#cross_sign{
+  color: rgba(255, 0, 0, 0.719);
+  font-size: 15px;
+}
+
+.sign_in_form_validation h6{
+  color: rgba(255, 0, 0, 0.719);
+  font-size: 13px; 
+  margin: 3px 0px 0px 5px;
+}
+
+#d_flex_center{
+  display: flex;
+  justify-content: center;
+}
+
+.sign_in_form_validation h5{
+  color: rgba(255, 0, 0, 0.719);
+  font-size: 13px;
+  margin: 3px 0px 0px 5px;
+}
+
+
   .form_checkbox{
     display: flex;
     justify-content:space-between;
+    padding-bottom: 5px; 
   }
 
   .form_checkbox_label{
@@ -63,8 +94,23 @@
   }
 
   .forget_pass{
-    color:black;
+    color:brown;
+    font-weight: 490;
+    border-radius: 5px;
+    border: none;
+    outline: none;
   }
+
+  .forget_pass:hover{
+    color: brown;
+    background-color: rgba(207, 230, 238, 0.76);
+    transition: 0.5s;
+  }
+
+#spinner_roll{
+  text-align: center;
+  padding-bottom: 5px;
+}
 
   .form_sign_in_button_div{
     padding:0px 5px 0px 5px;
@@ -84,6 +130,10 @@
   
   .form_center{
     text-align: center;
+  }
+
+  .form_center div{
+    margin-top: 10px;
   }
   
 .or_cont{
