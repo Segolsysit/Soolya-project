@@ -9,10 +9,11 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 
 function Serviceman(){
-    const [work, setwork] = React.useState('');
-    const handleChange = (event: SelectChangeEvent) => {
-        setwork(event.target.value);
-      };
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (event) => {
+      setAge(event.target.value);
+    };
     return(
          <div>
             <div className='ser_title'>
@@ -32,13 +33,13 @@ function Serviceman(){
                 <Select
                  labelId="demo-simple-select-label"
                  id="demo-simple-select"
-                 label="Work Type">
-                <MenuItem>Plumbing</MenuItem>
-                <MenuItem>Electrician</MenuItem>
-                <MenuItem>Home Appliances</MenuItem>
-                <MenuItem>Installations</MenuItem>
-                <MenuItem>Home services</MenuItem>
-                <MenuItem>AC repair services</MenuItem>
+                 label="Work Type" value={age} onChange={handleChange}>
+                <MenuItem value="plumbing">Plumbing</MenuItem>
+                <MenuItem value="Electrician">Electrician</MenuItem>
+                <MenuItem value="home">Home Appliances</MenuItem>
+                <MenuItem value="install">Installations</MenuItem>
+                <MenuItem value="service">Home services</MenuItem>
+                <MenuItem value="ac">AC repair services</MenuItem>
                 </Select>
                 </FormControl> 
                 </Box>
@@ -70,7 +71,7 @@ function Serviceman(){
                 <Select
                  labelId="demo-simple-select-label"
                  id="demo-simple-select"
-                 value={work}
+                 value={age}
                  label="Identity Type"
                  onChange={handleChange}
                  >
