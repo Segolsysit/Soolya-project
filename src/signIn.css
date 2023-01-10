@@ -1,0 +1,110 @@
+
+.sign_in{
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 0px 30px 0px 30px;
+}
+
+.sign_in_div{
+  width:100%;
+  max-width:800px;
+  height:550px;
+}
+
+.sign_in_logo_div{
+  text-align: center;
+}
+
+.sign_in_logo{
+    width:120px;
+    height: 60px;
+  }
+  
+  .sign_in_form{  
+     margin-top: 30px;
+  }
+
+  /* .form_div{
+    line-height: 40px;
+  } */
+
+  .form_div div{
+      margin-top: 10px;
+      /* line-height: 30px; */
+  }
+  
+  .form_input{
+    border-bottom: 1px solid grey;
+    line-height: 40px;
+  }
+
+  .form_input label{
+    width:120px;
+    font-weight: 500;
+  }
+
+  .data_input{
+    border: none;
+    outline:none;
+    width:80%;
+    min-width: 100px;
+    background-color: transparent;
+  }
+  
+  .form_checkbox{
+    display: flex;
+    justify-content:space-between;
+  }
+
+  .form_checkbox_label{
+    margin-left: 5px;
+  }
+
+  .forget_pass{
+    color:black;
+  }
+
+  .form_sign_in_button_div{
+    padding:0px 5px 0px 5px;
+}
+  
+  .form_sign_in_button{
+    width:100%;
+    min-width:200px ;
+    line-height: 35px;
+    border-radius: 5px;
+    outline:none;
+    border: none;
+    background-color: #2874f0;
+    color:#fff;
+    font-weight: 500px;
+  }
+  
+  .form_center{
+    text-align: center;
+  }
+  
+.or_cont{
+  line-height: 15px;
+}
+
+
+.inline_btn{
+   width:120px;
+   height:45px;
+   margin: 0px 10px 0px 0px;
+   border-radius: 10px;
+   border: 1px solid grey;
+}
+
+.inline_img{
+  width:27px;
+  height:27px;
+}
+
+.sign_up_link:link{
+  color:red;
+}
+
