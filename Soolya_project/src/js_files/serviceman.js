@@ -5,9 +5,14 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
-
+import * as React from 'react';
+import Button from '@mui/material/Button';
 
 function Serviceman(){
+    const [work, setwork] = React.useState('');
+    const handleChange = (event: SelectChangeEvent) => {
+        setwork(event.target.value);
+      };
     return(
          <div>
             <div className='ser_title'>
@@ -46,6 +51,70 @@ function Serviceman(){
                         multiline
                         rows={4}/>
                 </div>
+                <div class="tab">
+                <div className="ser_input_name">
+                <TextField id="outlined-basic" label="Name" variant="outlined" />
+                </div><br/>
+                <div className="ser_input_number">
+                <TextField id="outlined-basic" label="Phone" variant="outlined" />
+                </div><br/>
+                <div className="ser_input_mail">
+                <TextField id="outlined-basic" label="Email" variant="outlined" />
+                </div><br/>
+            </div> 
+            <div class="tab">
+            <div className='ser_id_type'>
+                <Box >
+                <FormControl  sx={{ minWidth: 225 }}> 
+                <InputLabel id="demo-simple-select-label">Identity Type</InputLabel>
+                <Select
+                 labelId="demo-simple-select-label"
+                 id="demo-simple-select"
+                 value={work}
+                 label="Identity Type"
+                 onChange={handleChange}
+                 >
+                <MenuItem value={1}>Pasport</MenuItem>
+                <MenuItem value={2}>Driving licence</MenuItem>
+                <MenuItem value={3}>Company Id</MenuItem>
+                </Select>
+                </FormControl> 
+                </Box>
+                </div><br/>
+                <div className="ser_input_id_name">
+                <TextField id="outlined-basic" label="Identity Number" variant="outlined" />
+                </div><br/>
+                <input 
+                 type="file"
+                 id="photo" 
+                 name="photo"
+                 accept="image/png, image/jpeg"></input>
+            </div>   
+            <div class="tab">
+                <div className="ser_input_name">
+                <TextField id="outlined-basic" label="First Name" variant="outlined" />
+                </div><br/>
+                <div className="ser_input_name">
+                <TextField id="outlined-basic" label="Last Name" variant="outlined" />
+                </div><br/>
+                <div className="ser_input_number">
+                <TextField id="outlined-basic" label="Phone" variant="outlined" />
+                </div><br/>
+                <div className="ser_input_mail">
+                <TextField id="outlined-basic" label="Email" variant="outlined" />
+                </div><br/>
+                <div className="ser_input_password">
+                <TextField id="outlined-basic" label="Password" variant="outlined" />
+                </div><br/>
+                <div className="ser_input_password">
+                <TextField id="outlined-basic" label="Confirm Password" variant="outlined" />
+                </div><br/>
+            </div>
+                <div className='button'>
+                <Button variant="contained">
+                 Next
+                </Button>
+                </div>    
             </form>
          </div>
     )
