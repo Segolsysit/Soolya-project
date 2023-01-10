@@ -227,7 +227,6 @@ function Home(props) {
                                         <option selected disabled>Select District</option>
                                         <option value="erode">Erode</option>
                                         <option value="Coimbatore">Coimbatore</option>
-                                        <option value="Coimbatore">Coimbatore</option>
                                     </select>
                                 </div>
                                 <div className="search_div">
