@@ -56,7 +56,7 @@ function Header(){
         <div className="header_content_div">
             <div className="service_man">
                 {/* <a className="service_man__register" href="self">Become a Service man</a> */}
-                <button className="service_man__register">Become a Service man</button>
+                <button className="service_man__register" onClick={()=>nav('/service_man')}>Become a Service man</button>
 
             </div>
         </div>
