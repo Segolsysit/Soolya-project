@@ -25,19 +25,39 @@ function SignUp(){
           
              <div className="form_div">
                     <div className="label_display">
-                    <div>
+                    <div className="label_display_div">
                     <div className="sign_up_input">
                         <label>
                             First name
                         </label>
                         <input className="sign_up_inupt_box" type="text" placeholder="Enter your first name"></input>
                     </div>
+
+                    <div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>Enter first name</h6>
+                        </div>
+                    </div>
+
                     <div className="sign_up_input">
                         <label>
                             Last name
                         </label>
                         <input className="sign_up_inupt_box" type="text" placeholder="Enter your first name"></input>
                     </div>
+
+                    <div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>Enter last name</h6>
+                        </div>
+                    </div>
+
                     <div className="sign_up_input">
                         <label>
                             Email Address
@@ -47,7 +67,7 @@ function SignUp(){
                         </div>
 
 
-                        <div>
+                        <div className="label_display_div">
                     <div className="sign_up_input">
                         <label>
                             Mobile Number

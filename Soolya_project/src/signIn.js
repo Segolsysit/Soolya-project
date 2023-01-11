@@ -3,8 +3,17 @@ import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function SignIn(){
+
+//   const [error,setError] = useState({
+//     email_num:{required:false},
+//     password:{required:false},
+//     custom_error:null
+// });
+
+
     return(
         <div>  
 
