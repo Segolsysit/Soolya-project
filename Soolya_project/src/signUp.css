@@ -59,8 +59,14 @@
   background-color: transparent;
 }
 
+#d_flex_center_new{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
 .sign_up_checkbox{
-  margin: 20px 0px 20px 7px;
+  padding: 5px 0px 10px 7px;
 }
 
     .sign_up_checkbox_label{

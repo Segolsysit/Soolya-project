@@ -45,7 +45,7 @@ function SignIn(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter email or phone number</h6>
+                            <h6>Enter your email or phone number</h6>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@ function SignIn(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter password</h6>
+                            <h6>Enter your password</h6>
                         </div>
                     </div>
 

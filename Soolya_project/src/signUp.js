@@ -3,8 +3,39 @@ import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function SignUp(){
+     
+    const [errors,setErrors] = useState({
+        fname:{required:false},
+        lname:{required:false},
+        email:{required:false},
+        number:{required:false},
+        password:{required:false},
+        c_password:{required:false},
+        custom_error:null
+    });
+
+    const [loading,setLoading] = useState(false);
+
+    const handleSubmit = (event)=>{
+           event.preventDefault();
+    }
+
+    const [inputs,setInputs] = useState({
+        fname:"",
+        lname:"",
+        email:"",
+        number:"",
+        password:"",
+        c_password:""
+    })
+
+    const handleInput = (event)=>{
+        setInputs({...inputs,[event.target.name]:event.target.value})
+    }
+
     return(
     <div>
 
@@ -21,7 +52,7 @@ function SignUp(){
                 </div>
              </div>
             
-            <form className="sign_up_form">
+            <form onSubmit={handleSubmit} className="sign_up_form">
           
              <div className="form_div">
                     <div className="label_display">
@@ -30,41 +61,58 @@ function SignUp(){
                         <label>
                             First name
                         </label>
-                        <input className="sign_up_inupt_box" type="text" placeholder="Enter your first name"></input>
+                        <input className="sign_up_inupt_box" type="text" onChange={handleInput} name="fname" placeholder="Enter your first name"></input>
                     </div>
 
-                    <div id="d_flex" className="sign_in_form_validation">
+                    {errors.fname.required?
+                        (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter first name</h6>
+                            <h6>Enter your first name</h6>
                         </div>
-                    </div>
+                    </div>):null
+                    }
 
                     <div className="sign_up_input">
                         <label>
                             Last name
                         </label>
-                        <input className="sign_up_inupt_box" type="text" placeholder="Enter your first name"></input>
+                        <input className="sign_up_inupt_box" type="text" onChange={handleInput} name="lname" placeholder="Enter your first name"></input>
                     </div>
 
-                    <div id="d_flex" className="sign_in_form_validation">
+                    {errors.lname.required?
+                        (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter last name</h6>
+                            <h6>Enter your last name</h6>
                         </div>
-                    </div>
+                        </div>):null
+                    }
 
                     <div className="sign_up_input">
                         <label>
                             Email Address
                         </label>
-                        <input className="sign_up_inupt_box" type="email" placeholder="Enter your email address"></input>
+                        <input className="sign_up_inupt_box" type="email" onChange={handleInput} name="email" placeholder="Enter your email address"></input>
                     </div>
+
+                    {errors.email.required?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
+                        <div>
+                            <h6>Enter your email address</h6>
+                        </div>
+                    </div>):null
+                    }
+                        </div>
+
+                     
 
 
                         <div className="label_display_div">
@@ -72,22 +120,71 @@ function SignUp(){
                         <label>
                             Mobile Number
                         </label>
-                        <input className="sign_up_inupt_box" type="tel" placeholder="Enter your Phone Number"></input>
+                        <input className="sign_up_inupt_box" type="tel" onChange={handleInput} name="number" placeholder="Enter your Phone Number"></input>
                     </div>
+
+                    {errors.number.required?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>Enter your Mobile Number</h6>
+                        </div>
+                    </div>):null
+                    }
+
+                    
                     <div className="sign_up_input">
                         <label>
                             Password
                         </label>
-                        <input className="sign_up_inupt_box" type="password" placeholder="***********"></input>
+                        <input className="sign_up_inupt_box" type="password" onChange={handleInput} name="password" placeholder="***********"></input>
                     </div>
+
+                    {errors.password.required?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>Enter your Password</h6>
+                        </div>
+                    </div>):null
+                    }
+
                     <div className="sign_up_input">
                         <label>
                             confirm Password
                         </label>
-                        <input className="sign_up_inupt_box" type="Password" placeholder="************"></input>
+                        <input className="sign_up_inupt_box" type="Password" onChange={handleInput} name="c_password" placeholder="************"></input>
                     </div>
+
+                    {errors.c_password.required?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>Enter your confirm password</h6>
+                        </div>
+                    </div>):null
+                    }
+
                         </div>
                         </div>  
+
+
+                    {errors.custom_error?
+                        (<div id="d_flex_center_new" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h5>{errors.custom_error}</h5>
+                        </div>
+                    </div>):null
+                    }
    
                         <div className="sign_up_checkbox">
                             <div className="sign_up_checkbox">
@@ -96,9 +193,15 @@ function SignUp(){
                             </div>
                         </div>
                     
+                    {loading?
+                        (<div id="spinner_roll">
+                            <div class="spinner-border text-primary" role="status">
+                            </div>
+                        </div>):null
+                    }
                    
                     <div className="form_sign_up_button_div">
-                        <button className="form_sign_up_button">sign up</button>
+                        <button type="submit" className="form_sign_up_button">sign up</button>
                     </div>
                     <div className="form_center">
                     <div className="or_cont">
