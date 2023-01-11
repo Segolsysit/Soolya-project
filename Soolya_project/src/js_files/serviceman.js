@@ -17,7 +17,8 @@ function Serviceman(){
     return(
          <div>
             <div className='ser_title'>
-               <h1>Provide Your Service Deatails</h1>
+               <h1>Provide Your Service Details</h1>
+               <h1>Provide Your Service Details</h1>
             </div>
             <form className='ser_form'>
                 <div className="ser_input_name">
