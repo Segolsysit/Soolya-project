@@ -112,7 +112,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your first name</h6>
+                            <h6>First name is required</h6>
                         </div>
                     </div>):null
                     }
@@ -130,7 +130,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your last name</h6>
+                            <h6>Last name is required</h6>
                         </div>
                         </div>):null
                     }
@@ -148,7 +148,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your email address</h6>
+                            <h6>Email address is required</h6>
                         </div>
                     </div>):null
                     }
@@ -171,7 +171,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your Mobile Number</h6>
+                            <h6>Mobile Number is required</h6>
                         </div>
                     </div>):null
                     }
@@ -190,7 +190,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your Password</h6>
+                            <h6>Password is required</h6>
                         </div>
                     </div>):null
                     }
@@ -208,7 +208,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your confirm password</h6>
+                            <h6>Confirm password is required</h6>
                         </div>
                     </div>):null
                     }

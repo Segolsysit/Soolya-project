@@ -7,12 +7,54 @@ import { useState } from 'react';
 
 function SignIn(){
 
+const initialErrors = {
+    email_phone:{required:false},
+    password:{required:false},
+    custom_error:null
+};
+ 
+const [errors,setErrors] = useState(initialErrors);
+
+const [loading,setLoading] = useState(false);
+
+const [inputs,setInputs] = useState({
+    email_phone:"",
+    password:""
+});
+
+const handleInput = (event)=>{
+    setInputs({...inputs,[event.target.name]:event.target.value});
+}
+
+const handleSubmit = (event)=>{
+     event.preventDefault();
+
+     let errors = initialErrors;
+
+     let hasErrors = false;
+
+    if (inputs.email_phone === "") {
+            errors.email_phone.required = true;
+            hasErrors = true;
+    }
+
+    if (inputs.password === "") {
+        errors.password.required = true;
+        hasErrors = true;
+    }
+
+    if (hasErrors !== true) {
+         setLoading(true);
+    }
+
+    setErrors(errors);
+
+}
+
 
 
     return(
         <div>  
-
-
 
 <div className="sign_in">
         <div className="sign_in_div">
@@ -25,49 +67,55 @@ function SignIn(){
                 </div>
              </div>
             
-            <form className="sign_in_form">
+            <form  onSubmit={handleSubmit} className="sign_in_form">
           
              <div className="form_div">
                     <div className="form_input">
                         <label>
                             Email/Phone
                         </label>
-                        <input className="data_input" type="text" placeholder="Enter email or phone number"></input>
+                        <input className="data_input" name="email_phone" onChange={handleInput} type="text" placeholder="Enter email or phone number"></input>
                     </div>
 
-                    <div id="d_flex" className="sign_in_form_validation">
+                    {errors.email_phone.required?
+                    (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your email or phone number</h6>
+                            <h6>Email or phone number is required</h6>
                         </div>
-                    </div>
+                    </div>):null
+                    }
 
                     <div className="form_input">
                         <label>
                             Password
                         </label>
-                        <input className="data_input"  type="password" placeholder="********"></input>
+                        <input className="data_input" name="password" onChange={handleInput} type="password" placeholder="********"></input>
                     </div>
 
-                    <div id="d_flex" className="sign_in_form_validation">
+                    {errors.password.required?
+                    (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your password</h6>
+                            <h6>Password is required</h6>
                         </div>
-                    </div>
+                    </div>):null
+                    }
 
-                    <div id="d_flex_center" className="sign_in_form_validation">
+                    {errors.custom_error?
+                    (<div id="d_flex_center" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h5>Custom error message</h5>
+                            <h5>{errors.custom_error}</h5>
                         </div>
-                    </div>
+                    </div>):null
+                    }
                  
                    <div className="form_checkbox">
                         <div className="form_checkbox">
@@ -79,13 +127,15 @@ function SignIn(){
                         </div>
                     </div>
                    
-                   <div id="spinner_roll">
+                   {loading?
+                   (<div id="spinner_roll">
                         <div class="spinner-border text-primary" role="status">
                         </div>
-                    </div>
+                    </div>):null
+                    }
 
                     <div className="form_sign_in_button_div">
-                        <button className="form_sign_in_button">sign in</button>
+                        <button type="submit" className="form_sign_in_button">sign in</button>
                     </div>
                     <div className="form_center">
                     <div className="or_cont">
