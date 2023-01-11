@@ -7,11 +7,6 @@ import { useState } from 'react';
 
 function SignIn(){
 
-//   const [error,setError] = useState({
-//     email_num:{required:false},
-//     password:{required:false},
-//     custom_error:null
-// });
 
 
     return(
