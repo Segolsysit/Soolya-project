@@ -16,7 +16,7 @@
   }
   
   .form_container {
-    width: 400px;
+    width: 80%;
     height: 540px;
     background-color: white;
     border-radius: 8px;
@@ -38,4 +38,9 @@
     background-color: rgb(98, 0, 255);
   }
 
-  
+  .ser_input_name,.ser_Title{
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    padding: 10px 10px 0px 10px;
+  }
