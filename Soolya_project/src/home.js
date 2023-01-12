@@ -110,14 +110,14 @@ function Home(props) {
             localStorage.setItem("dist", district)
             // props.pass(search)
             // props.array.map((ar)=>{
-                nav('/plumbing')
+                nav('/vendors_list')
 
             // })
         }else if(search === "electrician" || (district === "erode") || (district === "Coimbatore")){
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
         //     // props.pass(search)
-            nav('/electrician')
+            nav('/vendors_list')
         }
         // else {
 
@@ -174,8 +174,8 @@ function Home(props) {
                 <div>
                     <div className="sub_header">
                         <ul className="sub_header__unorder">
-                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumbing" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
-                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}>Electrician</NavLink></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/vendors_list" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/vendors_list" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}>Electrician</NavLink></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home Appliances</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
