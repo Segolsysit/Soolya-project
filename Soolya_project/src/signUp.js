@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function SignUp(){
-     
-    const [errors,setErrors] = useState({
+
+    const initialErrors = {
         fname:{required:false},
         lname:{required:false},
         email:{required:false},
@@ -15,12 +15,54 @@ function SignUp(){
         password:{required:false},
         c_password:{required:false},
         custom_error:null
-    });
+    }
+     
+    const [errors,setErrors] = useState(initialErrors);
 
     const [loading,setLoading] = useState(false);
 
     const handleSubmit = (event)=>{
            event.preventDefault();
+
+           let errors = initialErrors;
+
+           let hasErrors = false;
+
+           if (inputs.fname === "") {
+               errors.fname.required = true;
+               hasErrors = true;
+           }
+
+           if (inputs.lname === "") {
+            errors.lname.required = true;
+            hasErrors = true;
+           }
+
+            if (inputs.email === "") {
+                errors.email.required = true;
+               hasErrors = true;
+            }
+
+            if (inputs.number === "") {
+                errors.number.required = true;
+               hasErrors = true;
+            }
+
+            if (inputs.password === "") {
+                errors.password.required = true;
+               hasErrors = true;
+            }
+
+            if (inputs.c_password === "") {
+                errors.c_password.required = true;
+               hasErrors = true;
+            }
+          
+            if (hasErrors !== true) {
+                setLoading(true);
+            }
+         
+            setErrors(errors);
     }
 
     const [inputs,setInputs] = useState({
@@ -70,7 +112,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your first name</h6>
+                            <h6>First name is required</h6>
                         </div>
                     </div>):null
                     }
@@ -88,7 +130,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your last name</h6>
+                            <h6>Last name is required</h6>
                         </div>
                         </div>):null
                     }
@@ -106,7 +148,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your email address</h6>
+                            <h6>Email address is required</h6>
                         </div>
                     </div>):null
                     }
@@ -129,7 +171,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your Mobile Number</h6>
+                            <h6>Mobile Number is required</h6>
                         </div>
                     </div>):null
                     }
@@ -148,7 +190,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your Password</h6>
+                            <h6>Password is required</h6>
                         </div>
                     </div>):null
                     }
@@ -166,7 +208,7 @@ function SignUp(){
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Enter your confirm password</h6>
+                            <h6>Confirm password is required</h6>
                         </div>
                     </div>):null
                     }
@@ -201,7 +243,7 @@ function SignUp(){
                     }
                    
                     <div className="form_sign_up_button_div">
-                        <button type="submit" className="form_sign_up_button">sign up</button>
+                        <button type="submit" disabled={loading} className="form_sign_up_button">sign up</button>
                     </div>
                     <div className="form_center">
                     <div className="or_cont">

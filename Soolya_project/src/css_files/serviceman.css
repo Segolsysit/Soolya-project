@@ -1,35 +1,82 @@
-.ser_title{
+.head{
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    padding: 10px 10px 0px 10px;
+}
+
+.form {
     margin-top: 100px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form_container {
+    width: 75%;
+    height: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+  }
+
+.progressbar {
+    width: 400px;
+    height: 10px;
+    background-color: rgb(145, 202, 240);
+    margin-bottom: 50px;
+  }
+  
+  .progressbar div {
+    width: 25%;
+    height: 100%;
+    background-color: rgb(98, 0, 255);
+  }
+
+  .ser_input_name{
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    padding: 10px 10px 0px 10px;
+  }
+
+  .ser_input_City{
+    margin-left: 1%;
+  }
+
+  .ser_input_mail{
+    margin-left: 12.5%;
+  }
+
+  .ser_input_Cname{
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    padding: 10px 10px 0px 10px;
+  }
+  .ser_id_type{
     align-items: center;
     display: flex;
     justify-content: center; 
     padding: 10px 10px 0px 10px; 
-}
+  }
 
-.ser_input_name{
-    align-items: center;
+  .ser_input_password{
     display: flex;
-    justify-content: center; 
-    padding: 10px 10px 0px 10px;
-}
+    margin-left: 25%;
+  }
 
-.ser_input_timing{
-    align-items: center;
+  .ser_Title{
     display: flex;
-    justify-content: center; 
+    margin-left: 13.5%;
     padding: 10px 10px 0px 10px;
-}
+  }
 
-.ser_work_type{
-    align-items: center;
-    display: flex;
-    justify-content: center; 
-    padding: 10px 10px 0px 10px;
-}
-
-.address{
-    align-items: center;
-    display: flex;
-    justify-content: center; 
-    padding: 10px 10px 0px 10px;
-}
+  .name{
+    margin-left: 1%;
+  }
