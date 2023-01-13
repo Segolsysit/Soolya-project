@@ -151,6 +151,7 @@ function Home(props) {
     modalName ="type any"
 }else {
     modalName="search the correct word...."
+    // setSearch("")
   
 }
 // else{
@@ -686,7 +687,7 @@ function Home(props) {
                             </div>
                             <div class="modal-footer">
                                 {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={()=> {setSearch(""); setShow(false)}}>Understood</button>
                             </div>
                         </div>
                     </div>

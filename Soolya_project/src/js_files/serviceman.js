@@ -4,8 +4,12 @@ import Button from '@mui/material/Button';
 import Generalinfo from './generalinfo';
 import Personinfo from './personinfo';
 import Businessinfo from './businessinfo';
+<<<<<<< HEAD
 // import { useForm } from "react-hook-form";
 import { useStep } from "react-hooks-helper";
+=======
+import axios from "axios";
+>>>>>>> 96350ea6d7e29b86580f14c8cfdbde3ac8b3ae36
 // import Accountinfo from './accountinfo';
 
 // const defaultdata=
@@ -87,6 +91,23 @@ function Serviceman(){
                     if (page === FormTitles.length - 1) {
                       alert("FORM SUBMITTED");
                       console.log(formData);
+                      axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
+                        CompanyName:formData.CompanyName,
+                        City:formData.City,
+                        Title:formData.Title,
+                        FirstName:formData.FirstName,
+                        LastName:formData.LastName,
+                        MobilePhoneNumber:formData.MobilePhoneNumber,
+                        ConfirmMobilePhoneNumber:formData.ConfirmMobilePhoneNumber,
+                        StreetAddress:formData.StreetAddress,
+                        PostalCode:formData.PostalCode,
+                        Email:formData.Email,
+                        IdentityType:formData.IdentityType,
+                        IdentityNumber:formData.IdentityNumber,
+                        Password:formData.Password,
+                        ConfirmPassword:formData.ConfirmPassword,
+                        file:formData.file
+                      })
                     }
                      else {
                       setpage((currPage) => currPage + 1);

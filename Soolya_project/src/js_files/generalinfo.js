@@ -42,7 +42,11 @@ function Generalinfo({formData,setformData,navigation}){
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
+<<<<<<< HEAD
                           label="Title" onChange={handleChange}>
+=======
+                          label="Title" value={formData.Title}   onChange={(e)=>setformData({...formData, Title:e.target.value})}>
+>>>>>>> 96350ea6d7e29b86580f14c8cfdbde3ac8b3ae36
                            <MenuItem value="Mr">Mr</MenuItem>
                            <MenuItem value="Mrs">Mrs</MenuItem>
                            <MenuItem value="Ms">Ms</MenuItem>
