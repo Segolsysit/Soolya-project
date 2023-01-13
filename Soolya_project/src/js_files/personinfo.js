@@ -1,9 +1,10 @@
 import TextField from '@mui/material/TextField';
 
-function Personinfo({formData,setformData}){
+function Personinfo({formData,setformData,navigation}){
     return(
         <div class="tab">
               <center>
+                 {/* <h1>Persional Info</h1>  */}
                  <div className="ser_input_number">
                   
                  <TextField id="outlined-basic" label="Mobile Phone Number" variant="outlined"  className='form-control w-50'

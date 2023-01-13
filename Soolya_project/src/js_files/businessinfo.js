@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import "../css_files/serviceman.css";
 
-function Businessinfo({formData,setformData}){
+function Businessinfo({formData,setformData,navigation}){
 
     const [work, setwork] = React.useState('');
    
@@ -19,6 +19,7 @@ function Businessinfo({formData,setformData}){
     return(
         <div class="tab">
             <center>
+              {/* <h1>Business Info</h1>  */}
              <div className='ser_id_type'>
                  <Box >
                  <FormControl  sx={{ minWidth: 300 }}> 
