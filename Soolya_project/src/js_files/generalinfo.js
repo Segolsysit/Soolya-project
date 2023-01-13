@@ -41,7 +41,7 @@ function Generalinfo({formData,setformData}){
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          label="Title" value={work} onChange={handleChange}>
+                          label="Title" value={formData.Title}   onChange={(e)=>setformData({...formData, Title:e.target.value})}>
                            <MenuItem value="Mr">Mr</MenuItem>
                            <MenuItem value="Mrs">Mrs</MenuItem>
                            <MenuItem value="Ms">Ms</MenuItem>

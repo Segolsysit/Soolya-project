@@ -23,15 +23,15 @@ function Businessinfo({formData,setformData}){
                  <Box >
                  <FormControl  sx={{ minWidth: 300 }}> 
                  <InputLabel id="demo-simple-select-label"
-                 value={formData.IdentityType}
-                 onChange={(e)=>setformData({...formData, IdentityType:e.target.value})}
+                //  value={}
+                 
                  >Identity Type</InputLabel>
                  <Select
                  labelId="demo-simple-select-label"
                  id="demo-simple-select"
-                 value={work}
+                 value={formData.IdentityType}
                  label="Identity Type"
-                 onChange={handleChange}
+                 onChange={(e)=>setformData({...formData, IdentityType:e.target.value})}
                  >
                 <MenuItem value="Pasport">Pasport</MenuItem>
                 <MenuItem value="Driving licence">Driving licence</MenuItem>
