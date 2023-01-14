@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Generalinfo from './generalinfo';
 import Personinfo from './personinfo';
 import Businessinfo from './businessinfo';
-// import axios from "axios";
+import axios from "axios";
 // import Accountinfo from './accountinfo';
 
 function Serviceman(){

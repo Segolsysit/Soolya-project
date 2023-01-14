@@ -80,7 +80,7 @@ const handleSubmit = (event)=>{
                     {errors.email_phone.required?
                     (<div id="d_flex" className="sign_in_form_validation">
                         <div>
-                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                            <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
                             <h6>Email or phone number is required</h6>
@@ -98,7 +98,7 @@ const handleSubmit = (event)=>{
                     {errors.password.required?
                     (<div id="d_flex" className="sign_in_form_validation">
                         <div>
-                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                            <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
                             <h6>Password is required</h6>
@@ -109,7 +109,7 @@ const handleSubmit = (event)=>{
                     {errors.custom_error?
                     (<div id="d_flex_center" className="sign_in_form_validation">
                         <div>
-                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                            <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
                             <h5>{errors.custom_error}</h5>
@@ -119,7 +119,7 @@ const handleSubmit = (event)=>{
                  
                    <div className="form_checkbox">
                         <div className="form_checkbox">
-                            <input type="checkbox" for="rem"></input>
+                            <input type="checkbox" htmlFor="rem"></input>
                             <label className="form_checkbox_label">Remember me?</label>
                         </div>
                         <div>
@@ -129,13 +129,13 @@ const handleSubmit = (event)=>{
                    
                    {loading?
                    (<div id="spinner_roll">
-                        <div class="spinner-border text-primary" role="status">
+                        <div className="spinner-border text-primary" role="status">
                         </div>
                     </div>):null
                     }
 
                     <div className="form_sign_in_button_div">
-                        <button type="submit" className="form_sign_in_button">sign in</button>
+                        <button type="submit" className="form_sign_in_button" disabled={loading} >sign in</button>
                     </div>
                     <div className="form_center">
                     <div className="or_cont">

@@ -44,6 +44,9 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
         error={Cnameerror} */}
         {/* /> */}
           <div className='ser_input_City'>
+           <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
+           value={formData.district}
+           onChange={(e)=>setformData({...formData, district:e.target.value})}/>
            <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
            value={formData.City}
            onChange={(e)=>{setformData({...formData, City:e.target.value});
@@ -61,10 +64,8 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          label="Title" value={formData.Title} 
-                          onChange={(e)=>{setformData({...formData, Title:e.target.value}); setTitleerror(false)}}
-                          error={Titleerror}
-                          >
+                          label="Title" value={formData.Title}   onChange={(e)=>{setformData({...formData, Title:e.target.value});
+                           setTitleerror(false)}}>
                            <MenuItem value="Mr">Mr</MenuItem>
                            <MenuItem value="Mrs">Mrs</MenuItem>
                            <MenuItem value="Ms">Ms</MenuItem>
