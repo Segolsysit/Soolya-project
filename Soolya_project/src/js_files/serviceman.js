@@ -129,23 +129,23 @@ function Serviceman(){
                                               setConfirmPassworderror(true)}
                                               else{ alert("FORM SUBMITTED");
                                                   console.log(formData);
-                                            //   axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
-                                            //     WorkType:formData.WorkType,
-                                            //     City:formData.City,
-                                            //     Title:formData.Title,
-                                            //     FirstName:formData.FirstName,
-                                            //     LastName:formData.LastName,
-                                            //     MobilePhoneNumber:formData.MobilePhoneNumber,
-                                            //     ConfirmMobilePhoneNumber:formData.ConfirmMobilePhoneNumber,
-                                            //     StreetAddress:formData.StreetAddress,
-                                            //     PostalCode:formData.PostalCode,
-                                            //     Email:formData.Email,
-                                            //     IdentityType:formData.IdentityType,
-                                            //     IdentityNumber:formData.IdentityNumber,
-                                            //     Password:formData.Password,
-                                            //     ConfirmPassword:formData.ConfirmPassword,
-                                            //     file:formData.file
-                                            //   })
+                                                axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
+                                                WorkType:formData.WorkType,
+                                                City:formData.City,
+                                                Title:formData.Title,
+                                                FirstName:formData.FirstName,
+                                                LastName:formData.LastName,
+                                                MobilePhoneNumber:formData.MobilePhoneNumber,
+                                                ConfirmMobilePhoneNumber:formData.ConfirmMobilePhoneNumber,
+                                                StreetAddress:formData.StreetAddress,
+                                                PostalCode:formData.PostalCode,
+                                                Email:formData.Email,
+                                                IdentityType:formData.IdentityType,
+                                                IdentityNumber:formData.IdentityNumber,
+                                                Password:formData.Password,
+                                                ConfirmPassword:formData.ConfirmPassword,
+                                                file:formData.file
+                                              })
                           }
                     
                   }}}>
