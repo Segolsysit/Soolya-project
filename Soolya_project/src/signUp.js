@@ -65,19 +65,6 @@ function SignUp(){
             setErrors(errors);
     }
 
-    const [inputs,setInputs] = useState({
-        fname:"",
-        lname:"",
-        email:"",
-        number:"",
-        password:"",
-        c_password:""
-    })
-
-    const handleInput = (event)=>{
-        setInputs({...inputs,[event.target.name]:event.target.value})
-    }
-
     return(
     <div>
 
