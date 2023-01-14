@@ -8,13 +8,15 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import "../css_files/serviceman.css";
 
-function Businessinfo({formData,setformData,navigation}){
+function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererror,setIdentityTypeerror,
+                      Passworderror,ConfirmPassworderror,fileerror,setIdentityNumbererror,setPassworderror,
+                       setConfirmPassworderror,setfileerror}){
 
-    const [work, setwork] = React.useState('');
+    // const [work, setwork] = React.useState('');
    
-    const handleChange = (event) => {
-      setwork(event.target.value);
-    };    
+    // const handleChange = (event) => {
+    //   setwork(event.target.value);
+    // };    
 
     return(
         <div class="tab">
@@ -32,7 +34,9 @@ function Businessinfo({formData,setformData,navigation}){
                  id="demo-simple-select"
                  value={formData.IdentityType}
                  label="Identity Type"
-                 onChange={(e)=>setformData({...formData, IdentityType:e.target.value})}
+                 onChange={(e)=>{setformData({...formData, IdentityType:e.target.value});
+                   setIdentityTypeerror(false)}}
+                 error={IdentityTypeerror}
                  >
                 <MenuItem value="Pasport">Pasport</MenuItem>
                 <MenuItem value="Driving licence">Driving licence</MenuItem>
@@ -43,7 +47,9 @@ function Businessinfo({formData,setformData,navigation}){
                 <div class="name">
                 <TextField id="outlined-basic" label="Identity Number" variant="outlined" className='form-control '
                 value={formData.IdentityNumber}
-                onChange={(e)=>setformData({...formData, IdentityNumber:e.target.value})} />
+                onChange={(e)=>{setformData({...formData, IdentityNumber:e.target.value});
+                  setIdentityNumbererror(false)}} 
+                error={IdentityNumbererror}/>
                 </div>
                 </div><br/>
                 <input 
@@ -52,16 +58,22 @@ function Businessinfo({formData,setformData,navigation}){
                  name="photo"
                  accept="image/png, image/jpeg" className='form-control w-50'
                  value={formData.file}
-                 onChange={(e)=>setformData({...formData, file:e.target.value})}
+                 onChange={(e)=>{setformData({...formData, file:e.target.value});
+                  setfileerror(false)}}
+                 error={fileerror}
                  ></input><br/>
                  <div className="ser_input_password">
                  <TextField id="outlined-basic" label="Password" variant="outlined" className='form-control w-25'
                  value={formData.Password}
-                 onChange={(e)=>setformData({...formData, Password:e.target.value})} />
+                 onChange={(e)=>{setformData({...formData, Password:e.target.value});
+                    setPassworderror(false)}}
+                 error={Passworderror} />
                  <div class='name' >
                  <TextField id="outlined-basic" label="Confirm Password" variant="outlined" className='form-control'
                  value={formData.ConfirmPassword}
-                 onChange={(e)=>setformData({...formData, ConfirmPassword:e.target.value})} />
+                 onChange={(e)=>{setformData({...formData, ConfirmPassword:e.target.value});
+                   setConfirmPassworderror(false)}} 
+                 error={ConfirmPassworderror}/>
                  </div>
                  </div><br/>
                </center>  

@@ -6,33 +6,52 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 // import { Validate, ValidationGroup } from 'mui-validate';
 
-function Generalinfo({formData,setformData,navigation}){
+function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,FirstNameerror,LastNameerror
+,setTitleerror,setFirstNameerror,setLastNameerror,setWorkTypeerror,setCityerror}){
 
-    const [work, setwork] = React.useState('');
+    // const [work, setwork] = React.useState('');
    
-     const handleChange = (event) => {
-       setwork(event.target.value);
-     };
+    //  const handleChange = (event) => {
+    //    setwork(event.target.value);
+    //  };
     return(
         <div>
         <center>
           {/* <h1>General Info</h1>     */}
-        <div className="ser_input_Cname">
-        <TextField id="outlined-basic" label="Company Name*" variant="outlined" className='form-control w-50'
+        <div className="ser_input_Worktype">
+        <Box >
+                    <FormControl  sx={{ minWidth: 300 }}> 
+                       <InputLabel id="demo-simple-select-label" value={formData.WorkType}
+                       >Work Type</InputLabel>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          label="Work type" value={formData.WorkType} 
+                          onChange={(e)=>{setformData({...formData, WorkType:e.target.value});
+                          setWorkTypeerror(false)}}
+                          error={WorkTypeerror}>
+                           <MenuItem value="Plumbing">Plumbing</MenuItem>
+                           <MenuItem value="Electrician">Electrician</MenuItem>
+                        </Select>
+                    </FormControl> 
+                  </Box>
+        {/* <TextField id="outlined-basic" label="Company Name*" variant="outlined" className='form-control w-50'
         value={formData.CompanyName}
         onChange={(e)=>setformData({...formData, CompanyName:e.target.value})}
-        />
+        error={Cnameerror} */}
+        {/* /> */}
           <div className='ser_input_City'>
            <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
            value={formData.City}
-           onChange={(e)=>setformData({...formData, City:e.target.value})}
+           onChange={(e)=>{setformData({...formData, City:e.target.value});
+          setCityerror(false)}}
+           error={Cityerror}
            />
           </div>
         </div><br/>
-        </center> 
                  <div className='ser_Title'>
                   <div className='title'>
                   <Box >
@@ -42,11 +61,10 @@ function Generalinfo({formData,setformData,navigation}){
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-<<<<<<< HEAD
-                          label="Title" onChange={handleChange}>
-=======
-                          label="Title" value={formData.Title}   onChange={(e)=>setformData({...formData, Title:e.target.value})}>
->>>>>>> 96350ea6d7e29b86580f14c8cfdbde3ac8b3ae36
+                          label="Title" value={formData.Title} 
+                          onChange={(e)=>{setformData({...formData, Title:e.target.value}); setTitleerror(false)}}
+                          error={Titleerror}
+                          >
                            <MenuItem value="Mr">Mr</MenuItem>
                            <MenuItem value="Mrs">Mrs</MenuItem>
                            <MenuItem value="Ms">Ms</MenuItem>
@@ -58,15 +76,19 @@ function Generalinfo({formData,setformData,navigation}){
                   <div className='name'> 
                       <TextField id="outlined-basic" label="First Name" variant="outlined" className='form-control'
                       value={formData.FirstName}
-                      onChange={(e)=>setformData({...formData, FirstName:e.target.value})}/></div>  
+                      onChange={(e)=>{setformData({...formData, FirstName:e.target.value});
+                      setFirstNameerror(false)}}
+                      error={FirstNameerror}/></div>  
                       <div className='name'>
                       <TextField id="outlined-basic" label="Last Name" variant="outlined" className='form-control'
                       value={formData.LastName}
-                      onChange={(e)=>setformData({...formData, LastName:e.target.value})}/>
+                      onChange={(e)=>{setformData({...formData, LastName:e.target.value});
+                      setLastNameerror(false)}}
+                      error={LastNameerror}/>
                   </div> 
                   {/* <Button variant='contained' color='primary' style={{marginTop:"1rem"}}>Next</Button>     */}
                 </div>
-               
+                </center> 
          </div>
     )
 }

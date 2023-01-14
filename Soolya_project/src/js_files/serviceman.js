@@ -4,27 +4,38 @@ import Button from '@mui/material/Button';
 import Generalinfo from './generalinfo';
 import Personinfo from './personinfo';
 import Businessinfo from './businessinfo';
-<<<<<<< HEAD
-// import { useForm } from "react-hook-form";
-import { useStep } from "react-hooks-helper";
-=======
-import axios from "axios";
->>>>>>> 96350ea6d7e29b86580f14c8cfdbde3ac8b3ae36
+// import axios from "axios";
 // import Accountinfo from './accountinfo';
 
-// const defaultdata=
-
-// const steps =[
-//      {id:"Generalinfo"},
-//      {id:"Personinfo"},
-//      {id:"Businessinfo"}
-// ]
 function Serviceman(){
-
+     
     const [page,setpage]=React.useState(0)
     const FormTitles=["General Info","Personal Info","Business Info"]
+ 
+    const [WorkTypeerror,setWorkTypeerror]=React.useState(false);
+    const [Cityerror,setCityerror]=React.useState(false);
+    const [Titleerror,setTitleerror]=React.useState(false);
+    const [FirstNameerror,setFirstNameerror]=React.useState(false);
+    const [LastNameerror,setLastNameerror]=React.useState(false);
+    const [MobilePhoneNumbererror,setMobilePhoneNumbererror]=React.useState(false);
+    const [ConfirmMobilePhoneNumbererror,setConfirmMobilePhoneNumbererror]=React.useState(false);
+    const [StreetAddresserror,setStreetAddresserror]=React.useState(false);
+    const [PostalCodeerror,setPostalCodeerror]=React.useState(false);
+    const [Emailerror,setEmailerror]=React.useState(false);
+    const [IdentityTypeerror,setIdentityTypeerror]=React.useState(false);
+    const [IdentityNumbererror,setIdentityNumbererror]=React.useState(false);
+    const [Passworderror,setPassworderror]=React.useState(false);
+    const [ConfirmPassworderror,setConfirmPassworderror]=React.useState(false);
+    const [fileerror,setfileerror]=React.useState(false);
+
+    const props = {WorkTypeerror,setWorkTypeerror,Cityerror,setCityerror,Titleerror,setTitleerror,FirstNameerror,setFirstNameerror
+        ,LastNameerror,setLastNameerror,MobilePhoneNumbererror,setMobilePhoneNumbererror,ConfirmMobilePhoneNumbererror,setConfirmMobilePhoneNumbererror
+    ,StreetAddresserror,setStreetAddresserror,PostalCodeerror,setPostalCodeerror,Emailerror,setEmailerror,
+    IdentityTypeerror,setIdentityTypeerror,IdentityNumbererror,setIdentityNumbererror,Passworderror,setPassworderror
+    ,ConfirmPassworderror,setConfirmPassworderror,fileerror,setfileerror}
+
     const [formData,setformData]=React.useState({
-        CompanyName:"",
+        WorkType:"",
         City:"",
         Title:"",
         FirstName:"",
@@ -40,26 +51,14 @@ function Serviceman(){
         ConfirmPassword:"",
         file:""
 })
-    // const [step,navigation]=useStep({
-    //     steps,
-    //     initialStep:0
-    // })
-    //  const props ={formData, setformData,navigation}
-    // switch (step.id){
-    //     case "Generalinfo":
-    //         return<Generalinfo formData={formData} setformData={setformData} navigation={navigation}/>;
-    //     case "Personinfo":
-    //         return<Personinfo formData={formData} setformData={setformData} navigation={navigation}/>;  
-    //     case "Businessinfo":
-    //         return<Businessinfo formData={formData} setformData={setformData} navigation={navigation}/>;       
-    // }
+   
     const PageDisplay = () =>{
         if (page === 0){
-            return<Generalinfo formData={formData} setformData={setformData}/>
+            return<Generalinfo formData={formData} setformData={setformData} {...props}/>
         } else if (page === 1){
-            return<Personinfo formData={formData} setformData={setformData}/>
+            return<Personinfo formData={formData} setformData={setformData} {...props}/>
         }else{
-            return<Businessinfo formData={formData} setformData={setformData}/>
+            return<Businessinfo formData={formData} setformData={setformData} {...props}/>
         }
         // else {
         //     return<Accountinfo/>
@@ -86,39 +85,75 @@ function Serviceman(){
                  </Button>   
                  
                  <Button sx={{ m: 2 }} variant="contained"
-                 disabled={formData === ""} 
                  onClick={() => {
-                    if (page === FormTitles.length - 1) {
-                      alert("FORM SUBMITTED");
-                      console.log(formData);
-                      axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
-                        CompanyName:formData.CompanyName,
-                        City:formData.City,
-                        Title:formData.Title,
-                        FirstName:formData.FirstName,
-                        LastName:formData.LastName,
-                        MobilePhoneNumber:formData.MobilePhoneNumber,
-                        ConfirmMobilePhoneNumber:formData.ConfirmMobilePhoneNumber,
-                        StreetAddress:formData.StreetAddress,
-                        PostalCode:formData.PostalCode,
-                        Email:formData.Email,
-                        IdentityType:formData.IdentityType,
-                        IdentityNumber:formData.IdentityNumber,
-                        Password:formData.Password,
-                        ConfirmPassword:formData.ConfirmPassword,
-                        file:formData.file
-                      })
-                    }
-                     else {
-                      setpage((currPage) => currPage + 1);
-                    }
-                  }}>
+                          if(page === 0){
+                            if(formData.WorkType.length === 0){
+                                setWorkTypeerror(true)}
+                                else if(formData.City.length === 0){
+                                    setCityerror(true)} 
+                                    else if(formData.Title.length === 0){
+                                        setTitleerror(true)}
+                                        else if(formData.FirstName.length === 0){
+                                            setFirstNameerror(true)}
+                                            else if(formData.LastName.length === 0){
+                                                setLastNameerror(true)}
+                                                else{setpage((currPage) => currPage + 1);}
+                          }
+                          else if(page === 1){
+                              if(formData.MobilePhoneNumber.length === 0 || 
+                                formData.MobilePhoneNumber.length<10  ||
+                                formData.MobilePhoneNumber.length>10){
+                                  setMobilePhoneNumbererror(true)}
+                                  else if(formData.ConfirmMobilePhoneNumber.length === 0 || 
+                                          formData.ConfirmMobilePhoneNumber.length<10  ||
+                                           formData.ConfirmMobilePhoneNumber.length>10){
+                                               setConfirmMobilePhoneNumbererror(true)}
+                                            else if(formData.StreetAddress.length === 0){
+                                                setStreetAddresserror(true)}
+                                                else if(formData.PostalCode.length === 0){
+                                                   setPassworderror(true)}
+                                                   else if(formData.Email.length === 0){
+                                                      setEmailerror(true)}
+                                                      else{setpage((currPage) => currPage + 1);}
+                          }
+                          else if(page === 2){
+                            if(formData.IdentityType.length === 0){
+                                 setIdentityTypeerror(true)}
+                                 else if(formData.IdentityNumber.length === 0){
+                                    setIdentityNumbererror(true)}
+                                    else if(formData.file.length === 0){
+                                       setfileerror(true)}
+                                       else if(formData.Password.length === 0 || formData.Password.length <6){  
+                                          setPassworderror(true)}
+                                          else if(formData.ConfirmPassword.length === 0 || formData.ConfirmPassword !== formData.Password){
+                                              setConfirmPassworderror(true)}
+                                              else{ alert("FORM SUBMITTED");
+                                                  console.log(formData);
+                                            //   axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
+                                            //     WorkType:formData.WorkType,
+                                            //     City:formData.City,
+                                            //     Title:formData.Title,
+                                            //     FirstName:formData.FirstName,
+                                            //     LastName:formData.LastName,
+                                            //     MobilePhoneNumber:formData.MobilePhoneNumber,
+                                            //     ConfirmMobilePhoneNumber:formData.ConfirmMobilePhoneNumber,
+                                            //     StreetAddress:formData.StreetAddress,
+                                            //     PostalCode:formData.PostalCode,
+                                            //     Email:formData.Email,
+                                            //     IdentityType:formData.IdentityType,
+                                            //     IdentityNumber:formData.IdentityNumber,
+                                            //     Password:formData.Password,
+                                            //     ConfirmPassword:formData.ConfirmPassword,
+                                            //     file:formData.file
+                                            //   })
+                          }
+                    
+                  }}}>
                   {page === FormTitles.length - 1 ? "Submit" : "Next"}
                  </Button>
                  </div>
     </div>
     </div>
-    // <div><h1>hii</h1></div>
     )
 }
 
