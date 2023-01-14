@@ -26,9 +26,9 @@ function Generalinfo({formData,setformData}){
         onChange={(e)=>setformData({...formData, CompanyName:e.target.value})}/>
         </Validate>
           <div className='ser_input_City'>
-           <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
-           value={formData.City}
-           onChange={(e)=>setformData({...formData, City:e.target.value})}/>
+           <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
+           value={formData.district}
+           onChange={(e)=>setformData({...formData, district:e.target.value})}/>
           </div>
         </div><br/>
         </center> 

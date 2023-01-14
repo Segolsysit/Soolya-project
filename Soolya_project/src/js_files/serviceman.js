@@ -13,7 +13,7 @@ function Serviceman(){
     const FormTitles=["General Info","Personal Info","Business Info"]
     const [formData,setformData]=React.useState({
          CompanyName:"",
-         City:"",
+         district:"",
          Title:"",
          FirstName:"",
          LastName:"",
@@ -65,7 +65,7 @@ function Serviceman(){
                       console.log(formData);
                       axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
                         CompanyName:formData.CompanyName,
-                        City:formData.City,
+                        district:formData.district,
                         Title:formData.Title,
                         FirstName:formData.FirstName,
                         LastName:formData.LastName,

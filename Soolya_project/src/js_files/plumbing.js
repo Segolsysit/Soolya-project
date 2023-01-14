@@ -3,12 +3,20 @@ import "../css_files/plumbing.css";
 import rating from "../images/ratings.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 function Plumbing(props) {
-    let array = props.array;
+    // let array = props.array;
+    const [array,setArray] = useState([]);
 
+useEffect(()=>{
+axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
+    setArray(res.data);
+    console.log(res.data);
 
+})
+},[])
     //search
 
     const nav = useNavigate();
@@ -55,7 +63,7 @@ function Plumbing(props) {
     } else if (district.length === 0) {
         filter = array.filter((arr) => {
 
-            return get === arr.type;
+            return get === arr.CompanyName;
 
         })
 
@@ -63,14 +71,14 @@ function Plumbing(props) {
     else if (get.length === 0 && district.length === 0) {
         filter = array.filter((arr) => {
 
-            return district === arr.district || get === arr.type
+            return district === arr.district || get === arr.CompanyName
 
         })
     }
     else {
         filter = array.filter((arr) => {
 
-            return district === arr.district && get === arr.type
+            return district === arr.district && get === arr.CompanyName
 
         })
     }
@@ -125,20 +133,21 @@ function Plumbing(props) {
 
                                     <div className="plumber_bio">
                                         <div>
-                                            <h4>{a.name}</h4>
-                                            <h5><b><u>{a.type}</u></b></h5>
+                                            <h4>{a.FirstName} {a.LastName}</h4>
+                                            <h5><b><u>{a.CompanyName}</u></b></h5>
                                         </div>
                                         <div className="d_flex">
                                             <h5>Ratings</h5>
                                             <img className="ratings_image" src={rating} alt="plumber_man"></img>
                                         </div>
                                         <div>
-                                            <h6>{a.timing}</h6>
+                                            <h6>{a.Email}</h6>
                                         </div>
                                         <div className="d_flex">
                                             <i className="fa-solid fa-location-dot"></i>
                                             <address className="profile_address">
-                                                {a.address}
+                                            {a.StreetAddress}<br></br>
+                                            {a.district}
                                             </address>
                                         </div>
                                     </div>
@@ -161,20 +170,22 @@ function Plumbing(props) {
 
                                     <div className="plumber_bio">
                                         <div>
-                                            <h4>{a.name}</h4>
-                                            <h5><b><u>{a.type}</u></b></h5>
+                                            <h4>{a.FirstName} {a.LastName}</h4>
+                                            <h5><b><u>{a.CompanyName}</u></b></h5>
                                         </div>
                                         <div className="d_flex">
                                             <h5>Ratings</h5>
                                             <img className="ratings_image" src={rating} alt="plumber_man"></img>
                                         </div>
                                         <div>
-                                            <h6>{a.timing}</h6>
+                                            <h6>{a.Email}</h6>
                                         </div>
                                         <div className="d_flex">
                                             <i className="fa-solid fa-location-dot"></i>
                                             <address className="profile_address">
-                                                {a.address}
+                                                {a.StreetAddress}
+                                                <br></br>
+                                                {a.district}
                                             </address>
                                         </div>
                                     </div>
