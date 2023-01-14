@@ -4,12 +4,7 @@ import Button from '@mui/material/Button';
 import Generalinfo from './generalinfo';
 import Personinfo from './personinfo';
 import Businessinfo from './businessinfo';
-<<<<<<< HEAD
-// import { useForm } from "react-hook-form";
-import { useStep } from "react-hooks-helper";
-=======
 import axios from "axios";
->>>>>>> 96350ea6d7e29b86580f14c8cfdbde3ac8b3ae36
 // import Accountinfo from './accountinfo';
 
 // const defaultdata=
