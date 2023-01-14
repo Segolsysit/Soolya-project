@@ -53,7 +53,7 @@ function SignUp(){
                hasErrors = true;
             }
 
-            if (inputs.password === "") {
+            if (inputs.password === "" ) {
                 errors.password.required = true;
                hasErrors = true;
             }
@@ -62,6 +62,10 @@ function SignUp(){
                 errors.c_password.required = true;
                hasErrors = true;
             }
+
+            // if(inputs.password !== inputs.c_password){
+            //     setErrors({...errors,custom_error:"Password and confirm password are not same"});
+            // }
           
             if (!hasErrors) {
                 setLoading(true); 
@@ -96,9 +100,9 @@ function SignUp(){
     })
 
    
-    if(isAuthenticated()){
-        return <Navigate to="/dashboard"></Navigate>
-    }
+    // if(isAuthenticated()){
+    //     return <Navigate to="/dashboard"></Navigate>
+    // }
 
     return(
     <div>
