@@ -19,22 +19,23 @@ function Serviceman(){
     const [page,setpage]=React.useState(0)
     const FormTitles=["General Info","Personal Info","Business Info"]
     const [formData,setformData]=React.useState({
-        CompanyName:"",
-        City:"",
-        Title:"",
-        FirstName:"",
-        LastName:"",
-        MobilePhoneNumber:"",
-        ConfirmMobilePhoneNumber:"",
-        StreetAddress:"",
-        PostalCode:"", 
-        Email:"",
-        IdentityType:"",
-        IdentityNumber:"",
-        Password:"",
-        ConfirmPassword:"",
-        file:""
-})
+         CompanyName:"",
+         district:"",
+         Title:"",
+         FirstName:"",
+         LastName:"",
+         MobilePhoneNumber:"",
+         ConfirmMobilePhoneNumber:"",
+         StreetAddress:"",
+         PostalCode:"",
+         Email:"",
+         IdentityType:"",
+         IdentityNumber:"",
+         Password:"",
+         ConfirmPassword:"",
+         file:""
+    })
+      
     // const [step,navigation]=useStep({
     //     steps,
     //     initialStep:0
@@ -88,7 +89,7 @@ function Serviceman(){
                       console.log(formData);
                       axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
                         CompanyName:formData.CompanyName,
-                        City:formData.City,
+                        district:formData.district,
                         Title:formData.Title,
                         FirstName:formData.FirstName,
                         LastName:formData.LastName,
