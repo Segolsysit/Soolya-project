@@ -7,6 +7,13 @@ import Businessinfo from './businessinfo';
 import axios from "axios";
 // import Accountinfo from './accountinfo';
 
+// const defaultdata=
+
+// const steps =[
+//      {id:"Generalinfo"},
+//      {id:"Personinfo"},
+//      {id:"Businessinfo"}
+// ]
 function Serviceman(){
 
     const [page,setpage]=React.useState(0)
@@ -28,6 +35,35 @@ function Serviceman(){
          ConfirmPassword:"",
          file:""
     })
+        CompanyName:"",
+        City:"",
+        Title:"",
+        FirstName:"",
+        LastName:"",
+        MobilePhoneNumber:"",
+        ConfirmMobilePhoneNumber:"",
+        StreetAddress:"",
+        PostalCode:"", 
+        Email:"",
+        IdentityType:"",
+        IdentityNumber:"",
+        Password:"",
+        ConfirmPassword:"",
+        file:""
+})
+    // const [step,navigation]=useStep({
+    //     steps,
+    //     initialStep:0
+    // })
+    //  const props ={formData, setformData,navigation}
+    // switch (step.id){
+    //     case "Generalinfo":
+    //         return<Generalinfo formData={formData} setformData={setformData} navigation={navigation}/>;
+    //     case "Personinfo":
+    //         return<Personinfo formData={formData} setformData={setformData} navigation={navigation}/>;  
+    //     case "Businessinfo":
+    //         return<Businessinfo formData={formData} setformData={setformData} navigation={navigation}/>;       
+    // }
     const PageDisplay = () =>{
         if (page === 0){
             return<Generalinfo formData={formData} setformData={setformData}/>
@@ -38,8 +74,8 @@ function Serviceman(){
         }
         // else {
         //     return<Accountinfo/>
-        // }
-    }
+        }
+    // }
     return(
     <div class="App">    
     <div className='form'>
@@ -50,7 +86,8 @@ function Serviceman(){
             <div className='head'>
                 <h1>{FormTitles[page]}</h1>
             </div>
-            <div className='body'>{PageDisplay()}</div><br/>
+            <div className='body  ' >{PageDisplay()}
+             </div><br/>
         </div><br/>
         <div className='button'>
                  <Button variant="contained"
@@ -58,7 +95,9 @@ function Serviceman(){
                  onClick={()=>{setpage((currpage)=> currpage - 1 )}}>
                   Prev
                  </Button>   
-                 <Button sx={{ m: 2 }} variant="contained" 
+                 
+                 <Button sx={{ m: 2 }} variant="contained"
+                 disabled={formData === ""} 
                  onClick={() => {
                     if (page === FormTitles.length - 1) {
                       alert("FORM SUBMITTED");
@@ -81,7 +120,6 @@ function Serviceman(){
                         file:formData.file
                       })
                     }
-                    
                      else {
                       setpage((currPage) => currPage + 1);
                     }
@@ -91,6 +129,7 @@ function Serviceman(){
                  </div>
     </div>
     </div>
+    // <div><h1>hii</h1></div>
     )
 }
 

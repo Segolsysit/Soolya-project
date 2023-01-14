@@ -12,6 +12,7 @@ import santhosh_kumar from "./images/1.jpg";
 // import Electrician from './js_files/electrician';
 import PlumberProfile from './js_files/plumber_profile';
 import Serviceman from './js_files/serviceman';
+import DashBoard from './js_files/dashboard';
 function App() {
     const array = [
         {
@@ -63,6 +64,10 @@ function App() {
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
+                {array.map((arr)=>(
+                <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
+                 ))}
+
                 
                 <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>
 
@@ -70,6 +75,7 @@ function App() {
                 {/* <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route> */}
 
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
+                <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
 
             </Routes>
             <br></br>

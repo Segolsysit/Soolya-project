@@ -6,9 +6,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
-import { Validate, ValidationGroup } from 'mui-validate';
+import { Button } from '@mui/material';
+// import { Validate, ValidationGroup } from 'mui-validate';
 
-function Generalinfo({formData,setformData}){
+function Generalinfo({formData,setformData,navigation}){
 
     const [work, setwork] = React.useState('');
    
@@ -17,18 +18,21 @@ function Generalinfo({formData,setformData}){
      };
     return(
         <div>
-          <ValidationGroup>
-        <center>    
+        <center>
+          {/* <h1>General Info</h1>     */}
         <div className="ser_input_Cname">
-        <Validate name="internal key 1" required={[true, 'Custom message for required']}>
         <TextField id="outlined-basic" label="Company Name*" variant="outlined" className='form-control w-50'
         value={formData.CompanyName}
-        onChange={(e)=>setformData({...formData, CompanyName:e.target.value})}/>
-        </Validate>
+        onChange={(e)=>setformData({...formData, CompanyName:e.target.value})}
+        />
           <div className='ser_input_City'>
            <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
            value={formData.district}
            onChange={(e)=>setformData({...formData, district:e.target.value})}/>
+           <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
+           value={formData.City}
+           onChange={(e)=>setformData({...formData, City:e.target.value})}
+           />
           </div>
         </div><br/>
         </center> 
@@ -58,9 +62,10 @@ function Generalinfo({formData,setformData}){
                       <TextField id="outlined-basic" label="Last Name" variant="outlined" className='form-control'
                       value={formData.LastName}
                       onChange={(e)=>setformData({...formData, LastName:e.target.value})}/>
-                  </div>     
+                  </div> 
+                  {/* <Button variant='contained' color='primary' style={{marginTop:"1rem"}}>Next</Button>     */}
                 </div>
-                </ValidationGroup>   
+               
          </div>
     )
 }
