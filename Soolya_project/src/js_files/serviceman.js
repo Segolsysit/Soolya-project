@@ -35,22 +35,7 @@ function Serviceman(){
          ConfirmPassword:"",
          file:""
     })
-        CompanyName:"",
-        City:"",
-        Title:"",
-        FirstName:"",
-        LastName:"",
-        MobilePhoneNumber:"",
-        ConfirmMobilePhoneNumber:"",
-        StreetAddress:"",
-        PostalCode:"", 
-        Email:"",
-        IdentityType:"",
-        IdentityNumber:"",
-        Password:"",
-        ConfirmPassword:"",
-        file:""
-})
+      
     // const [step,navigation]=useStep({
     //     steps,
     //     initialStep:0
