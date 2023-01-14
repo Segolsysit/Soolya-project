@@ -6,8 +6,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import { Button } from '@mui/material';
+// import { Validate, ValidationGroup } from 'mui-validate';
 
-function Generalinfo(){
+function Generalinfo({formData,setformData,navigation}){
 
     const [work, setwork] = React.useState('');
    
@@ -16,41 +18,55 @@ function Generalinfo(){
      };
     return(
         <div>
-        <center>    
-        <div className="ser_input_name">
-        <TextField id="outlined-basic" label="Name" variant="outlined" className='form-control w-75'/>
-         </div><br/>
-         <div className='ser_input_timing'>
-                 <TextField id="outlined-basic" label="Timing" variant="outlined" className='form-control w-75'/>
-                 </div><br/>
-                 <div className='ser_work_type'>
-                     <Box >
-                 <FormControl  sx={{ minWidth: 225 }}> 
-                    <InputLabel id="demo-simple-select-label" className='form-control w-75'>Work Type</InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      label="Work Type" value={work} onChange={handleChange}>
-                     <MenuItem value="plumbing">Plumbing</MenuItem>
-                     <MenuItem value="Electrician">Electrician</MenuItem>
-                     <MenuItem value="home">Home Appliances</MenuItem>
-                     <MenuItem value="install">Installations</MenuItem>
-                     <MenuItem value="service">Home services</MenuItem>
-                     <MenuItem value="ac">AC repair services</MenuItem>
-                    </Select>
-                 </FormControl> 
-                 </Box>
-                 </div><br/>
-                <div className='address'>
-                        <TextField
-                        sx={{ minWidth: 225 }}
-                        id="outlined-multiline-static"
-                        label="Address"
-                        multiline
-                        rows={4}
-                        className='form-control w-75'/>
+        <center>
+          {/* <h1>General Info</h1>     */}
+        <div className="ser_input_Cname">
+        <TextField id="outlined-basic" label="Company Name*" variant="outlined" className='form-control w-50'
+        value={formData.CompanyName}
+        onChange={(e)=>setformData({...formData, CompanyName:e.target.value})}
+        />
+          <div className='ser_input_City'>
+           <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
+           value={formData.City}
+           onChange={(e)=>setformData({...formData, City:e.target.value})}
+           />
+          </div>
+        </div><br/>
+        </center> 
+                 <div className='ser_Title'>
+                  <div className='title'>
+                  <Box >
+                    <FormControl  sx={{ minWidth: 100 }}> 
+                       <InputLabel id="demo-simple-select-label" value={formData.Title}
+                       onChange={(e)=>setformData({...formData, Title:e.target.value})}>Title</InputLabel>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+<<<<<<< HEAD
+                          label="Title" onChange={handleChange}>
+=======
+                          label="Title" value={formData.Title}   onChange={(e)=>setformData({...formData, Title:e.target.value})}>
+>>>>>>> 96350ea6d7e29b86580f14c8cfdbde3ac8b3ae36
+                           <MenuItem value="Mr">Mr</MenuItem>
+                           <MenuItem value="Mrs">Mrs</MenuItem>
+                           <MenuItem value="Ms">Ms</MenuItem>
+                           <MenuItem value="Dr">Dr</MenuItem>
+                        </Select>
+                    </FormControl> 
+                  </Box>
+                  </div>
+                  <div className='name'> 
+                      <TextField id="outlined-basic" label="First Name" variant="outlined" className='form-control'
+                      value={formData.FirstName}
+                      onChange={(e)=>setformData({...formData, FirstName:e.target.value})}/></div>  
+                      <div className='name'>
+                      <TextField id="outlined-basic" label="Last Name" variant="outlined" className='form-control'
+                      value={formData.LastName}
+                      onChange={(e)=>setformData({...formData, LastName:e.target.value})}/>
+                  </div> 
+                  {/* <Button variant='contained' color='primary' style={{marginTop:"1rem"}}>Next</Button>     */}
                 </div>
-                </center>    
+               
          </div>
     )
 }

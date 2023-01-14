@@ -68,6 +68,10 @@ function App() {
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))}
 
+                
+                <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>
+
+                 
                 {/* <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route> */}
 
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>

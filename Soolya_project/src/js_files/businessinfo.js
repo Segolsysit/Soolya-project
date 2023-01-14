@@ -6,8 +6,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import "../css_files/serviceman.css";
 
-function Businessinfo(){
+function Businessinfo({formData,setformData,navigation}){
 
     const [work, setwork] = React.useState('');
    
@@ -18,17 +19,20 @@ function Businessinfo(){
     return(
         <div class="tab">
             <center>
+              {/* <h1>Business Info</h1>  */}
              <div className='ser_id_type'>
                  <Box >
-                 <FormControl  sx={{ minWidth: 225 }}> 
+                 <FormControl  sx={{ minWidth: 300 }}> 
                  <InputLabel id="demo-simple-select-label"
-                 className='form-control w-75'>Identity Type</InputLabel>
+                //  value={}
+                 
+                 >Identity Type</InputLabel>
                  <Select
                  labelId="demo-simple-select-label"
                  id="demo-simple-select"
-                 value={work}
+                 value={formData.IdentityType}
                  label="Identity Type"
-                 onChange={handleChange}
+                 onChange={(e)=>setformData({...formData, IdentityType:e.target.value})}
                  >
                 <MenuItem value="Pasport">Pasport</MenuItem>
                 <MenuItem value="Driving licence">Driving licence</MenuItem>
@@ -36,15 +40,30 @@ function Businessinfo(){
                 </Select>
                 </FormControl> 
                 </Box>
-                </div><br/>
-                <div className="ser_input_id_name">
-                <TextField id="outlined-basic" label="Identity Number" variant="outlined" className='form-control w-75' />
+                <div class="name">
+                <TextField id="outlined-basic" label="Identity Number" variant="outlined" className='form-control '
+                value={formData.IdentityNumber}
+                onChange={(e)=>setformData({...formData, IdentityNumber:e.target.value})} />
+                </div>
                 </div><br/>
                 <input 
                  type="file"
                  id="photo" 
                  name="photo"
-                 accept="image/png, image/jpeg" className='form-control w-75'></input>
+                 accept="image/png, image/jpeg" className='form-control w-50'
+                 value={formData.file}
+                 onChange={(e)=>setformData({...formData, file:e.target.value})}
+                 ></input><br/>
+                 <div className="ser_input_password">
+                 <TextField id="outlined-basic" label="Password" variant="outlined" className='form-control w-25'
+                 value={formData.Password}
+                 onChange={(e)=>setformData({...formData, Password:e.target.value})} />
+                 <div class='name' >
+                 <TextField id="outlined-basic" label="Confirm Password" variant="outlined" className='form-control'
+                 value={formData.ConfirmPassword}
+                 onChange={(e)=>setformData({...formData, ConfirmPassword:e.target.value})} />
+                 </div>
+                 </div><br/>
                </center>  
             </div>
     )
