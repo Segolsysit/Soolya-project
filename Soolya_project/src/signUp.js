@@ -2,10 +2,15 @@ import "./signUp.css";
 import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
+import { RegisterApi } from "./js_files/api";
+import { storeUserData } from "./js_files/storage";
+import { isAuthenticated } from "./js_files/auth";
+
 
 function SignUp(){
+
 
     const initialErrors = {
         fname:{required:false},
@@ -58,11 +63,41 @@ function SignUp(){
                hasErrors = true;
             }
           
-            if (hasErrors !== true) {
-                setLoading(true);
+            if (!hasErrors) {
+                setLoading(true); 
+                
+                RegisterApi(inputs).then((response)=>{
+                    // console.log(response);
+                    storeUserData(response.data.idToken);
+                }).catch((err)=>{
+                    if(err.response.data.error.message == "EMAIL_EXISTS"){
+                         setErrors({...errors,custom_error:"Already this email has been registered"});
+                    }
+                    else if ( String(err.response.data.error.message).includes("WEAK_PASSWORD")) {
+                        setErrors({...errors,custom_error:"Password should be at least 6 characters"});
+                    }
+
+                }).finally(()=>{
+                    setLoading(false);
+                })
+
             }
          
             setErrors(errors);
+    }
+
+    const [inputs,setInputs] = useState({
+        fname:"",
+        lname:"",
+        email:"",
+        number:"",
+        password:"",
+        c_password:""
+    })
+
+   
+    if(isAuthenticated()){
+        return <Navigate to="/dashboard"></Navigate>
     }
 
     return(
@@ -90,7 +125,7 @@ function SignUp(){
                         <label>
                             First name
                         </label>
-                        <input className="sign_up_inupt_box" type="text" onChange={handleInput} name="fname" placeholder="Enter your first name"></input>
+                        <input className="sign_up_inupt_box" type="text" onChange={(event)=>{setInputs({...inputs,fname:event.target.value})}} value={inputs.fname} name="name"  placeholder="Enter your first name"></input>
                     </div>
 
                     {errors.fname.required?
@@ -108,7 +143,7 @@ function SignUp(){
                         <label>
                             Last name
                         </label>
-                        <input className="sign_up_inupt_box" type="text" onChange={handleInput} name="lname" placeholder="Enter your first name"></input>
+                        <input className="sign_up_inupt_box" type="text" onChange={(event)=>{setInputs({...inputs,lname:event.target.value})}} value={inputs.lname} name="lname" placeholder="Enter your first name"></input>
                     </div>
 
                     {errors.lname.required?
@@ -126,7 +161,7 @@ function SignUp(){
                         <label>
                             Email Address
                         </label>
-                        <input className="sign_up_inupt_box" type="email" onChange={handleInput} name="email" placeholder="Enter your email address"></input>
+                        <input className="sign_up_inupt_box" type="email" onChange={(event)=>{setInputs({...inputs,email:event.target.value})}} value={inputs.email} name="email" placeholder="Enter your email address"></input>
                     </div>
 
                     {errors.email.required?
@@ -149,7 +184,7 @@ function SignUp(){
                         <label>
                             Mobile Number
                         </label>
-                        <input className="sign_up_inupt_box" type="tel" onChange={handleInput} name="number" placeholder="Enter your Phone Number"></input>
+                        <input className="sign_up_inupt_box" type="tel" onChange={(event)=>{setInputs({...inputs,number:event.target.value})}} name="number" placeholder="Enter your Phone Number"></input>
                     </div>
 
                     {errors.number.required?
@@ -168,7 +203,7 @@ function SignUp(){
                         <label>
                             Password
                         </label>
-                        <input className="sign_up_inupt_box" type="password" onChange={handleInput} name="password" placeholder="***********"></input>
+                        <input className="sign_up_inupt_box" type="password" onChange={(event)=>{setInputs({...inputs,password:event.target.value})}} value={inputs.password} name="password" placeholder="***********"></input>
                     </div>
 
                     {errors.password.required?
@@ -186,7 +221,7 @@ function SignUp(){
                         <label>
                             confirm Password
                         </label>
-                        <input className="sign_up_inupt_box" type="Password" onChange={handleInput} name="c_password" placeholder="************"></input>
+                        <input className="sign_up_inupt_box" type="Password" onChange={(event)=>{setInputs({...inputs,c_password:event.target.value})}} value={inputs.c_password} name="c_password" placeholder="************"></input>
                     </div>
 
                     {errors.c_password.required?
@@ -217,7 +252,7 @@ function SignUp(){
    
                         <div className="sign_up_checkbox">
                             <div className="sign_up_checkbox">
-                                <input type="checkbox" for="rem"></input>
+                                <input type="checkbox" htmlFor="rem"></input>
                                 <label className="sign_up_checkbox_label">I agree with the <a href="_self">Terms & Conditions</a></label>
                             </div>
                         </div>
