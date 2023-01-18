@@ -7,6 +7,7 @@ const apiKey ="AIzaSyDX3R0TxlNPpoez5Gs7jgVtuTMb-GaL6og"
 
 const registerUrl = `/accounts:signUp?key=${apiKey}`;
 
+const loginUrl = `/accounts:signInWithPassword?key=${apiKey}`;
 
 export const RegisterApi = (inputs)=>{
    let data = {
@@ -17,6 +18,14 @@ export const RegisterApi = (inputs)=>{
      c_password:inputs.c_password
    }  
 
-   return axios.post(registerUrl,data)
+   return axios.post(registerUrl,data)  
+}
+
+export const LoginApi = (inputs)=>{
+     let data ={
+      email:inputs.email,
+      password:inputs.password
+     }
    
+     return axios.post(loginUrl,data)
 }

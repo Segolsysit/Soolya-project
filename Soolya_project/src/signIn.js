@@ -2,11 +2,92 @@ import './signIn.css';
 import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { useState } from 'react';
+import { LoginApi } from './js_files/api';
+import { storeUserData } from './js_files/storage';
+import { isAuthenticated } from './js_files/auth';
+
+
 
 function SignIn(){
 
+    
+    
+     
+    const initialErrors = {
+        email:{required:false},
+        password:{required:false},
+        custom_error:null
+    }
 
+    const [errors,setErrors] = useState(initialErrors);
+
+//     if( <Navigate to="/sign_in" replace={true} /> ){
+//          alert("Registraion is successfull Login here vignesh!");
+
+//         errors.custom_error = "Registraion is successfull Login here!";
+//    }
+
+
+    const [loading,setLoading] = useState(false);
+
+    const [inputs,setInputs] = useState({
+         email:"",
+         password:""
+    });
+
+    const handleSubmit = (event)=>{
+          event.preventDefault();
+ 
+        let errors = initialErrors;
+ 
+        let hasErrors = false;
+
+        console.log(errors);
+
+        if(inputs.email === ""){
+            errors.email.required =true;
+            hasErrors = true;
+        }
+         
+        if(inputs.password === ""){
+            errors.password.required =true;
+            hasErrors = true;
+        }
+
+       
+        if(!hasErrors){
+            setLoading(true);
+
+            LoginApi(inputs).then((response)=>{
+               storeUserData(response.data.idToken);
+            }).catch((err) =>{
+                // if(err.response.data.error.message == "MISSING_EMAIL"){
+                //     console.log(err);
+                //     setErrors({...errors,custom_error:"Invalid credential"});
+                // }
+                if(err.code === "ERR_BAD_REQUEST"){
+                    console.log(err);
+                    setErrors({...errors,custom_error:"Invalid credential"});
+                }
+                else if ( String(err.response.data.error.message).includes("WEAK_PASSWORD")) {
+                    setErrors({...errors,custom_error:"Password should be at least 6 characters"});
+                }
+            }).finally(()=>{
+                setLoading(false);
+            })
+        }
+
+
+        setErrors({...errors});
+    }
+
+
+    if(isAuthenticated()){
+       return <Navigate to="/"></Navigate>
+    // alert("you success");
+    }
 
     return(
         <div>  
@@ -22,50 +103,65 @@ function SignIn(){
                 </div>
              </div>
             
-            <form   className="sign_in_form">
+            <form  onSubmit={handleSubmit} className="sign_in_form">
           
              <div className="form_div">
                     <div className="form_input">
                         <label>
                             Email/Phone
                         </label>
-                        <input className="data_input" name="email_phone"   type="text" placeholder="Enter email or phone number"></input>
+                        <input className="data_input" onChange={(event)=>{
+                            setInputs({...inputs,email:event.target.value})
+                            errors.email.required = false;
+                            }} 
+                        value={inputs.email}  type="text" placeholder="Enter email or phone number"></input>
                     </div>
 
-                <div id="d_flex" className="sign_in_form_validation">
+                {errors.email.required?
+                    (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
                             <h6>Email or phone number is required</h6>
                         </div>
-                    </div>
+                    </div>):null
+                    }
                     
                     <div className="form_input">
                         <label>
                             Password
                         </label>
-                        <input className="data_input" name="password"  type="password" placeholder="********"></input>
+                        <input className="data_input" 
+                        onChange={(event)=>{
+                            setInputs({...inputs,password:event.target.value})
+                            errors.password.required = false;   
+                            }} 
+                        value={inputs.password} type="password" placeholder="********"></input>
                     </div>
 
-                    <div id="d_flex" className="sign_in_form_validation">
+                    {errors.password.required?
+                    (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
                             <h6>Password is required</h6>
                         </div>
-                    </div>
+                    </div>):null
+                    }
                     
 
-                    <div id="d_flex_center" className="sign_in_form_validation">
+                    {errors.custom_error?
+                        (<div id="d_flex_center" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h5>Custom error</h5>
+                            <h5>{errors.custom_error}</h5>
                         </div>
-                    </div>
+                    </div>):null
+                    }
                     
                  
                    <div className="form_checkbox">
@@ -79,14 +175,16 @@ function SignIn(){
                     </div>
                    
                 
-                   <div id="spinner_roll">
+                   {loading?
+                   (<div id="spinner_roll">
                         <div className="spinner-border text-primary" role="status">
                         </div>
-                    </div>
+                    </div>):null
+                    }
                     
 
                     <div className="form_sign_in_button_div">
-                        <button type="submit" className="form_sign_in_button"    >sign in</button>
+                        <button type="submit" disabled={loading} className="form_sign_in_button">sign in</button>
                     </div>
                     <div className="form_center">
                     <div className="or_cont">
