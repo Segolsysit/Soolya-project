@@ -49,13 +49,13 @@ function Generalinfo({formData,setformData,WorkTypeerror,districterror,Titleerro
            onChange={(e)=>{setformData({...formData, district:e.target.value})
            setdistricterror(false)}}
            error={districterror}
-           />
-           {/* <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
+      />*/}
+            <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
            value={formData.City}
            onChange={(e)=>{setformData({...formData, City:e.target.value});
           setCityerror(false)}}
-           error={Cityerror} */}
-           {/* /> */}
+           error={Cityerror} 
+            /> 
           </div>
         </div><br/>
                  <div className='ser_Title'>
