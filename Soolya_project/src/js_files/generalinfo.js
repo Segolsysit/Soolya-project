@@ -32,10 +32,9 @@ function Generalinfo({formData,setformData,WorkTypeerror,districterror,Titleerro
                           label="Work type" value={formData.WorkType} 
                           onChange={(e)=>{setformData({...formData, WorkType:e.target.value});
                           setWorkTypeerror(false)}}
-                          error={WorkTypeerror}
-                          helperText={WorkTypeerror === "true" ? "Incorrect entry." : ""}>
-                           <MenuItem value="Plumbing">Plumbing</MenuItem>
-                           <MenuItem value="Electrician">Electrician</MenuItem>
+                          error={WorkTypeerror}>
+                           <MenuItem value="plumbing">Plumbing</MenuItem>
+                           <MenuItem value="electrician">Electrician</MenuItem>
                         </Select>
                     </FormControl> 
                   </Box>
@@ -45,7 +44,7 @@ function Generalinfo({formData,setformData,WorkTypeerror,districterror,Titleerro
         error={Cnameerror} */}
         {/* /> */}
           <div className='ser_input_City'>
-           <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
+           {/* <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
            value={formData.district}
            onChange={(e)=>{setformData({...formData, district:e.target.value})
            setdistricterror(false)}}
