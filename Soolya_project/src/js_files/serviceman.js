@@ -111,7 +111,7 @@ function Serviceman(){
                                             else if(formData.StreetAddress.length === 0){
                                                 setStreetAddresserror(true)}
                                                 else if(formData.PostalCode.length === 0){
-                                                   setPassworderror(true)}
+                                                   setPostalCodeerror(true)}
                                                    else if(formData.Email.length === 0){
                                                       setEmailerror(true)}
                                                       else{setpage((currPage) => currPage + 1);}
