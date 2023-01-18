@@ -23,6 +23,7 @@ function SignUp(){
     }
      
     const [errors,setErrors] = useState(initialErrors);
+    
 
     const [loading,setLoading] = useState(false);
 
@@ -53,6 +54,11 @@ function SignUp(){
                hasErrors = true;
             }
 
+            if(inputs.number.length <10){
+                errors.custom_error ="Number must have 10 digit"
+            }
+
+
             if (inputs.password === "" ) {
                 errors.password.required = true;
                hasErrors = true;
@@ -63,9 +69,14 @@ function SignUp(){
                hasErrors = true;
             }
 
-            // if(inputs.password !== inputs.c_password){
-            //     setErrors({...errors,custom_error:"Password and confirm password are not same"});
-            // }
+            if (inputs.password !== inputs.c_password) {
+                errors.custom_error = "Password and Confirm password are not same";
+               hasErrors = true;
+            }
+
+            if(inputs.fname.length === 0 ){
+                errors.custom_error = null; 
+            }
           
             if (!hasErrors) {
                 setLoading(true); 
@@ -74,8 +85,8 @@ function SignUp(){
                     // console.log(response);
                     storeUserData(response.data.idToken);
                 }).catch((err)=>{
-                    if(err.response.data.error.message == "EMAIL_EXISTS"){
-                         setErrors({...errors,custom_error:"Already this email has been registered"});
+                    if(err.response.data.error.message === "EMAIL_EXISTS"){
+                        setErrors({...errors,custom_error:"Already this email has been registered"});
                     }
                     else if ( String(err.response.data.error.message).includes("WEAK_PASSWORD")) {
                         setErrors({...errors,custom_error:"Password should be at least 6 characters"});
@@ -87,7 +98,7 @@ function SignUp(){
 
             }
          
-            setErrors(errors);
+            setErrors({...errors});
     }
 
     const [inputs,setInputs] = useState({
@@ -100,9 +111,10 @@ function SignUp(){
     })
 
    
-    // if(isAuthenticated()){
-    //     return <Navigate to="/dashboard"></Navigate>
-    // }
+    if(isAuthenticated()){
+        // alert("Registraion is successfull Login vignesh here!");
+        return <Navigate to="/dashboard"></Navigate>   
+    }
 
     return(
     <div>
@@ -129,7 +141,12 @@ function SignUp(){
                         <label>
                             First name
                         </label>
-                        <input className="sign_up_inupt_box" type="text" onChange={(event)=>{setInputs({...inputs,fname:event.target.value})}} value={inputs.fname} name="name"  placeholder="Enter your first name"></input>
+                        <input className="sign_up_inupt_box" type="text" 
+                        onChange={(event)=>{
+                            setInputs({...inputs,fname:event.target.value})
+                            errors.fname.required = false;
+                        }} 
+                        value={inputs.fname} name="name"  placeholder="Enter your first name"></input>
                     </div>
 
                     {errors.fname.required?
@@ -147,7 +164,12 @@ function SignUp(){
                         <label>
                             Last name
                         </label>
-                        <input className="sign_up_inupt_box" type="text" onChange={(event)=>{setInputs({...inputs,lname:event.target.value})}} value={inputs.lname} name="lname" placeholder="Enter your first name"></input>
+                        <input className="sign_up_inupt_box" type="text" 
+                        onChange={(event)=>{
+                            setInputs({...inputs,lname:event.target.value})
+                              errors.lname.required = false;
+                            }} 
+                        value={inputs.lname} name="lname" placeholder="Enter your first name"></input>
                     </div>
 
                     {errors.lname.required?
@@ -165,7 +187,12 @@ function SignUp(){
                         <label>
                             Email Address
                         </label>
-                        <input className="sign_up_inupt_box" type="email" onChange={(event)=>{setInputs({...inputs,email:event.target.value})}} value={inputs.email} name="email" placeholder="Enter your email address"></input>
+                        <input className="sign_up_inupt_box" type="email" 
+                        onChange={(event)=>{
+                            setInputs({...inputs,email:event.target.value})
+                            errors.email.required = false;
+                            }} 
+                        value={inputs.email} name="email" placeholder="Enter your email address"></input>
                     </div>
 
                     {errors.email.required?
@@ -188,7 +215,12 @@ function SignUp(){
                         <label>
                             Mobile Number
                         </label>
-                        <input className="sign_up_inupt_box" type="tel" onChange={(event)=>{setInputs({...inputs,number:event.target.value})}} name="number" placeholder="Enter your Phone Number"></input>
+                        <input className="sign_up_inupt_box" type="tel" 
+                        onChange={(event)=>{
+                            setInputs({...inputs,number:event.target.value})
+                            errors.number.required = false;
+                            }}
+                        name="number" placeholder="Enter your Phone Number"></input>
                     </div>
 
                     {errors.number.required?
@@ -207,7 +239,12 @@ function SignUp(){
                         <label>
                             Password
                         </label>
-                        <input className="sign_up_inupt_box" type="password" onChange={(event)=>{setInputs({...inputs,password:event.target.value})}} value={inputs.password} name="password" placeholder="***********"></input>
+                        <input className="sign_up_inupt_box" type="password" 
+                        onChange={(event)=>{
+                            setInputs({...inputs,password:event.target.value})
+                            errors.password.required = false;
+                        }} 
+                        value={inputs.password} name="password" placeholder="***********"></input>
                     </div>
 
                     {errors.password.required?
@@ -225,7 +262,12 @@ function SignUp(){
                         <label>
                             confirm Password
                         </label>
-                        <input className="sign_up_inupt_box" type="Password" onChange={(event)=>{setInputs({...inputs,c_password:event.target.value})}} value={inputs.c_password} name="c_password" placeholder="************"></input>
+                        <input className="sign_up_inupt_box" type="Password" 
+                        onChange={(event)=>{
+                            setInputs({...inputs,c_password:event.target.value})
+                            errors.c_password.required = false;
+                            }} 
+                        value={inputs.c_password} name="c_password" placeholder="************"></input>
                     </div>
 
                     {errors.c_password.required?
