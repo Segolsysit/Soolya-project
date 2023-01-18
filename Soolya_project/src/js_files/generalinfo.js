@@ -9,8 +9,8 @@ import FormControl from '@mui/material/FormControl';
 // import { Button } from '@mui/material';
 // import { Validate, ValidationGroup } from 'mui-validate';
 
-function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,FirstNameerror,LastNameerror
-,setTitleerror,setFirstNameerror,setLastNameerror,setWorkTypeerror,setCityerror}){
+function Generalinfo({formData,setformData,WorkTypeerror,districterror,Titleerror,FirstNameerror,LastNameerror
+,setTitleerror,setFirstNameerror,setLastNameerror,setWorkTypeerror,setdistricterror}){
 
     // const [work, setwork] = React.useState('');
    
@@ -32,7 +32,8 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
                           label="Work type" value={formData.WorkType} 
                           onChange={(e)=>{setformData({...formData, WorkType:e.target.value});
                           setWorkTypeerror(false)}}
-                          error={WorkTypeerror}>
+                          error={WorkTypeerror}
+                          helperText={WorkTypeerror === "true" ? "Incorrect entry." : ""}>
                            <MenuItem value="Plumbing">Plumbing</MenuItem>
                            <MenuItem value="Electrician">Electrician</MenuItem>
                         </Select>
@@ -46,13 +47,16 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
           <div className='ser_input_City'>
            <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
            value={formData.district}
-           onChange={(e)=>setformData({...formData, district:e.target.value})}/>
-           <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
+           onChange={(e)=>{setformData({...formData, district:e.target.value})
+           setdistricterror(false)}}
+           error={districterror}
+           />
+           {/* <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
            value={formData.City}
            onChange={(e)=>{setformData({...formData, City:e.target.value});
           setCityerror(false)}}
-           error={Cityerror}
-           />
+           error={Cityerror} */}
+           {/* /> */}
           </div>
         </div><br/>
                  <div className='ser_Title'>
@@ -65,7 +69,8 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
                           label="Title" value={formData.Title}   onChange={(e)=>{setformData({...formData, Title:e.target.value});
-                           setTitleerror(false)}}>
+                           setTitleerror(false)}}
+                           error={Titleerror}>
                            <MenuItem value="Mr">Mr</MenuItem>
                            <MenuItem value="Mrs">Mrs</MenuItem>
                            <MenuItem value="Ms">Ms</MenuItem>
