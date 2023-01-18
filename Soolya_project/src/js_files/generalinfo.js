@@ -33,8 +33,8 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
                           onChange={(e)=>{setformData({...formData, WorkType:e.target.value});
                           setWorkTypeerror(false)}}
                           error={WorkTypeerror}>
-                           <MenuItem value="Plumbing">Plumbing</MenuItem>
-                           <MenuItem value="Electrician">Electrician</MenuItem>
+                           <MenuItem value="plumbing">Plumbing</MenuItem>
+                           <MenuItem value="electrician">Electrician</MenuItem>
                         </Select>
                     </FormControl> 
                   </Box>
@@ -44,9 +44,9 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
         error={Cnameerror} */}
         {/* /> */}
           <div className='ser_input_City'>
-           <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
+           {/* <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
            value={formData.district}
-           onChange={(e)=>setformData({...formData, district:e.target.value})}/>
+           onChange={(e)=>setformData({...formData, district:e.target.value})}/> */}
            <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
            value={formData.City}
            onChange={(e)=>{setformData({...formData, City:e.target.value});
