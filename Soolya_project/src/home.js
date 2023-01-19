@@ -227,7 +227,7 @@ function Home(props) {
                                     <select className="locality" onChange={dist} >
                                         <option selected disabled>Select District</option>
                                         <option value="erode">Erode</option>
-                                        <option value="Coimbatore">USaaaa</option>
+                                        <option value="Coimbatore">USaa</option>
                                     </select>
                                 </div>
                                 <div className="search_div">
