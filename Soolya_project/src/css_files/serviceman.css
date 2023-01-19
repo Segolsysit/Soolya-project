@@ -30,12 +30,13 @@
     height: 10px;
     background-color: rgb(145, 202, 240);
     margin-bottom: 50px;
+    border: 1px solid rgb(59, 50, 50);
   }
   
   .progressbar div {
     width: 25%;
     height: 100%;
-    background-color: rgb(98, 0, 255);
+    background-color: #2874f0;
   }
 
   .ser_input_name{
