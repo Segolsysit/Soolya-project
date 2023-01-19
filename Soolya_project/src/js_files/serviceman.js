@@ -13,7 +13,7 @@ function Serviceman(){
     const FormTitles=["General Info","Personal Info","Business Info"]
  
     const [WorkTypeerror,setWorkTypeerror]=React.useState(false);
-    const [Cityerror,setCityerror]=React.useState(false);
+    const [districterror,setdistricterror]=React.useState(false);
     const [Titleerror,setTitleerror]=React.useState(false);
     const [FirstNameerror,setFirstNameerror]=React.useState(false);
     const [LastNameerror,setLastNameerror]=React.useState(false);
@@ -28,7 +28,7 @@ function Serviceman(){
     const [ConfirmPassworderror,setConfirmPassworderror]=React.useState(false);
     const [fileerror,setfileerror]=React.useState(false);
 
-    const props = {WorkTypeerror,setWorkTypeerror,Cityerror,setCityerror,Titleerror,setTitleerror,FirstNameerror,setFirstNameerror
+    const props = {WorkTypeerror,setWorkTypeerror,districterror,setdistricterror,Titleerror,setTitleerror,FirstNameerror,setFirstNameerror
         ,LastNameerror,setLastNameerror,MobilePhoneNumbererror,setMobilePhoneNumbererror,ConfirmMobilePhoneNumbererror,setConfirmMobilePhoneNumbererror
     ,StreetAddresserror,setStreetAddresserror,PostalCodeerror,setPostalCodeerror,Emailerror,setEmailerror,
     IdentityTypeerror,setIdentityTypeerror,IdentityNumbererror,setIdentityNumbererror,Passworderror,setPassworderror
@@ -36,7 +36,7 @@ function Serviceman(){
 
     const [formData,setformData]=React.useState({
         WorkType:"",
-        City:"",
+        district:"",
         Title:"",
         FirstName:"",
         LastName:"",
@@ -89,8 +89,8 @@ function Serviceman(){
                           if(page === 0){
                             if(formData.WorkType.length === 0){
                                 setWorkTypeerror(true)}
-                                else if(formData.City.length === 0){
-                                    setCityerror(true)} 
+                                else if(formData.district.length === 0){
+                                    setdistricterror(true)} 
                                     else if(formData.Title.length === 0){
                                         setTitleerror(true)}
                                         else if(formData.FirstName.length === 0){
@@ -111,7 +111,7 @@ function Serviceman(){
                                             else if(formData.StreetAddress.length === 0){
                                                 setStreetAddresserror(true)}
                                                 else if(formData.PostalCode.length === 0){
-                                                   setPassworderror(true)}
+                                                   setPostalCodeerror(true)}
                                                    else if(formData.Email.length === 0){
                                                       setEmailerror(true)}
                                                       else{setpage((currPage) => currPage + 1);}
@@ -131,7 +131,7 @@ function Serviceman(){
                                                   console.log(formData);
                                                 axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
                                                 WorkType:formData.WorkType,
-                                                City:formData.City,
+                                                district:formData.district,
                                                 Title:formData.Title,
                                                 FirstName:formData.FirstName,
                                                 LastName:formData.LastName,

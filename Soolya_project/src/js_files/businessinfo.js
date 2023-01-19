@@ -49,7 +49,8 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
                 value={formData.IdentityNumber}
                 onChange={(e)=>{setformData({...formData, IdentityNumber:e.target.value});
                   setIdentityNumbererror(false)}} 
-                error={IdentityNumbererror}/>
+                error={IdentityNumbererror}
+                helperText={IdentityNumbererror === true ?"Identity Number is Required.":""}/>
                 </div>
                 </div><br/>
                 <input 
@@ -67,13 +68,15 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
                  value={formData.Password}
                  onChange={(e)=>{setformData({...formData, Password:e.target.value});
                     setPassworderror(false)}}
-                 error={Passworderror} />
+                 error={Passworderror} 
+                 helperText={Passworderror === true ?"Password is Required.":""}/>
                  <div class='name' >
                  <TextField id="outlined-basic" label="Confirm Password" variant="outlined" className='form-control'
                  value={formData.ConfirmPassword}
                  onChange={(e)=>{setformData({...formData, ConfirmPassword:e.target.value});
                    setConfirmPassworderror(false)}} 
-                 error={ConfirmPassworderror}/>
+                 error={ConfirmPassworderror}
+                 helperText={ConfirmPassworderror === true ?"Confirm Password is Not Same.":""}/>
                  </div>
                  </div><br/>
                </center>  

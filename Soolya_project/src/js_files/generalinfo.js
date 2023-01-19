@@ -6,11 +6,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+// import { error } from 'jquery';
 // import { Button } from '@mui/material';
 // import { Validate, ValidationGroup } from 'mui-validate';
 
-function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,FirstNameerror,LastNameerror
-,setTitleerror,setFirstNameerror,setLastNameerror,setWorkTypeerror,setCityerror}){
+function Generalinfo({formData,setformData,WorkTypeerror,districterror,Titleerror,FirstNameerror,LastNameerror
+,setTitleerror,setFirstNameerror,setLastNameerror,setWorkTypeerror,setdistricterror}){
 
     // const [work, setwork] = React.useState('');
    
@@ -32,9 +33,10 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
                           label="Work type" value={formData.WorkType} 
                           onChange={(e)=>{setformData({...formData, WorkType:e.target.value});
                           setWorkTypeerror(false)}}
-                          error={WorkTypeerror}>
-                           <MenuItem value="Plumbing">Plumbing</MenuItem>
-                           <MenuItem value="Electrician">Electrician</MenuItem>
+                          error={WorkTypeerror}
+                          helperText="hii">
+                           <MenuItem value="plumbing">Plumbing</MenuItem>
+                           <MenuItem value="electrician">Electrician</MenuItem>
                         </Select>
                     </FormControl> 
                   </Box>
@@ -46,13 +48,18 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
           <div className='ser_input_City'>
            <TextField id="outlined-basic" label="District*" variant="outlined" className='form-control '
            value={formData.district}
-           onChange={(e)=>setformData({...formData, district:e.target.value})}/>
-           <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
+           onChange={(e)=>{setformData({...formData, district:e.target.value})
+           setdistricterror(false)}}
+           error={districterror}
+            helperText={districterror === true ?"District is Required.":""}
+          //  helperText={ districterror.length === 5 ? "Incorrect entry." : ""}
+            />
+            {/* <TextField id="outlined-basic" label="City*" variant="outlined" className='form-control '
            value={formData.City}
            onChange={(e)=>{setformData({...formData, City:e.target.value});
           setCityerror(false)}}
-           error={Cityerror}
-           />
+           error={Cityerror} 
+            />  */}
           </div>
         </div><br/>
                  <div className='ser_Title'>
@@ -65,7 +72,8 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
                           label="Title" value={formData.Title}   onChange={(e)=>{setformData({...formData, Title:e.target.value});
-                           setTitleerror(false)}}>
+                           setTitleerror(false)}}
+                           error={Titleerror}>
                            <MenuItem value="Mr">Mr</MenuItem>
                            <MenuItem value="Mrs">Mrs</MenuItem>
                            <MenuItem value="Ms">Ms</MenuItem>
@@ -79,13 +87,15 @@ function Generalinfo({formData,setformData,WorkTypeerror,Cityerror,Titleerror,Fi
                       value={formData.FirstName}
                       onChange={(e)=>{setformData({...formData, FirstName:e.target.value});
                       setFirstNameerror(false)}}
-                      error={FirstNameerror}/></div>  
+                      error={FirstNameerror}
+                      helperText={FirstNameerror === true ?"First Name is Required.":""}/></div>  
                       <div className='name'>
                       <TextField id="outlined-basic" label="Last Name" variant="outlined" className='form-control'
                       value={formData.LastName}
                       onChange={(e)=>{setformData({...formData, LastName:e.target.value});
                       setLastNameerror(false)}}
-                      error={LastNameerror}/>
+                      error={LastNameerror}
+                      helperText={LastNameerror === true ?"Last Name is Required.":""}/>
                   </div> 
                   {/* <Button variant='contained' color='primary' style={{marginTop:"1rem"}}>Next</Button>     */}
                 </div>

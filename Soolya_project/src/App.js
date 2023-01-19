@@ -64,9 +64,9 @@ function App() {
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
-                {array.map((arr)=>(
+                {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
-                 ))}
+                 ))} */}
 
                 
                 <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>

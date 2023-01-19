@@ -54,16 +54,16 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
 
     //     })
     // }
-    if (get.length === 0) {
+    if (get.length === 0 ||get === "") {
         filter = array.filter((arr) => {
 
             return district === arr.district;
 
         })
-    } else if (district.length === 0) {
+    } else if (district.length === 0 || district === "") {
         filter = array.filter((arr) => {
 
-            return get === arr.CompanyName;
+            return get === arr.WorkType;
 
         })
 
@@ -71,14 +71,14 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
     else if (get.length === 0 && district.length === 0) {
         filter = array.filter((arr) => {
 
-            return district === arr.district || get === arr.CompanyName
+            return district === arr.district || get === arr.WorkType
 
         })
     }
     else {
         filter = array.filter((arr) => {
 
-            return district === arr.district && get === arr.CompanyName
+            return district === arr.district && get === arr.WorkType
 
         })
     }
@@ -121,7 +121,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                 <div className="plumber_div_2">
                     <button onClick={back}>home page</button>
 
-                    {filter.length === 0 ?
+                    {/* {filter.length === 0 ?
                         array.map((a) => (
 
                             <div className="plumber_profile" key={a.id}>
@@ -134,7 +134,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                                     <div className="plumber_bio">
                                         <div>
                                             <h4>{a.FirstName} {a.LastName}</h4>
-                                            <h5><b><u>{a.CompanyName}</u></b></h5>
+                                            <h5><b><u>{a.WorkType}</u></b></h5>
                                         </div>
                                         <div className="d_flex">
                                             <h5>Ratings</h5>
@@ -157,8 +157,8 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                                     </div>
                                 </div>
 
-                            </div>)) :
-                        filter.map((a) => (
+                            </div>)) : */}
+                        {filter.map((a) => (
 
 
                             <div className="plumber_profile" key={a.id}>
@@ -171,7 +171,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                                     <div className="plumber_bio">
                                         <div>
                                             <h4>{a.FirstName} {a.LastName}</h4>
-                                            <h5><b><u>{a.CompanyName}</u></b></h5>
+                                            <h5><b><u>{a.WorkType}</u></b></h5>
                                         </div>
                                         <div className="d_flex">
                                             <h5>Ratings</h5>
