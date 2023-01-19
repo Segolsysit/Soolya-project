@@ -231,7 +231,7 @@ function Home(props) {
                                     </select>
                                 </div>
                                 <div className="search_div">
-                                    <input id="search" className="locality_search" type="search" placeholder="search your service category" onChange={chg} value={search}></input>
+                                    <input id="search" className={search.length === 0 ? "locality_search" :"locality_search_active" } type="search" placeholder="search your service category" onChange={chg} value={search}></input>
                                 </div>
                                 <div className="button_div">
                                     <button className="locality_search_button" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>

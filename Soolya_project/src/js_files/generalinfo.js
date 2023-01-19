@@ -6,6 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
 // import { error } from 'jquery';
 // import { Button } from '@mui/material';
 // import { Validate, ValidationGroup } from 'mui-validate';
@@ -34,10 +35,12 @@ function Generalinfo({formData,setformData,WorkTypeerror,districterror,Titleerro
                           onChange={(e)=>{setformData({...formData, WorkType:e.target.value});
                           setWorkTypeerror(false)}}
                           error={WorkTypeerror}
-                          helperText="hii">
+                          >
                            <MenuItem value="plumbing">Plumbing</MenuItem>
                            <MenuItem value="electrician">Electrician</MenuItem>
                         </Select>
+                        <FormHelperText error
+                        >{WorkTypeerror === true ? "Choose Work type":""}</FormHelperText>
                     </FormControl> 
                   </Box>
         {/* <TextField id="outlined-basic" label="Company Name*" variant="outlined" className='form-control w-50'
@@ -79,6 +82,8 @@ function Generalinfo({formData,setformData,WorkTypeerror,districterror,Titleerro
                            <MenuItem value="Ms">Ms</MenuItem>
                            <MenuItem value="Dr">Dr</MenuItem>
                         </Select>
+                        <FormHelperText error
+                        >{Titleerror === true ? "Select Title":""}</FormHelperText>
                     </FormControl> 
                   </Box>
                   </div>

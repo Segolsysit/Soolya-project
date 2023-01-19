@@ -6,6 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
 import "../css_files/serviceman.css";
 
 function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererror,setIdentityTypeerror,
@@ -42,6 +43,7 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
                 <MenuItem value="Driving licence">Driving licence</MenuItem>
                 <MenuItem value="Company Id">Company Id</MenuItem>
                 </Select>
+                <FormHelperText error>{IdentityTypeerror === true ? "Identity Required":""}</FormHelperText>
                 </FormControl> 
                 </Box>
                 <div class="name">

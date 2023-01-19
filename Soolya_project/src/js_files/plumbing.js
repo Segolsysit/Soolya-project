@@ -1,5 +1,5 @@
 import "../css_files/plumbing.css";
-
+import main_1 from "../images/main_1.jpg";
 import rating from "../images/ratings.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -167,7 +167,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
 
                                 <div className="plumber_profile_inner">
                                     <div className="plumber_image_size">
-                                        <img className="plumber_img" src={a.img} alt="plumber_man"></img>
+                                        <img className="plumber_img" src={main_1} alt="plumber_man"></img>
                                     </div>
 
                                     <div className="plumber_bio">
