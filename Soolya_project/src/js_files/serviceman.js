@@ -5,10 +5,12 @@ import Generalinfo from './generalinfo';
 import Personinfo from './personinfo';
 import Businessinfo from './businessinfo';
 import axios from "axios";
+import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 // import Accountinfo from './accountinfo';
 
 function Serviceman(){
-     
+    const nav = useNavigate();
     const [page,setpage]=React.useState(0)
     const FormTitles=["General Info","Personal Info","Business Info"]
  
@@ -57,7 +59,7 @@ function Serviceman(){
             return<Generalinfo formData={formData} setformData={setformData} {...props}/>
         } else if (page === 1){
             return<Personinfo formData={formData} setformData={setformData} {...props}/>
-        }else{
+        }else {
             return<Businessinfo formData={formData} setformData={setformData} {...props}/>
         }
         // else {
@@ -79,12 +81,13 @@ function Serviceman(){
         </div><br/>
         <div className='button'>
                  <Button variant="contained"
-                 disabled={page === 0}
+                 disabled={page === 0 || page === 3}
                  onClick={()=>{setpage((currpage)=> currpage - 1 )}}>
                   Prev
                  </Button>   
                  
                  <Button sx={{ m: 2 }} variant="contained"
+                 disabled={ page === 3}
                  onClick={() => {
                           if(page === 0){
                             if(formData.WorkType.length === 0){
@@ -127,7 +130,12 @@ function Serviceman(){
                                           setPassworderror(true)}
                                           else if(formData.ConfirmPassword.length === 0 || formData.ConfirmPassword !== formData.Password){
                                               setConfirmPassworderror(true)}
-                                              else{ alert("FORM SUBMITTED");
+                                              else{ swal({
+                                                title: "Good job!",
+                                                text: "We will Contact Through Email",
+                                                icon: "success",
+                                                button: "ok",
+                                              });
                                                   console.log(formData);
                                                 axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
                                                 WorkType:formData.WorkType,
@@ -146,6 +154,7 @@ function Serviceman(){
                                                 ConfirmPassword:formData.ConfirmPassword,
                                                 file:formData.file
                                               })
+                                              nav("/")
                           }
                     
                   }}}>
