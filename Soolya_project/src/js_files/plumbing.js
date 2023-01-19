@@ -102,13 +102,14 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
 
 
 
-            <div className="plumber_page">
-                <div className="plumber_div_1" value={district} onChange={chg}>
+            <div className="plumber_page ">
+                <div className="plumber_div_1 " value={district} onChange={chg} >
                     {/* <button onClick={chg}>change</button> */}
-                    <input type="radio" value="erode" name="district" id="erd"></input>
-                    <label htmlFor="erd">erode</label>
-                    <input type="radio" value="Coimbatore" name="district" id="cbr"></input>
-                    <label htmlFor="cbr">Coimbatore</label>                {/* <select value={district} onChange={chg}>
+                    <input type="radio" value="erode" name="district" id="erd" ></input>
+                    <label htmlFor="erd" className="text-light h3 btn btn-primary w-50">Erode</label><br></br>
+                    <input type="radio" value="Coimbatore" name="district" id="cbr" ></input>
+                    <label htmlFor="cbr" className="text-light h3 btn btn-primary w-50">Coimbatore</label> 
+                                   {/* <select value={district} onChange={chg}>
                 <option value="">
                     select
                 </option>
@@ -118,8 +119,9 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                     {/* <button onClick={fil}>search</button>  */}
                 </div>
                 {/* <div className="plumber_page"> */}
-                <div className="plumber_div_2">
-                    <button onClick={back}>home page</button>
+                <div className="plumber_div_2 ">
+                <div className="text-center">
+                    <button onClick={back} className="btn btn-primary ">home page</button></div>
 
                     {/* {filter.length === 0 ?
                         array.map((a) => (
@@ -158,7 +160,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                                 </div>
 
                             </div>)) : */}
-                        {filter.map((a) => (
+                        {filter.length === 0 ? <h1>no data is found</h1> :filter.map((a) => (
 
 
                             <div className="plumber_profile" key={a.id}>
@@ -191,7 +193,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                                     </div>
 
                                     <div className="plumber_booking">
-                                        <button className="plumber_booking_btn" onClick={() => nav('/plumber_profile')}>View more</button>
+                                        <button className="plumber_booking_btn btn btn-primary " onClick={() => nav('/plumber_profile')}>View more</button>
                                     </div>
                                 </div>
 
