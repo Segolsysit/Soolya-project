@@ -81,3 +81,8 @@
   .name{
     margin-left: 1%;
   }
+
+  .done{
+    justify-content: center;
+    align-items: center;
+  }
