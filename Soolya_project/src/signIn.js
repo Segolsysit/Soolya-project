@@ -6,7 +6,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { LoginApi } from './js_files/api';
 import { storeUserData } from './js_files/storage';
-import { isAuthenticated } from './js_files/auth';
+import { isAuthenticated, logOut } from './js_files/auth';
 
 
 
@@ -16,8 +16,8 @@ function SignIn(){
     
      
     const initialErrors = {
-        email:{required:false},
-        password:{required:false},
+        email:null,
+        password:null,
         custom_error:null
     }
 
@@ -47,12 +47,12 @@ function SignIn(){
         console.log(errors);
 
         if(inputs.email === ""){
-            errors.email.required =true;
+            errors.email = "Email or phone number is required";
             hasErrors = true;
         }
          
         if(inputs.password === ""){
-            errors.password.required =true;
+            errors.password = "Password is required";
             hasErrors = true;
         }
 
@@ -71,9 +71,7 @@ function SignIn(){
                     console.log(err);
                     setErrors({...errors,custom_error:"Invalid credential"});
                 }
-                else if ( String(err.response.data.error.message).includes("WEAK_PASSWORD")) {
-                    setErrors({...errors,custom_error:"Password should be at least 6 characters"});
-                }
+              
             }).finally(()=>{
                 setLoading(false);
             })
@@ -84,10 +82,14 @@ function SignIn(){
     }
 
 
-    if(isAuthenticated()){
-       return <Navigate to="/"></Navigate>
-    // alert("you success");
+    // if (isAuthenticated()){
+    //     return logOut();
+    // }
+
+    if (isAuthenticated()){
+           return <Navigate to="/dashboard"></Navigate>
     }
+
 
     return(
         <div>  
@@ -112,18 +114,18 @@ function SignIn(){
                         </label>
                         <input className="data_input" onChange={(event)=>{
                             setInputs({...inputs,email:event.target.value})
-                            errors.email.required = false;
+                            errors.email = null;
                             }} 
                         value={inputs.email}  type="text" placeholder="Enter email or phone number"></input>
                     </div>
 
-                {errors.email.required?
+                {errors.email?
                     (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Email or phone number is required</h6>
+                            <h6>{errors.email}</h6>
                         </div>
                     </div>):null
                     }
@@ -135,18 +137,18 @@ function SignIn(){
                         <input className="data_input" 
                         onChange={(event)=>{
                             setInputs({...inputs,password:event.target.value})
-                            errors.password.required = false;   
+                            errors.password = null;   
                             }} 
                         value={inputs.password} type="password" placeholder="********"></input>
                     </div>
 
-                    {errors.password.required?
+                    {errors.password?
                     (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Password is required</h6>
+                            <h6>{errors.password}</h6>
                         </div>
                     </div>):null
                     }
@@ -174,6 +176,8 @@ function SignIn(){
                         </div>
                     </div>
                    
+
+                
                 
                    {loading?
                    (<div id="spinner_roll">

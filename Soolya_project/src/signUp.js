@@ -13,12 +13,13 @@ function SignUp(){
 
 
     const initialErrors = {
-        fname:{required:false},
-        lname:{required:false},
-        email:{required:false},
-        number:{required:false},
-        password:{required:false},
-        c_password:{required:false},
+        fname:null,
+        lname:null,
+        email:null,
+        number:null,
+        password:null,
+        c_password:null,
+        checked:null,
         custom_error:null
     }
      
@@ -27,7 +28,9 @@ function SignUp(){
 
     const [loading,setLoading] = useState(false);
 
-    const handleSubmit = (event)=>{
+   
+   
+   const handleSubmit = (event)=>{
            event.preventDefault();
 
            let errors = initialErrors;
@@ -35,48 +38,52 @@ function SignUp(){
            let hasErrors = false;
 
            if (inputs.fname === "") {
-               errors.fname.required = true;
+
+               errors.fname = "First name is required";
                hasErrors = true;
            }
 
            if (inputs.lname === "") {
-            errors.lname.required = true;
+            errors.lname = "Last name is required";
             hasErrors = true;
            }
 
             if (inputs.email === "") {
-                errors.email.required = true;
+                errors.email ="Email is required";
                hasErrors = true;
             }
 
             if (inputs.number === "") {
-                errors.number.required = true;
+                errors.number = "Number is required";
                hasErrors = true;
             }
 
-            if(inputs.number.length <10){
-                errors.custom_error ="Number must have 10 digit"
+            else if(inputs.number.length <10 || inputs.number.length >10){
+                errors.number ="Number must have 10 digit";
             }
 
 
-            if (inputs.password === "" ) {
-                errors.password.required = true;
+            if (inputs.password === ""  ) {
+                errors.password = "Password is required";
                hasErrors = true;
             }
 
             if (inputs.c_password === "") {
-                errors.c_password.required = true;
+                errors.c_password = "Confirm password is required";
                hasErrors = true;
             }
 
             if (inputs.password !== inputs.c_password) {
-                errors.custom_error = "Password and Confirm password are not same";
+                errors.c_password = "Password and Confirm password are not same";
                hasErrors = true;
             }
 
-            if(inputs.fname.length === 0 ){
-                errors.custom_error = null; 
+            if (inputs.checked === false) {
+                 errors.checked = "Agree terms & Conditions is required";
+                 hasErrors = true; 
             }
+
+           
           
             if (!hasErrors) {
                 setLoading(true); 
@@ -107,14 +114,17 @@ function SignUp(){
         email:"",
         number:"",
         password:"",
-        c_password:""
+        c_password:"",
+        checked:false
     })
 
    
     if(isAuthenticated()){
-        // alert("Registraion is successfull Login vignesh here!");
-        return <Navigate to="/dashboard"></Navigate>   
+        // alert("Registraion is successfull Login here!");
+           
+        return <Navigate to="/sign_in"></Navigate>   
     }
+
 
     return(
     <div>
@@ -143,19 +153,19 @@ function SignUp(){
                         </label>
                         <input className="sign_up_inupt_box" type="text" 
                         onChange={(event)=>{
-                            setInputs({...inputs,fname:event.target.value})
-                            errors.fname.required = false;
+                            setInputs({...inputs,fname:event.target.value});
+                            errors.fname = null;
                         }} 
                         value={inputs.fname} name="name"  placeholder="Enter your first name"></input>
                     </div>
 
-                    {errors.fname.required?
+                    {errors.fname?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>First name is required</h6>
+                            <h6>{errors.fname}</h6>
                         </div>
                     </div>):null
                     }
@@ -167,18 +177,18 @@ function SignUp(){
                         <input className="sign_up_inupt_box" type="text" 
                         onChange={(event)=>{
                             setInputs({...inputs,lname:event.target.value})
-                              errors.lname.required = false;
+                              errors.lname = null;
                             }} 
                         value={inputs.lname} name="lname" placeholder="Enter your first name"></input>
                     </div>
 
-                    {errors.lname.required?
+                    {errors.lname?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Last name is required</h6>
+                            <h6>{errors.lname}</h6>
                         </div>
                         </div>):null
                     }
@@ -190,18 +200,19 @@ function SignUp(){
                         <input className="sign_up_inupt_box" type="email" 
                         onChange={(event)=>{
                             setInputs({...inputs,email:event.target.value})
-                            errors.email.required = false;
+                            errors.email = null;
                             }} 
                         value={inputs.email} name="email" placeholder="Enter your email address"></input>
                     </div>
 
-                    {errors.email.required?
+                    {errors.email?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Email address is required</h6>
+                            {/* <h6>Email address is required</h6> */}
+                            <h6>{errors.email}</h6>
                         </div>
                     </div>):null
                     }
@@ -218,18 +229,19 @@ function SignUp(){
                         <input className="sign_up_inupt_box" type="tel" 
                         onChange={(event)=>{
                             setInputs({...inputs,number:event.target.value})
-                            errors.number.required = false;
+                            errors.number = null;
                             }}
-                        name="number" placeholder="Enter your Phone Number"></input>
+                        name="number" value={inputs.number} placeholder="Enter your Phone Number"></input>
                     </div>
 
-                    {errors.number.required?
+                    {errors.number?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Mobile Number is required</h6>
+                            {/* <h6>Mobile Number is required</h6> */}
+                             <h6>{errors.number}</h6>
                         </div>
                     </div>):null
                     }
@@ -242,18 +254,18 @@ function SignUp(){
                         <input className="sign_up_inupt_box" type="password" 
                         onChange={(event)=>{
                             setInputs({...inputs,password:event.target.value})
-                            errors.password.required = false;
+                            errors.password = null;
                         }} 
                         value={inputs.password} name="password" placeholder="***********"></input>
                     </div>
 
-                    {errors.password.required?
+                    {errors.password?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Password is required</h6>
+                            <h6>{errors.password}</h6>
                         </div>
                     </div>):null
                     }
@@ -265,18 +277,18 @@ function SignUp(){
                         <input className="sign_up_inupt_box" type="Password" 
                         onChange={(event)=>{
                             setInputs({...inputs,c_password:event.target.value})
-                            errors.c_password.required = false;
+                            errors.c_password = null;
                             }} 
                         value={inputs.c_password} name="c_password" placeholder="************"></input>
                     </div>
 
-                    {errors.c_password.required?
+                    {errors.c_password?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h6>Confirm password is required</h6>
+                            <h6>{errors.c_password}</h6>
                         </div>
                     </div>):null
                     }
@@ -298,10 +310,26 @@ function SignUp(){
    
                         <div className="sign_up_checkbox">
                             <div className="sign_up_checkbox">
-                                <input type="checkbox" htmlFor="rem"></input>
+                                <input type="checkbox" checked={inputs.checked}
+                                onChange={(event)=>{
+                                    setInputs({...inputs,checked:event.target.checked})
+                                    errors.checked = null;
+                                }} 
+                            htmlFor="rem" ></input>
                                 <label className="sign_up_checkbox_label">I agree with the <a href="_self">Terms & Conditions</a></label>
                             </div>
                         </div>
+
+                        {errors.checked?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h6>{errors.checked}</h6>
+                        </div>
+                    </div>):null
+                    }
                     
                     {loading?
                         (<div id="spinner_roll">
