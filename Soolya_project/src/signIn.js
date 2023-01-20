@@ -5,8 +5,8 @@ import facebook from "./images/facebook.png";
 import { Link, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { LoginApi } from './js_files/api';
-import { removeUserData, storeUserData, storeUserData2 } from './js_files/storage';
-import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
+import {  storeUserData2 } from './js_files/storage';
+import {  isAuthenticatedLogin } from './js_files/auth';
 
 
 
