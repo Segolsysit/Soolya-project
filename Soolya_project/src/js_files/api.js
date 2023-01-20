@@ -22,10 +22,10 @@ export const RegisterApi = (inputs)=>{
 }
 
 export const LoginApi = (inputs)=>{
-     let data ={
+     let data2 ={
       email:inputs.email,
       password:inputs.password
      }
    
-     return axios.post(loginUrl,data)
+     return axios.post(loginUrl,data2)
 }

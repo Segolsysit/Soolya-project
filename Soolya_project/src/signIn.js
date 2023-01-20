@@ -3,15 +3,24 @@ import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
 import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LoginApi } from './js_files/api';
-import { storeUserData } from './js_files/storage';
-import { isAuthenticated, logOut } from './js_files/auth';
+import { removeUserData, storeUserData, storeUserData2 } from './js_files/storage';
+import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 
 
 
 function SignIn(){
 
+
+    useEffect(()=>{
+          
+   
+
+        
+
+
+    },[])
     
     
      
@@ -61,7 +70,7 @@ function SignIn(){
             setLoading(true);
 
             LoginApi(inputs).then((response)=>{
-               storeUserData(response.data.idToken);
+               storeUserData2(response.data.idToken);
             }).catch((err) =>{
                 // if(err.response.data.error.message == "MISSING_EMAIL"){
                 //     console.log(err);
@@ -79,16 +88,25 @@ function SignIn(){
 
 
         setErrors({...errors});
+
+        
+   
     }
 
+
+    if (isAuthenticatedLogin()){
+        return <Navigate to="/dashboard"></Navigate>
+     }
+
+   
+
+    //    const [is,setIs] = useState();
 
     // if (isAuthenticated()){
     //     return logOut();
     // }
 
-    if (isAuthenticated()){
-           return <Navigate to="/dashboard"></Navigate>
-    }
+
 
 
     return(
@@ -199,7 +217,7 @@ function SignIn(){
                         <button className="inline_btn"><img className="inline_img" src={google} alt="btn_face"></img> Google</button>
                         <button className="inline_btn"><img className="inline_img" src={facebook} alt="btn_goo"></img>facebook</button>
                     </div>
-                    <div>
+                    <div >
                         <p>Don't have an account? <span><Link className="sign_up_link" to="/sign_up">sign up here</Link></span></p>
                     </div>
                     <div>

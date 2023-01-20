@@ -118,10 +118,11 @@ function SignUp(){
         checked:false
     })
 
-   
+    
+    
+ 
     if(isAuthenticated()){
         // alert("Registraion is successfull Login here!");
-           
         return <Navigate to="/sign_in"></Navigate>   
     }
 
