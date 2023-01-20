@@ -16,7 +16,6 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { isAuthenticated } from './js_files/auth';
 
 function Header(){
     
