@@ -29,12 +29,17 @@
     position: sticky;
     top:0px;    
 }
-
+#user-icon{
+    font-size: 15px;
+    color: orange;
+}
 .plumber_profile{
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     background-color: #fff;
     border-radius: 5px;
-    width:100%;
+    box-shadow: 1px 1px 6px 1px gray;
+    width:120%;
+    padding: 0 ;
     max-width:665px;
     height:auto;
     margin-top: 10px;
@@ -57,8 +62,9 @@
 } */
 
 .plumber_img{
-    width:150px;
-    height:150px;
+    width:180px;
+    height:180px;
+    border-radius: 2% 
 }
 
 .ratings_image{
@@ -67,9 +73,14 @@
 }
 
 .plumber_bio{
-    padding: 0px 10px 0px 10px;
+    /* padding: 0px 10px 0px 10px; */
+    /* height: 100px; */
     width:100%;
     max-width:400px;
+    margin-left: 20px;
+    font-size: 15x;
+    font-weight: bold;
+    line-height: 15px;
 }
 
 .profile_address{
@@ -85,6 +96,7 @@
    border-radius: 10px;
    width:90px;
    height: 35px;
+   margin-right: 0px;
 } 
 
 .no{
