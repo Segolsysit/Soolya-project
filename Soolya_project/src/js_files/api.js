@@ -11,6 +11,8 @@ const loginUrl = `/accounts:signInWithPassword?key=${apiKey}`;
 
 const resetUrl = `/accounts:sendOobCode?key=${apiKey}`
 
+// const resetUrl = `/accounts:resetPassword?key=${apiKey}`
+
 export const RegisterApi = (inputs)=>{
    let data = {
      fname:inputs.fname,
@@ -39,3 +41,12 @@ export const ResetApi = (inputs)=>{
 
       return axios.post(resetUrl,dataReset)
 }
+
+// export const ResetApi = (inputs)=>{
+//   let dataReset = {
+//       obbCode:"PASSWORD_RESET_CODE",
+//       email:inputs
+//   }
+
+//   return axios.post(resetUrl,dataReset)
+// }
