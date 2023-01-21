@@ -3,25 +3,17 @@ import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
 import { Link, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { LoginApi } from './js_files/api';
-import { removeUserData, storeUserData, storeUserData2 } from './js_files/storage';
-import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
+import {  storeUserData2 } from './js_files/storage';
+import {  isAuthenticatedLogin } from './js_files/auth';
 
 
 
 function SignIn(){
 
 
-    useEffect(()=>{
-          
-   
-
-        
-
-
-    },[])
-    
+  
     
      
     const initialErrors = {
@@ -56,7 +48,7 @@ function SignIn(){
         console.log(errors);
 
         if(inputs.email === ""){
-            errors.email = "Email or phone number is required";
+             setErrors({...errors,email:"Email or phone number is required"});
             hasErrors = true;
         }
          
@@ -65,6 +57,7 @@ function SignIn(){
             hasErrors = true;
         }
 
+      
        
         if(!hasErrors){
             setLoading(true);
@@ -77,8 +70,12 @@ function SignIn(){
                 //     setErrors({...errors,custom_error:"Invalid credential"});
                 // }
                 if(err.code === "ERR_BAD_REQUEST"){
+        // let errors = initialErrors;
+
                     console.log(err);
                     setErrors({...errors,custom_error:"Invalid credential"});
+                    // errors.custom_error = "Invalid credential";
+                    
                 }
               
             }).finally(()=>{

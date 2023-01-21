@@ -13,6 +13,7 @@ import santhosh_kumar from "./images/1.jpg";
 import PlumberProfile from './js_files/plumber_profile';
 import Serviceman from './js_files/serviceman';
 import DashBoard from './js_files/dashboard';
+import ForgetPassword from './js_files/forgetPassword';
 function App() {
     const array = [
         {
@@ -78,7 +79,7 @@ function App() {
 
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
                 <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
-
+                <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
             </Routes>
             <br></br>
             <Footer></Footer>

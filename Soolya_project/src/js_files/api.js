@@ -9,6 +9,8 @@ const registerUrl = `/accounts:signUp?key=${apiKey}`;
 
 const loginUrl = `/accounts:signInWithPassword?key=${apiKey}`;
 
+const resetUrl = `/accounts:sendOobCode?key=${apiKey}`
+
 export const RegisterApi = (inputs)=>{
    let data = {
      fname:inputs.fname,
@@ -21,11 +23,19 @@ export const RegisterApi = (inputs)=>{
    return axios.post(registerUrl,data)  
 }
 
-export const LoginApi = (inputs)=>{
+export const LoginApi = (inp)=>{
      let data2 ={
-      email:inputs.email,
-      password:inputs.password
+      email:inp.email,
+      password:inp.password
      }
-   
      return axios.post(loginUrl,data2)
+}
+
+export const ResetApi = (inputs)=>{
+      let dataReset = {
+          requestType:"PASSWORD_RESET",
+          email:inputs
+      }
+
+      return axios.post(resetUrl,dataReset)
 }
