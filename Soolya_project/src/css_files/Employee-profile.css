@@ -1,0 +1,58 @@
+.emp_details
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.emp_profile{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px 1px gray;
+    width:120%;
+    padding: 0 ;
+    max-width:665px;
+    height:auto;
+    margin-top: 100px;
+   
+}
+
+.emp_profile_inner{
+    display: flex;
+    align-items: center;
+   padding: 5px 10px 5px 10px;
+}
+
+.emp_img{
+    width:180px;
+    height:180px;
+    border-radius: 2% 
+}
+.emp_bio{
+    width:100%;
+    max-width:400px;
+    margin-left: 20px;
+    font-size: 15x;
+    font-weight: bold;
+    line-height: 15px;
+}
+
+.emp_profile + div  {
+    margin-top: 10px;
+}
+.emp_profile_address{
+    margin-top: -5px;
+    margin-left: 5px;
+}
+
+.emp_booking_btn{
+    outline:none;
+    border: none;
+    color:#fff;
+    background-color: rgb(218, 32, 32);
+    border-radius: 10px;
+    width:100px;
+    height: 35px;
+    margin-right: 0px;
+ } 
