@@ -50,7 +50,8 @@ import Slider from 'react-slick';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import  AOS  from 'aos';
-import "aos/dist/aos.css"
+import "aos/dist/aos.css";
+
 
 
 
