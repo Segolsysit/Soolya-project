@@ -38,7 +38,7 @@ function Personinfo({formData,setformData,MobilePhoneNumbererror,ConfirmMobilePh
                  </div><br/>
                  </center>
                  <div className="ser_input_mail">
-                 <TextField id="outlined-basic" label="Email" variant="outlined" className='form-control w-25'
+                 <TextField id="outlined-basic" label="Email" type="email" variant="outlined" className='form-control w-25'
                  value={formData.Email} 
                  onChange={(e)=>{setformData({...formData, Email:e.target.value});
                    setEmailerror(false)}}
