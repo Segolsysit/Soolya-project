@@ -19,7 +19,7 @@ function ForgetPassword() {
     const [email, setEmail] = useState("");
 
 
-    const handleSubmit = (event) => {
+    const handleForgetsubmit = (event) => {
         event.preventDefault();
 
         let errors = initialErrors;
@@ -52,7 +52,7 @@ function ForgetPassword() {
 
             <div className="forget_page_overall_div">
                 <div className="forget_page_div">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleForgetsubmit}>
                         <div>
                             {/* <div>
                                 <label>

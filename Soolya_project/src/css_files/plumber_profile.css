@@ -48,6 +48,75 @@
     border-radius: 50%;
 }
 
+/* book now buttom temp here */
+
+
+
+.add_card_profile_heading{
+    color:black;
+    font-weight: 600;
+    text-align: center;
+    line-height: 40px;
+}
+
+#book_now_links_close_btn{
+    position: absolute;
+    right:0px;
+    top:0px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    color:black;
+    font-weight: 500;
+    font-size: 20px;
+    height:30px;
+    width:30px;
+    /* padding: 0px 10px 0px 10px; */
+    border-radius: 50%;
+}
+
+#book_now_links_close_btn:hover{
+    background-color: #666;
+    transition: 0.5s;
+}
+
+/* .add_card_profile_div{
+    padding: 10px;
+} */
+
+.add_card_profile_div div{
+    padding: 5px;
+
+}
+
+.add_card_img{
+    width: 100px;
+    height:100px;
+}
+
+.add_to_card_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #6495ed6b;
+    border-radius: 10px;
+}
+
+
+.add_to_card_btn{
+    width:170px;
+    height:40px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color:#fff;
+    font-weight: 500;
+    background-color:#2874f0;
+    text-align: center;
+}
+
+/* book now buttom temp here finished */
 #share_profile_links_close_btn:hover{
     background-color: #666;
     transition: 0.5s;
@@ -207,7 +276,7 @@ line-height: 30px;
     margin-left: 15px;
 }
 
-.book_now_btn button{
+#book_now{
     width:175px;
     height: 50px;
     font-size: 20px;
