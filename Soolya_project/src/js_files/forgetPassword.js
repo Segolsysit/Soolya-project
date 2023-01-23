@@ -26,7 +26,7 @@ function ForgetPassword() {
 
 
         if (email === "")
-            errors.email = "Registered email is required";
+            errors.email = "Email is required";
 
         if(email !== ""){
                 setLoading(true);
@@ -36,7 +36,7 @@ function ForgetPassword() {
                 console.log(err);
 
                 if(err.code === "ERR_BAD_REQUEST"){
-                    
+                    setErrors({...errors,custom_error:"Registered email is required"})   
                 }
                 })
         }
@@ -63,6 +63,7 @@ function ForgetPassword() {
                                 <input type="email" value={email} onChange={(event) => {
                                     setEmail(event.target.value)
                                     errors.email = null;
+                                    errors.custom_error = null;
                                 }} placeholder="Registered email"></input>
                             </div>
 
@@ -77,6 +78,17 @@ function ForgetPassword() {
                                 </div>) : null
                             }
                         </div>
+
+                        {errors.custom_error? 
+                        (<div id="d_flex_center" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                            <h5>{errors.custom_error}</h5>
+                        </div>
+                    </div>):null
+                    }
 
                         {loading?
                                 (<div id="spinner_roll">
