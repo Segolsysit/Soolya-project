@@ -48,14 +48,22 @@ import "slick-carousel/slick/slick-theme.css";
 import frame_line from "./images/frame_img.png";
 import Slider from 'react-slick';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import  AOS  from 'aos';
+import "aos/dist/aos.css";
 
 
 
 
 function Home(props) {
 
+
+    useEffect(()=>{
+        AOS.init({
+            duration:1000
+        })
+    },[])
+    
     // scroll up btn
     const scrollToUp = () => {
         window.scrollTo({
@@ -71,6 +79,8 @@ function Home(props) {
         infinite: true,
         centerPadding: "60px",
         slidesToShow: 5,
+        autoplay:true,
+        speed:1000,
         arrows: false,
         dots: true,
         swipeToSlide: true,
@@ -181,14 +191,14 @@ function Home(props) {
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">AC repair services</a></li>
-                            <li className="sub_header__list"><a className="sub_header__link" href="_self">& more</a></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/emp-profile">Employee Profiles</NavLink></li>
                         </ul>
                     </div>
                 </div>
                 {/* header finished */}
                 <div>
                     <div className="carousel_div">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="3000" data-bs-pause="none" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src={main_1} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
@@ -607,7 +617,7 @@ function Home(props) {
                             </div>
                         </div>
                     </div>
-                    <div id="frame_line_right_side">
+                    <div data-aos="fade-left" id="frame_line_right_side">
                         <div>
                             <h2>Reasons to  <span className="title_color">Choose Us</span></h2>
                             <p id="frame_line_para">
@@ -645,7 +655,7 @@ function Home(props) {
                 <div className="download_div">
                     <div className="download_inline">
 
-                        <div className="download_inline_bio">
+                        <div data-aos="fade-right" className="download_inline_bio">
                             <div>
                                 <h2>Download our app</h2>
                             </div>

@@ -4,6 +4,8 @@ import rating from "../images/ratings.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+// import BadgeIcon from '@mui/icons-material/Badge';
+// import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 
 
 function Plumbing(props) {
@@ -106,9 +108,9 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
             <div className="plumber_page ">
                 <div className="plumber_div_1 " value={district} onChange={chg} >
                     {/* <button onClick={chg}>change</button> */}
-                    <input type="radio" value="erode" name="district" id="erd" ></input>
+                    <input type="radio"  className="filter_dist" value="erode" name="district" id="erd" ></input>
                     <label htmlFor="erd" className="text-light h3 btn btn-primary w-50">Erode</label><br></br>
-                    <input type="radio" value="Coimbatore" name="district" id="cbr" ></input>
+                    <input type="radio"  className="filter_dist" value="Coimbatore" name="district" id="cbr" ></input>
                     <label htmlFor="cbr" className="text-light h3 btn btn-primary w-50">Coimbatore</label> 
                                    {/* <select value={district} onChange={chg}>
                 <option value="">
@@ -122,7 +124,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                 {/* <div className="plumber_page"> */}
                 <div className="plumber_div_2 ">
                 <div className="text-center">
-                    <button onClick={back} className="btn btn-primary ">home page</button></div>
+                    <button onClick={back} className="btn btn-primary "><i class="fa-solid fa-backward"></i> Home</button></div>
 
                     {/* {filter.length === 0 ?
                         array.map((a) => (
@@ -168,23 +170,25 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
 
                                 <div className="plumber_profile_inner">
                                     <div className="plumber_image_size">
+                                        <div className="two">
                                         <img className="plumber_img" src={main_1} alt="plumber_man"></img>
+                                        </div>
                                     </div>
 
                                     <div className="plumber_bio">
                                         <div>
-                                            <h4>{a.FirstName} {a.LastName}</h4>
-                                            <h5><b><u>{a.WorkType}</u></b></h5>
+                                            <p className="one"><i id="user-icon" class="fa-regular fa-user"></i> {a.FirstName} {a.LastName}</p>
+                                            <p>{a.WorkType}</p>
                                         </div>
                                         <div className="d_flex">
-                                            <h5>Ratings</h5>
+                                            <p> Ratings</p>
                                             <img className="ratings_image" src={rating} alt="plumber_man"></img>
                                         </div>
                                         <div>
-                                            <h6>{a.Email}</h6>
+                                            <p><i id="user-icon" class="fa-solid fa-envelope"></i> {a.Email}</p>
                                         </div>
                                         <div className="d_flex">
-                                            <i className="fa-solid fa-location-dot"></i>
+                                            <i id="user-icon" className="fa-solid fa-location-dot"></i>
                                             <address className="profile_address">
                                                 {a.StreetAddress}
                                                 <br></br>
@@ -271,9 +275,9 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
 
 
 
-                <div className="plumber_div_3">
+                {/* <div className="plumber_div_3">
 
-                </div>
+                </div> */}
             </div>
 
 

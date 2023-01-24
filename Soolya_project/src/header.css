@@ -133,13 +133,18 @@
         
         /* offcanvas content */
       
-        
+       
         #offcanvasRight{
           width:22%;
           border-radius: 0px 0px 0px 20px;
          background-color: #f1f3f6;
          transition: 0.5s;
         
+        }
+
+        .offcanvas-body{
+          position: static;
+          z-index: 2;
         }
         
         .offcanvas-header{

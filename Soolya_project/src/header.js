@@ -17,11 +17,12 @@ import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
 
-
 function Header(){
     
    
     const nav = useNavigate();
+
+
 
     return(
         <div>
@@ -77,7 +78,13 @@ function Header(){
             </ul> 
         </div> */}
         <div className="header_content_div">
-            <button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
+                   
+        <button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
+
+            {/* {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>:null}
+            {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Log Out</button>:null}
+            {!isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign Up</button>:null} */}
+
             <button id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     {/* <li className="header_list"> */}
                         <i id="menu_space" className="fa-solid fa-list-ul"></i>
