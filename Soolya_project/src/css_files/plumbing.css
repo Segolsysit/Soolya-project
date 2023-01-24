@@ -6,7 +6,7 @@
 }
 
 .plumber_div_1{
-    /* margin-top: 100px; */
+    margin-top: 15%;
     width:100%;
     max-width: 25%;
     height: 500px;
@@ -93,4 +93,8 @@
     margin-top: 30% ;
     text-align: center;
     color: red;
+}
+
+.no1{
+    margin-top: 40%;
 }

@@ -94,6 +94,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
         // setDistrict("erode")
         setDistrict(e.target.value)
         console.log(e.target.value);
+  
     }
 
     return (
@@ -160,7 +161,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                                 </div>
 
                             </div>)) : */}
-                        {filter.length === 0 ? <h1>no data is found</h1> :filter.map((a) => (
+                        {filter.length === 0 ? <h1 className="no1">NO VENDOR IS FOUND!!!</h1> :filter.map((a) => (
 
 
                             <div className="plumber_profile" key={a.id}>
