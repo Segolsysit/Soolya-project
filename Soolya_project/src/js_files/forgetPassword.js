@@ -6,45 +6,44 @@ import { ResetApi } from "./api";
 function ForgetPassword() {
 
 
-    const initialErrors = {
-        email: null,
+    const initialErrors_1 = {
+        email_input: null,
         custom_error: null
     };
-
-    const [errors, setErrors] = useState(initialErrors);
-
-
-    const [loading, setLoading] = useState(false);
-
-    const [email, setEmail] = useState("");
-
-
+  
+    const [wrong, setWrong] = useState(initialErrors_1);
+  
+  
+    const [dataLoading, settDataLoading] = useState(false);
+  
+    const [email_input, setEmail_Input] = useState("");
+  
+  
     const handleForgetsubmit = (event) => {
         event.preventDefault();
-
-        let errors = initialErrors;
-
-
-        if (email === "")
-            errors.email = "Email is required";
-
-        if(email !== ""){
-                setLoading(true);
-                ResetApi(email).then((response)=>{
+  
+        let wrong = initialErrors_1;
+  
+  
+        if (email_input === "")
+            wrong.email_input = "Registered Email is required";
+  
+        if(email_input !== ""){
+                settDataLoading(true);
+                ResetApi(email_input).then((response)=>{
                    console.log(response);
                 }).catch((err)=>{
                 console.log(err);
-
+  
                 if(err.code === "ERR_BAD_REQUEST"){
-                    setErrors({...errors,custom_error:"Registered email is required"})   
+                    setWrong({...wrong,custom_error:"Registered email is required"})   
                 }
                 })
         }
-
-
-        setErrors({ ...errors })
+  
+  
+        setWrong({ ...wrong })
     }
-
 
 
     return (
@@ -56,41 +55,41 @@ function ForgetPassword() {
                         <div>
                             {/* <div>
                                 <label>
-                                    Registered email
+                                    Registered email_input
                                 </label>
                             </div> */}
                             <div>
-                                <input type="email" value={email} onChange={(event) => {
-                                    setEmail(event.target.value)
-                                    errors.email = null;
-                                    errors.custom_error = null;
-                                }} placeholder="Registered email"></input>
+                                <input type="email_input" value={email_input} onChange={(event) => {
+                                    setEmail_Input(event.target.value)
+                                    wrong.email_input = null;
+                                    wrong.custom_error = null;
+                                }} placeholder="Email"></input>
                             </div>
 
-                            {errors.email ?
+                            {wrong.email_input ?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                                     </div>
                                     <div>
-                                        <h6>{errors.email}</h6>
+                                        <h6>{wrong.email_input}</h6>
                                     </div>
                                 </div>) : null
                             }
                         </div>
 
-                        {errors.custom_error? 
+                        {wrong.custom_error? 
                         (<div id="d_flex_center" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            <h5>{errors.custom_error}</h5>
+                            <h5>{wrong.custom_error}</h5>
                         </div>
                     </div>):null
                     }
 
-                        {loading?
+                        {dataLoading?
                                 (<div id="spinner_roll">
                                     <div className="spinner-border text-primary" role="status">
                                     </div>

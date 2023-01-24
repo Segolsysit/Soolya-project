@@ -33,10 +33,10 @@ export const LoginApi = (inp)=>{
      return axios.post(loginUrl,data2)
 }
 
-export const ResetApi = (inputs)=>{
+export const ResetApi = (email_input)=>{
       let dataReset = {
           requestType:"PASSWORD_RESET",
-          email:inputs
+          email:email_input
       }
 
       return axios.post(resetUrl,dataReset)
@@ -50,3 +50,4 @@ export const ResetApi = (inputs)=>{
 
 //   return axios.post(resetUrl,dataReset)
 // }
+
