@@ -4,7 +4,7 @@ import React from "react"
 import Footer from './footer';
 import Header from './header';
 import Home from './home';
-import Plumbing from './js_files/plumbing';
+// import Plumbing from './js_files/plumbing';
 import SignIn from './signIn';
 import SignUp from './signUp';
 import ganapathy_raj from "./images/3.jpg";
@@ -77,9 +77,9 @@ function App() {
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
 
-                
-                <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>
-
+                {/* vendor list page goes to admin panel future use */}
+                {/* <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route> */}
+                 
                  
                 {/* <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route> */}
 

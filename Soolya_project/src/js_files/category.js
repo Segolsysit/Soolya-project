@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
+import SubCategory from "./subCategory";
+import { useState } from "react";
 
 function Category() {
 
@@ -58,6 +60,7 @@ function Category() {
         
     ];
 
+    const [active, setActive] = useState(false);
 
 
     return (
@@ -70,7 +73,7 @@ function Category() {
 
                 {category.map(({ img, text }) =>
                 <div className="category_div">
-                    <button className="category_button_div">
+                    <button className="category_button_div" onClick={()=>{setActive(true)}}>
 
                         <div className="g">
                             <img className="category_img" src={img} alt="painting"></img>
@@ -85,6 +88,10 @@ function Category() {
                 
           
             </Slider>
+
+
+            {active?<SubCategory></SubCategory>:false}
+
 
             </div>
 

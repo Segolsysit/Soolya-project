@@ -208,7 +208,7 @@ function Home(props) {
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home Appliances</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
-                            <li className="sub_header__list"><a className="sub_header__link" href="_slef">AC repair services</a></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/category">AC repair services</NavLink></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/emp-profile">Employee Profiles</NavLink></li>
                         </ul>
                     </div>

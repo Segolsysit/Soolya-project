@@ -13,7 +13,7 @@
 
 .category_button_div{
     width: 150px;
-    height:140px;
+    height:120px;
     background-color: #fff;
     border-radius: 10px;
     text-align: center;
@@ -23,7 +23,7 @@
 }
 
 .category_div div{
-   padding: 10px;
+   padding: 5px;
 }
 
 
