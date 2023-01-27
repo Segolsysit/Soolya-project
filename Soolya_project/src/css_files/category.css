@@ -1,0 +1,39 @@
+.category_page{
+    margin-top: 110px;
+}
+
+#two{
+    display: flex;
+    overflow: scroll;
+}
+
+/* .category_div{
+    padding: 10px;
+} */
+
+.category_button_div{
+    width: 150px;
+    height:140px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    /* margin:0px 10px 0px 10px ; */
+    /* padding: 10px; */
+   
+}
+
+.category_div div{
+   padding: 10px;
+}
+
+
+.category_img{
+    width: 65px;
+    height:65px;
+    margin-left: 34px;
+    text-align: center;
+}
+
+.category_text{
+    font-size: 18px;
+}
