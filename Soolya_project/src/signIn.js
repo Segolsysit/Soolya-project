@@ -45,7 +45,7 @@ function SignIn() {
 
         let hasErrors = false;
 
-        console.log(errors);
+        // console.log(errors);
 
         if (inputs.email === "") {
             errors.email = "Email or Phone number is required";
@@ -72,7 +72,7 @@ function SignIn() {
                 if (err.code === "ERR_BAD_REQUEST") {
                     // let errors = initialErrors;
 
-                    console.log(err);
+                    // console.log(err);
                     setErrors({ ...errors, custom_error: "Invalid credential" });
                     // errors.custom_error = "Invalid credential";
 
@@ -116,7 +116,7 @@ function SignIn() {
                 ResetApi(email_input).then((response)=>{
                    console.log(response);
                 }).catch((err)=>{
-                console.log(err);
+                // console.log(err);
   
                 if(err.code === "ERR_BAD_REQUEST"){
                     setWrong({...wrong,custom_error:"Registered email is required"})   
