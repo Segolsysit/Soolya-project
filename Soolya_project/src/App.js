@@ -15,6 +15,7 @@ import PlumberProfile from './js_files/plumber_profile';
 import Serviceman from './js_files/serviceman';
 import DashBoard from './js_files/dashboard';
 import ForgetPassword from './js_files/forgetPassword';
+import Admin from './Admin';
 import EmployeeProfile from './js_files/Employee-Profile';
 import Category from './js_files/category';
 import SubCategory from './js_files/subCategory';
@@ -73,6 +74,7 @@ function App() {
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
+                <Route path="/admin" element={<Admin></Admin>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
