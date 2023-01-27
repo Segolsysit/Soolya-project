@@ -7,9 +7,15 @@ import fb from "../images/share_profile_facebook.png";
 import insta from "../images/share_profile_instagram.png";
 import twitt from "../images/share_profile_twitter.png";
 import copy_link from "../images/share_profile_copy_link.png";
+import sweet from "sweetalert";
 
 
 function PlumberProfile() {
+
+    const handleCard = ()=>{
+        sweet("Successfully Booked!", "Good job!", "success");
+    }
+
     return (
         <div>
 
@@ -25,73 +31,73 @@ function PlumberProfile() {
                                         <h1>New Jai Maa Bhavani Tiles and Plumbing</h1>
                                     </div>
                                 </div>
-                                
 
-<button  id="share_btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
-</button>
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div id="share_profile_modal_width" class="modal-dialog modal-dialog-centered " role="document">
-    <div class="modal-content"> 
-      <div class="modal-body">
-        <div className="share_profile_cont">
-            <div>
-                <h4 className="share_profile_heading">Share with your friends</h4>
-            </div>
-            <div>
-                <button id="share_profile_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">
-                        <i class="fa-solid fa-xmark"></i>
-                    </span>
-                </button>
-            </div>
-        </div>
-        <div>
-            <h5 className="share_profile_select_heading">Select from the options below</h5>
-        </div>
-        <div className="share_profile_link">
-            <button className="share_profile_link_btn">
-                <div className="share_profile_link_div">
-                    <div className="share_profile_img_div">
-                        <img  src={fb} alt="facebook_link"></img>
-                    </div>
-                </div>
-                Facebook
-            </button>
-            <button className="share_profile_link_btn">
-                <div className="share_profile_link_div">
-                    <div className="share_profile_img_div">
-                        <img  src={insta} alt="instagram_link"></img>
-                    </div>
-                </div>
-                Instagram
-            </button>
-            <button className="share_profile_link_btn">
-                <div className="share_profile_link_div">
-                    <div className="share_profile_img_div">
-                        <img  src={twitt} alt="twitter_link"></img>
-                    </div>
-                </div>
-                Twitter
-            </button>
-            <button className="share_profile_link_btn">
-                <div className="share_profile_link_div">
-                    <div className="share_profile_img_div">
-                        <img  src={copy_link} alt="copy_link"></img>
-                    </div>
-                </div>
-                Copy Link
-            </button>
-        
-        </div>
-      </div>
-      {/* <div class="modal-footer">
+                                <button id="share_btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                    Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
+                                </button>
+
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div id="share_profile_modal_width" class="modal-dialog modal-dialog-centered " role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div className="share_profile_cont">
+                                                    <div>
+                                                        <h4 className="share_profile_heading">Share with your friends</h4>
+                                                    </div>
+                                                    <div>
+                                                        <button id="share_profile_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h5 className="share_profile_select_heading">Select from the options below</h5>
+                                                </div>
+                                                <div className="share_profile_link">
+                                                    <button className="share_profile_link_btn">
+                                                        <div className="share_profile_link_div">
+                                                            <div className="share_profile_img_div">
+                                                                <img src={fb} alt="facebook_link"></img>
+                                                            </div>
+                                                        </div>
+                                                        Facebook
+                                                    </button>
+                                                    <button className="share_profile_link_btn">
+                                                        <div className="share_profile_link_div">
+                                                            <div className="share_profile_img_div">
+                                                                <img src={insta} alt="instagram_link"></img>
+                                                            </div>
+                                                        </div>
+                                                        Instagram
+                                                    </button>
+                                                    <button className="share_profile_link_btn">
+                                                        <div className="share_profile_link_div">
+                                                            <div className="share_profile_img_div">
+                                                                <img src={twitt} alt="twitter_link"></img>
+                                                            </div>
+                                                        </div>
+                                                        Twitter
+                                                    </button>
+                                                    <button className="share_profile_link_btn">
+                                                        <div className="share_profile_link_div">
+                                                            <div className="share_profile_img_div">
+                                                                <img src={copy_link} alt="copy_link"></img>
+                                                            </div>
+                                                        </div>
+                                                        Copy Link
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                            {/* <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div> */}
-    </div>
-  </div>
-</div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -194,10 +200,57 @@ Share profile <i id="share_profile" class="fa-solid fa-share-from-square"></i>
                             </div>
 
                             <div className="book_now_btn">
-                                <button>
+                                {/* <button>
                                     Book Now
                                     <i id="book_now_arrow" class="fa-solid fa-chevron-right"></i>
+                                </button> */}
+
+                                <button  id="book_now" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCente    ">
+                                    Book Now <i id="book_now_arrow" class="fa-solid fa-chevron-right"></i>
                                 </button>
+
+                                <div class="modal fade" id="exampleModalCente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div  class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div className="share_profile_cont">
+                                                    <div>
+                                                        <div>
+                                                            <h4 className="add_card_profile_heading">Book Here</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>  
+                                                <div className="add_card_profile_div">
+                                                    <div>
+                                                        <img className="add_card_img" src={photo} alt="plumber_profile_book_image"></img>
+                                                    </div>
+                                                    <div>
+                                                        <h5>New Jai Maa Bhavani Tiles and Plumbing</h5>
+                                                    </div>
+                                                </div>  
+                                                <div className="add_to_card_div">
+                                                    <div>
+                                                        <h6>Plumbing service</h6>
+                                                        <h6>Per hour ₹ 50</h6>
+                                                    </div>
+                                                    <div className="add_to_card_btn_div">
+                                                        <button onClick={handleCard} className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">
+                                                            Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>                 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             {/* <div className="review_div">

@@ -211,10 +211,10 @@ function Header(){
                         <button className="offcanvas_menu_btn">
                             <div className="offcanvas_menu_item">
                                 <div className="offcanvas_menu_item_img">
-                                    <img className="offcanvas_font_img" src={sign_in} alt="settings"></img>
+                                    <img className="offcanvas_font_img" src={sign_in} alt="settings" onClick={()=> nav('sign_in')} data-bs-dismiss="offcanvas"></img>
                                 </div>
                                 <div className="offcanvas_menu_item_name">
-                                    <h6>sign in</h6>
+                                    <h6 onClick={()=> nav('sign_in')} data-bs-dismiss="offcanvas" >sign in</h6>
                                 </div>
                             </div>
                         </button>

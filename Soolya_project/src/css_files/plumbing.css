@@ -4,16 +4,26 @@
     /* justify-content: center; */
     /* border: 2px solid red; */
 }
+.text-light {
+    margin-left: 20px ;
+}
+.filter_dist{
+    margin-left: 20px ; 
+}
+
 
 .plumber_div_1{
-    /* margin-top: 100px; */
+    margin-top: 15%;
     width:100%;
     max-width: 25%;
-    height: 500px;
+    height: 100px;
+   
+
     /* border: 1px solid rgb(250, 248, 248);
     background-color: rgb(245, 243, 247); */
     position: sticky;
     top :300px;
+    /* background-color: blueviolet; */
 } 
 
 .plumber_div_2{
@@ -94,7 +104,7 @@
    color:#fff;
    background-color: rgb(218, 32, 32);
    border-radius: 10px;
-   width:90px;
+   width:100px;
    height: 35px;
    margin-right: 0px;
 } 
@@ -105,4 +115,8 @@
     margin-top: 30% ;
     text-align: center;
     color: red;
+}
+
+.no1{
+    margin-top: 40%;
 }

@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import React from "react" 
 // import './App.css';
 import Footer from './footer';
 import Header from './header';
@@ -15,6 +16,9 @@ import Serviceman from './js_files/serviceman';
 import DashBoard from './js_files/dashboard';
 import ForgetPassword from './js_files/forgetPassword';
 import Admin from './Admin';
+import EmployeeProfile from './js_files/Employee-Profile';
+import Category from './js_files/category';
+import SubCategory from './js_files/subCategory';
 function App() {
     const array = [
         {
@@ -61,6 +65,8 @@ function App() {
 
     
     return (
+        
+<React.Fragment>
         <div>
             <Header></Header>
            <Routes>
@@ -82,11 +88,14 @@ function App() {
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
                 <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
                 <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
+                <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
+                <Route path="/category" element={<Category></Category>}></Route>
+                <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
             </Routes>
             <br></br>
             <Footer></Footer>
          </div>
-       
+         </React.Fragment>
     );
 }
 

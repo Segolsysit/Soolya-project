@@ -96,6 +96,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
         // setDistrict("erode")
         setDistrict(e.target.value)
         console.log(e.target.value);
+  
     }
 
     return (
@@ -107,9 +108,9 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
             <div className="plumber_page ">
                 <div className="plumber_div_1 " value={district} onChange={chg} >
                     {/* <button onClick={chg}>change</button> */}
-                    <input type="radio" value="erode" name="district" id="erd" ></input>
+                    <input type="radio"  className="filter_dist" value="erode" name="district" id="erd" ></input>
                     <label htmlFor="erd" className="text-light h3 btn btn-primary w-50">Erode</label><br></br>
-                    <input type="radio" value="Coimbatore" name="district" id="cbr" ></input>
+                    <input type="radio"  className="filter_dist" value="Coimbatore" name="district" id="cbr" ></input>
                     <label htmlFor="cbr" className="text-light h3 btn btn-primary w-50">Coimbatore</label> 
                                    {/* <select value={district} onChange={chg}>
                 <option value="">
@@ -162,7 +163,7 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
                                 </div>
 
                             </div>)) : */}
-                        {filter.length === 0 ? <h1>no data is found</h1> :filter.map((a) => (
+                        {filter.length === 0 ? <h1 className="no1">NO VENDOR IS FOUND!!!</h1> :filter.map((a) => (
 
 
                             <div className="plumber_profile" key={a.id}>
@@ -274,9 +275,9 @@ axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
 
 
 
-                <div className="plumber_div_3">
+                {/* <div className="plumber_div_3">
 
-                </div>
+                </div> */}
             </div>
 
 

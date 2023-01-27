@@ -1,0 +1,30 @@
+.sub_category_page{
+    margin-top:110px;
+}
+
+.sub_category_title{
+  text-align: center;
+}
+
+.sub_category_div{
+    display: flex;
+    align-items: center;
+}
+
+.sub_category_img{
+    width:120px;
+    height:100px;
+    border-radius: 5px;
+}
+
+.sub_category_page_content_div{
+    outline: none;
+    max-width: 400px;
+    width:100%;
+    line-height: 18px;
+    /* height:100px; */
+}
+
+.sub_category_page_content_para{
+    margin: 0px;
+}
