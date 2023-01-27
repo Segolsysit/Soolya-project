@@ -49,7 +49,8 @@ import Slider from 'react-slick';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import  AOS  from 'aos';
-import "aos/dist/aos.css"
+import "aos/dist/aos.css";
+
 
 
 
@@ -322,7 +323,7 @@ function Home(props) {
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                                <NavLink to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                <NavLink to="/vendors_list" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                             </div>
                                             <div className="carousel_box_content">
                                                 <h5>Electrician</h5>
@@ -374,7 +375,7 @@ function Home(props) {
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                                <NavLink to="/plumbing" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                <NavLink to="/vendors_list" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                                 {/* <img alt="demo" src={electrician_work}></img> */}
                                             </div>
                                             <div className="carousel_box_content">

@@ -5,6 +5,8 @@ import payment_method from "./images/payment.png";
 function Footer(){
     return(
         <div>
+        
+
         <footer>
         <div className="footer_content">
             <div className="left_div">
@@ -89,6 +91,7 @@ function Footer(){
             </p>
         </div>
         </footer>
+       
         </div>
     );
 }

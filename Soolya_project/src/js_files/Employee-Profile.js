@@ -16,10 +16,10 @@ function EmployeeProfile() {
   useEffect(()=>{
     axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
       setEmpList(res.data);
-        console.log(emplist);
+        // console.log(emplist);
     
     })
-    },[])
+    },[emplist])
   return (
     <div>
       
