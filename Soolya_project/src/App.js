@@ -4,7 +4,7 @@ import React, {createContext,useState} from "react"
 import Footer from './footer';
 import Header from './header';
 import Home from './home';
-import Plumbing from './js_files/plumbing';
+// import Plumbing from './js_files/plumbing';
 import SignIn from './signIn';
 import SignUp from './signUp';
 import ganapathy_raj from "./images/3.jpg";
@@ -15,7 +15,10 @@ import PlumberProfile from './js_files/plumber_profile';
 import Serviceman from './js_files/serviceman';
 // import DashBoard from './js_files/dashboard';
 import ForgetPassword from './js_files/forgetPassword';
+import Admin from './Admin';
 import EmployeeProfile from './js_files/Employee-Profile';
+import Category from './js_files/category';
+import SubCategory from './js_files/subCategory';
 import Cart from './js_files/Cart';
 
 export let AppContext =React.createContext(true)
@@ -80,14 +83,13 @@ function App() {
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn setTog={setTog}></SignIn>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
+                <Route path="/admin" element={<Admin></Admin>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
 
                 
                 <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>
-                <Route path={'/cart'} element={<Cart ></Cart>}></Route>
-
 
                  
                 {/* <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route> */}
@@ -96,6 +98,8 @@ function App() {
                 {/* <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route> */}
                 <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
+                <Route path="/category" element={<Category></Category>}></Route>
+                <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
             </Routes>
             <br></br>
             <Footer></Footer>

@@ -29,10 +29,9 @@ import car_wash from "./images/car-wash-demo.png";
 import ac_installation from "./images/ac-installation-demo.png";
 
 
-
-import playstore from "./images/playstore.png";
-import appstore from "./images/appstore.png";
-import phone_image from "./images/download_phone_img.png";
+// import playstore from "./images/playstore.png";
+// import appstore from "./images/appstore.png";
+// import phone_image from "./images/download_phone_img.png";
 
 
 // import carousel_slide_2 from "./images/two.jpg";
@@ -79,6 +78,26 @@ function Home(props) {
         infinite: true,
         centerPadding: "60px",
         slidesToShow: 5,
+        autoplay:true,
+        speed:1000,
+        arrows: false,
+        dots: true,
+        swipeToSlide: true
+       
+        // afterChange: function (index) {
+        //     console.log(
+        //         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+        //     );
+        // }
+    };
+
+
+    const reverseSettings = {
+        className: "center",
+        infinite: true,
+        centerPadding: "60px",
+        slidesToShow: 5,
+        slidesToScroll:-1,
         autoplay:true,
         speed:1000,
         arrows: false,
@@ -187,7 +206,7 @@ function Home(props) {
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home Appliances</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
-                            <li className="sub_header__list"><a className="sub_header__link" href="_slef">AC repair services</a></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/category">AC repair services</NavLink></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/emp-profile">Employee Profiles</NavLink></li>
                         </ul>
                     </div>
@@ -302,7 +321,7 @@ function Home(props) {
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                                <NavLink to="/electrician" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                <NavLink to="/vendors_list" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                             </div>
                                             <div className="carousel_box_content">
                                                 <h5>Electrician</h5>
@@ -354,7 +373,7 @@ function Home(props) {
                                         <div className="carousel_box">
 
                                             <div className="carosel_box_image">
-                                                <NavLink to="/plumbing" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
+                                                <NavLink to="/vendors_list" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
                                                 {/* <img alt="demo" src={electrician_work}></img> */}
                                             </div>
                                             <div className="carousel_box_content">
@@ -428,7 +447,7 @@ function Home(props) {
                     <div className="advertise_phase" class="row">
                         <div className="advertise_2" class="column right">
                             <div className="advertise_2_carousel">
-                                <Slider {...settings}>
+                                <Slider {...reverseSettings}>
                                     <div>
                                         <div className="carousel_box" >
 
@@ -646,10 +665,9 @@ function Home(props) {
 
 
 
-                {/* z-index in carousel */}
+                         {/* download div */}
 
-
-                <div className="download_div">
+                {/* <div className="download_div">
                     <div className="download_inline">
 
                         <div data-aos="fade-right" className="download_inline_bio">
@@ -672,7 +690,7 @@ function Home(props) {
                         </div>
 
                     </div>
-                </div>
+                </div> */}
 
 
 
