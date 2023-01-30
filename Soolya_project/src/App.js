@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React from "react" 
+import React, {createContext,useState} from "react" 
 // import './App.css';
 import Footer from './footer';
 import Header from './header';
@@ -13,9 +13,13 @@ import santhosh_kumar from "./images/1.jpg";
 // import Electrician from './js_files/electrician';
 import PlumberProfile from './js_files/plumber_profile';
 import Serviceman from './js_files/serviceman';
-import DashBoard from './js_files/dashboard';
+// import DashBoard from './js_files/dashboard';
 import ForgetPassword from './js_files/forgetPassword';
 import EmployeeProfile from './js_files/Employee-Profile';
+import Cart from './js_files/Cart';
+
+export let AppContext =React.createContext(true)
+
 function App() {
     const array = [
         {
@@ -60,16 +64,21 @@ function App() {
 
     ];
 
+    const [tog,setTog] = useState(true);
+    console.log(tog);
     
     return (
         
 <React.Fragment>
+    <AppContext.Provider value={tog}>
         <div>
+            
             <Header></Header>
+           
            <Routes>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
-                <Route path="/sign_in" element={<SignIn></SignIn>}></Route>
+                <Route path="/sign_in" element={<SignIn setTog={setTog}></SignIn>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
@@ -77,18 +86,22 @@ function App() {
 
                 
                 <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>
+                <Route path={'/cart'} element={<Cart ></Cart>}></Route>
+
 
                  
                 {/* <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route> */}
 
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
-                <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
+                {/* <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route> */}
                 <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
             </Routes>
             <br></br>
             <Footer></Footer>
+            
          </div>
+         </AppContext.Provider>
          </React.Fragment>
     );
 }
