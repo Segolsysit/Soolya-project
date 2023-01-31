@@ -48,7 +48,7 @@ import frame_line from "./images/frame_img.png";
 import Slider from 'react-slick';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import  AOS  from 'aos';
+import AOS from 'aos';
 import "aos/dist/aos.css";
 import Header from './header';
 
@@ -57,12 +57,12 @@ import Header from './header';
 function Home(props) {
 
 
-    useEffect(()=>{
+    useEffect(() => {
         AOS.init({
-            duration:1000
+            duration: 1000
         })
-    },[])
-    
+    }, [])
+
     // scroll up btn
     const scrollToUp = () => {
         window.scrollTo({
@@ -78,12 +78,12 @@ function Home(props) {
         infinite: true,
         centerPadding: "60px",
         slidesToShow: 5,
-        autoplay:true,
-        speed:1000,
+        autoplay: true,
+        speed: 1000,
         arrows: false,
         dots: true,
         swipeToSlide: true
-       
+
         // afterChange: function (index) {
         //     console.log(
         //         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
@@ -97,15 +97,15 @@ function Home(props) {
         infinite: true,
         centerPadding: "60px",
         slidesToShow: 5,
-        slidesToScroll:-1,
-        autoplay:true,
-        speed:1000,
+        slidesToScroll: -1,
+        autoplay: true,
+        speed: 1000,
         arrows: false,
         dots: true,
         swipeToSlide: true
-       
-        }
-  
+
+    }
+
 
     //search option
 
@@ -136,13 +136,13 @@ function Home(props) {
             localStorage.setItem("dist", district)
             // props.pass(search)
             // props.array.map((ar)=>{
-                nav('/vendors_list')
+            nav('/vendors_list')
 
             // })
-        }else if(search === "electrician" || (district === "erode") || (district === "Coimbatore")){
+        } else if (search === "electrician" || (district === "erode") || (district === "Coimbatore")) {
             localStorage.setItem("search", search)
             localStorage.setItem("dist", district)
-        //     // props.pass(search)
+            //     // props.pass(search)
             nav('/vendors_list')
         }
         // else {
@@ -156,7 +156,7 @@ function Home(props) {
         // }
     }
 
-    
+
 
     // function model(){
     //     return "modal";
@@ -172,17 +172,17 @@ function Home(props) {
     let modalName;
     if (search.length === 0) {
 
-// }
-// if(search.length > 0 || search !== "plumber" || search !== "electrician"){
-    modalName ="type any"
-}else {
-    modalName="search the correct word...."
-    // setSearch("")
-  
-}
-// else{
-//     modalName = null;
-// }
+        // }
+        // if(search.length > 0 || search !== "plumber" || search !== "electrician"){
+        modalName = "type any"
+    } else {
+        modalName = "search the correct word...."
+        // setSearch("")
+
+    }
+    // else{
+    //     modalName = null;
+    // }
 
     let filter;
     // if(search.length > 0){
@@ -195,7 +195,7 @@ function Home(props) {
     return (
         <div>
 
-    <Header></Header>
+            <Header></Header>
 
             <div class="sub_body">
                 <div>
@@ -214,9 +214,13 @@ function Home(props) {
                 {/* header finished */}
                 <div>
                     <div className="carousel_div">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="1000" data-bs-pause="none" data-bs-ride="carousel">
+
+
+                    {/* add ons === slide data-bs-interval="1000" data-bs-pause="none"  data-bs-ride="carousel"*/}
+
+                        <div id="carouselExampleControls" class="carousel" data-bs-pause="none" data-bs-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item">
+                                <div class="carousel-item active">
                                     <img src={main_1} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
                                 </div>
                                 <div class="carousel-item">
@@ -229,10 +233,6 @@ function Home(props) {
                                     <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-3"></img>
                                 </div>
                             </div>
-                            {/* <div>
-                        <span className="carousel-left-icon" data-bs-target="#carouselExampleControls" data-bs-slide="prev"><i id="carousel_right_icon" class="fa-solid fa-chevron-left"></i></span>
-                        <span className="carousel-right-icon" data-bs-target="#carouselExampleControls" data-bs-slide="next"><i id="carousel_left_icon" class="fa-solid fa-chevron-right"></i></span>
-                    </div> */}
                         </div>
                     </div>
 
@@ -257,7 +257,7 @@ function Home(props) {
                                     </select>
                                 </div>
                                 <div className="search_div">
-                                    <input id="search" className={search.length === 0 ? "locality_search" :"locality_search_active" } type="search" placeholder="search your service category" onChange={chg} value={search}></input>
+                                    <input id="search" className={search.length === 0 ? "locality_search" : "locality_search_active"} type="search" placeholder="search your service category" onChange={chg} value={search}></input>
                                 </div>
                                 <div className="button_div">
                                     <button className="locality_search_button" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
@@ -665,7 +665,7 @@ function Home(props) {
 
 
 
-                         {/* download div */}
+                {/* download div */}
 
                 {/* <div className="download_div">
                     <div className="download_inline">
@@ -712,7 +712,7 @@ function Home(props) {
                             </div>
                             <div class="modal-footer">
                                 {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={()=> {setSearch(""); setShow(false)}}>Understood</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={() => { setSearch(""); setShow(false) }}>Understood</button>
                             </div>
                         </div>
                     </div>

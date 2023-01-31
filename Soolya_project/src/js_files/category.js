@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
-import SubCategory from "./subCategory";
+// import SubCategory from "./subCategory";
 import { useState } from "react";
 
 function Category() {
@@ -27,7 +27,7 @@ function Category() {
         },
         {
             img: "/images/plumber_category.png",
-            text: "Electricain"
+            text: "Electrician"
         },
         {
             img: "/images/plumber_category.png",
@@ -39,7 +39,7 @@ function Category() {
         },
         {
             img: "/images/plumber_category.png",
-            text: "Plumbing"
+            text: "Electrician"
         },
         {
             img: "/images/plumber_category.png",
@@ -47,7 +47,7 @@ function Category() {
         },
         {
             img: "/images/plumber_category.png",
-            text: "Plumbing"
+            text: "Electrician"
         },
         {
             img: "/images/plumber_category.png",
@@ -55,14 +55,59 @@ function Category() {
         },
         {
             img: "/images/plumber_category.png",
-            text: "Plumbing"
+            text: "Electrician"
+        },
+        {
+            img: "/images/plumber_category.png",
+            text: "wiring"
         }
         
     ];
 
     const [active, setActive] = useState(false);
+    let subCategory = [
+        {
+           img:"/images/1.jpg",
+           title:"electric Service",
+           type:"Electrician",
+           para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+        },
+        {
+            img:"/images/1.jpg",
+            title:"electrical work",
+           type:"Electrician",
+            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+        },
+        {
+            img:"/images/1.jpg",
+           type:"Plumbing",
+           title:"plumbing work",
+            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+        },
+        {
+            img:"/images/1.jpg",
+           type:"Plumbing",
+           title:"Plumbing Checkup Service",
+            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+        },
+         {
+           type:"Electrician",
+           img:"/images/1.jpg",
+            title:"electrical works",
+            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+        },
+    ]
+    const [sub,setSub] = useState("")
 
-
+let filt;
+function fg(te){
+    setActive(true);
+    setSub(te);
+    console.log(te)
+        }
+        filt= subCategory.filter((su)=>{
+            return su.type === sub;
+         })
     return (
         <div>
 
@@ -73,8 +118,9 @@ function Category() {
 
                 {category.map(({ img, text }) =>
                 <div className="category_div">
-                    <button className="category_button_div" onClick={()=>{setActive(true)}}>
-
+                    
+                    <button className="category_button_div" onClick={()=>fg(text)}>
+                    
                         <div className="g">
                             <img className="category_img" src={img} alt="painting"></img>
                         </div>
@@ -82,6 +128,8 @@ function Category() {
                             <h5 className="category_text">{text}</h5>
                         </div>
                     </button>
+                
+                   
                 </div>
                 )}
             
@@ -90,8 +138,25 @@ function Category() {
             </Slider>
 
 
-            {active?<SubCategory></SubCategory>:false}
-
+            {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
+            <div className="grid">
+{active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,title,para})=>
+                <div className="sub_category_overall">
+                    
+                        <button className="sub_category_div">
+                        <div className="sub_category_img_div">
+                            <img className="sub_category_img" src={img} alt="plumbing_subCategory_image"></img>
+                        </div>
+                        <div className="sub_category_page_content_div">
+                            <h6>{title}</h6>
+                            <p className="sub_category_page_content_para">{para}</p>
+                            <a href="_self">1 services</a> 
+                        </div>
+                        </button>
+                    
+                </div>
+                ): ""}
+</div>
 
             </div>
 
