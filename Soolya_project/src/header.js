@@ -52,7 +52,10 @@ function Header({demo}){
 
 
 const [btn , setBtn] = useState(true);
-// demo(setBtn)
+// useEffect(()=>{
+//     demo(setBtn)
+
+// },[setBtn])
 
 // useEffect(()=>{
 // props.data(setBtn);
@@ -121,9 +124,9 @@ const logOutUser = ()=>{
             </ul> 
         </div> */}
         
-       <div>
+       {/* <div>
        <i  class="fa-solid fa-cart-shopping"></i>
-        </div>
+        </div> */}
         <div className="header_content_div">
         {/* {
        click? 

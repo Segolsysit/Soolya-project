@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 // import SubCategory from "./subCategory";
 import { useState } from "react";
+import Header from "../header";
 
 function Category() {
 
@@ -110,7 +111,7 @@ function fg(te){
          })
     return (
         <div>
-
+<Header></Header>
             <div className="category_page">
 
 
