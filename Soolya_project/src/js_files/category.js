@@ -6,9 +6,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 // import SubCategory from "./subCategory";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../header";
 
 function Category() {
+
+    let nav = useNavigate();
 
     const settings = {
         className: "center",
@@ -144,7 +147,7 @@ function fg(te){
 {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,title,para})=>
                 <div className="sub_category_overall">
                     
-                        <button className="sub_category_div">
+                        <button className="sub_category_div" onClick={()=>{nav("/list")}}>
                         <div className="sub_category_img_div">
                             <img className="sub_category_img" src={img} alt="plumbing_subCategory_image"></img>
                         </div>
