@@ -21,7 +21,7 @@ import { AppContext  } from './App';
 
 // import { logOut } from "../auth";
 // import { removeUserData1 } from "../storage";
-import { useState } from 'react';
+
 import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
 import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
 
@@ -252,7 +252,7 @@ const logOutUser = () => {
                                     <img className="offcanvas_font_img" src={sign_in} alt="settings" onClick={()=> nav('sign_in')} data-bs-dismiss="offcanvas"></img>
                                 </div>
                                 <div className="offcanvas_menu_item_name">
-                                    <h6 onClick={()=> nav('sign_in')} data-bs-dismiss="offcanvas" >sign in</h6>
+                                    <h6 onClick={()=> nav('sign_in')} data-bs-dismiss="offcanvas" >sign</h6>
                                 </div>
                             </div>
                         </button>
@@ -261,12 +261,9 @@ const logOutUser = () => {
         </div>
         </div>
     </div>
-
-
         </div>
     </header>
     </div>
     );
-
-
+        }
 export default Header;
