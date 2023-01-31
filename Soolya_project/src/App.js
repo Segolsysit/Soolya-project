@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import React, {createContext,useState} from "react" 
+import React, {useState} from "react" 
 // import './App.css';
 import Footer from './footer';
-import Header from './header';
+// import Header from './header';
 import Home from './home';
 import Plumbing from './js_files/plumbing';
 import SignIn from './signIn';
@@ -19,7 +19,8 @@ import Admin from './Admin';
 import EmployeeProfile from './js_files/Employee-Profile';
 import Category from './js_files/category';
 import SubCategory from './js_files/subCategory';
-import Cart from './js_files/Cart';
+// import Cart from './js_files/Cart';
+
 
 export let AppContext =React.createContext(true)
 
