@@ -6,11 +6,24 @@ import photo2 from "../images/2.jpg";
 import fb from "../images/share_profile_facebook.png";
 import insta from "../images/share_profile_instagram.png";
 import twitt from "../images/share_profile_twitter.png";
+import {useEffect, useState} from "react"
 import copy_link from "../images/share_profile_copy_link.png";
 import sweet from "sweetalert";
+import axios from "axios";
 
 
 function PlumberProfile() {
+    const [id,setId]  = useState();
+
+
+    useEffect(() => {
+     axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
+        setId(res.data)
+        console.log(id);
+     })
+    
+    }, [])
+    
 
     const handleCard = ()=>{
         sweet("Successfully Booked!", "Good job!", "success");
@@ -226,7 +239,7 @@ function PlumberProfile() {
                                                             </span>
                                                         </button>
                                                     </div>
-                                                </div>  
+                                                </ div>  
                                                 <div className="add_card_profile_div">
                                                     <div>
                                                         <img className="add_card_img" src={photo} alt="plumber_profile_book_image"></img>

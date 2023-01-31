@@ -2,18 +2,17 @@ import './signIn.css';
 import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
-import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useState} from 'react';
 import { LoginApi } from './js_files/api';
 import { storeUserData2 } from './js_files/storage';
 import { isAuthenticatedLogin } from './js_files/auth';
 import { ResetApi } from "./js_files/api";
+import Header from './header';
 
+function SignIn(props) {
 
-function SignIn() {
-
-
-
+const nav=useNavigate()
 
 
     const initialErrors = {
@@ -22,6 +21,7 @@ function SignIn() {
         custom_error: null
     }
 
+    
     const [errors, setErrors] = useState(initialErrors);
 
     //     if( <Navigate to="/sign_in" replace={true} /> ){
@@ -38,7 +38,7 @@ function SignIn() {
         password: ""
     });
 
-    const handleSubmit = (event) => {
+     const handleSubmit = (event) => {
         event.preventDefault();
 
         let errors = initialErrors;
@@ -86,6 +86,10 @@ function SignIn() {
 
         setErrors({ ...errors });
 
+        // nav("/")
+       return props.setTog(false)
+
+
     }
 
 
@@ -128,11 +132,11 @@ function SignIn() {
     }
 
 
-    
 
 
     if (isAuthenticatedLogin()) {
-        return <Navigate to="/dashboard"></Navigate>
+        // return <Navigate to="/dashboard"></Navigate>
+        return <Navigate to="/"></Navigate>
     }
 
 
@@ -148,7 +152,8 @@ function SignIn() {
 
     return (
         <div>
-
+            <Header></Header>
+            
             <div className="sign_in">
                 <div className="sign_in_div">
                     <div className="sign_in_logo_div">
