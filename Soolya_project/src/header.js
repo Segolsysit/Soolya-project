@@ -16,14 +16,14 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useState, useContext,createContext} from 'react';
-import { AppContext  } from './App';
+// import {useState, useContext,createContext} from 'react';
+// import { AppContext  } from './App';
 
 // import { logOut } from "../auth";
 // import { removeUserData1 } from "../storage";
-import { useState } from 'react';
-import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
-import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
+// import { useState } from 'react';
+// import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
+// import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
 
 function Header(){
     
@@ -35,7 +35,7 @@ function Header(){
     nav("/sign_in");
     setClick(true)
     console.log(click);
-}
+
 
     return(
         <div>
@@ -255,5 +255,5 @@ function Header(){
     </div>
     );
 
-
+}
 export default Header;
