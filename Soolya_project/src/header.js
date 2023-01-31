@@ -16,11 +16,32 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
+import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
 
 function Header(){
     
    
     const nav = useNavigate();
+
+    const goTo = useNavigate();
+
+    const [exit, setExit] = useState(false);
+
+    // if(isAuthenticatedLogOut()){
+    //     setExit(false);
+    // }
+
+  
+
+    const logOutUser = ()=>{
+        logOut();
+        // localStorage.removeItem("idToken");
+        // removeUserData1();     
+        goTo("/sign_in");
+    }
+
 
 
 
@@ -79,11 +100,17 @@ function Header(){
         </div> */}
         <div className="header_content_div">
                    
-        <button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
+        {exit?
+        (<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')}>
+            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+            Sign In
+        </button>)
 
-            {/* {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>:null}
-            {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Log Out</button>:null}
-            {!isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign Up</button>:null} */}
+        :(<button type="button" className="sign_in__buttton" onClick={logOutUser} >
+            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+            Log Out
+        </button>)}
+        
 
             <button id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     {/* <li className="header_list"> */}

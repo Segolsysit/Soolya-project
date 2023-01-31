@@ -68,7 +68,7 @@ function App() {
         
 <React.Fragment>
         <div>
-            <Header></Header>
+            {/* <Header></Header> */}
            <Routes>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>

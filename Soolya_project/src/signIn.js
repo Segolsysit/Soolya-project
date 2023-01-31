@@ -8,7 +8,7 @@ import { LoginApi } from './js_files/api';
 import { storeUserData2 } from './js_files/storage';
 import { isAuthenticatedLogin } from './js_files/auth';
 import { ResetApi } from "./js_files/api";
-
+import Header from './header';
 
 function SignIn() {
 
@@ -128,11 +128,11 @@ function SignIn() {
     }
 
 
-    
 
 
     if (isAuthenticatedLogin()) {
-        return <Navigate to="/dashboard"></Navigate>
+        // return <Navigate to="/dashboard"></Navigate>
+        return <Navigate to="/"></Navigate>
     }
 
 
@@ -148,7 +148,8 @@ function SignIn() {
 
     return (
         <div>
-
+            <Header></Header>
+            
             <div className="sign_in">
                 <div className="sign_in_div">
                     <div className="sign_in_logo_div">
