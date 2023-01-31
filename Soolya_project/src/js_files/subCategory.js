@@ -1,34 +1,53 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import "../css_files/subCategory.css";
 
-function SubCategory(){
+function SubCategory(props){
 
     let subCategory = [
         {
            img:"/images/1.jpg",
-           title:"Plumbing Checkup Service",
+           title:"electric Service",
+           type:"Electrician",
            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
         },
         {
             img:"/images/1.jpg",
-            title:"Plumbing Checkup Service",
+            title:"electrical work",
+           type:"Electrician",
             para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
         },
         {
             img:"/images/1.jpg",
-            title:"Plumbing Checkup Service",
+           type:"Plumbing",
+           title:"plumbing work",
             para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
         },
         {
             img:"/images/1.jpg",
-            title:"Plumbing Checkup Service",
+           type:"Plumbing",
+           title:"Plumbing Checkup Service",
             para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
         },
          {
-            img:"/images/1.jpg",
-            title:"Plumbing Checkup Service",
+           type:"Electrician",
+           img:"/images/1.jpg",
+            title:"electrical works",
             para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
         },
     ]
+
+    const [fil,setFil] = useState("");
+    let filt;
+
+useEffect(()=>{
+    setFil(localStorage.getItem("cat"));
+    
+},[])
+
+filt=subCategory.filter((sub)=>{
+    return sub.type === fil;
+     })
 
     return(
         <div>
@@ -38,7 +57,7 @@ function SubCategory(){
                 </div>
 
 <div className="grid">
-{subCategory.map(({img,title,para})=>
+{filt.map(({img,title,para})=>
                 <div className="sub_category_overall">
                     
                         <button className="sub_category_div">
