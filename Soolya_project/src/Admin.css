@@ -35,3 +35,11 @@
     width: 0!important;
     overflow: hidden;
 }
+
+.ak{
+    display: flex;
+}
+
+.container-fluid{
+    margin-top: 200px;
+}
