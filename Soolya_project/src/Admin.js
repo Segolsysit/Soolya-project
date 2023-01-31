@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./Admin.css";
+import "./Admin.css"
 
 export const Admin = () => {
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
@@ -63,7 +63,7 @@ export const Admin = () => {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="charts.html">
+                            <a className="nav-link" href="charts.js">
                             <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Service Zones</span></a>
                         </li>
@@ -75,9 +75,9 @@ export const Admin = () => {
                             </a>
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
-                                    <h6 className="collapse-header">Custom Components:</h6>
-                                    <a className="collapse-item" href="buttons.html">Buttons</a>
-                                    <a className="collapse-item" href="cards.html">Cards</a>
+                                    {/* <h6 className="collapse-header">Custom Components:</h6> */}
+                                    <a className="collapse-item" href="/categorysetup">Category Setup</a>
+                                    <a className="collapse-item" href="cards.js">Sub Category Setup</a>
                                 </div>
                             </div>
                         </li>
@@ -93,10 +93,10 @@ export const Admin = () => {
                                 data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Custom Utilities:</h6>
-                                    <a className="collapse-item" href="utilities-color.html">Colors</a>
-                                    <a className="collapse-item" href="utilities-border.html">Borders</a>
-                                    <a className="collapse-item" href="utilities-animation.html">Animations</a>
-                                    <a className="collapse-item" href="utilities-other.html">Other</a>
+                                    <a className="collapse-item" href="utilities-color.js">Colors</a>
+                                    <a className="collapse-item" href="utilities-border.js">Borders</a>
+                                    <a className="collapse-item" href="utilities-animation.js">Animations</a>
+                                    <a className="collapse-item" href="utilities-other.js">Other</a>
                                 </div>
                             </div>
                         </li>
@@ -119,20 +119,20 @@ export const Admin = () => {
                             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Login Screens:</h6>
-                                    <a className="collapse-item" href="login.html">Login</a>
-                                    <a className="collapse-item" href="register.html">Register</a>
-                                    <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
+                                    <a className="collapse-item" href="/login.js">Login</a>
+                                    <a className="collapse-item" href="register.js">Register</a>
+                                    <a className="collapse-item" href="forgot-password.js">Forgot Password</a>
                                     <div className="collapse-divider"></div>
                                     <h6 className="collapse-header">Other Pages:</h6>
-                                    <a className="collapse-item" href="404.html">404 Page</a>
-                                    <a className="collapse-item" href="blank.html">Blank Page</a>
+                                    <a className="collapse-item" href="err404.js">404 Page</a>
+                                    <a className="collapse-item" href="blank.js">Blank Page</a>
                                 </div>
                             </div>
                         </li>
 
                         {/* <!-- Nav Item - Charts --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="charts.html">
+                            <a className="nav-link" href="charts.js">
                                 <i className="fas fa-fw fa-chart-area"></i>
                                 <span>Charts</span></a>
                         </li>
@@ -737,7 +737,7 @@ export const Admin = () => {
                             <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                             <div className="modal-footer">
                                 <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a className="btn btn-primary" href="login.html">Logout</a>
+                                <a className="btn btn-primary" href="login.js">Logout</a>
                             </div>
                         </div>
                     </div>
