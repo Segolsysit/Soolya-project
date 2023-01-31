@@ -75,9 +75,7 @@ function App() {
 <React.Fragment>
     <AppContext.Provider value={tog}>
         <div>
-            
-            <Header></Header>
-           
+            {/* <Header></Header> */}
            <Routes>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>

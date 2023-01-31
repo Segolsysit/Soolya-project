@@ -21,6 +21,9 @@ import { AppContext  } from './App';
 
 // import { logOut } from "../auth";
 // import { removeUserData1 } from "../storage";
+import { useState } from 'react';
+import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
+import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
 
 function Header(){
     
@@ -113,6 +116,7 @@ const logOutUser = () => {
 
         }
                    
+        <button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
 
             {/* {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>:null}
             {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Log Out</button>:null}
@@ -263,6 +267,6 @@ const logOutUser = () => {
     </header>
     </div>
     );
-}
+
 
 export default Header;

@@ -50,7 +50,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import  AOS  from 'aos';
 import "aos/dist/aos.css";
-
+import Header from './header';
 
 
 
@@ -195,7 +195,7 @@ function Home(props) {
     return (
         <div>
 
-
+    <Header></Header>
 
             <div class="sub_body">
                 <div>
@@ -214,9 +214,9 @@ function Home(props) {
                 {/* header finished */}
                 <div>
                     <div className="carousel_div">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="3000" data-bs-pause="none" data-bs-ride="carousel">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="1000" data-bs-pause="none" data-bs-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
+                                <div class="carousel-item">
                                     <img src={main_1} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
                                 </div>
                                 <div class="carousel-item">
