@@ -23,6 +23,7 @@ import SubCategory from './js_files/subCategory';
 import Categotysetup from './Categotysetup';
 import Admin from './Admin';
 import Cart from './js_files/Cart';
+import List from './list';
 
 export let AppContext =React.createContext(true)
 
@@ -102,6 +103,7 @@ function App() {
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
                 <Route path="/category" element={<Category></Category>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
+                <Route path="/list" element={<List></List>}></Route>
             </Routes>
             <br></br>
             <Footer></Footer>
