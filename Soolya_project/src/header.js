@@ -31,8 +31,8 @@ function Header(){
 
 const togg = () => {
     nav("/sign_in")
-    // setClick(head)
-    // console.log(head)
+    setClick(head)
+    console.log(head)
     
 }
 
