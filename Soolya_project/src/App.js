@@ -106,7 +106,7 @@ function App() {
                 <Route path="/list" element={<List></List>}></Route>
             </Routes>
             <br></br>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
             
          </div>
          </AppContext.Provider>

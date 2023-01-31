@@ -166,17 +166,44 @@ function Header({ demo }) {
                                     </button>)}
 
 
-                            </div>
-                        {/* </header> */}
-                    </div>
-                    {/* ) */}
 
-                </div>
-                <div className="offcanvas_menu_item_name">
-                    <h6>Inbox</h6>
-                </div>
-        </div>
-                        {/* </button > */}
+
+
+        {/* offcanvas */}
+
+        <button id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    {/* <li className="header_list"> */}
+                        <i id="menu_space" className="fa-solid fa-list-ul"></i>
+                        Menu
+                    {/* </li> */}
+                </button>
+                <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div className="offcanvas-header">
+                        {/* <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
+                        <h4>Menu</h4>
+                    </div>
+                    <div className="offcanvas-body">
+                        <button className="offcanvas_menu_btn">
+                            <div className="offcanvas_menu_item">
+                                <div className="offcanvas_menu_item_img">
+                                    <img className="offcanvas_font_img" src={profile} alt="settings"></img>
+                                </div>
+                                <div className="offcanvas_menu_item_name">
+                                    <h6>Profile</h6>
+                                </div>
+                            </div>
+                        </button>
+                        <button className="offcanvas_menu_btn">
+                            <div className="offcanvas_menu_item">
+                                <div className="offcanvas_menu_item_img">
+                                    <img className="offcanvas_font_img" src={inbox} alt="settings"></img>
+
+                                </div>
+                                <div className="offcanvas_menu_item_name">
+                                    <h6>Inbox</h6>
+                                </div>
+                            </div>
+                        </button>
                         <button className="offcanvas_menu_btn">
                             <div className="offcanvas_menu_item">
                                 <div className="offcanvas_menu_item_img">
@@ -278,15 +305,21 @@ function Header({ demo }) {
                                 </div>
                             </div>
                         </button>
-                    {/* </div >
-                </div >
-        </div >
-        </div >
-         </div >
-        </div > */}
-    </header >
+                    </div>
+                </div>
+
+                </div>
+</div>
+
+
+    {/* </header > */}
     </div >
+
+</div>
+    </header>
+    </div>
     );
 
 }
+
 export default Header;
