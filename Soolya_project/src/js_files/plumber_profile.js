@@ -22,7 +22,7 @@ function PlumberProfile() {
         console.log(id);
      })
     
-    }, [])
+    }, [id])
     
 
     const handleCard = ()=>{

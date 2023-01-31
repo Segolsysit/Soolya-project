@@ -1,4 +1,4 @@
-import { getUserData, getUserData2, removeUserData } from "./storage"
+import { getUserData, getUserData2, removeUserData, removeUserData1 } from "./storage"
 
 
 
@@ -10,7 +10,13 @@ export const isAuthenticatedLogin = ()=>{
    return getUserData2()!=null?true:false;
 }
 
+// export const isAuthenticatedLogOut = ()=>{
+ 
+//    return  getUserData2() !=null?true:false;
+
+// }
 
 export const logOut = ()=>{
+      removeUserData1();
       removeUserData();
 } 
