@@ -19,7 +19,7 @@ function EmployeeProfile() {
         // console.log(emplist);
     
     })
-    },[emplist])
+    },[])
   return (
     <div>
       

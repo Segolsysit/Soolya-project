@@ -83,6 +83,7 @@ function Home(props) {
         arrows: false,
         dots: true,
         swipeToSlide: true
+       
         // afterChange: function (index) {
         //     console.log(
         //         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
@@ -102,12 +103,9 @@ function Home(props) {
         arrows: false,
         dots: true,
         swipeToSlide: true
-        // afterChange: function (index) {
-        //     console.log(
-        //         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-        //     );
-        // }
-    };
+       
+        }
+  
 
     //search option
 
