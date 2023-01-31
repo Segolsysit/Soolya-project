@@ -29,7 +29,20 @@ function Header(){
     
    
     const nav = useNavigate();
+    const head = useContext(AppContext)
+    const [click,setClick] = useState(head);
 
+const togg = () => {
+    nav("/sign_in")
+    setClick(head)
+    console.log(head)
+    
+}
+
+const logOutUser = () => {
+    // logOut();
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("idToken2");
 
     // removeUserData1();     
     nav("/sign_in");
