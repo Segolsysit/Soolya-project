@@ -20,7 +20,7 @@ import Category from './js_files/category';
 import SubCategory from './js_files/subCategory';
 // import Cart from './js_files/Cart';
 
-import Categotysetup from './Categotysetup';
+import Categorysetup from './Categorysetup';
 import Admin from './Admin';
 import Cart from './js_files/Cart';
 import List from './list';
@@ -86,7 +86,7 @@ function App() {
                 <Route path="/sign_in" element={<SignIn setTog={setTog}></SignIn>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
                 <Route path="/admin" element={<Admin></Admin>}></Route>
-                <Route path='/categorysetup' element={<Categotysetup></Categotysetup>}></Route>
+                <Route path="/categorysetup" element={<Categorysetup></Categorysetup>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
@@ -106,7 +106,7 @@ function App() {
                 <Route path="/list" element={<List></List>}></Route>
             </Routes>
             <br></br>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
             
          </div>
          </AppContext.Provider>
