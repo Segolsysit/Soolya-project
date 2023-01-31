@@ -16,39 +16,56 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useState, useContext,createContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import { AppContext  } from './App';
+import { logOut } from './js_files/auth';
 
 // import { logOut } from "../auth";
 // import { removeUserData1 } from "../storage";
+// 
+// import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
+// import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
 
-import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
-import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
-
-function Header(){
+function Header({demo}){
     
    
     const nav = useNavigate();
-    const head = useContext(AppContext)
-    const [click,setClick] = useState(head);
+    // const head = useContext(AppContext)
+    // const [click,setClick] = useState(head);
 
-const togg = () => {
-    nav("/sign_in")
-    setClick(head)
-    console.log(head)
+// const togg = () => {
+//     nav("/sign_in")
+//     setClick(head)
+//     console.log(head)
+    
+// }
+
+// const logOutUser = () => {
+//     localStorage.removeItem("idToken");
+//     localStorage.removeItem("idToken2");
+
+//     nav("/sign_in");
+//     setClick(true)
+//     console.log(click);
+// }
+
+
+
+const [btn , setBtn] = useState(true);
+// demo(setBtn)
+
+// useEffect(()=>{
+// props.data(setBtn);
+// },[props])
+
+const logOutUser = ()=>{
+    logOut();
+    setBtn(true);
+    nav("/sign_in");
     
 }
 
-const logOutUser = () => {
-    // logOut();
-    localStorage.removeItem("idToken");
-    localStorage.removeItem("idToken2");
 
-    // removeUserData1();     
-    nav("/sign_in");
-    setClick(true)
-    console.log(click);
-}
 
     return(
         <div>
@@ -108,15 +125,24 @@ const logOutUser = () => {
        <i  class="fa-solid fa-cart-shopping"></i>
         </div>
         <div className="header_content_div">
-        {
+        {/* {
        click? 
        <button type="button" className="sign_in__buttton" onClick={togg} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
          :
        <button type="button" className="sign_in__buttton" onClick={logOutUser} >log out</button>
 
-        }
+        } */}
                    
-        <button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>
+        {btn?
+        (<button type="button" className="sign_in__buttton" onClick={()=>{nav('/sign_in')}} >
+            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+            Sign In
+        </button>)
+         
+        :(<button type="button" className="sign_in__buttton" onClick={logOutUser} >
+            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+            Log Out
+        </button>)}
 
             {/* {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>:null}
             {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Log Out</button>:null}
@@ -265,5 +291,6 @@ const logOutUser = () => {
     </header>
     </div>
     );
-        }
+
+
 export default Header;

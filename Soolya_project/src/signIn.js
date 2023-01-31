@@ -2,7 +2,7 @@ import './signIn.css';
 import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState} from 'react';
 import { LoginApi } from './js_files/api';
 import { storeUserData2 } from './js_files/storage';
@@ -12,7 +12,7 @@ import Header from './header';
 
 function SignIn(props) {
 
-const nav=useNavigate()
+// const nav=useNavigate()
 
 
     const initialErrors = {
@@ -75,70 +75,82 @@ const nav=useNavigate()
                     // console.log(err);
                     setErrors({ ...errors, custom_error: "Invalid credential" });
                     // errors.custom_error = "Invalid credential";
-
                 }
 
             }).finally(() => {
+
                 setLoading(false);
+                demo();
+
             })
+
+            
+
         }
 
 
         setErrors({ ...errors });
 
         // nav("/")
-       return props.setTog(false)
+        
+    //    return setBtn(false)
 
 
     }
 
 
-    const initialErrors_1 = {
-        email_input: null,
-        custom_error: null
-    };
+    // const initialErrors_1 = {
+    //     email_input: null,
+    //     custom_error: null
+    // };
   
-    const [wrong, setWrong] = useState(initialErrors_1);
-  
-  
-    const [dataLoading, settDataLoading] = useState(false);
-  
-    const [email_input, setEmail_Input] = useState("");
+    // const [wrong, setWrong] = useState(initialErrors_1);
   
   
-    const handleForgetsubmit = (event) => {
-        event.preventDefault();
+    // const [dataLoading, settDataLoading] = useState(false);
   
-        let wrong = initialErrors_1;
+    // const [email_input, setEmail_Input] = useState("");
   
   
-        if (email_input === "")
-            wrong.email_input = "Registered Email is required";
+    // const handleForgetsubmit = (event) => {
+    //     event.preventDefault();
   
-        if(email_input !== ""){
-                settDataLoading(true);
-                ResetApi(email_input).then((response)=>{
-                   console.log(response);
-                }).catch((err)=>{
-                // console.log(err);
+    //     let wrong = initialErrors_1;
   
-                if(err.code === "ERR_BAD_REQUEST"){
-                    setWrong({...wrong,custom_error:"Registered email is required"})   
-                }
-                })
-        }
   
-        setWrong({ ...wrong })
-    }
+    //     if (email_input === "")
+    //         wrong.email_input = "Registered Email is required";
+  
+    //     if(email_input !== ""){
+    //             settDataLoading(true);
+    //             ResetApi(email_input).then((response)=>{
+    //                console.log(response);
+    //             }).catch((err)=>{
+  
+    //             if(err.code === "ERR_BAD_REQUEST"){
+    //                 setWrong({...wrong,custom_error:"Registered email is required"})   
+    //             }
+    //             })
+    //     }
+  
+    //     setWrong({ ...wrong })
+    // }
 
 
-
+   const demo = (setBtn)=>{
 
     if (isAuthenticatedLogin()) {
+        setBtn(false);
+        
         // return <Navigate to="/dashboard"></Navigate>
         return <Navigate to="/"></Navigate>
     }
 
+   } 
+
+
+
+    
 
 
     //    const [is,setIs] = useState();
@@ -148,11 +160,13 @@ const nav=useNavigate()
     // }
 
 
-
+// function data(set){
+// set(false)
+// }
 
     return (
         <div>
-            <Header></Header>
+            <Header demo={demo}></Header>
             
             <div className="sign_in">
                 <div className="sign_in_div">
@@ -261,14 +275,10 @@ const nav=useNavigate()
                                                 <div className="share_profile_link">
 
                                                 </div> */}
-
+{/* 
 <form onSubmit={handleForgetsubmit}>
                         <div>
-                            {/* <div>
-                                <label>
-                                    Registered email_input
-                                </label>
-                            </div> */}
+                           
                             <div>
                                 <input type="email_input" value={email_input} onChange={(event) => {
                                     setEmail_Input(event.target.value)
@@ -311,7 +321,7 @@ const nav=useNavigate()
                         <div className="forget_page_btn">
                             <button type="submit">submit</button>
                         </div>
-                    </form>
+                    </form> */}
                                                 
                                                 
                                             </div>
@@ -337,8 +347,10 @@ const nav=useNavigate()
 
 
                             <div className="form_sign_in_button_div">
-                                <button type="submit" disabled={loading} className="form_sign_in_button">sign in</button>
+                                <button type="submit" disabled={loading} className="form_sign_in_button" >sign in</button>
                             </div>
+
+                            
                             <div className="form_center">
                                 <div className="or_cont">
                                     <p>or</p>
