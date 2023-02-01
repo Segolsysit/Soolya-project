@@ -36,10 +36,15 @@
     overflow: hidden;
 }
 
-/* .ak{
+.category_list{
     display: flex;
-} */
+}
 
 .container-fluid{
     margin-top: 50px;
+    margin-left: 10%;
+}
+
+.category_list_container{
+    margin-left: 15%;
 }
