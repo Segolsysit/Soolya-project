@@ -2,8 +2,10 @@
     margin-top:30px;
 }
 
-.sub_category_title{
+.sub_category_title h4{
   text-align: center;
+  color:#2874f0;
+  font-weight: 500;
 }
 
 .sub_category_overall{

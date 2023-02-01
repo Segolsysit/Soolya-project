@@ -7,9 +7,9 @@
     overflow: scroll;
 }
 
-/* .category_div{
-    padding: 10px;
-} */
+.category_div{
+  margin: 10px 0px 0px 10px;
+}
 
 .category_button_div{
     width: 150px;
@@ -17,10 +17,22 @@
     background-color: #fff;
     border-radius: 10px;
     text-align: center;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 10px gray;
+    outline:none;
     /* margin:0px 10px 0px 10px ; */
     /* padding: 10px; */
    
 }
+
+.category_button_div:focus{
+    /* background:olive; */
+    background-color: #2874f0;
+    border: 1px solid #2874f0;
+    /* box-shadow: 1px 1px 6px #2874f0; */
+    color:#fff;
+}
+
 
 .category_div div{
    padding: 5px;
@@ -36,4 +48,5 @@
 
 .category_text{
     font-size: 18px;
+    font-weight: 500;
 }
