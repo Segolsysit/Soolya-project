@@ -218,51 +218,51 @@ function PlumberProfile() {
                                     <i id="book_now_arrow" class="fa-solid fa-chevron-right"></i>
                                 </button> */}
 
-                                <button  id="book_now" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCente    ">
+                                <button  id="book_now" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCente">
                                     Book Now <i id="book_now_arrow" class="fa-solid fa-chevron-right"></i>
                                 </button>
 
-                                <div class="modal fade" id="exampleModalCente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div  class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <div className="share_profile_cont">
-                                                    <div>
+                                    <div class="modal fade" id="exampleModalCente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div  class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div className="share_profile_cont">
                                                         <div>
-                                                            <h4 className="add_card_profile_heading">Book Here</h4>
+                                                            <div>
+                                                                <h4 className="add_card_profile_heading">Book Here</h4>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div>
-                                                        <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">
-                                                                <i class="fa-solid fa-xmark"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </ div>  
-                                                <div className="add_card_profile_div">
-                                                    <div>
-                                                        <img className="add_card_img" src={photo} alt="plumber_profile_book_image"></img>
-                                                    </div>
-                                                    <div>
-                                                        <h5>New Jai Maa Bhavani Tiles and Plumbing</h5>
-                                                    </div>
-                                                </div>  
-                                                <div className="add_to_card_div">
-                                                    <div>
-                                                        <h6>Plumbing service</h6>
-                                                        <h6>Per hour ₹ 50</h6>
-                                                    </div>
-                                                    <div className="add_to_card_btn_div">
-                                                        <button onClick={handleCard} className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">
-                                                            Add to cart
-                                                        </button>
-                                                    </div>
-                                                </div>                 
+                                                        <div>
+                                                            <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </ div>  
+                                                    <div className="add_card_profile_div">
+                                                        <div>
+                                                            <img className="add_card_img" src={photo} alt="plumber_profile_book_image"></img>
+                                                        </div>
+                                                        <div>
+                                                            <h5>New Jai Maa Bhavani Tiles and Plumbing</h5>
+                                                        </div>
+                                                    </div>  
+                                                    <div className="add_to_card_div">
+                                                        <div>
+                                                            <h6>Plumbing service</h6>
+                                                            <h6>Per hour ₹ 50</h6>
+                                                        </div>
+                                                        <div className="add_to_card_btn_div">
+                                                            <button onClick={handleCard} className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">
+                                                                Add to cart
+                                                            </button>
+                                                        </div>
+                                                    </div>                 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                             </div>
 
@@ -383,6 +383,68 @@ function PlumberProfile() {
                     </div>
                 </div>
             </div>
+
+
+            <button className="list_btn"  data-bs-toggle="modal" data-bs-target="#exampleModalCente">
+                     <div>
+                        <img className="list_image" src={photo} alt="list_img"></img>
+                     </div>
+                     <div className="list_cont">
+                        <h6>heading</h6>
+                        <div className="list_flex_div">
+                           <div className="list_flex_div_cont">
+                                 <h6 className="list_flex_div_cont_heading">category</h6>
+                                 <p>299</p>
+                           </div>
+                           <button className="list_add_btn" >
+                              <i id="list_add_icon" class="fa-solid fa-plus"></i>
+                           </button>
+                        </div>
+                     </div>
+               </button>
+
+
+               <div class="modal fade" id="exampleModalCente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div  class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div className="share_profile_cont">
+                                                    <div>
+                                                        <div>
+                                                            <h4 className="add_card_profile_heading">Book Here</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </ div>  
+                                                <div className="add_card_profile_div">
+                                                    <div>
+                                                        <img className="add_card_img" src={photo} alt="plumber_profile_book_image"></img>
+                                                    </div>
+                                                    <div>
+                                                        <h5>New Jai Maa Bhavani Tiles and Plumbing</h5>
+                                                    </div>
+                                                </div>  
+                                                <div className="add_to_card_div">
+                                                    <div>
+                                                        <h6>Plumbing service</h6>
+                                                        <h6>Per hour ₹ 50</h6>
+                                                    </div>
+                                                    <div className="add_to_card_btn_div">
+                                                        <button onClick={handleCard} className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">
+                                                            Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>                 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
         </div>
