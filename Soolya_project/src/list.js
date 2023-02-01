@@ -83,10 +83,10 @@ function List(){
                         <h6>{heading}</h6>
                         <div className="list_flex_div">
                            <div className="list_flex_div_cont">
-                                 <h6>{category}</h6>
+                                 <h6 className="list_flex_div_cont_heading">{category}</h6>
                                  <p>{amt}</p>
                            </div>
-                           <button className="list_add_btn">
+                           <button className="list_add_btn" >
                               <i id="list_add_icon" class="fa-solid fa-plus"></i>
                            </button>
                         </div>
