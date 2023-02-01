@@ -43,3 +43,10 @@
 .container-fluid{
     margin-top: 50px;
 }
+
+.table-cat{
+    /* background-color:rgb(0, 81, 255); */
+    margin-left: 100px;
+    margin-top: 100px;
+    width: fit-content;
+}

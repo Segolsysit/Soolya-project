@@ -19,15 +19,17 @@ import EmployeeProfile from './js_files/Employee-Profile';
 import Category from './js_files/category';
 import SubCategory from './js_files/subCategory';
 // import Cart from './js_files/Cart';
-
 import Categorysetup from './Categorysetup';
 import Admin from './Admin';
 import Cart from './js_files/Cart';
 import List from './list';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 export let AppContext =React.createContext(true)
 
 function App() {
+   
     const array = [
         {
             id: 1,
@@ -79,6 +81,8 @@ function App() {
 <React.Fragment>
     <AppContext.Provider value={tog}>
         <div>
+    <ToastContainer/>
+
             {/* <Header></Header> */}
            <Routes>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
