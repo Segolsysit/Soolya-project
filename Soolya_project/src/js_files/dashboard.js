@@ -22,14 +22,14 @@ function DashBoard(){
 
     return(
         <div>
-            {/* <div className="demo_div">           
+            <div className="demo_div">           
                     <h1 className="demo_h1">Welcome to Dashboard</h1>
             </div>
             <div className="demo_h1">
                 <button type="button" onClick={logOutUser}>
                     Logout
                 </button>
-            </div> */}
+            </div>
         </div>
     )
 }

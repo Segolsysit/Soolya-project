@@ -16,8 +16,8 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useState, useContext, useEffect} from 'react';
-import { AppContext  } from './App';
+import { useState, useContext, useEffect } from 'react';
+import { AppContext } from './App';
 import { logOut } from './js_files/auth';
 
 // import { logOut } from "../auth";
@@ -26,98 +26,118 @@ import { logOut } from './js_files/auth';
 // import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
 // import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
 
-function Header({demo}){
-    
-   
-    const nav = useNavigate();
+function Header({ demo }) {
+
+
+    // const nav = useNavigate();
     // const head = useContext(AppContext)
     // const [click,setClick] = useState(head);
 
-// const togg = () => {
-//     nav("/sign_in")
-//     setClick(head)
-//     console.log(head)
-    
-// }
+    // const togg = () => {
+    //     nav("/sign_in")
+    //     setClick(head)
+    //     console.log(head)
 
-// const logOutUser = () => {
-//     localStorage.removeItem("idToken");
-//     localStorage.removeItem("idToken2");
+    // }
 
-//     nav("/sign_in");
-//     setClick(true)
-//     console.log(click);
-// }
+    // const logOutUser = () => {
+    //     localStorage.removeItem("idToken");
+    //     localStorage.removeItem("idToken2");
 
-
-
-const [btn , setBtn] = useState(true);
-// demo(setBtn)
-
-// useEffect(()=>{
-// props.data(setBtn);
-// },[props])
-
-const logOutUser = ()=>{
-    logOut();
-    setBtn(true);
-    nav("/sign_in");
-    
-}
+    //     nav("/sign_in");
+    //     setClick(true)
+    //     console.log(click);
+    // }
 
 
 
-    return(
+    const [btn, setBtn] = useState(true);
+    // demo(setBtn)
+
+    // useEffect(()=>{
+    // props.data(setBtn);
+    // },[props])
+
+    const logOutUser = () => {
+        logOut();
+        setBtn(true);
+        nav("/sign_in");
+
+    }
+
+
+
+    const nav = useNavigate();
+    const head = useContext(AppContext)
+    const [click, setClick] = useState(head);
+
+    const togg = () => {
+        nav("/sign_in")
+        setClick(head)
+        console.log(head)
+
+    }
+
+    // const logOutUser = () => {
+    //     localStorage.removeItem("idToken");
+    //     localStorage.removeItem("idToken2");
+
+    //     nav("/sign_in");
+    //     setClick(true)
+    //     console.log(click);
+    // }
+
+
+    return (
         <div>
-        <header>
-        <div className="header">
-    <div className="header_content">
-        <div className="header_content_div">
-            <NavLink to="/"><img className="company_logo" src={logo} alt="Company-logo"></img></NavLink>
-        </div>
-        <div className="d_flex">
+            <header>
+                <div className="header">
+                    <div className="header_content">
+                        <div className="header_content_div">
+                            <NavLink to="/"><img className="company_logo" src={logo} alt="Company-logo"></img></NavLink>
+                        </div>
+                        <div className="d_flex">
 
-        {/* <div className="header_content_div">
-            <ul className="header_menu">
-                <li className="header_list"><a className="header_link" href="_self">Home</a></li>
-                <li className="header_list"><a className="header_link" href="self">Categories</a></li>
-                <li className="header_list"><a className="header_link" href="self">Services</a></li>
-            </ul>
-        </div> */}
+                            {/* <div className="header_content_div">
+                                 <ul className="header_menu">
+                                 <li className="header_list"><a className="header_link" href="_self">Home</a></li>
+                                 <li className="header_list"><a className="header_link" href="self">Categories</a></li>
+                                 <li className="header_list"><a className="header_link" href="self">Services</a></li>
+                                 </ul>
+                                 </div> */}
 
-        {/* <div className="header_content_div">
-            <form>
-                <input id="search_bar" type="text" placeholder="Search for services"></input>
-                <button className="search_button"><i id="search_icon" className="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-        </div> */}
-{/* 
-        <div className="header_content_div">
-            <div className="header_border_left">
+                            {/* <div className="header_content_div">
+                                 <form>
+                                 <input id="search_bar" type="text" placeholder="Search for services"></input>
+                                 <button className="search_button"><i id="search_icon" className="fa-solid fa-magnifying-glass"></i></button>
+                                 </form>
+                                 </div> */}
+                            {/* 
+                                 <div className="header_content_div">
+                                 <div className="header_border_left">
 
-            </div>
-        </div> */}
-        <div className="header_content_div">
-            <div className="service_man">
-                {/* <a className="service_man__register" href="self">Become a Service man</a> */}
-                <button className="service_man__register" onClick={()=>nav('/service_man')}>Become a Service man</button>
+                                 </div>
+                                 </div> */}
+                            <div className="header_content_div">
+                                <div className="service_man">
+                                    {/* <a className="service_man__register" href="self">Become a Service man</a> */}
+                                    <button className="service_man__register" onClick={() => nav('/service_man')}>Become a Service man</button>
 
-            </div>
-        
-        </div>
+                                </div>
+                            </div>
 
-        {/* <div className="header_content_div">
-            <div className="header_border_right">
+                            {/* <div className="header_content_div">
+                                    <div className="header_border_right">
 
-            </div>
-        </div> */}
+                                    </div>
+                                    </div> */}
 
-        {/* <div className="header_content_div">
-            <ul className="header_unorder">
+                            {/* <div className="header_content_div">
+                                    <ul className="header_unorder">
 
-                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-bell"></i></a></li>
-                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-crown"></i></a></li>
-                <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-cart-plus"></i></a></li> 
+                                    <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-bell"></i></a></li>
+                                    <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-crown"></i></a></li>
+                                    <li className="header_list"><a href="self"><i id="header_icon" className="fa-solid fa-cart-plus"></i></a></li> 
             
             </ul> 
         </div> */}
@@ -133,23 +153,25 @@ const logOutUser = ()=>{
        <button type="button" className="sign_in__buttton" onClick={logOutUser} >log out</button>
 
         } */}
-                   
-        {btn?
-        (<button type="button" className="sign_in__buttton" onClick={()=>{nav('/sign_in')}} >
-            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
-            Sign In
-        </button>)
-         
-        :(<button type="button" className="sign_in__buttton" onClick={logOutUser} >
-            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
-            Log Out
-        </button>)}
 
-            {/* {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign In</button>:null}
-            {isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Log Out</button>:null}
-            {!isAuthenticated()?<button type="button" className="sign_in__buttton" onClick={()=>nav('/sign_in')} ><i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>Sign Up</button>:null} */}
+                                {btn ?
+                                    (<button type="button" className="sign_in__buttton" onClick={() => { nav('/sign_in') }} >
+                                        <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                        Sign In
+                                    </button>)
 
-            <button id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                    : (<button type="button" className="sign_in__buttton" onClick={logOutUser} >
+                                        <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                        Log Out
+                                    </button>)}
+
+
+
+
+
+        {/* offcanvas */}
+
+        <button id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     {/* <li className="header_list"> */}
                         <i id="menu_space" className="fa-solid fa-list-ul"></i>
                         Menu
@@ -285,13 +307,19 @@ const logOutUser = ()=>{
                         </button>
                     </div>
                 </div>
-        </div>
-        </div>
-    </div>
-        </div>
+
+                </div>
+</div>
+
+
+    {/* </header > */}
+    </div >
+
+</div>
     </header>
     </div>
     );
 
-        }
+}
+
 export default Header;

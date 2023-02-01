@@ -9,6 +9,7 @@ import { storeUserData2 } from './js_files/storage';
 import { isAuthenticatedLogin } from './js_files/auth';
 import { ResetApi } from "./js_files/api";
 import Header from './header';
+import { useEffect } from 'react';
 
 function SignIn(props) {
 
@@ -137,20 +138,25 @@ function SignIn(props) {
     // }
 
 
-   const demo = (setBtn)=>{
+//    const demo = (setBtn)=>{
 
-    if (isAuthenticatedLogin()) {
-        setBtn(false);
+//     if (isAuthenticatedLogin()) {
         
-        // return <Navigate to="/dashboard"></Navigate>
-        return <Navigate to="/"></Navigate>
-    }
+//         setBtn(false);
+        
+//         return <Navigate to="/dashboard"></Navigate>
+//         return <Navigate to="/"></Navigate>
+//     }
 
-   } 
+//    } 
 
-
-
+   
+   if (isAuthenticatedLogin()) {
+        
     
+    // return <Navigate to="/dashboard"></Navigate>
+    return <Navigate to="/"></Navigate>
+}
 
 
     //    const [is,setIs] = useState();
