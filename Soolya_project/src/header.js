@@ -103,6 +103,7 @@ const logOutUser = ()=>{
                 <button className="service_man__register" onClick={()=>nav('/service_man')}>Become a Service man</button>
 
             </div>
+        
         </div>
 
         {/* <div className="header_content_div">
