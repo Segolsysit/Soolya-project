@@ -1,8 +1,9 @@
 import React from 'react'
-import "./Admin.css"
+import "./Admin.css";
 import { useState } from 'react';
+import axios from 'axios';
 
-function Navbar_admin() {
+function Sub_Category_Setup() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
@@ -78,7 +79,7 @@ function Navbar_admin() {
                             <div className="bg-white py-2 collapse-inner rounded">
                                 {/* <h6 className="collapse-header">Custom Components:</h6> */}
                                 <a className="collapse-item" href="/categorysetup">Category Setup</a>
-                                <a className="collapse-item" href="cards.js">Sub Category Setup</a>
+                                <a className="collapse-item" href="/subcategorysetup">Sub Category Setup</a>
                             </div>
                         </div>
                     </li>
@@ -361,13 +362,31 @@ function Navbar_admin() {
 
                         </nav>
                         {/* <!-- End of Topbar --> */}
+                        <div className="container-fluid">
+                            <h1>Sub Category Setup</h1>
+                            <form>
+                                <label>Select Category</label><br/>
+                                <select>
+                                    <option>Plumbing</option>
+                                    <option>Electrician</option>
+                                    <option>Ac Services</option>
+                                    <option>Painting Services</option>
+                                </select><br/><br/>
+                                <label>Sub Category Name</label><br/>
+                                <input type="text"></input><br/><br/>
+                                <label>Short Discription</label><br/>
+                                <textarea></textarea><br/><br/>
+                                <label>Image</label><br />
+                                <input type="file"></input><br /><br />
+                                <button type='submit'>Add</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
-
     )
 }
 
-export default Navbar_admin;
+export default Sub_Category_Setup

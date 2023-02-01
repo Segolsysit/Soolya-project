@@ -5,6 +5,8 @@ function Cart() {
     <div> 
 <h3>Cart Page</h3>
 
+
+
     </div>
   )
 }

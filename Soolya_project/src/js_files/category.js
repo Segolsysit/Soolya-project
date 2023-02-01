@@ -107,7 +107,7 @@ let filt;
 function fg(te){
     setActive(true);
     setSub(te);
-    console.log(te)
+    // console.log(te)
         }
         filt= subCategory.filter((su)=>{
             return su.type === sub;
@@ -123,9 +123,8 @@ function fg(te){
                 {category.map(({ img, text }) =>
                 <div className="category_div">
                     
-                    <button className="category_button_div" onClick={()=>fg(text)}>
-                    
-                        <div className="g">
+                    <button className="category_button_div" onClick={()=>fg(text)}> 
+                        <div>
                             <img className="category_img" src={img} alt="painting"></img>
                         </div>
                         <div>
@@ -140,6 +139,11 @@ function fg(te){
                 
           
             </Slider>
+
+            <div className="sub_category_page">
+                <div className="sub_category_title">
+                    <h4>Sub Category</h4>
+                </div>
 
 
             {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
@@ -161,7 +165,7 @@ function fg(te){
                 </div>
                 ): ""}
 </div>
-
+</div>
             </div>
 
         </div>

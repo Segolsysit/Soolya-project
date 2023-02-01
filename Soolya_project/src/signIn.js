@@ -154,8 +154,8 @@ function SignIn(props) {
    if (isAuthenticatedLogin()) {
         
     
-    return <Navigate to="/dashboard"></Navigate>
-    // return <Navigate to="/"></Navigate>
+    // return <Navigate to="/dashboard"></Navigate>
+    return <Navigate to="/"></Navigate>
 }
 
 
