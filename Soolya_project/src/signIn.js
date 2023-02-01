@@ -81,7 +81,7 @@ function SignIn(props) {
             }).finally(() => {
 
                 setLoading(false);
-                demo();
+                // demo();
 
             })
 
@@ -172,7 +172,7 @@ function SignIn(props) {
 
     return (
         <div>
-            <Header demo={demo}></Header>
+            <Header ></Header>
             
             <div className="sign_in">
                 <div className="sign_in_div">
