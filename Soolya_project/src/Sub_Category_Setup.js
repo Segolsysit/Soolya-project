@@ -1,34 +1,9 @@
-import React,{useEffect} from 'react'
-import "./Admin.css"
+import React from 'react'
+import "./Admin.css";
 import { useState } from 'react';
 import axios from 'axios';
 
-
-function Navbar_admin() {
-
-    const [catagortSetup, setCatagortSetup] = useState("");
-    const [img, setImg] = useState("");
-
-
-    const [getData, setgetData] = useState([])
-
-    useEffect(() => {
-        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
-            setgetData(res.data);
-        })
-
-    }, [getData])
-
-    const AddService = (e) => {
-        e.preventDefault()
-        const formdata = new FormData()
-        formdata.append("catagortSetup", catagortSetup);
-        formdata.append("file", img)
-        axios.post("http://localhost:3001/api/new_catagory", formdata).then((res) => {
-            alert(res.data)
-        })
-    }
-    const localpath = "http://localhost:3001/"
+function Sub_Category_Setup() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
@@ -104,7 +79,7 @@ function Navbar_admin() {
                             <div className="bg-white py-2 collapse-inner rounded">
                                 {/* <h6 className="collapse-header">Custom Components:</h6> */}
                                 <a className="collapse-item" href="/categorysetup">Category Setup</a>
-                                <a className="collapse-item" href="cards.js">Sub Category Setup</a>
+                                <a className="collapse-item" href="/subcategorysetup">Sub Category Setup</a>
                             </div>
                         </div>
                     </li>
@@ -388,30 +363,30 @@ function Navbar_admin() {
                         </nav>
                         {/* <!-- End of Topbar --> */}
                         <div className="container-fluid">
-                            <h1>Category Setup</h1>
-                            <form onSubmit={AddService}>
-                                <label>Category Name</label><br />
-                                <input type="text" onChange={(e) => { setCatagortSetup(e.target.value) }}></input><br /><br />
+                            <h1>Sub Category Setup</h1>
+                            <form>
+                                <label>Select Category</label><br/>
+                                <select>
+                                    <option>Plumbing</option>
+                                    <option>Electrician</option>
+                                    <option>Ac Services</option>
+                                    <option>Painting Services</option>
+                                </select><br/><br/>
+                                <label>Sub Category Name</label><br/>
+                                <input type="text"></input><br/><br/>
+                                <label>Short Discription</label><br/>
+                                <textarea></textarea><br/><br/>
                                 <label>Image</label><br />
-                                <input type="file" onChange={(e) => { setImg(e.target.files[0]) }}></input><br /><br />
-                                <button type='submit'>Addservice</button>
+                                <input type="file"></input><br /><br />
+                                <button type='submit'>Add</button>
                             </form>
                         </div>
-                        {
-                            getData.map((data) => (
-                                <div>
-                                    <p>{data.catagortSetup}</p>
-                                    <img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img>
-                                </div>
-                            ))
-                        }
+
                     </div>
                 </div>
             </div>
         </div>
-
-
     )
 }
 
-export default Navbar_admin;
+export default Sub_Category_Setup

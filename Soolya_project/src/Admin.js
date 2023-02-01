@@ -77,7 +77,7 @@ export const Admin = () => {
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Custom Components:</h6> */}
                                     <a className="collapse-item" href="/categorysetup">Category Setup</a>
-                                    <a className="collapse-item" href="cards.js">Sub Category Setup</a>
+                                    <a className="collapse-item" href="/subcategorysetup">Sub Category Setup</a>
                                 </div>
                             </div>
                         </li>
