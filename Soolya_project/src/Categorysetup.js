@@ -75,7 +75,7 @@ function Categorysetup() {
 
                     {/* <!-- Nav Item - Dashboard --> */}
                     <li className="nav-item active">
-                        <a className="nav-link" href="index.html">
+                        <a className="nav-link" href="/admin">
                             <i className="fas fa-fw fa-tachometer-alt"></i>
                             <span>Dashboard</span></a>
                     </li>
@@ -114,16 +114,16 @@ function Categorysetup() {
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseUtilities"
                             aria-expanded="true" aria-controls="collapseUtilities">
                             <i className="fas fa-fw fa-wrench"></i>
-                            <span>Utilities</span>
+                            <span>Services</span>
                         </a>
                         <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities"
                             data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
-                                <h6 className="collapse-header">Custom Utilities:</h6>
-                                <a className="collapse-item" href="utilities-color.js">Colors</a>
-                                <a className="collapse-item" href="utilities-border.js">Borders</a>
-                                <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                                <a className="collapse-item" href="utilities-other.js">Other</a>
+                                {/* <h6 className="collapse-header">Custom Utilities:</h6> */}
+                                <a className="collapse-item" href="utilities-color.js">Service List</a>
+                                <a className="collapse-item" href="utilities-border.js">Add New Service</a>
+                                {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
+                                <a className="collapse-item" href="utilities-other.js">Other</a> */}
                             </div>
                         </div>
                     </li>
@@ -133,10 +133,24 @@ function Categorysetup() {
 
                     {/* <!-- Heading --> */}
                     <div className="sidebar-heading">
-                        Addons
+                        PROVIDERS
                     </div>
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
+                    <li className="nav-item">
+                            <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
+                                aria-expanded="true" aria-controls="collapsePages">
+                                <i className="fas fa-fw fa-user"></i>
+                                <span>Providers</span>
+                            </a>
+                            <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                                <div className="bg-white py-2 collapse-inner rounded">
+                                    {/* <h6 className="collapse-header">Login Screens:</h6> */}
+                                    <a className="collapse-item" href="/login.js">Providers List</a>
+                                    <a className="collapse-item" href="register.js">Add New Provider</a>
+                                </div>
+                            </div>
+                        </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="true" aria-controls="collapsePages">
