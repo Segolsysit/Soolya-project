@@ -1,65 +1,16 @@
-import React, { useEffect } from 'react'
-import "./Admin.css";
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import { toast } from "react-toastify"
 
-
-function Sub_Category_Setup() {
-
-    const [catagorySetup, setCatagorySetup] = useState("");
-    const [img, setImg] = useState("");
-    const [getData, setgetData] = useState([]);
-    const [count, setCount] = useState();
-    let a = 1;
-
-    useEffect(() => {
-        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
-            setgetData(res.data);
-        })
-
-    }, [getData])
-
-    const AddService = (e) => {
-        e.preventDefault()
-        const formdata = new FormData()
-        formdata.append("catagorySetup", catagorySetup);
-        formdata.append("file", img)
-        axios.post("http://localhost:3001/api/new_catagory/", formdata).then((res) => {
-            toast.success(' uploaded Successed!', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-
-            });
-        })
-    }
-
-    const delete_item = (id) => {
-        axios.delete(`http://localhost:3001/api/delete_item/${id}`).then(() => {
-            toast.error('😈 Deleted Successed!', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-
-            });
-        })
-    }
-
-    const localpath = "http://localhost:3001/"
+function Servicelist() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+
+    // const [catagortSetup, setCatagortSetup] = useState("");
+    // const [img, setImg] = useState("");
+    const [getData, setgetData] = useState([]);
+    let a = 1;
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -78,6 +29,31 @@ function Sub_Category_Setup() {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
+ 
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+            setgetData(res.data);
+        })
+
+    }, [getData])
+
+    const delete_item = (id) => {
+        axios.delete(`http://localhost:3001/api/delete_item/${id}`).then(() => {
+            toast.error('😈 Deleted Successed!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+
+            });
+        })
+    }
+
+    const localpath = "http://localhost:3001/"
 
     return (
         <div>
@@ -152,7 +128,7 @@ function Sub_Category_Setup() {
                                 <a className="collapse-item" href="/Servicelist">Service List</a>
                                 <a className="collapse-item" href="utilities-border.js">Add New Service</a>
                                 {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                                <a className="collapse-item" href="utilities-other.js">Other</a> */}
+<a className="collapse-item" href="utilities-other.js">Other</a> */}
                             </div>
                         </div>
                     </li>
@@ -430,18 +406,8 @@ function Sub_Category_Setup() {
 
                         </nav>
                         {/* <!-- End of Topbar --> */}
-                        <div className="container-fluid">
-                            <h1>Category Setup</h1>
-                            <form onSubmit={AddService}>
-                                <label>Category Name</label><br />
-                                <input type="text" onChange={(e) => setCatagorySetup(e.target.value)}></input><br /><br />
-                                <label>Image</label><br />
-                                <input type="file" onChange={(e) => setImg(e.target.files[0])}></input><br /><br />
-                                <button type='submit'>Addservice</button>
-                            </form>
-                        </div>
-
-                        <div >
+                        <div className="container-fluid" >
+                            <h1>Service List</h1>
                             <Table className='table-cat'>
                                 <TableHead>
                                     <TableRow>
@@ -463,7 +429,7 @@ function Sub_Category_Setup() {
                                             <TableRow key={index}>
                                                 <TableCell>{a++}</TableCell>
 
-                                                <TableCell><p>{data.catagorySetup}</p></TableCell>
+                                                <TableCell><p>{data.catagortSetup}</p></TableCell>
                                                 <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
                                                 <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                 <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
@@ -475,7 +441,6 @@ function Sub_Category_Setup() {
                                 </TableBody>
                             </Table>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -483,4 +448,4 @@ function Sub_Category_Setup() {
     )
 }
 
-export default Sub_Category_Setup
+export default Servicelist

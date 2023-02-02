@@ -93,7 +93,7 @@ export const Admin = () => {
                                 data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Custom Utilities:</h6> */}
-                                    <a className="collapse-item" href="utilities-color.js">Service List</a>
+                                    <a className="collapse-item" href="/Servicelist">Service List</a>
                                     <a className="collapse-item" href="utilities-border.js">Add New Service</a>
                                     {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
                                     <a className="collapse-item" href="utilities-other.js">Other</a> */}
