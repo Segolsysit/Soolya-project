@@ -22,7 +22,7 @@ import SubCategory from './js_files/subCategory';
 import Categorysetup from './Categorysetup';
 // import Sub_Category_Setup from './Sub_Category_Setup';
 import Admin from './Admin';
-import Cart from './js_files/Cart';
+// import Cart from './js_files/Cart';
 import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
@@ -76,8 +76,7 @@ function App() {
 
     ];
 
-    const [tog,setTog] = useState(true);
-    console.log(tog);
+  
     
 
     const [btn, setBtn] = useState(true);
@@ -88,7 +87,6 @@ function App() {
     return (
         
 <React.Fragment>
-    <AppContext.Provider value={tog}>
         <div>
     <ToastContainer/>
 
@@ -97,7 +95,7 @@ function App() {
             <Route path='/header' element={<Header btn={btn} ></Header>}></Route>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
-                <Route path="/sign_in" element={<SignIn setTog={setTog}></SignIn>}></Route>
+                <Route path="/sign_in" element={<SignIn ></SignIn>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
                 <Route path="/admin" element={<Admin></Admin>}></Route>
                 <Route path="/categorysetup" element={<Categorysetup></Categorysetup>}></Route>
@@ -124,7 +122,6 @@ function App() {
             {/* <Footer></Footer> */}
             
          </div>
-         </AppContext.Provider>
          </React.Fragment>
     );
 }
