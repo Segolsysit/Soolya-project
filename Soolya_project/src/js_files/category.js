@@ -119,7 +119,7 @@ let filt;
 function fg(te){
     setActive(true);
     setSub(te);
-    // console.log(te)
+    console.log(te)
         }
         filt= subCategory.filter((su)=>{
             return su.type === sub;
@@ -153,11 +153,6 @@ function fg(te){
           
             </Slider>
 
-            <div className="sub_category_page">
-                <div className="sub_category_title">
-                    <h4>Sub Category</h4>
-                </div>
-
 
             {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
             <div className="grid">
@@ -178,7 +173,7 @@ function fg(te){
                 </div>
                 ): ""}
 </div>
-</div>
+
             </div>
 
         </div>
