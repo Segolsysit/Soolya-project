@@ -135,7 +135,7 @@ function fg(te){
                 {getData.map((data) =>
                 <div className="category_div">
                     
-                    <button className="category_button_div" onClick={()=>fg(text)}> 
+                    <button className="category_button_div" onClick={()=>fg(data.catagortSetup)}> 
                         {/* <div> */}
                             <img className="category_img" src={localpath + data.filename} alt="painting"></img>
                         {/* </div> */}
