@@ -124,6 +124,7 @@ function fg(te){
         filt= subCategory.filter((su)=>{
             return su.type === sub;
          })
+
     return (
         <div>
 <Header></Header>
@@ -137,7 +138,7 @@ function fg(te){
                     
                     <button className="category_button_div" onClick={()=>fg(text)}> 
                         {/* <div> */}
-                            <img className="category_img" src={img} alt="painting"></img>
+                            <img className="category_img" src={localpath + data.filename} alt="painting"></img>
                         {/* </div> */}
                         <div>
                             <h5 className="category_text">{data.catagortSetup}</h5>
@@ -160,7 +161,7 @@ function fg(te){
                     
                         <button className="sub_category_div" onClick={()=>{nav("/list")}}>
                         <div className="sub_category_img_div">
-                            <img className="sub_category_img" src={img} alt="plumbing_subCategory_image"></img>
+                            <img className="sub_category_img" src={localpath + data.filename} alt="plumbing_subCategory_image"></img>
                         </div>
                         <div className="sub_category_page_content_div">
                             <h6>{title}</h6>

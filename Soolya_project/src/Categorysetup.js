@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import "./Admin.css";
 import { useState,useEffect } from 'react';
 import axios from 'axios';
@@ -12,7 +12,7 @@ function Sub_Category_Setup() {
     const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
     let a=1;
-   
+   const file=useRef(null);
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
@@ -71,7 +71,7 @@ function Sub_Category_Setup() {
                 });
 
                 setCatagortSetup("")
-                setImg("")
+                file.current.value=null
 
                
 
@@ -500,8 +500,8 @@ const handleImgChange = (e) =>{
                             <h1>Category Setup</h1>
                             <div className="category_form_div">
                             <form className="category_form" id="category_form" onSubmit={AddService}>
-                              <TextField  type="text" label="Service" onChange={(e) =>  setCatagortSetup(e.target.value) }/><br></br>
-                              <TextField type="file" id="file" onChange={handleImgChange}/><br></br>
+                              <TextField  type="text" value={catagortSetup} label="Service" onChange={(e) =>  setCatagortSetup(e.target.value) }/><br></br>
+                              <TextField type="file" ref={file} id="file" onChange={handleImgChange}/><br></br>
                               <Button type='submit' variant='contained'>Addservice</Button><br></br>
                               <Button type='reset' variant='contained'>clear</Button>
 
