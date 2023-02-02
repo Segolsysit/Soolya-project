@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
-    catagortSetup: {
+    catagorySetup: {
         type: String,
 
     },
@@ -25,9 +25,6 @@ const schema = mongoose.Schema({
     size: {
         type: Number,
 
-    },
-    name: {
-        type: String
     }
 
 });

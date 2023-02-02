@@ -32,9 +32,10 @@ const upload = multer({
     fileFilter: fileFilter
 })
 
+
 router.post("/new_catagory",upload.single("file"),async(req,res) => {
     const items = new schema({
-        catagortSetup:req.body.catagortSetup,
+        catagorySetup:req.body.catagorySetup,
         originalname: req.file.originalname,
         mimetype: req.file.mimetype,
         filename: req.file.filename,
