@@ -5,11 +5,14 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 // import SubCategory from "./subCategory";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../header";
+import axios from "axios";
 
 function Category() {
+
+    const [getData, setgetData] = useState([]);
 
     let nav = useNavigate();
 
@@ -17,56 +20,65 @@ function Category() {
         className: "center",
         infinite: true,
         // centerPadding: "60px",
-        slidesToShow: 8,
+        slidesToShow: getData.length,
         arrows: false,
         swipeToSlide: true
         
         
     }
 
-    let category = [
-        {
-            img: "/images/plumber_category.png",
-            text: "Plumbing"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Electrician"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Plumbing"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Plumbing"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Electrician"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Plumbing"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Electrician"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Plumbing"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "Electrician"
-        },
-        {
-            img: "/images/plumber_category.png",
-            text: "wiring"
-        }
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+            setgetData(res.data);
+        })
+
+    }, [getData])
+    const localpath = "http://localhost:3001/"
+
+
+    // let category = [
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Plumbing"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Electrician"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Plumbing"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Plumbing"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Electrician"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Plumbing"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Electrician"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Plumbing"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "Electrician"
+    //     },
+    //     {
+    //         img: "/images/plumber_category.png",
+    //         text: "wiring"
+    //     }
         
-    ];
+    // ];
 
     const [active, setActive] = useState(false);
     let subCategory = [
@@ -107,7 +119,7 @@ let filt;
 function fg(te){
     setActive(true);
     setSub(te);
-    console.log(te)
+    // console.log(te)
         }
         filt= subCategory.filter((su)=>{
             return su.type === sub;
@@ -120,16 +132,16 @@ function fg(te){
 
              <Slider {...settings}>
 
-                {category.map(({ img, text }) =>
+                {getData.map((data) =>
                 <div className="category_div">
                     
                     <button className="category_button_div" onClick={()=>fg(text)}>
                     
                         <div className="g">
-                            <img className="category_img" src={img} alt="painting"></img>
+                            <img className="category_img" src={localpath + data.filename} alt="painting"></img>
                         </div>
                         <div>
-                            <h5 className="category_text">{text}</h5>
+                            <h5 className="category_text">{data.catagortSetup}</h5>
                         </div>
                     </button>
                 
@@ -140,6 +152,11 @@ function fg(te){
                 
           
             </Slider>
+
+            <div className="sub_category_page">
+                <div className="sub_category_title">
+                    <h4>Sub Category</h4>
+                </div>
 
 
             {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
@@ -161,7 +178,7 @@ function fg(te){
                 </div>
                 ): ""}
 </div>
-
+</div>
             </div>
 
         </div>

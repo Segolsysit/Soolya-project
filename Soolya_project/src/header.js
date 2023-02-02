@@ -18,7 +18,7 @@ import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
 import { AppContext } from './App';
-import { logOut } from './js_files/auth';
+import { isAuthenticatedLogin, logOut } from './js_files/auth';
 
 // import { logOut } from "../auth";
 // import { removeUserData1 } from "../storage";
@@ -26,7 +26,7 @@ import { logOut } from './js_files/auth';
 // import {  isAuthenticatedLogin, isAuthenticatedLogOut, logOut } from './js_files/auth';
 // import { removeUserData1, storeUserData, storeUserData2 } from "./js_files/storage";
 
-function Header({ demo }) {
+function Header(props) {
 
 
     // const nav = useNavigate();
@@ -51,7 +51,6 @@ function Header({ demo }) {
 
 
 
-    const [btn, setBtn] = useState(true);
     // demo(setBtn)
 
     // useEffect(()=>{
@@ -60,7 +59,7 @@ function Header({ demo }) {
 
     const logOutUser = () => {
         logOut();
-        setBtn(true);
+
         nav("/sign_in");
 
     }
@@ -154,16 +153,17 @@ function Header({ demo }) {
 
         } */}
 
-                                {btn ?
-                                    (<button type="button" className="sign_in__buttton" onClick={() => { nav('/sign_in') }} >
+                                {/* {props.btn === false? */}
+                                   
+
+                                      <button type="button" className="sign_in__buttton" onClick={() => { nav('/sign_in') }} >
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Sign In
-                                    </button>)
-
-                                    : (<button type="button" className="sign_in__buttton" onClick={logOutUser} >
-                                        <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
-                                        Log Out
-                                    </button>)}
+                                    </button> 
+                                    {/* // : (<button type="button" className="sign_in__buttton" onClick={logOutUser} >
+                                    //     <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                    //     Log Out
+                                    // </button>) } */}
 
 
 

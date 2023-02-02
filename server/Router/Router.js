@@ -14,7 +14,7 @@ cb(null , "files&img")
 
     },
     filename:(req,file,cb)=>{
-          cb(null,file.originalname + "_"+Date.now() + path.extname(file.originalname))  
+          cb(null,file.fieldname + "_"+Date.now() + path.extname(file.originalname))  
     }
 })
 const fileFilter = (req, file, cb) => {
@@ -33,7 +33,7 @@ const upload = multer({
 })
 
 router.post("/new_catagory",upload.single("file"),async(req,res) => {
-    const items =await new schema({
+    const items = new schema({
         catagortSetup:req.body.catagortSetup,
         originalname: req.file.originalname,
         mimetype: req.file.mimetype,
