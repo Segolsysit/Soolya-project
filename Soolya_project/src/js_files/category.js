@@ -137,7 +137,7 @@ function fg(te){
                     
                     <button className="category_button_div" onClick={()=>fg(text)}> 
                         {/* <div> */}
-                            <img className="category_img" src={img} alt="painting"></img>
+                            <img className="category_img" src={localpath + data.filename} alt="painting"></img>
                         {/* </div> */}
                         <div>
                             <h5 className="category_text">{data.catagortSetup}</h5>
