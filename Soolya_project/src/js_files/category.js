@@ -124,9 +124,9 @@ function fg(te){
                 <div className="category_div">
                     
                     <button className="category_button_div" onClick={()=>fg(text)}> 
-                        <div>
+                        {/* <div> */}
                             <img className="category_img" src={img} alt="painting"></img>
-                        </div>
+                        {/* </div> */}
                         <div>
                             <h5 className="category_text">{text}</h5>
                         </div>
