@@ -494,7 +494,6 @@ const handleImgChange = (e) =>{
                         {/* <!-- End of Topbar --> */}
                         <div className="container-fluid">
                             <h1>Category Setup</h1>
-                            <form onSubmit={AddService}>
                                 
                         {/* <!-- End of Topbar --> */}
                         <div className="container-fluid">
@@ -508,6 +507,7 @@ const handleImgChange = (e) =>{
 
                             </form>
                         </div>
+
                  
                         <div >
                             <Table className='table-cat'>
@@ -547,7 +547,8 @@ const handleImgChange = (e) =>{
                     </div>
                 </div>
                 
-
+</div>
+</div>
             </div>
         </div>
     )
