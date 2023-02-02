@@ -7,6 +7,7 @@ import { useState } from "react";
 import { RegisterApi } from "./js_files/api";
 import { storeUserData } from "./js_files/storage";
 import { isAuthenticated } from "./js_files/auth";
+import Header from "./header";
 
 
 function SignUp(){
@@ -37,6 +38,7 @@ function SignUp(){
 
            let hasErrors = false;
 
+
            if (inputs.fname === "") {
 
                errors.fname = "First name is required";
@@ -60,7 +62,10 @@ function SignUp(){
 
             else if(inputs.number.length <10 || inputs.number.length >10){
                 errors.number ="Number must have 10 digit";
+                hasErrors = true;
             }
+
+            
 
 
             if (inputs.password === ""  ) {
@@ -122,7 +127,6 @@ function SignUp(){
     
  
     if(isAuthenticated()){
-        // alert("Registraion is successfull Login here!");
         return <Navigate to="/sign_in"></Navigate>   
     }
 
@@ -130,7 +134,7 @@ function SignUp(){
     return(
     <div>
 
-
+<Header></Header>
 
      <div className="sign_up">
         <div className="sign_up_div">
@@ -227,7 +231,7 @@ function SignUp(){
                         <label>
                             Mobile Number
                         </label>
-                        <input className="sign_up_inupt_box" type="tel" 
+                        <input className="sign_up_inupt_box" type="tel"  
                         onChange={(event)=>{
                             setInputs({...inputs,number:event.target.value})
                             errors.number = null;
