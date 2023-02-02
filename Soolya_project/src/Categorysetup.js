@@ -495,11 +495,7 @@ const handleImgChange = (e) =>{
                         <div className="container-fluid">
                             <h1>Category Setup</h1>
                             <form onSubmit={AddService}>
-                                <label>Category Name</label><br />
-                                <input type="text" onChange={(e) =>  setCatagortSetup(e.target.value) }></input><br /><br />
-                                <label>Image</label><br />
-                                <input type="file" onChange={(e) =>  setImg(e.target.files[0]) }></input><br /><br />
-                                <button type='submit'>Addservice</button> */}
+                                
                         {/* <!-- End of Topbar --> */}
                         <div className="container-fluid">
                             <h1>Category Setup</h1>
@@ -550,9 +546,11 @@ const handleImgChange = (e) =>{
 
                     </div>
                 </div>
+                
+
             </div>
         </div>
     )
 }
 
-export default Sub_Category_Setup
+export default Sub_Category_Setup;
