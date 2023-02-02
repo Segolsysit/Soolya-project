@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react'
 import "./Admin.css";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
-import { Button,Table, TableBody, TableCell, TableRow ,TableHead} from '@mui/material';
+import { Button,Table, TableBody, TableCell, TableRow ,TableHead, TextField} from '@mui/material';
 import {toast} from "react-toastify"
-
+// import { useForm } from 'react-hook-form';
 
 function Sub_Category_Setup() {
 
     const [catagortSetup, setCatagortSetup] = useState("");
     const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
-    const [count, setCount] = useState();
     let a=1;
-
+   
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
@@ -22,11 +21,43 @@ function Sub_Category_Setup() {
     }, [getData])
 
     const AddService = (e) => {
-        e.preventDefault()
+
+        e.preventDefault();
+      
+        if(catagortSetup.length === 0){
+            toast.error("enter service category",{
+                position: "top-right",
+                theme:"colored"
+
+            })
+        }
+        else if(img.length === 0){
+            if(img.size > 2000000){
+
+        
+                toast.error("file size should be less than 2MB",{
+                    position:"top-center",
+                    theme:"colored"
+                })}
+           
+                 
+            toast.error("please upload service image",{
+                position: "top-right",
+                theme:"colored"
+            })
+        }
+       else if (img.type !== "image/jpeg" && file.type !== "image/jpg" ){
+       
+            toast.error("jpeg,jpg,png can upload",{
+                position:"top-center"
+            })}
+    
+      else{
         const formdata = new FormData()
         formdata.append("catagortSetup", catagortSetup);
         formdata.append("file", img)
         axios.post("http://localhost:3001/api/new_catagory/", formdata).then((res) => {
+
             toast.success(' uploaded Successed!', {
                 position: "top-right",
                 autoClose: 2000,
@@ -38,9 +69,39 @@ function Sub_Category_Setup() {
                 theme: "colored",
                 
                 });
-        })
-    }
 
+                setCatagortSetup("")
+                setImg("")
+
+               
+
+        })
+      }
+
+      
+    }
+const handleImgChange = (e) =>{
+    let file=e.target.files[0]
+    if(file.size > 2000000){
+
+        
+        toast.error("file size should be less than 2MB",{
+            position:"top-center",
+            theme:"colored"
+        })
+        
+    }
+    else if (file.type !== "image/jpeg" && file.type !== "image/jpg" ){
+       
+        toast.error("jpeg,jpg,png can upload",{
+            position:"top-center"
+        })
+     
+      }
+    else{
+        setImg(file)
+    }
+}
     const delete_item = (id) => {
         axios.delete(`http://localhost:3001/api/delete_item/${id}`).then(() => {
             toast.error('😈 Deleted Successed!', {
@@ -429,16 +490,23 @@ function Sub_Category_Setup() {
                             </ul>
 
                         </nav>
-                        {/* <!-- End of Topbar --> */}
-                        <div className="container-fluid">
-                            <h1>Category Setup</h1>
-                            <form onSubmit={AddService}>
-                                <label>Category Name</label><br />
+                        {/* <label>Category Name</label><br />
                                 <input type="text" onChange={(e) =>  setCatagortSetup(e.target.value) }></input><br /><br />
                                 <label>Image</label><br />
                                 <input type="file" onChange={(e) =>  setImg(e.target.files[0]) }></input><br /><br />
-                                <button type='submit'>Addservice</button>
+                                <button type='submit'>Addservice</button> */}
+                        {/* <!-- End of Topbar --> */}
+                        <div className="container-fluid">
+                            <h1>Category Setup</h1>
+                            <div className="category_form_div">
+                            <form className="category_form" id="category_form" onSubmit={AddService}>
+                              <TextField  type="text" label="Service" onChange={(e) =>  setCatagortSetup(e.target.value) }/><br></br>
+                              <TextField type="file" id="file" onChange={handleImgChange}/><br></br>
+                              <Button type='submit' variant='contained'>Addservice</Button><br></br>
+                              <Button type='reset' variant='contained'>clear</Button>
+
                             </form>
+                            </div>
                         </div>
                  
                         <div >
