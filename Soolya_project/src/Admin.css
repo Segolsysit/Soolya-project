@@ -51,8 +51,20 @@
 
 .table-cat{
     /* background-color:rgb(0, 81, 255); */
-    margin-left: 100px;
-    margin-top: 100px;
+    margin-left: 20px;
+    margin-top: 80px;
+    
+    width: fit-content;
+}
+.category_form_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.category_form{
+    display: flex;
+    flex-direction: column;
     width: fit-content;
 }
 

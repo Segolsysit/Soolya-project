@@ -8,7 +8,7 @@ function List(){
 
 
    let list = [
-      {
+      {  id:1,
          img:"/images/1.jpg",
          heading:"Commercial space shifting",
          type:"Commercial space shifting",
@@ -16,6 +16,7 @@ function List(){
          amt:"₹ 200"
       },
       {
+         id:2,
          img:"/images/1.jpg",
          heading:"Scooty service",
          type:"Scooty service",
@@ -23,6 +24,7 @@ function List(){
          amt:"₹ 1999"
       },
       {
+         id:3,
          img:"/images/1.jpg",
          heading:"plumbing",
          type:"plumbing",
@@ -30,6 +32,7 @@ function List(){
          amt:"₹ 100"
       },
       {
+         id:4,
          img:"/images/1.jpg",
          heading:"Electrician",
          type:"Electrician",
@@ -37,47 +40,20 @@ function List(){
          amt:"₹ 99"
       },
       {
+         id:5,
          img:"/images/1.jpg",
          heading:"wiring",
          type:"wiring",
          category:"start from",
          amt:"₹ 49"
-      },
-      {
-         img:"/images/1.jpg",
-         heading:"Drainage Cleaning",
-         type:"Drainage Cleaning",
-         category:"start from",
-         amt:"₹ 799"
-      },
-      {
-         img:"/images/1.jpg",
-         heading:"House cleaning",
-         type:"House Cleaning",
-         category:"start from",
-         amt:"₹ 499"
-      },
-      {
-         img:"/images/1.jpg",
-         heading:"Bike Service",
-         type:"Bike Service",
-         category:"start from",
-         amt:"₹ 999"
-      },
-      {
-         img:"/images/1.jpg",
-         heading:"AC Service",
-         type:"AC Service",
-         category:"start from",
-         amt:"₹ 699"
       }
    ]
 
-   const [modal, setModal] = useState(false);
+   // const [modal, setModal] = useState(false);
 
-   const modalSubmit = ()=>{
-       setModal(true);
-   }
+   // const modalSubmit = ()=>{
+   //     setModal(true);
+   // }
 
 
    return(
@@ -90,7 +66,7 @@ function List(){
 
          {list.map(({img,heading,category,amt})=>
             <div className="list_overall_div">
-               <button className="list_btn"  onClick={modalSubmit}  data-bs-toggle="modal" data-bs-target="#exampleModalCente">
+               <button className="list_btn"   data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                      <div>
                         <img className="list_image" src={img} alt="list_img"></img>
                      </div>
@@ -107,8 +83,15 @@ function List(){
                         </div>
                      </div>
                </button>
-               {modal?
-(<div class="modal fade" id="exampleModalCente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+               {/* {modal? */}
+{/* ( */}
+
+ 
+    {/* ):""} */}
+           
+      </div>
+         )}
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div  class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -128,19 +111,21 @@ function List(){
                 </ div>  
                 <div className="add_card_profile_div">
                     <div>
-                        <img className="add_card_img" src={img} alt="plumber_profile_book_image"></img>
+                        <img className="add_card_img" src={"mnj"} alt="plumber_profile_book_image"></img>
                     </div>
                     <div>
-                        <h5>{heading}</h5>
+                        {/* <h5>{heading}</h5> */}
+                        <h5>sample</h5>
                     </div>
                 </div>  
                 <div className="add_to_card_div">
                     <div>
-                        <h6>Plumbing service</h6>
-                        <h6>{amt}</h6>
+                        {/* <h6>{category}</h6>
+                        <h6>{amt}</h6>*/}
+                        <h6>sample</h6>
+                        <h6>sample</h6> 
                     </div>
                     <div className="add_to_card_btn_div">
-                     {/* onClick={handleCard} */}
                         <button  className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">
                             Add to cart
                         </button>
@@ -149,14 +134,12 @@ function List(){
             </div>
         </div>
     </div>
-    </div>):""}
-           
+    </div>
       </div>
-         )}
 
 
 
-      </div>
+     
 
     </div>
    )

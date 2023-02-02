@@ -10,12 +10,6 @@ export const isAuthenticatedLogin = ()=>{
    return getUserData2()!=null?true:false;
 }
 
-// export const isAuthenticatedLogOut = ()=>{
- 
-//    return  getUserData2() !=null?true:false;
-
-// }
-
 export const logOut = ()=>{
       removeUserData1();
       removeUserData();

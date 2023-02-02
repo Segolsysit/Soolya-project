@@ -54,6 +54,7 @@ import Header from './header';
 
 
 
+
 function Home(props) {
 
 
@@ -191,6 +192,10 @@ function Home(props) {
         return arr.type.match(search);
     })
     // }
+
+
+
+   
 
     return (
         <div>

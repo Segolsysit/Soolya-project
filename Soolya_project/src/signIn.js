@@ -3,17 +3,14 @@ import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
 import { Link, Navigate } from 'react-router-dom';
-import { useState} from 'react';
+import { useState } from 'react';
 import { LoginApi } from './js_files/api';
 import { storeUserData2 } from './js_files/storage';
 import { isAuthenticatedLogin } from './js_files/auth';
-import { ResetApi } from "./js_files/api";
 import Header from './header';
-import { useEffect } from 'react';
 
 function SignIn(props) {
 
-// const nav=useNavigate()
 
 
     const initialErrors = {
@@ -22,14 +19,8 @@ function SignIn(props) {
         custom_error: null
     }
 
-    
+
     const [errors, setErrors] = useState(initialErrors);
-
-    //     if( <Navigate to="/sign_in" replace={true} /> ){
-    //          alert("Registraion is successfull Login here vignesh!");
-
-    //         errors.custom_error = "Registraion is successfull Login here!";
-    //    }
 
 
     const [loading, setLoading] = useState(false);
@@ -39,14 +30,13 @@ function SignIn(props) {
         password: ""
     });
 
-     const handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         let errors = initialErrors;
 
         let hasErrors = false;
 
-        // console.log(errors);
 
         if (inputs.email === "") {
             errors.email = "Email or Phone number is required";
@@ -66,113 +56,36 @@ function SignIn(props) {
             LoginApi(inputs).then((response) => {
                 storeUserData2(response.data.idToken);
             }).catch((err) => {
-                // if(err.response.data.error.message == "MISSING_EMAIL"){
-                //     console.log(err);
-                //     setErrors({...errors,custom_error:"Invalid credential"});
-                // }
-                if (err.code === "ERR_BAD_REQUEST") {
-                    // let errors = initialErrors;
-
-                    // console.log(err);
+                if (err.response.data.error.message == "MISSING_EMAIL") {
+                    console.log(err);
                     setErrors({ ...errors, custom_error: "Invalid credential" });
-                    // errors.custom_error = "Invalid credential";
+                }
+                if (err.code === "ERR_BAD_REQUEST") {
+                    setErrors({ ...errors, custom_error: "Invalid credential" });
                 }
 
             }).finally(() => {
-
                 setLoading(false);
-                // demo();
-
             })
-
-            
-
         }
 
 
         setErrors({ ...errors });
 
-        // nav("/")
-        
-    //    return setBtn(false)
-
-
     }
 
 
-    // const initialErrors_1 = {
-    //     email_input: null,
-    //     custom_error: null
-    // };
-  
-    // const [wrong, setWrong] = useState(initialErrors_1);
-  
-  
-    // const [dataLoading, settDataLoading] = useState(false);
-  
-    // const [email_input, setEmail_Input] = useState("");
-  
-  
-    // const handleForgetsubmit = (event) => {
-    //     event.preventDefault();
-  
-    //     let wrong = initialErrors_1;
-  
-  
-    //     if (email_input === "")
-    //         wrong.email_input = "Registered Email is required";
-  
-    //     if(email_input !== ""){
-    //             settDataLoading(true);
-    //             ResetApi(email_input).then((response)=>{
-    //                console.log(response);
-    //             }).catch((err)=>{
-  
-    //             if(err.code === "ERR_BAD_REQUEST"){
-    //                 setWrong({...wrong,custom_error:"Registered email is required"})   
-    //             }
-    //             })
-    //     }
-  
-    //     setWrong({ ...wrong })
-    // }
+
+    if (isAuthenticatedLogin()) {
+        // return <Navigate to="/dashboard"></Navigate>
+        return <Navigate to="/"></Navigate>
+    }
 
 
-//    const demo = (setBtn)=>{
-
-//     if (isAuthenticatedLogin()) {
-        
-//         setBtn(false);
-        
-//         return <Navigate to="/dashboard"></Navigate>
-//         return <Navigate to="/"></Navigate>
-//     }
-
-//    } 
-
-   
-   if (isAuthenticatedLogin()) {
-        
-    
-    // return <Navigate to="/dashboard"></Navigate>
-    return <Navigate to="/"></Navigate>
-}
-
-
-    //    const [is,setIs] = useState();
-
-    // if (isAuthenticated()){
-    //     return logOut();
-    // }
-
-
-// function data(set){
-// set(false)
-// }
 
     return (
         <div>
-            <Header ></Header>
+            <Header demo={demo}></Header>
             
             <div className="sign_in">
                 <div className="sign_in_div">
@@ -256,7 +169,7 @@ function SignIn(props) {
                                 </div> */}
 
                                 <button id="forget_pass" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                Forgot Password?
+                                    Forgot Password?
                                 </button>
 
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -281,7 +194,7 @@ function SignIn(props) {
                                                 <div className="share_profile_link">
 
                                                 </div> */}
-{/* 
+                                                {/* 
 <form onSubmit={handleForgetsubmit}>
                         <div>
                            
@@ -328,8 +241,8 @@ function SignIn(props) {
                             <button type="submit">submit</button>
                         </div>
                     </form> */}
-                                                
-                                                
+
+
                                             </div>
                                             {/* <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -356,7 +269,7 @@ function SignIn(props) {
                                 <button type="submit" disabled={loading} className="form_sign_in_button" >sign in</button>
                             </div>
 
-                            
+
                             <div className="form_center">
                                 <div className="or_cont">
                                     <p>or</p>
