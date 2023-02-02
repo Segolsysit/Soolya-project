@@ -85,8 +85,8 @@ function SignIn(props) {
 
     return (
         <div>
-            <Header></Header>
-
+            <Header demo={demo}></Header>
+            
             <div className="sign_in">
                 <div className="sign_in_div">
                     <div className="sign_in_logo_div">
