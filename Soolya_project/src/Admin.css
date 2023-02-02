@@ -1,4 +1,4 @@
-.a1{
+/* .a1{
     width: 50% aria-valuenow="50" aria-valuemin="0"
 }
 
@@ -24,7 +24,7 @@
 
 .a7{
     width: 100% aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-}
+} */
 
 .toggled {
     overflow: visible;
@@ -40,10 +40,10 @@
     display: flex;
 }
 
-.container-fluid{
+/* .container-fluid{
     margin-top: 50px;
     margin-left: 10%;
-}
+} */
 
 .category_list_container{
     margin-left: 15%;
