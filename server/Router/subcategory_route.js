@@ -1,11 +1,8 @@
-const router = require("express").Router();
-const schema = require("../Schema/schema");
+const subcategory_router = require("express").Router();
+const subcategoyr_schema = require("../Schema/Subcategory_schema");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-
-
-
 
 const Storage=multer.diskStorage({
     destination:(req,file,cb)=>{
@@ -32,10 +29,11 @@ const upload = multer({
     fileFilter: fileFilter
 })
 
-
-router.post("/new_catagory",upload.single("file"),async(req,res) => {
-    const items = new schema({
-        catagorySetup:req.body.catagorySetup,
+subcategory_router.post("/new_subcategory",upload.single("file"),async(req,res) => {
+    const items = new subcategoyr_schema({
+        Category:req.body.Category,
+        Subcategory:req.body.Subcategory,
+        Discription:req.body.Discription,
         originalname: req.file.originalname,
         mimetype: req.file.mimetype,
         filename: req.file.filename,
@@ -46,20 +44,18 @@ router.post("/new_catagory",upload.single("file"),async(req,res) => {
        res.status(200).json({message:"Uploaded Successfully",items})
 })
 
-router.get("/fetch_items",async(req,res)=>{
-    const fetch_items = await schema.find()
-    res.json( fetch_items)
+subcategory_router.get("/new_fetch_items",async(req,res)=>{
+    const new_fetch_items = await subcategoyr_schema.find()
+    res.json( new_fetch_items)
 })
 
-router.get("/fetch_items_id/:id",async(req,res)=>{
-    const item_by_id = await schema.findById(req.params.id)
+subcategory_router.get("/new_fetch_items/:id",async(req,res)=>{
+    const item_by_id = await subcategoyr_schema.findById(req.params.id)
     res.json(item_by_id )
 })
 
-
-
-router.patch("/update_items/:id",upload.single('file'),async(req,res)=>{
-    const removeExisitingFile = await schema.findById(req.params.id)
+subcategory_router.patch("/update_subcategory/:id",upload.single('file'),async(req,res)=>{
+    const removeExisitingFile = await subcategoyr_schema.findById(req.params.id)
     fs.unlink(removeExisitingFile.path,((err)=>{
         if(err){
             console.log(err);
@@ -69,7 +65,7 @@ router.patch("/update_items/:id",upload.single('file'),async(req,res)=>{
         }
 
     }));
-    const update_items = await schema.findByIdAndUpdate(req.params.id)
+    const update_subcategory = await subcategoyr_schema.findByIdAndUpdate(req.params.id)
     update_items.originalname=req.file.originalname;
     update_items.mimetype=req.file.mimetype;
     update_items.filename=req.file.filename;
@@ -77,12 +73,12 @@ router.patch("/update_items/:id",upload.single('file'),async(req,res)=>{
     update_items.size = req.file.size;
     update_items.name=req.body.name;
 
-    await update_items .save();
+    await update_subcategory .save();
     res.status(200).json("File Updated")
 })
 
-router.delete("/delete_item/:id",async(req,res)=>{
-    const delExFile = await schema.findById(req.params.id)
+subcategory_router.delete("/delete_item/:id",async(req,res)=>{
+    const delExFile = await subcategoyr_schema.findById(req.params.id)
     await fs.unlink(delExFile.path,((err)=>{
         if(err){
             console.log(err);
@@ -91,9 +87,8 @@ router.delete("/delete_item/:id",async(req,res)=>{
             console.log("removed del file");
         }
     }));
-     await schema.findByIdAndDelete(req.params.id)
+     await subcategoyr_schema.findByIdAndDelete(req.params.id)
      return res.json('Deleted')
 })
 
-
-module.exports = router;
+module.exports = subcategory_router;

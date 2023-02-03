@@ -1,12 +1,16 @@
-import { data } from 'jquery'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import "./Admin.css"
+import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
+import { toast } from "react-toastify"
 
-function Sub_Category_Setup() {
+function Servicelist() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+
+    // const [catagortSetup, setCatagortSetup] = useState("");
+    // const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
+    let a = 1;
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -25,14 +29,31 @@ function Sub_Category_Setup() {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
-
+ 
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
-            console.log(res.data);
         })
 
-    }, [])
+    }, [getData])
+
+    const delete_item = (id) => {
+        axios.delete(`http://localhost:3001/api/delete_item/${id}`).then(() => {
+            toast.error('😈 Deleted Successed!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+
+            });
+        })
+    }
+
+    const localpath = "http://localhost:3001/"
 
     return (
         <div>
@@ -107,7 +128,7 @@ function Sub_Category_Setup() {
                                 <a className="collapse-item" href="/Servicelist">Service List</a>
                                 <a className="collapse-item" href="/Add_new_service">Add New Service</a>
                                 {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                <a className="collapse-item" href="utilities-other.js">Other</a> */}
+<a className="collapse-item" href="utilities-other.js">Other</a> */}
                             </div>
                         </div>
                     </li>
@@ -385,26 +406,40 @@ function Sub_Category_Setup() {
 
                         </nav>
                         {/* <!-- End of Topbar --> */}
-                        <div className="container-fluid">
-                            <h1>Sub Category Setup</h1>
-                            <form>
-                                <label>Select Category</label><br />
-                                <select >
-                                    <option disabled="disabled">--Select Category--</option>
-                                    {getData.map((data) => (
-                                        <option className='ak' value={data.catagorySetup}>{data.catagorySetup}</option>
-                                    ))
+                        <div className="container-fluid" >
+                            <h1>Service List</h1>
+                            <Table className='table-cat'>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>SN</TableCell>
+                                        <TableCell>Category</TableCell>
+                                        <TableCell>Image</TableCell>
+                                        <TableCell>Edit</TableCell>
+                                        <TableCell>Delete</TableCell>
+
+
+
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        getData.map((data, index) => (
+
+
+                                            <TableRow key={index}>
+                                                <TableCell>{a++}</TableCell>
+
+                                                <TableCell><p>{data.catagortSetup}</p></TableCell>
+                                                <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
+                                                <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
+                                            </TableRow>
+
+
+                                        ))
                                     }
-                                </select>
-                                <br /><br />
-                                <label>Sub Category Name</label><br />
-                                <input type="text"></input><br /><br />
-                                <label>Dicription</label><br />
-                                <textarea></textarea><br /><br />
-                                <label>Image</label><br />
-                                <input type="file"></input><br /><br />
-                                <button type='submit'>Addservice</button>
-                            </form>
+                                </TableBody>
+                            </Table>
                         </div>
                     </div>
                 </div>
@@ -413,4 +448,4 @@ function Sub_Category_Setup() {
     )
 }
 
-export default Sub_Category_Setup
+export default Servicelist

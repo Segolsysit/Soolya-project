@@ -13,6 +13,8 @@ import axios from "axios";
 function Category() {
 
     const [getData, setgetData] = useState([]);
+    const [getData_sub, setgetDataSub] = useState([]);
+
 
     let nav = useNavigate();
 
@@ -32,8 +34,14 @@ function Category() {
             setgetData(res.data);
         })
 
-    }, [getData])
-    const localpath = "http://localhost:3001/"
+        axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
+            setgetDataSub(res.data)
+            // console.log(getData_sub);
+        })
+
+    }, [getData,getData_sub])
+
+    const localpath = "http://localhost:3001/";
 
 
     // let category = [
@@ -81,38 +89,38 @@ function Category() {
     // ];
 
     const [active, setActive] = useState(false);
-    let subCategory = [
-        {
-           img:"/images/1.jpg",
-           title:"electric Service",
-           type:"Electrician",
-           para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-        },
-        {
-            img:"/images/1.jpg",
-            title:"electrical work",
-           type:"Electrician",
-            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-        },
-        {
-            img:"/images/1.jpg",
-           type:"Plumbing",
-           title:"plumbing work",
-            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-        },
-        {
-            img:"/images/1.jpg",
-           type:"Plumbing",
-           title:"Plumbing Checkup Service",
-            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-        },
-         {
-           type:"Electrician",
-           img:"/images/1.jpg",
-            title:"electrical works",
-            para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-        },
-    ]
+    // let subCategory = [
+    //     {
+    //        img:"/images/1.jpg",
+    //        title:"electric Service",
+    //        type:"Electrician",
+    //        para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+    //     },
+    //     {
+    //         img:"/images/1.jpg",
+    //         title:"electrical work",
+    //        type:"Electrician",
+    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+    //     },
+    //     {
+    //         img:"/images/1.jpg",
+    //        type:"Plumbing",
+    //        title:"plumbing work",
+    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+    //     },
+    //     {
+    //         img:"/images/1.jpg",
+    //        type:"Plumbing",
+    //        title:"Plumbing Checkup Service",
+    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+    //     },
+    //      {
+    //        type:"Electrician",
+    //        img:"/images/1.jpg",
+    //         title:"electrical works",
+    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
+    //     },
+    // ]
     const [sub,setSub] = useState("")
 
 let filt;
@@ -121,9 +129,10 @@ function fg(te){
     setSub(te);
     console.log(te)
         }
-        filt= subCategory.filter((su)=>{
-            return su.type === sub;
+        filt=getData_sub.filter((su)=>{
+            return su.Category === sub;
          })
+
     return (
         <div>
 <Header></Header>
@@ -135,13 +144,12 @@ function fg(te){
                 {getData.map((data) =>
                 <div className="category_div">
                     
-                    <button className="category_button_div" onClick={()=>fg(text)}>
-                    
-                        <div className="g">
+                    <button className="category_button_div" onClick={()=>fg(data.catagorySetup)}> 
+                        {/* <div> */}
                             <img className="category_img" src={localpath + data.filename} alt="painting"></img>
-                        </div>
+                        {/* </div> */}
                         <div>
-                            <h5 className="category_text">{data.catagortSetup}</h5>
+                            <h5 className="category_text">{data.catagorySetup}</h5>
                         </div>
                     </button>
                 
@@ -156,17 +164,17 @@ function fg(te){
 
             {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
             <div className="grid">
-{active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,title,para})=>
+{active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,Subcategory,Discription})=>
                 <div className="sub_category_overall">
                     
                         <button className="sub_category_div" onClick={()=>{nav("/list")}}>
                         <div className="sub_category_img_div">
-                            <img className="sub_category_img" src={img} alt="plumbing_subCategory_image"></img>
+                            <img className="sub_category_img" src={localpath + filt.filename} alt="plumbing_subCategory_image"></img>
                         </div>
                         <div className="sub_category_page_content_div">
-                            <h6>{title}</h6>
-                            <p className="sub_category_page_content_para">{para}</p>
-                            <a href="_self">1 services</a> 
+                            <h6>{Subcategory}</h6>
+                            <p className="sub_category_page_content_para">{Discription}</p>
+                            <a href="_self">{filt.length} services</a> 
                         </div>
                         </button>
                     

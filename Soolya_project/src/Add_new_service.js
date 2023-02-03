@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
-import "./Admin.css"
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+import axios from 'axios';
+import { Button, TextField, FormHelperText, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-export const Admin = () => {
+
+function Add_new_service() {
+
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+    const [getData, setgetData] = useState([]);
+
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled")
         }
-        else{
+        else {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
@@ -17,10 +23,19 @@ export const Admin = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1")
         }
-        else{
+        else {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+            setgetData(res.data);
+            console.log(res.data);
+        })
+
+    }, [])
+
     return (
         <div>
             <body id="page-top">
@@ -37,11 +52,11 @@ export const Admin = () => {
                                 <i className="fas fa-laugh-wink"></i>
                             </div>
                             <div className="sidebar-brand-text mx-3">Soolya</div>
-                        </a>    
-                            <div className="text-center d-none d-md-inline">
+                        </a>
+                        <div className="text-center d-none d-md-inline">
                             <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
                         </div>
-                        
+
 
                         {/* <!-- Divider --> */}
                         <hr className="sidebar-divider my-0" />
@@ -58,13 +73,13 @@ export const Admin = () => {
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                        SERVICE MANAGEMENT
+                            SERVICE MANAGEMENT
                         </div>
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
                             <a className="nav-link" href="charts.js">
-                            <i class="fa-regular fa-link-horizontal"></i>
+                                <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Service Zones</span></a>
                         </li>
                         <li className="nav-item">
@@ -94,9 +109,9 @@ export const Admin = () => {
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Custom Utilities:</h6> */}
                                     <a className="collapse-item" href="/Servicelist">Service List</a>
-                                    <a className="collapse-item" href="/Add_new_service">Add New Service</a>
+                                    <a className="collapse-item" href="utilities-border.js">Add New Service</a>
                                     {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                                    <a className="collapse-item" href="utilities-other.js">Other</a> */}
+                    <a className="collapse-item" href="utilities-other.js">Other</a> */}
                                 </div>
                             </div>
                         </li>
@@ -106,7 +121,7 @@ export const Admin = () => {
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                        PROVIDER MANAGEMENT
+                            PROVIDER MANAGEMENT
                         </div>
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
@@ -163,15 +178,15 @@ export const Admin = () => {
 
                         {/* <!-- Sidebar Toggler (Sidebar) --> */}
                         {/* <div className="text-center d-none d-md-inline">
-                            <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
-                        </div> */}
+            <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
+        </div> */}
 
                         {/* <!-- Sidebar Message --> */}
                         {/* <div className="sidebar-card d-none d-lg-flex">
-                            <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
-                            <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                            <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-                        </div> */}
+            <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
+            <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+        </div> */}
 
                     </ul>
                     {/* <!-- End of Sidebar --> */}
@@ -387,7 +402,48 @@ export const Admin = () => {
                             </nav>
                             {/* <!-- End of Topbar --> */}
 
-                        
+                            <div className="container-fluid">
+                                <h1>Add New Service</h1>
+                                <div className="category_form_div">
+                                    <form className="category_form" id="category_form" >
+                                        <TextField type="text" label="Service" /><br></br>
+                                        <FormControl sx={{ minWidth: 100 }}>
+                                            <InputLabel id="demo-simple-select-label"
+                                            >Select Category</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                label="Select Category" >
+                                                {getData.map((data) => (
+                                                    <MenuItem value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
+                                                ))
+                                                }
+                                            </Select>
+                                            <FormHelperText></FormHelperText>
+                                        </FormControl><br></br>
+                                        <FormControl sx={{ minWidth: 100 }}>
+                                            <InputLabel id="demo-simple-select-label"
+                                            >Select Sub Category</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                label="Select Category" >
+                                                {/* {getData.map((data) => ( */}
+                                                    <MenuItem >subcategory</MenuItem>
+                                                {/* ))
+                                                } */}
+                                            </Select>
+                                            <FormHelperText></FormHelperText>
+                                        </FormControl><br></br>
+                                        <TextField rows={3} multiline type="text" label="Short Discription*"/><br></br>
+                                        <TextField type="number" label="Price*"/><br></br>
+                                        <TextField type="file" id="file" /><br></br>
+                                        <Button type='submit' variant='contained'>Addservice</Button><br></br>
+                                        <Button type='reset' variant='contained'>clear</Button>
+
+                                    </form>
+                                </div>
+                            </div>
 
                         </div>
                         {/* <!-- End of Main Content --> */}
@@ -437,4 +493,4 @@ export const Admin = () => {
     )
 }
 
-export default Admin;
+export default Add_new_service

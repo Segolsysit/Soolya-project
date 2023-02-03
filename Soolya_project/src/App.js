@@ -21,14 +21,15 @@ import SubCategory from './js_files/subCategory';
 // import Cart from './js_files/Cart';
 import Categorysetup from './Categorysetup';
 import Sub_Category_Setup from './Sub_Category_Setup';
+import Servicelist from './Servicelist';
 import Admin from './Admin';
+import Add_new_service from './Add_new_service';
 // import Cart from './js_files/Cart';
 import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import { isAuthenticatedLogin } from './js_files/auth';
-
 export let AppContext =React.createContext(true)
 
 function App() {
@@ -100,6 +101,8 @@ function App() {
                 <Route path="/admin" element={<Admin></Admin>}></Route>
                 <Route path="/categorysetup" element={<Categorysetup></Categorysetup>}></Route>
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
+                <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
+                <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
