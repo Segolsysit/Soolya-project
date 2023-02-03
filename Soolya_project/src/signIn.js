@@ -2,14 +2,20 @@ import './signIn.css';
 import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
-import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import {  useState } from 'react';
 import { LoginApi } from './js_files/api';
-import { storeUserData2 } from './js_files/storage';
-import { isAuthenticatedLogin } from './js_files/auth';
+import { removeUserData1, storeUserData2 } from './js_files/storage';
+import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import Header from './header';
+import Footer from './footer';
 
-function SignIn(props) {
+function SignIn() {
+
+
+
+    
+  const nav = useNavigate();
 
 
 
@@ -76,7 +82,9 @@ function SignIn(props) {
 
 
 
-    if (isAuthenticatedLogin()) {
+    if (isAuthenticatedLogin() ) {
+        // removeUserData1();
+        removeUserData1();
         // return <Navigate to="/dashboard"></Navigate>
         return <Navigate to="/"></Navigate>
     }
@@ -85,7 +93,7 @@ function SignIn(props) {
 
     return (
         <div>
-            <Header demo={demo}></Header>
+            <Header></Header>
             
             <div className="sign_in">
                 <div className="sign_in_div">
@@ -168,92 +176,13 @@ function SignIn(props) {
                                     <button className="forget_pass" href="_self">Forgot Password?</button>
                                 </div> */}
 
-                                <button id="forget_pass" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                <button id="forget_pass" type="button" onClick={()=>{nav("/forget_password")}}>
                                     Forgot Password?
                                 </button>
 
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div id="share_profile_modal_width" class="modal-dialog modal-dialog-centered " role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <div className="share_profile_cont">
-                                                    <div>
-                                                        <h4 className="share_profile_heading">Registered Email</h4>
-                                                    </div>
-                                                    <div>
-                                                        <button id="share_profile_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">
-                                                                <i class="fa-solid fa-xmark"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                {/* <div>
-                                                    <h5 className="share_profile_select_heading">Select from the options below</h5>
-                                                </div>
-                                                <div className="share_profile_link">
-
-                                                </div> */}
-                                                {/* 
-<form onSubmit={handleForgetsubmit}>
-                        <div>
-                           
-                            <div>
-                                <input type="email_input" value={email_input} onChange={(event) => {
-                                    setEmail_Input(event.target.value)
-                                    wrong.email_input = null;
-                                    wrong.custom_error = null;
-                                }} placeholder="Email"></input>
-                            </div>
-
-                            {wrong.email_input ?
-                                (<div id="d_flex" className="sign_in_form_validation">
-                                    <div>
-                                        <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
-                                    </div>
-                                    <div>
-                                        <h6>{wrong.email_input}</h6>
-                                    </div>
-                                </div>) : null
-                            }
-                        </div>
-
-                        {wrong.custom_error? 
-                        (<div id="d_flex_center" className="sign_in_form_validation">
-                        <div>
-                            <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
-                        </div>
-                        <div>
-                            <h5>{wrong.custom_error}</h5>
-                        </div>
-                    </div>):null
-                    }
-
-                        {dataLoading?
-                                (<div id="spinner_roll">
-                                    <div className="spinner-border text-primary" role="status">
-                                    </div>
-                                </div>):null
-                            }
-
-
-                        <div className="forget_page_btn">
-                            <button type="submit">submit</button>
-                        </div>
-                    </form> */}
-
-
-                                            </div>
-                                            {/* <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div> */}
-                                        </div>
-                                    </div>
-                                </div>
-
+                             
 
                             </div>
-
 
 
 
@@ -292,7 +221,7 @@ function SignIn(props) {
                 </div>
             </div>
 
-
+<Footer></Footer>
         </div>
 
     );

@@ -2,15 +2,17 @@ import "./signUp.css";
 import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { RegisterApi } from "./js_files/api";
 import { storeUserData } from "./js_files/storage";
-import { isAuthenticated } from "./js_files/auth";
+import { isAuthenticated, isAuthenticatedLogin } from "./js_files/auth";
 import Header from "./header";
 
 
 function SignUp(){
+
+    const nav = useNavigate();
 
 
     const initialErrors = {
@@ -96,6 +98,11 @@ function SignUp(){
                 RegisterApi(inputs).then((response)=>{
                     // console.log(response);
                     storeUserData(response.data.idToken);
+                
+                    if(isAuthenticated() === true){
+                    nav("/sign_in");
+                    }
+
                 }).catch((err)=>{
                     if(err.response.data.error.message === "EMAIL_EXISTS"){
                         setErrors({...errors,custom_error:"Already this email has been registered"});
@@ -127,9 +134,12 @@ function SignUp(){
     
  
     if(isAuthenticated()){
-        return <Navigate to="/sign_in"></Navigate>   
+        // return <Navigate to="/sign_in"></Navigate>   
     }
 
+    if(isAuthenticatedLogin()){
+        return <Navigate to="/"></Navigate>   
+    }
 
     return(
     <div>

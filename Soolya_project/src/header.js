@@ -15,7 +15,7 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-// import { useState } from 'react';
+import { useState } from 'react';
 import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import { logOut } from './js_files/auth';
 
@@ -26,12 +26,25 @@ function Header() {
     const nav = useNavigate();
 
 
-    // const [btn, setBtn] = useState(true);
+    const [register, setRegister] = useState(true);
+
+    const [login, setLogin] = useState(true);
+
 
     const logOutUser = () => {
         logOut();
         nav("/sign_in");
 
+    }
+
+    const navLogin = ()=>{
+         nav("/sign_in");
+         setLogin(null);     
+    }
+
+    const navRegister = ()=>{
+        nav("/sign_up");
+        setRegister(null);
     }
  
 
@@ -60,20 +73,37 @@ function Header() {
         </div>
         <div className="header_content_div">
             {/* onClick={() => { nav('/sign_in') }} */}
-    
-                                {!isAuthenticatedLogin()?
-                                    <button type="button" className="sign_in__buttton" onClick={()=>{nav("/sign_in")}} >
+
+                                
+                                {!isAuthenticatedLogin() && login?
+                                    <button type="button" className="sign_in__buttton" 
+                                    onClick={navLogin} >
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Login
                                     </button>:null}
 
-                                    {!isAuthenticated()?
-                                    <button type="button" className="sign_up__buttton" onClick={()=>{nav("/sign_up")}}>
+                                    {/* {login?
+                                    <button type="button" className="sign_in__buttton" 
+                                    onClick={navLogin} >
+                                        <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                        Login
+                                    </button>:null} */}
+                                    
+                                    {isAuthenticated() || !isAuthenticatedLogin() && register?
+                                    <button type="button" className="sign_up__buttton" onClick={navRegister}>
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Register
                                     </button>:null}
 
-                                    {isAuthenticated() && isAuthenticatedLogin()?
+                                    {/* {register?
+                                    <button type="button" className="sign_up__buttton" onClick={navRegister}>
+                                        <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                        Register
+                                    </button>:null} */}
+    
+                                  
+
+                                    {isAuthenticatedLogin()?
                                     <button type="button" className="sign_in__buttton" onClick={logOutUser}>
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Log Out

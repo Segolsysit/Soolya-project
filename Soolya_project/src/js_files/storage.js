@@ -27,5 +27,13 @@ export const removeUserData = ()=>{
 }
 
 export const resetPasswordstoreData = (dataReset)=>{
-    localStorage.setItem("idToken",dataReset);
+    localStorage.setItem("kind",dataReset);
+}
+
+export const getUserData3= ()=>{
+    return localStorage.getItem("kind");
+}
+
+export const removeForgetUserData = ()=>{
+    localStorage.removeItem("kind");
 }
