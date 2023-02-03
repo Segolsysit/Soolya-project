@@ -548,11 +548,7 @@ function Sub_Category_Setup() {
 
                     </div>
                 </div>
-                
-</div>
-</div>
             </div>
-        </div>
     )
 }
 
