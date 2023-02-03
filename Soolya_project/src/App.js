@@ -29,7 +29,7 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import { isAuthenticatedLogin } from './js_files/auth';
-
+import Add_new_service from "./Add_new_service"
 export let AppContext =React.createContext(true)
 
 function App() {

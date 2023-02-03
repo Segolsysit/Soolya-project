@@ -12,6 +12,7 @@ app.use("/api", router)
 app.use("/sub_api", subcategory_router)
 app.use(express.static(path.join(__dirname, "files&img")));
 
+
 mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://127.0.0.1:27017/soolya_project',(err)=>{
     if(err){

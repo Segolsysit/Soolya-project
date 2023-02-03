@@ -29,9 +29,6 @@ const Subcategory_schema = mongoose.Schema({
     size: {
         type: Number,
 
-    },
-    name: {
-        type: String
     }
 });
 
