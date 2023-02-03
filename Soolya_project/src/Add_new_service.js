@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
+import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } from '@mui/material';
+
 
 function Add_new_service() {
 
@@ -389,7 +391,37 @@ function Add_new_service() {
                             </nav>
                             {/* <!-- End of Topbar --> */}
 
+                            <div className="container-fluid">
+                                <h1>Add New Service</h1>
+                                <div className="category_form_div">
+                                    <form className="category_form" id="category_form" >
+                                        <TextField type="text" label="Service" /><br></br>
+                                        <FormControl sx={{ minWidth: 100 }}>
+                                            <InputLabel id="demo-simple-select-label" value={formData.Title}
+                                                >Select </InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                label="Title" value={formData.Title} onChange={(e) => {
+                                                    setformData({ ...formData, Title: e.target.value });
+                                                    setTitleerror(false)
+                                                }}
+                                                error={Titleerror}>
+                                                <MenuItem value="Mr">Mr</MenuItem>
+                                                <MenuItem value="Mrs">Mrs</MenuItem>
+                                                <MenuItem value="Ms">Ms</MenuItem>
+                                                <MenuItem value="Dr">Dr</MenuItem>
+                                            </Select>
+                                            <FormHelperText error
+                                            >{Titleerror === true ? "Select Title" : ""}</FormHelperText>
+                                        </FormControl>
+                                        <TextField type="file" id="file" /><br></br>
+                                        <Button type='submit' variant='contained'>Addservice</Button><br></br>
+                                        <Button type='reset' variant='contained'>clear</Button>
 
+                                    </form>
+                                </div>
+                            </div>
 
                         </div>
                         {/* <!-- End of Main Content --> */}

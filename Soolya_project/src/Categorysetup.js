@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import "./Admin.css";
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button,Table, TableBody, TableCell, TableRow ,TableHead, TextField} from '@mui/material';
-import {toast} from "react-toastify"
+import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } from '@mui/material';
+import { toast } from "react-toastify"
 // import { useForm } from 'react-hook-form';
 
 function Sub_Category_Setup() {
@@ -12,8 +12,8 @@ function Sub_Category_Setup() {
     const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
     const [count, setCount] = useState();
-    let a=1;
-   
+    let a = 1;
+
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
@@ -28,23 +28,24 @@ function Sub_Category_Setup() {
         if(categorySetup.length === 0){
             toast.error("enter service category",{
                 position: "top-right",
-                theme:"colored"
+                theme: "colored"
 
             })
         }
-        else if(img.length === 0){
-            if(img.size > 2000000){
+        else if (img.length === 0) {
+            if (img.size > 2000000) {
 
-        
-                toast.error("file size should be less than 2MB",{
-                    position:"top-center",
-                    theme:"colored"
-                })}
-           
-                 
-            toast.error("please upload service image",{
+
+                toast.error("file size should be less than 2MB", {
+                    position: "top-center",
+                    theme: "colored"
+                })
+            }
+
+
+            toast.error("please upload service image", {
                 position: "top-right",
-                theme:"colored"
+                theme: "colored"
             })
         }
        else if (img.type !== "image/jpeg" && file.type !== "image/jpg" ){
@@ -59,49 +60,50 @@ function Sub_Category_Setup() {
         formdata.append("file", img)
         axios.post("http://localhost:3001/api/new_catagory/", formdata).then((res) => {
 
-            toast.success(' uploaded Successed!', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-                
+                toast.success(' uploaded Successed!', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+
                 });
 
-                setCatagorySetup("")
+                setCatagortSetup("")
+                file.current.value=null
 
-               
 
-        })
-      }
 
-      
+            })
+        }
+
+
     }
-const handleImgChange = (e) =>{
-    let file=e.target.files[0]
-    if(file.size > 2000000){
+    const handleImgChange = (e) => {
+        let file = e.target.files[0]
+        if (file.size > 2000000) {
 
-        
-        toast.error("file size should be less than 2MB",{
-            position:"top-center",
-            theme:"colored"
-        })
-        
+
+            toast.error("file size should be less than 2MB", {
+                position: "top-center",
+                theme: "colored"
+            })
+
+        }
+        else if (file.type !== "image/jpeg" && file.type !== "image/jpg") {
+
+            toast.error("jpeg,jpg,png can upload", {
+                position: "top-center"
+            })
+
+        }
+        else {
+            setImg(file)
+        }
     }
-    else if (file.type !== "image/jpeg" && file.type !== "image/jpg" ){
-       
-        toast.error("jpeg,jpg,png can upload",{
-            position:"top-center"
-        })
-     
-      }
-    else{
-        setImg(file)
-    }
-}
     const delete_item = (id) => {
         axios.delete(`http://localhost:3001/api/delete_item/${id}`).then(() => {
             toast.error('😈 Deleted Successed!', {
@@ -502,50 +504,50 @@ const handleImgChange = (e) =>{
                               <Button type='submit' variant='contained'>Addservice</Button><br></br>
                               <Button type='reset' variant='contained'>clear</Button>
 
-                            </form>
-                        </div>
-
-                 
-                        <div >
-                            <Table className='table-cat'>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>SN</TableCell>
-                                        <TableCell>Category</TableCell>
-                                        <TableCell>Image</TableCell>
-                                        <TableCell>Edit</TableCell>
-                                        <TableCell>Delete</TableCell>
+                                    </form>
+                                </div>
 
 
+                                <div >
+                                    <Table className='table-cat'>
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell>SN</TableCell>
+                                                <TableCell>Category</TableCell>
+                                                <TableCell>Image</TableCell>
+                                                <TableCell>Edit</TableCell>
+                                                <TableCell>Delete</TableCell>
 
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {
-                                        getData.map((data, index) => (
 
 
-                                            <TableRow key={index}>
-                                                <TableCell>{a++}</TableCell>
-
-                                                <TableCell><p>{data.catagorySetup}</p></TableCell>
-                                                <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
-                                                <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
                                             </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {
+                                                getData.map((data, index) => (
 
 
-                                        ))
-                                    }
-                                </TableBody>
-                            </Table>
+                                                    <TableRow key={index}>
+                                                        <TableCell>{a++}</TableCell>
+
+                                                        <TableCell><p>{data.catagorySetup}</p></TableCell>
+                                                        <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
+                                                        <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                        <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
+                                                    </TableRow>
+
+
+                                                ))
+                                            }
+                                        </TableBody>
+                                    </Table>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
                 </div>
-                
-</div>
-</div>
             </div>
     )
 }

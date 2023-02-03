@@ -23,6 +23,7 @@ import Categorysetup from './Categorysetup';
 import Sub_Category_Setup from './Sub_Category_Setup';
 import Servicelist from './Servicelist';
 import Admin from './Admin';
+import Add_new_service from './Add_new_service';
 // import Cart from './js_files/Cart';
 import List from './list';
 import { ToastContainer } from 'react-toastify';

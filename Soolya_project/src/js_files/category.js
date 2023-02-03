@@ -40,7 +40,7 @@ function Category() {
         })
 
     }, [getData,getData_sub])
-    
+
     const localpath = "http://localhost:3001/";
 
 

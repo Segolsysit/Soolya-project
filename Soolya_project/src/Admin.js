@@ -22,7 +22,7 @@ export const Admin = () => {
         }
     }
     return (
-        <div className='container-fluid'>
+        <div>
             <body id="page-top">
 
                 {/* <!-- Page Wrapper --> */}
