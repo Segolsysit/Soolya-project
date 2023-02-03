@@ -29,7 +29,7 @@ function Sub_Category_Setup() {
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
-console.log(res.data);
+            console.log(res.data);
         })
 
     }, [])
@@ -390,7 +390,7 @@ console.log(res.data);
                             <form>
                                 <label>Select Category</label><br />
                                 <select >
-                                    <option>--Select Category--</option>
+                                    <option disabled="disabled">--Select Category--</option>
                                     {getData.map((data) => (
                                         <option className='ak' value={data.catagorySetup}>{data.catagorySetup}</option>
                                     ))

@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } from '@mui/material';
+import axios from 'axios';
+import { Button, TextField, FormHelperText, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 
 function Add_new_service() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+    const [getData, setgetData] = useState([]);
+
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -24,6 +27,14 @@ function Add_new_service() {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+            setgetData(res.data);
+            console.log(res.data);
+        })
+
+    }, [])
 
     return (
         <div>
@@ -397,24 +408,35 @@ function Add_new_service() {
                                     <form className="category_form" id="category_form" >
                                         <TextField type="text" label="Service" /><br></br>
                                         <FormControl sx={{ minWidth: 100 }}>
-                                            <InputLabel id="demo-simple-select-label" value={formData.Title}
-                                                >Select </InputLabel>
+                                            <InputLabel id="demo-simple-select-label"
+                                            >Select Category</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-label"
                                                 id="demo-simple-select"
-                                                label="Title" value={formData.Title} onChange={(e) => {
-                                                    setformData({ ...formData, Title: e.target.value });
-                                                    setTitleerror(false)
-                                                }}
-                                                error={Titleerror}>
-                                                <MenuItem value="Mr">Mr</MenuItem>
-                                                <MenuItem value="Mrs">Mrs</MenuItem>
-                                                <MenuItem value="Ms">Ms</MenuItem>
-                                                <MenuItem value="Dr">Dr</MenuItem>
+                                                label="Select Category" >
+                                                {getData.map((data) => (
+                                                    <MenuItem value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
+                                                ))
+                                                }
                                             </Select>
-                                            <FormHelperText error
-                                            >{Titleerror === true ? "Select Title" : ""}</FormHelperText>
-                                        </FormControl>
+                                            <FormHelperText></FormHelperText>
+                                        </FormControl><br></br>
+                                        <FormControl sx={{ minWidth: 100 }}>
+                                            <InputLabel id="demo-simple-select-label"
+                                            >Select Sub Category</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                label="Select Category" >
+                                                {/* {getData.map((data) => ( */}
+                                                    <MenuItem >subcategory</MenuItem>
+                                                {/* ))
+                                                } */}
+                                            </Select>
+                                            <FormHelperText></FormHelperText>
+                                        </FormControl><br></br>
+                                        <TextField rows={3} multiline type="text" label="Short Discription*"/><br></br>
+                                        <TextField type="number" label="Price*"/><br></br>
                                         <TextField type="file" id="file" /><br></br>
                                         <Button type='submit' variant='contained'>Addservice</Button><br></br>
                                         <Button type='reset' variant='contained'>clear</Button>
