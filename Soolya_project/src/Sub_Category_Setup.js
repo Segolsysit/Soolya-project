@@ -105,7 +105,7 @@ console.log(res.data);
                             <div className="bg-white py-2 collapse-inner rounded">
                                 {/* <h6 className="collapse-header">Custom Utilities:</h6> */}
                                 <a className="collapse-item" href="/Servicelist">Service List</a>
-                                <a className="collapse-item" href="utilities-border.js">Add New Service</a>
+                                <a className="collapse-item" href="/Add_new_service">Add New Service</a>
                                 {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
                 <a className="collapse-item" href="utilities-other.js">Other</a> */}
                             </div>

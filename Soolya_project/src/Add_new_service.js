@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import "./Admin.css"
+import React from 'react'
+import { useState } from 'react'
 
-export const Admin = () => {
+function Add_new_service() {
+
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled")
         }
-        else{
+        else {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
@@ -17,12 +18,13 @@ export const Admin = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1")
         }
-        else{
+        else {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
+
     return (
-        <div className='container-fluid'>
+        <div>
             <body id="page-top">
 
                 {/* <!-- Page Wrapper --> */}
@@ -37,11 +39,11 @@ export const Admin = () => {
                                 <i className="fas fa-laugh-wink"></i>
                             </div>
                             <div className="sidebar-brand-text mx-3">Soolya</div>
-                        </a>    
-                            <div className="text-center d-none d-md-inline">
+                        </a>
+                        <div className="text-center d-none d-md-inline">
                             <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
                         </div>
-                        
+
 
                         {/* <!-- Divider --> */}
                         <hr className="sidebar-divider my-0" />
@@ -58,13 +60,13 @@ export const Admin = () => {
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                        SERVICE MANAGEMENT
+                            SERVICE MANAGEMENT
                         </div>
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
                             <a className="nav-link" href="charts.js">
-                            <i class="fa-regular fa-link-horizontal"></i>
+                                <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Service Zones</span></a>
                         </li>
                         <li className="nav-item">
@@ -94,9 +96,9 @@ export const Admin = () => {
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Custom Utilities:</h6> */}
                                     <a className="collapse-item" href="/Servicelist">Service List</a>
-                                    <a className="collapse-item" href="/Add_new_service">Add New Service</a>
+                                    <a className="collapse-item" href="utilities-border.js">Add New Service</a>
                                     {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                                    <a className="collapse-item" href="utilities-other.js">Other</a> */}
+                    <a className="collapse-item" href="utilities-other.js">Other</a> */}
                                 </div>
                             </div>
                         </li>
@@ -106,7 +108,7 @@ export const Admin = () => {
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                        PROVIDER MANAGEMENT
+                            PROVIDER MANAGEMENT
                         </div>
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
@@ -163,15 +165,15 @@ export const Admin = () => {
 
                         {/* <!-- Sidebar Toggler (Sidebar) --> */}
                         {/* <div className="text-center d-none d-md-inline">
-                            <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
-                        </div> */}
+            <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
+        </div> */}
 
                         {/* <!-- Sidebar Message --> */}
                         {/* <div className="sidebar-card d-none d-lg-flex">
-                            <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
-                            <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                            <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-                        </div> */}
+            <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
+            <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+        </div> */}
 
                     </ul>
                     {/* <!-- End of Sidebar --> */}
@@ -387,7 +389,7 @@ export const Admin = () => {
                             </nav>
                             {/* <!-- End of Topbar --> */}
 
-                        
+
 
                         </div>
                         {/* <!-- End of Main Content --> */}
@@ -437,4 +439,4 @@ export const Admin = () => {
     )
 }
 
-export default Admin;
+export default Add_new_service
