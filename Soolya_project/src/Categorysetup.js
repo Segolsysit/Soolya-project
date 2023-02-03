@@ -8,7 +8,7 @@ import {toast} from "react-toastify"
 
 function Sub_Category_Setup() {
 
-    const [catagorySetup, setCatagorySetup] = useState("");
+    const [categorySetup, setCatagorySetup] = useState("");
     const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
     const [count, setCount] = useState();
@@ -25,7 +25,7 @@ function Sub_Category_Setup() {
 
         e.preventDefault();
       
-        if(catagortSetup.length === 0){
+        if(categorySetup.length === 0){
             toast.error("enter service category",{
                 position: "top-right",
                 theme:"colored"
@@ -55,7 +55,7 @@ function Sub_Category_Setup() {
     
       else{
         const formdata = new FormData()
-        formdata.append("catagorySetup", catagorySetup);
+        formdata.append("catagorySetup", categorySetup);
         formdata.append("file", img)
         axios.post("http://localhost:3001/api/new_catagory/", formdata).then((res) => {
 
@@ -71,8 +71,7 @@ function Sub_Category_Setup() {
                 
                 });
 
-                setCatagortSetup("")
-                file.current.value=null
+                setCatagorySetup("")
 
                
 
@@ -491,16 +490,14 @@ const handleImgChange = (e) =>{
                             </ul>
 
                         </nav>
-                        {/* <!-- End of Topbar --> */}
-                        <div className="container-fluid">
-                            <h1>Category Setup</h1>
+                      
                                 
                         {/* <!-- End of Topbar --> */}
                         <div className="container-fluid">
                             <h1>Category Setup</h1>
                             <div className="category_form_div">
                             <form className="category_form" id="category_form" onSubmit={AddService}>
-                              <TextField  type="text" label="Service" onChange={(e) =>  setCatagortSetup(e.target.value) }/><br></br>
+                              <TextField  type="text" value={categorySetup} label="Service" onChange={(e) =>  setCatagorySetup(e.target.value) }/><br></br>
                               <TextField type="file" id="file" onChange={handleImgChange}/><br></br>
                               <Button type='submit' variant='contained'>Addservice</Button><br></br>
                               <Button type='reset' variant='contained'>clear</Button>
@@ -550,7 +547,6 @@ const handleImgChange = (e) =>{
 </div>
 </div>
             </div>
-        </div>
     )
 }
 
