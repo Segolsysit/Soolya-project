@@ -136,12 +136,12 @@ function fg(te){
                 {getData.map((data) =>
                 <div className="category_div">
                     
-                    <button className="category_button_div" onClick={()=>fg(data.catagortSetup)}> 
+                    <button className="category_button_div" onClick={()=>fg(data.catagorySetup)}> 
                         {/* <div> */}
                             <img className="category_img" src={localpath + data.filename} alt="painting"></img>
                         {/* </div> */}
                         <div>
-                            <h5 className="category_text">{data.catagortSetup}</h5>
+                            <h5 className="category_text">{data.catagorySetup}</h5>
                         </div>
                     </button>
                 
@@ -161,7 +161,7 @@ function fg(te){
                     
                         <button className="sub_category_div" onClick={()=>{nav("/list")}}>
                         <div className="sub_category_img_div">
-                            <img className="sub_category_img" src={localpath + data.filename} alt="plumbing_subCategory_image"></img>
+                            <img className="sub_category_img" src={img} alt="plumbing_subCategory_image"></img>
                         </div>
                         <div className="sub_category_page_content_div">
                             <h6>{title}</h6>
