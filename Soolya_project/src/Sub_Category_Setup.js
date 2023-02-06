@@ -122,19 +122,19 @@ function Sub_Category_Setup() {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                        <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
-                            aria-expanded="true" aria-controls="collapsePages">
-                            <i className="fas fa-fw fa-user"></i>
-                            <span>Providers</span>
-                        </a>
-                        <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                            <div className="bg-white py-2 collapse-inner rounded">
-                                {/* <h6 className="collapse-header">Login Screens:</h6> */}
-                                <a className="collapse-item" href="/login.js">Providers List</a>
-                                <a className="collapse-item" href="register.js">Add New Provider</a>
+                            <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
+                                aria-expanded="true" aria-controls="collapsePages1">
+                                <i className="fas fa-fw fa-user"></i>
+                                <span>Providers</span>
+                            </a>
+                            <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
+                                <div className="bg-white py-2 collapse-inner rounded">
+                                    {/* <h6 className="collapse-header">Login Screens:</h6> */}
+                                    <a className="collapse-item" href="/login.js">Providers List</a>
+                                    <a className="collapse-item" href="register.js">Add New Provider</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="true" aria-controls="collapsePages">
