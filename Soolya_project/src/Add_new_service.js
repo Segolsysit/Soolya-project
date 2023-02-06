@@ -2,12 +2,138 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios';
 import { Button, TextField, FormHelperText, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { toast } from 'react-toastify';
 
 
 function Add_new_service() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
     const [getData, setgetData] = useState([]);
+
+    const [service, setservice] = useState("");
+    const [category, setCatagory] = useState("");
+    const [subcategory, setsubCatagory] = useState("");
+    const [discription, setdiscription] = useState("");
+    const [price, setprice] = useState("");
+    const [img, setImg] = useState("");
+
+    const handleImgChange = (e) => {
+        let file = e.target.files[0]
+        if (file.size > 2000000) {
+
+
+            toast.error("file size should be less than 2MB", {
+                position: "top-center",
+                theme: "colored"
+            })
+
+        }
+        else if (file.type !== "image/jpeg" && file.type !== "image/jpg") {
+
+            toast.error("jpeg,jpg,png can upload", {
+                position: "top-center"
+            })
+
+        }
+        else {
+            setImg(file)
+        }
+    }
+
+    const AddService = (e) => {
+
+        e.preventDefault();
+
+        if (service.length === 0) {
+            toast.error("enter service", {
+                position: "top-right",
+                theme: "colored"
+
+            })
+        }
+        else if (category.length === 0) {
+            toast.error("enter category", {
+                position: "top-right",
+                theme: "colored"
+            })
+        }
+        else if (subcategory.length === 0) {
+            toast.error("enter sub category", {
+                position: "top-right",
+                theme: "colored"
+            })
+        }
+        else if (discription.length === 0) {
+            toast.error("enter discription", {
+                position: "top-right",
+                theme: "colored"
+            })
+        }
+        else if (price.length === 0) {
+            toast.error("enter price amount", {
+                position: "top-right",
+                theme: "colored"
+            })
+        }
+        else if (img.length === 0) {
+            if (img.size > 2000000) {
+
+
+                toast.error("file size should be less than 2MB", {
+                    position: "top-center",
+                    theme: "colored"
+                })
+            }
+
+
+            toast.error("please upload service image", {
+                position: "top-right",
+                theme: "colored"
+            })
+        }
+        else if (img.type !== "image/jpeg" && file.type !== "image/jpg") {
+
+            toast.error("jpeg,jpg,png can upload", {
+                position: "top-center"
+            })
+        }
+
+        else {
+            const formdata = new FormData()
+            formdata.append("Service", service);
+            formdata.append("Category", category);
+            formdata.append("Subcategory", subcategory);
+            formdata.append("Discription", discription);
+            formdata.append("price", price);
+            formdata.append("file", img)
+            axios.post("http://localhost:3001/service_api/new_service/", formdata).then((res) => {
+
+                toast.success(' uploaded Successed!', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+
+                });
+
+                setservice("")
+                setCatagory("")
+                setsubCatagory("")
+                setdiscription("")
+                setprice("")
+                file.current.value = null
+
+
+
+            })
+        }
+
+
+    }
 
 
     const changeStyle = () => {
@@ -31,10 +157,10 @@ function Add_new_service() {
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         })
 
-    }, [])
+    }, [getData])
 
     return (
         <div>
@@ -126,12 +252,12 @@ function Add_new_service() {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
-                                aria-expanded="true" aria-controls="collapsePages">
+                            <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
+                                aria-expanded="true" aria-controls="collapsePages1">
                                 <i className="fas fa-fw fa-user"></i>
                                 <span>Providers</span>
                             </a>
-                            <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                            <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Login Screens:</h6> */}
                                     <a className="collapse-item" href="/login.js">Providers List</a>
@@ -405,15 +531,21 @@ function Add_new_service() {
                             <div className="container-fluid">
                                 <h1>Add New Service</h1>
                                 <div className="category_form_div">
-                                    <form className="category_form" id="category_form" >
-                                        <TextField type="text" label="Service" /><br></br>
+                                    <form className="category_form" id="category_form"
+                                        onSubmit={AddService} >
+                                        <TextField type="text" label="Service"
+                                            value={service}
+                                            onChange={(e) => setservice(e.target.value)}
+                                        /><br></br>
                                         <FormControl sx={{ minWidth: 100 }}>
                                             <InputLabel id="demo-simple-select-label"
                                             >Select Category</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-label"
                                                 id="demo-simple-select"
-                                                label="Select Category" >
+                                                label="Select Category"
+                                                value={category}
+                                                onChange={(e) => setCatagory(e.target.value)}>
                                                 {getData.map((data) => (
                                                     <MenuItem value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
                                                 ))
@@ -427,17 +559,25 @@ function Add_new_service() {
                                             <Select
                                                 labelId="demo-simple-select-label"
                                                 id="demo-simple-select"
-                                                label="Select Category" >
+                                                label="Select Category"
+                                                value={subcategory}
+                                                onChange={(e) => setsubCatagory(e.target.value)}>
                                                 {/* {getData.map((data) => ( */}
-                                                    <MenuItem >subcategory</MenuItem>
+                                                <MenuItem value="sub">subcategory</MenuItem>
                                                 {/* ))
                                                 } */}
                                             </Select>
                                             <FormHelperText></FormHelperText>
                                         </FormControl><br></br>
-                                        <TextField rows={3} multiline type="text" label="Short Discription*"/><br></br>
-                                        <TextField type="number" label="Price*"/><br></br>
-                                        <TextField type="file" id="file" /><br></br>
+                                        <TextField rows={3} multiline type="text" label="Short Discription*"
+                                            value={discription}
+                                            onChange={(e) => setdiscription(e.target.value)}
+                                        /><br></br>
+                                        <TextField type="number" label="Price*"
+                                            onChange={(e) => setprice(e.target.value)}
+                                            value={price}
+                                        /><br></br>
+                                        <TextField type="file" id="file" onChange={handleImgChange} /><br></br>
                                         <Button type='submit' variant='contained'>Addservice</Button><br></br>
                                         <Button type='reset' variant='contained'>clear</Button>
 
