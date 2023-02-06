@@ -132,6 +132,7 @@ function fg(te){
         filt=getData_sub.filter((su)=>{
             return su.Category === sub;
          })
+        //  console.log(filt);
 
     return (
         <div>
@@ -164,12 +165,12 @@ function fg(te){
 
             {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
             <div className="grid">
-{active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,Subcategory,Discription})=>
+{active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,Subcategory,Discription,filename})=>
                 <div className="sub_category_overall">
                     
                         <button className="sub_category_div" onClick={()=>{nav("/list")}}>
                         <div className="sub_category_img_div">
-                            <img className="sub_category_img" src={localpath + filt.filename} alt="plumbing_subCategory_image"></img>
+                            <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
                         </div>
                         <div className="sub_category_page_content_div">
                             <h6>{Subcategory}</h6>

@@ -72,8 +72,7 @@ function Sub_Category_Setup() {
 
                 });
 
-                setCatagortSetup("")
-                file.current.value=null
+                setCatagorySetup("")
 
 
 
