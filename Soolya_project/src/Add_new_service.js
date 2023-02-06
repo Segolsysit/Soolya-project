@@ -125,14 +125,10 @@ function Add_new_service() {
                 setsubCatagory("")
                 setdiscription("")
                 setprice("")
-                file.current.value = null
-
-
-
+                setImg("")
+                // file.current.value = null
             })
         }
-
-
     }
 
 

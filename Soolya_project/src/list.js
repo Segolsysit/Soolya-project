@@ -1,11 +1,12 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./css_files/list.css";
 import Header from "./header";
 // import list_photo from "./images/1.jpg";
 
 
 function List(){
-
+const [servicedata,setservicedata]=useState([])
 
    let list = [
       {  id:1,
@@ -55,6 +56,13 @@ function List(){
    //     setModal(true);
    // }
 
+   useEffect(()=>{
+    axios.get("http://localhost:3001/service_api/new_fetch_service_items").then((res)=>{
+      setservicedata(res.data)
+    })
+   })
+
+   const localpath = "http://localhost:3001/";
 
    return(
     <div>
@@ -64,18 +72,18 @@ function List(){
       <div className="list_page">
 
 
-         {list.map(({img,heading,category,amt})=>
+         {servicedata.map((data)=>
             <div className="list_overall_div">
                <button className="list_btn"   data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                      <div>
-                        <img className="list_image" src={img} alt="list_img"></img>
+                        <img className="list_image" src={localpath + data.filename} alt="list_img"></img>
                      </div>
                      <div className="list_cont">
-                        <h6>{heading}</h6>
+                        <h6>{data.Service}</h6>
                         <div className="list_flex_div">
                            <div className="list_flex_div_cont">
-                                 <h6 className="list_flex_div_cont_heading">{category}</h6>
-                                 <p>{amt}</p>
+                                 <h6 className="list_flex_div_cont_heading">{data.Category}</h6>
+                                 <p>{data.price}</p>
                            </div>
                            <button className="list_add_btn">
                               <i id="list_add_icon" class="fa-solid fa-plus"></i>
@@ -111,7 +119,7 @@ function List(){
                 </ div>  
                 <div className="add_card_profile_div">
                     <div>
-                        <img className="add_card_img" src={"mnj"} alt="plumber_profile_book_image"></img>
+                        <img className="add_card_img" src={localpath + data.filename} alt="plumber_profile_book_image"></img>
                     </div>
                     <div>
                         {/* <h5>{heading}</h5> */}
