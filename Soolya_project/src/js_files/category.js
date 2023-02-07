@@ -39,7 +39,7 @@ function Category() {
             // console.log(getData_sub);
         })
 
-    }, [getData,getData_sub])
+    }, [])
 
     const localpath = "http://localhost:3001/";
 
@@ -133,7 +133,13 @@ function fg(te){
             return su.Category === sub;
          })
         //  console.log(filt);
+        
 
+        const service_list = (Subcategory) => {
+
+            localStorage.setItem("subcategory",Subcategory);
+            nav("/list")
+        }
     return (
         <div>
 <Header></Header>
@@ -168,14 +174,14 @@ function fg(te){
 {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,Subcategory,Discription,filename})=>
                 <div className="sub_category_overall">
                     
-                        <button className="sub_category_div" onClick={()=>{nav("/list")}}>
+                        <button className="sub_category_div" onClick={()=>{service_list(Subcategory)}}>
                         <div className="sub_category_img_div">
                             <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
                         </div>
                         <div className="sub_category_page_content_div">
-                            <h6>{Subcategory}</h6>
+                            <h2>{Subcategory}</h2>
                             <p className="sub_category_page_content_para">{Discription}</p>
-                            <a href="_self">{filt.length} services</a> 
+                            <a href="/list">{filt.length} services</a> 
                         </div>
                         </button>
                     

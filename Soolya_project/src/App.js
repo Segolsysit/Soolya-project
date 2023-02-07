@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React, {useState} from "react" 
+import React, {useState,Suspense} from "react" 
 // import './App.css';
 import Footer from './footer';
 // import Header from './header';
@@ -20,7 +20,7 @@ import Category from './js_files/category';
 import SubCategory from './js_files/subCategory';
 // import Cart from './js_files/Cart';
 import Categorysetup from './Categorysetup';
-import Sub_Category_Setup from './Sub_Category_Setup';
+// import Sub_Category_Setup from './Sub_Category_Setup';
 import Servicelist from './Servicelist';
 import Admin from './Admin';
 import Add_new_service from './Add_new_service';
@@ -31,6 +31,8 @@ import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import { isAuthenticatedLogin } from './js_files/auth';
 export let AppContext =React.createContext(true)
+
+const Sub_Category_Setup = React.lazy(() => import('./Sub_Category_Setup'))
 
 function App() {
    
@@ -100,7 +102,11 @@ function App() {
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
                 <Route path="/admin" element={<Admin></Admin>}></Route>
                 <Route path="/categorysetup" element={<Categorysetup></Categorysetup>}></Route>
-                <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
+                <Route path="/subcategorysetup" element={
+                <Suspense fallback="Loading.....">
+                    <Sub_Category_Setup></Sub_Category_Setup>
+                </Suspense>
+                }></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
                 {/* {array.map((arr)=>(
@@ -117,7 +123,7 @@ function App() {
                 <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
                 <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
-                <Route path="/category" element={<Category></Category>}></Route>
+                <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
             </Routes>

@@ -8,13 +8,16 @@ import Header from "./header";
 function List() {
     const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
+    const [sublist,setSublist] = useState('')
 
     function model(_id) {
         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
             setmodel1(res.data)
-            console.log(res.data);
+            // console.log(res.data);
         })
     }
+
+
 
     //    let list = [
     //       {  id:1,
@@ -69,7 +72,22 @@ function List() {
             setservicedata(res.data)
             // console.log(res.data);
         })
-    })
+       
+        setSublist(localStorage.getItem("subcategory"))
+        serviceList(servicedata.Subcategory)
+    },[])
+
+   var filtlist;
+
+    const serviceList = (servicedata) => {
+
+        filtlist = servicedata.filter((sub) => {
+            return sub.Subcategory === sublist
+        })
+        console.log(filtlist);
+   }
+
+    console.log(sublist);
 
     const localpath = "http://localhost:3001/";
 
@@ -81,8 +99,8 @@ function List() {
             <div className="list_page">
 
 
-                {servicedata.map((data) =>
-                    <div className="list_overall_div">
+                {servicedata.map((data,index) =>
+                    <div className="list_overall_div" key={index}>
                         <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                             <div>
                                 <img className="list_image" src={localpath + data.filename} alt="list_img"></img>
@@ -92,7 +110,7 @@ function List() {
                                 <div className="list_flex_div">
                                     <div className="list_flex_div_cont">
                                         <h6 className="list_flex_div_cont_heading">{data.Category}</h6>
-                                        <p>{data.price}</p>
+                                        <p><i class="fa-solid fa-indian-rupee-sign"></i> {data.price}</p>
                                     </div>
                                     <button className="list_add_btn"
                                         onClick={() => model(data._id)}>
@@ -142,7 +160,7 @@ function List() {
                         {/* <h6>{category}</h6>
                         <h6>{amt}</h6>*/}
                         <h6>{model1.Subcategory}</h6>
-                        <h6>{model1.price}</h6>
+                        <h6><i class="fa-solid fa-indian-rupee-sign"></i> {model1.price}</h6>
                     </div>
                     <div className="add_to_card_btn_div">
                         <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">

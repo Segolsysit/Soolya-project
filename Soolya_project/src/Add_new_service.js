@@ -16,6 +16,8 @@ function Add_new_service() {
     const [discription, setdiscription] = useState("");
     const [price, setprice] = useState("");
     const [img, setImg] = useState("");
+    const [subcatlist, setsubcatlist] = useState([]);
+
 
     const handleImgChange = (e) => {
         let file = e.target.files[0]
@@ -155,8 +157,11 @@ function Add_new_service() {
             setgetData(res.data);
             // console.log(res.data);
         })
-
-    }, [getData])
+        axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
+            setsubcatlist(res.data);
+            console.log(res.data);
+        })
+    }, [])
 
     return (
         <div>
@@ -557,11 +562,13 @@ function Add_new_service() {
                                                 id="demo-simple-select"
                                                 label="Select Category"
                                                 value={subcategory}
-                                                onChange={(e) => setsubCatagory(e.target.value)}>
-                                                {/* {getData.map((data) => ( */}
-                                                <MenuItem value="sub">subcategory</MenuItem>
-                                                {/* ))
-                                                } */}
+                                                onChange={(e) => setsubCatagory(e.target.value) }>
+                                                <MenuItem value="sub" selected disabled>Select Sub Category</MenuItem>
+
+                                                {subcatlist.map((subcatlist) => (
+                                                    <MenuItem value={subcatlist.Subcategory}>{subcatlist.Subcategory}</MenuItem>
+                                                ))
+                                                }
                                             </Select>
                                             <FormHelperText></FormHelperText>
                                         </FormControl><br></br>
