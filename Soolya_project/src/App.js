@@ -32,9 +32,10 @@ import Header from './header';
 import { isAuthenticatedLogin } from './js_files/auth';
 export let AppContext =React.createContext(true)
 
-const Sub_Category_Setup = React.lazy(() => import('./Sub_Category_Setup'))
-
 function App() {
+
+    const nav = useNavigate();
+
    
     const array = [
         {
@@ -82,12 +83,17 @@ function App() {
   
     
 
-    const [btn, setBtn] = useState(true);
+    
 
-    if(isAuthenticatedLogin === true){
-        setBtn(false);
-    }
+    const navLogin = ()=>{
+        nav("/sign_in");
+        setLogin(null);     
+   }
+
+
     return (
+
+      
         
 <React.Fragment>
         <div>
@@ -95,7 +101,7 @@ function App() {
 
             {/* <Header></Header> */}
            <Routes>
-            <Route path='/header' element={<Header btn={btn} ></Header>}></Route>
+            <Route path='/header' element={<Header navLogin = {navLogin} ></Header>}></Route>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn ></SignIn>}></Route>
