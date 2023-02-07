@@ -5,11 +5,13 @@ const router = require("./Router/Router")
 const cors = require("cors");
 const path = require("path");
 const subcategory_router = require("./Router/subcategory_route");
+const service_router = require("./Router/service_route");
 
 
 app.use(cors())
 app.use("/api", router)
 app.use("/sub_api", subcategory_router)
+app.use("/service_api", service_router )
 app.use(express.static(path.join(__dirname, "files&img")));
 
 

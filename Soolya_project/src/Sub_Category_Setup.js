@@ -2,11 +2,19 @@ import { data } from 'jquery'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import "./Admin.css"
+import { toast } from "react-toastify"
 
 function Sub_Category_Setup() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
     const [getData, setgetData] = useState([]);
+    const [category,setCatagory] = useState("")
+
+    const [subName,setSubname] = useState("")
+    const [SubDiscription,setSubDescription] = useState("")
+    const [SubImage,setSubImage] = useState('')
+
+
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -34,6 +42,29 @@ function Sub_Category_Setup() {
 
     }, [])
 
+const AddSubcategory = (e) => {
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append("Category",category);
+    formData.append("Subcategory",subName);
+    formData.append("Discription",SubDiscription);
+    formData.append("file",SubImage)
+    axios.post("http://localhost:3001/sub_api/new_subcategory", formData).then((res) => {
+        console.log(category);
+
+    toast.success(' uploaded Successed!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored"
+
+    })
+})
+}
     return (
         <div>
             {/* <!-- Page Wrapper --> */}
@@ -122,19 +153,19 @@ function Sub_Category_Setup() {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                        <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
-                            aria-expanded="true" aria-controls="collapsePages">
-                            <i className="fas fa-fw fa-user"></i>
-                            <span>Providers</span>
-                        </a>
-                        <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                            <div className="bg-white py-2 collapse-inner rounded">
-                                {/* <h6 className="collapse-header">Login Screens:</h6> */}
-                                <a className="collapse-item" href="/login.js">Providers List</a>
-                                <a className="collapse-item" href="register.js">Add New Provider</a>
+                            <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
+                                aria-expanded="true" aria-controls="collapsePages1">
+                                <i className="fas fa-fw fa-user"></i>
+                                <span>Providers</span>
+                            </a>
+                            <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
+                                <div className="bg-white py-2 collapse-inner rounded">
+                                    {/* <h6 className="collapse-header">Login Screens:</h6> */}
+                                    <a className="collapse-item" href="/login.js">Providers List</a>
+                                    <a className="collapse-item" href="register.js">Add New Provider</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="true" aria-controls="collapsePages">
@@ -387,22 +418,23 @@ function Sub_Category_Setup() {
                         {/* <!-- End of Topbar --> */}
                         <div className="container-fluid">
                             <h1>Sub Category Setup</h1>
-                            <form>
+                            <form onSubmit={AddSubcategory}>
                                 <label>Select Category</label><br />
-                                <select >
-                                    <option disabled="disabled">--Select Category--</option>
+                                <select onChange={(e) => setCatagory(e.target.value)} >
+                                    <option selected disabled="disabled">--Select Category--</option>
                                     {getData.map((data) => (
-                                        <option className='ak' value={data.catagorySetup}>{data.catagorySetup}</option>
+                                        <option className='ak'  
+                                        value={data.catagorySetup}>{data.catagorySetup}</option>
                                     ))
                                     }
                                 </select>
                                 <br /><br />
                                 <label>Sub Category Name</label><br />
-                                <input type="text"></input><br /><br />
+                                <input type="text" onChange={(e) => setSubname(e.target.value)}></input><br /><br />
                                 <label>Dicription</label><br />
-                                <textarea></textarea><br /><br />
+                                <textarea onChange={(e)=>setSubDescription(e.target.value)}></textarea><br /><br />
                                 <label>Image</label><br />
-                                <input type="file"></input><br /><br />
+                                <input type="file" onChange={(e) => setSubImage(e.target.files[0])}></input><br /><br />
                                 <button type='submit'>Addservice</button>
                             </form>
                         </div>
