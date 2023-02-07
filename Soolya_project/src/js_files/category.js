@@ -22,7 +22,7 @@ function Category() {
         className: "center",
         infinite: true,
         // centerPadding: "60px",
-        slidesToShow: getData.length,
+        slidesToShow: 7,
         arrows: false,
         swipeToSlide: true
         

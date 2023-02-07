@@ -60,7 +60,7 @@ const [servicedata,setservicedata]=useState([])
     axios.get("http://localhost:3001/service_api/new_fetch_service_items").then((res)=>{
       setservicedata(res.data)
     })
-   })
+   },[])
 
    const localpath = "http://localhost:3001/";
 
@@ -119,7 +119,7 @@ const [servicedata,setservicedata]=useState([])
                 </ div>  
                 <div className="add_card_profile_div">
                     <div>
-                        <img className="add_card_img" src={localpath + data.filename} alt="plumber_profile_book_image"></img>
+                        <img className="add_card_img" src={"l"} alt="plumber_profile_book_image"></img>
                     </div>
                     <div>
                         {/* <h5>{heading}</h5> */}
