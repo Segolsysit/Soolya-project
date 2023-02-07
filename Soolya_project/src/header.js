@@ -21,7 +21,7 @@ import { logOut } from './js_files/auth';
 
 
 
-function Header() {
+function Header(props) {
 
     const nav = useNavigate();
 
@@ -37,11 +37,7 @@ function Header() {
 
     }
 
-    const navLogin = ()=>{
-         nav("/sign_in");
-         setLogin(null);     
-    }
-
+   
     const navRegister = ()=>{
         nav("/sign_up");
         setRegister(null);
@@ -77,7 +73,7 @@ function Header() {
                                 
                                 {!isAuthenticatedLogin() && login?
                                     <button type="button" className="sign_in__buttton" 
-                                    onClick={navLogin} >
+                                    onClick={props.navLogin} >
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Login
                                     </button>:null}
