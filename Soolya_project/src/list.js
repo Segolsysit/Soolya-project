@@ -10,16 +10,24 @@ function List() {
     const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
     const [sublist,setSublist] = useState('')
+    const [cart,setcart] = useState([])
 
     function model(_id) {
         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
             setmodel1(res.data)
-            // console.log(res.data);
+            console.log(res.data);
         })
     }
 
 
 
+    function addtocart(_id) {
+        axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
+            setcart(res.data)
+            // console.log(cart);
+        })
+    }
+    console.log(cart);
     //    let list = [
     //       {  id:1,
     //          img:"/images/1.jpg",
@@ -73,35 +81,14 @@ function List() {
             setservicedata(res.data)
             // console.log(res.data);
         })
-       
-        setSublist(localStorage.getItem("subcategory"))
-
-        servicedata.map((ser) => {
-            serviceList(ser.Subcategory)
-        })
-        // serviceList(servicedata.Subcategory)
-    },[])
-    // console.log(servicedata.Subcategory);
-
-    // console.log(sublist);
-
-   var filtlist;
-
-    const serviceList = (data) => {
-console.log(data);
-        // filtlist = data.filter((sub) => {
-        //     return sub.Subcategory === sublist
-        // })
-        // console.log(filtlist);
-   }
-
+    })
 
     const localpath = "http://localhost:3001/";
 
     return (
         <div>
 
-            <Header></Header>
+            <Header cart={cart}></Header>
 
             <div className="list_page">
 
@@ -121,53 +108,53 @@ console.log(data);
                                     </div>
                                     <button className="list_add_btn"
                                         onClick={() => model(data._id)}>
-                                       <i id="list_add_icon" class="fa-solid fa-plus"></i>
+                                        <i id="list_add_icon" class="fa-solid fa-plus"></i>
                                     </button>
+                                </div>
                             </div>
-                    </div>
-               </button>
-            {/* {modal? */}
-            {/* ( */}
-
-
-            {/* ):""} */}
-
-        </div>
-    )
-}
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div className="share_profile_cont">
-                    <div>
-                        <div>
-                            <h4 className="add_card_profile_heading">Book Here</h4>
-                        </div>
-                    </div>
-                    <div>
-                        <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">
-                                <i class="fa-solid fa-xmark"></i>
-                            </span>
                         </button>
+                        {/* {modal? */}
+                        {/* ( */}
+
+
+                        {/* ):""} */}
+
                     </div>
-                </ div>
-                <div className="add_card_profile_div">
-                    <div>
-                        <img className="add_card_img" src={localpath + model1.filename} alt="plumber_profile_book_image"></img>
-                    </div>
-                    <div>
-                        {/* <h5>{heading}</h5> */}
-                        <h5>{model1.Category}</h5>
-                    </div>
-                </div>
-                <div className="add_to_card_div">
-                    <div>
-                        {/* <h6>{category}</h6>
+                )
+                }
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div className="share_profile_cont">
+                                    <div>
+                                        <div>
+                                            <h4 className="add_card_profile_heading">Book Here</h4>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </ div>
+                                <div className="add_card_profile_div">
+                                    <div>
+                                        <img className="add_card_img" src={localpath + model1.filename} alt="plumber_profile_book_image"></img>
+                                    </div>
+                                    <div>
+                                        {/* <h5>{heading}</h5> */}
+                                        <h5>{model1.Category}</h5>
+                                    </div>
+                                </div>
+                                <div className="add_to_card_div">
+                                    <div>
+                                        {/* <h6>{category}</h6>
                         <h6>{amt}</h6>*/}
                         <h6>{model1.Subcategory}</h6>
-                        <h6><i class="fa-solid fa-indian-rupee-sign"></i> {model1.price}</h6>
+                        <h6>{model1.price}</h6>
                     </div>
                     <div className="add_to_card_btn_div">
                         <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">
@@ -183,10 +170,10 @@ console.log(data);
 
 
 
-     
 
-    </div >
-   )
+
+        </div >
+    )
 }
 
 export default List;
