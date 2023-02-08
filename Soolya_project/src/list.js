@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./css_files/list.css";
 import Header from "./header";
+import Servicelist from "./Servicelist";
 // import list_photo from "./images/1.jpg";
 
 
@@ -74,20 +75,26 @@ function List() {
         })
        
         setSublist(localStorage.getItem("subcategory"))
-        serviceList(servicedata.Subcategory)
+
+        servicedata.map((ser) => {
+            serviceList(ser.Subcategory)
+        })
+        // serviceList(servicedata.Subcategory)
     },[])
+    // console.log(servicedata.Subcategory);
+
+    // console.log(sublist);
 
    var filtlist;
 
-    const serviceList = (servicedata) => {
-
-        filtlist = servicedata.filter((sub) => {
-            return sub.Subcategory === sublist
-        })
-        console.log(filtlist);
+    const serviceList = (data) => {
+console.log(data);
+        // filtlist = data.filter((sub) => {
+        //     return sub.Subcategory === sublist
+        // })
+        // console.log(filtlist);
    }
 
-    console.log(sublist);
 
     const localpath = "http://localhost:3001/";
 

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes ,useNavigate} from 'react-router-dom';
 import React, {useState,Suspense} from "react" 
 // import './App.css';
 import Footer from './footer';
@@ -20,7 +20,7 @@ import Category from './js_files/category';
 import SubCategory from './js_files/subCategory';
 // import Cart from './js_files/Cart';
 import Categorysetup from './Categorysetup';
-// import Sub_Category_Setup from './Sub_Category_Setup';
+import Sub_Category_Setup from './Sub_Category_Setup';
 import Servicelist from './Servicelist';
 import Admin from './Admin';
 import Add_new_service from './Add_new_service';
@@ -108,11 +108,7 @@ function App() {
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
                 <Route path="/admin" element={<Admin></Admin>}></Route>
                 <Route path="/categorysetup" element={<Categorysetup></Categorysetup>}></Route>
-                <Route path="/subcategorysetup" element={
-                <Suspense fallback="Loading.....">
-                    <Sub_Category_Setup></Sub_Category_Setup>
-                </Suspense>
-                }></Route>
+                <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
                 {/* {array.map((arr)=>(

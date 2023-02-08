@@ -148,8 +148,8 @@ function fg(te){
 
              <Slider {...settings}>
 
-                {getData.map((data) =>
-                <div className="category_div">
+                {getData.map((data,index) =>
+                <div className="category_div" key={index}>
                     
                     <button className="category_button_div" onClick={()=>fg(data.catagorySetup)}> 
                         {/* <div> */}
@@ -171,8 +171,8 @@ function fg(te){
 
             {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
             <div className="grid">
-{active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,Subcategory,Discription,filename})=>
-                <div className="sub_category_overall">
+{active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({img,Subcategory,Discription,filename},index)=>
+                <div className="sub_category_overall" key={index}>
                     
                         <button className="sub_category_div" onClick={()=>{service_list(Subcategory)}}>
                         <div className="sub_category_img_div">
