@@ -41,11 +41,7 @@ useEffect(()=>{
         nav("/sign_in");
     }
 
-    const navLogin = ()=>{
-         nav("/sign_in");
-         setLogin(null);     
-    }
-
+   
     const navRegister = ()=>{
         nav("/sign_up");
         setRegister(null);
@@ -82,7 +78,7 @@ useEffect(()=>{
                                 
                                 {!isAuthenticatedLogin() && login?
                                     <button type="button" className="sign_in__buttton" 
-                                    onClick={navLogin} >
+                                    onClick={props.navLogin} >
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Login
                                     </button>:null}
