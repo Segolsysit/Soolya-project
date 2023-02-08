@@ -15,13 +15,13 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import { logOut } from './js_files/auth';
 
 
 
-function Header() {
+function Header(props) {
 
     const nav = useNavigate();
 
@@ -30,11 +30,15 @@ function Header() {
 
     const [login, setLogin] = useState(true);
 
+    const [ad,setAd] = useState(0);
+useEffect(()=>{
+    setAd(props.cart.length)
+
+},[])
 
     const logOutUser = () => {
         logOut();
         nav("/sign_in");
-
     }
 
     const navLogin = ()=>{
@@ -70,6 +74,7 @@ function Header() {
         
        <div>
        <i  class="fa-solid fa-cart-shopping"></i>
+       <span className="badge badge-danger badge-counter">{ad}</span>
         </div>
         <div className="header_content_div">
             {/* onClick={() => { nav('/sign_in') }} */}
