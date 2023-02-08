@@ -10,14 +10,14 @@ import ScrollToTop from './js_files/scrollToTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+ 
     <BrowserRouter>
      <ScrollToTop></ScrollToTop>
     <App />
     {/* <Caurosel></Caurosel> */}
     </BrowserRouter>
-    {/* <New1></New1> */}
-  </React.StrictMode>
+   
+  
 );
 
 // If you want to start measuring performance in your app, pass a function

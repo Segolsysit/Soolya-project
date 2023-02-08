@@ -30,11 +30,11 @@ function Header(props) {
 
     const [login, setLogin] = useState(true);
 
-    const [ad,setAd] = useState(0);
-useEffect(()=>{
-    setAd(props.cart.length)
+    const [ad,setAd] = useState([]);
+// useEffect(()=>{
+//     setAd(props.cart.length)
 
-},[])
+// },[])
 
     const logOutUser = () => {
         logOut();
