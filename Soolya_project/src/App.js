@@ -1,5 +1,5 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import React, {useState} from "react" 
+import { Route, Routes ,useNavigate} from 'react-router-dom';
+import React, {useState,Suspense} from "react" 
 // import './App.css';
 import Footer from './footer';
 // import Header from './header';
@@ -29,10 +29,16 @@ import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
+import { isAuthenticatedLogin } from './js_files/auth';
+import Cart from './js_files/Cart';
+export let AppContext =React.createContext()
 
 function App() {
 
     const nav = useNavigate();
+    const [cartdata,setcartdata] = useState("hello")
+
+
 
    
     const array = [
@@ -96,7 +102,7 @@ function App() {
 <React.Fragment>
         <div>
     <ToastContainer/>
-
+<AppContext.Provider value={{cartdata,setcartdata}}>
             {/* <Header></Header> */}
            <Routes>
             <Route path='/header' element={<Header navLogin = {navLogin} ></Header>}></Route>
@@ -109,6 +115,7 @@ function App() {
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
+                <Route path="/cart" element={<Cart cart={cartdata}></Cart>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
@@ -123,10 +130,11 @@ function App() {
                 <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
                 <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
-                <Route path="/category" element={<Category></Category>}></Route>
+                <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
-                <Route path="/list" element={<List></List>}></Route>
+                <Route path="/list" element={<List cartdata={setcartdata}></List>}></Route>
             </Routes>
+            </AppContext.Provider>
             <br></br>
             {/* <Footer></Footer> */}
             

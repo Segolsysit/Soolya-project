@@ -35,7 +35,7 @@ function Servicelist() {
             setgetData(res.data);
         })
 
-    }, [getData])
+    }, [])
 
     const delete_item = (id) => {
         axios.delete(`http://localhost:3001/api/delete_item/${id}`).then(() => {
@@ -429,7 +429,7 @@ function Servicelist() {
                                             <TableRow key={index}>
                                                 <TableCell>{a++}</TableCell>
 
-                                                <TableCell><p>{data.catagortSetup}</p></TableCell>
+                                                <TableCell><p>{data.catagorySetup}</p></TableCell>
                                                 <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
                                                 <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                 <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
