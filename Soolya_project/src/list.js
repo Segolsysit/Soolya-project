@@ -13,12 +13,12 @@ function List(props) {
     const [sublist, setSublist] = useState('')
     const [cart, setcart] = useState([])
 
-    const {cartdata,setcartdata} = useContext(AppContext)
+    const { cartdata, setcartdata } = useContext(AppContext)
 
     // const usercontext = createContext()
 
-    function model(_id) {
-        axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
+    async function model(_id) {
+        await axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
             setmodel1(res.data)
             // console.log(res.data);
         })
@@ -27,7 +27,7 @@ function List(props) {
 
 
     function addtocart(_id) {
-       
+
         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
             // setcart(...cart, res.data)
             setcartdata(...cartdata, res.data)
@@ -44,7 +44,6 @@ function List(props) {
         })
         console.log(cartdata);
     }
-    
     // console.log(cart);
     //    let list = [
     //       {  id:1,
@@ -98,24 +97,39 @@ function List(props) {
         axios.get("http://localhost:3001/service_api/new_fetch_service_items").then((res) => {
             setservicedata(res.data)
             // console.log(res.data);
+            setSublist(localStorage.getItem("subcategory"))
+            // servicedata.map((ser) => {
+            // })
+            // service_filt(sublist)
+
         })
     }, [])
+    var filte;
+    filte = servicedata.filter(servi => {
+        return servi.Subcategory === sublist
+    })
+    console.log(filte);
+
+    //     const service_filt=(subCat) => {
+    //         // console.log(subCat);
+
+    //     }
 
     const localpath = "http://localhost:3001/";
 
     // const usecontext = useContext(AppContext)
 
-    
+
 
     return (
         <div>
             {/* <usercontext.Provider value={cart}> */}
-                <Header></Header>
+            <Header></Header>
             {/* </usercontext.Provider> */}
             <div className="list_page">
 
 
-                {servicedata.map((data, index) =>
+                {filte.map((data, index) =>
                     <div className="list_overall_div" key={index}>
                         <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                             <div>
@@ -176,24 +190,21 @@ function List(props) {
                                         {/* <h6>{category}</h6>
                         <h6>{amt}</h6>*/}
                                         <h6>{model1.Subcategory}</h6>
-                                        <h6><i class="fa-solid fa-indian-rupee-sign"></i> {model1.price}</h6>
+                                        <h6>{model1.price}</h6>
                                     </div>
                                     <div className="add_to_card_btn_div">
-                                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal"
-                                            onClick={() => addtocart(model1._id)}
-                                        >
+                                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal" onClick={() => addtocart(model1._id)}>
                                             Add to cart
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </div >
+
+
                         </div>
                     </div>
                 </div>
-            </div >
-
-
-
+            </div>
 
 
         </div >
