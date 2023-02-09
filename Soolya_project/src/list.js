@@ -1,33 +1,51 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./css_files/list.css";
 import Header from "./header";
 import Servicelist from "./Servicelist";
+import { AppContext } from "./App";
 // import list_photo from "./images/1.jpg";
 
 
-function List() {
+function List(props) {
     const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
-    const [sublist,setSublist] = useState('')
-    const [cart,setcart] = useState([])
+    const [sublist, setSublist] = useState('')
+    const [cart, setcart] = useState([])
+
+    const {cartdata,setcartdata} = useContext(AppContext)
+
+    // const usercontext = createContext()
 
     function model(_id) {
         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
             setmodel1(res.data)
-            console.log(res.data);
+            // console.log(res.data);
         })
     }
 
 
 
     function addtocart(_id) {
+       
         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
-            setcart(res.data)
+            // setcart(...cart, res.data)
+            setcartdata(...cartdata, res.data)
+            // return props.setcartdata(cart)
+            // localStorage.setItem("cartdata",...cart)
+            // localStorage.setItem("Category",cart.Category)
+            // localStorage.setItem("Subcategory",cart.Subcategory)
+            // localStorage.setItem("Discription",cart.Discription)
+            // localStorage.setItem("price",cart.price)
+            // localStorage.setItem("filename",cart.filename)
+
+
             // console.log(cart);
         })
+        console.log(cartdata);
     }
-    console.log(cart);
+    
+    // console.log(cart);
     //    let list = [
     //       {  id:1,
     //          img:"/images/1.jpg",
@@ -81,19 +99,23 @@ function List() {
             setservicedata(res.data)
             // console.log(res.data);
         })
-    })
+    }, [])
 
     const localpath = "http://localhost:3001/";
 
+    // const usecontext = useContext(AppContext)
+
+    
+
     return (
         <div>
-
-            <Header cart={cart}></Header>
-
+            {/* <usercontext.Provider value={cart}> */}
+                <Header></Header>
+            {/* </usercontext.Provider> */}
             <div className="list_page">
 
 
-                {servicedata.map((data,index) =>
+                {servicedata.map((data, index) =>
                     <div className="list_overall_div" key={index}>
                         <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                             <div>
@@ -153,20 +175,22 @@ function List() {
                                     <div>
                                         {/* <h6>{category}</h6>
                         <h6>{amt}</h6>*/}
-                        <h6>{model1.Subcategory}</h6>
-                        <h6>{model1.price}</h6>
-                    </div>
-                    <div className="add_to_card_btn_div">
-                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal">
-                            Add to cart
-                        </button>
+                                        <h6>{model1.Subcategory}</h6>
+                                        <h6><i class="fa-solid fa-indian-rupee-sign"></i> {model1.price}</h6>
+                                    </div>
+                                    <div className="add_to_card_btn_div">
+                                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal"
+                                            onClick={() => addtocart(model1._id)}
+                                        >
+                                            Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-      </div >
+            </div >
 
 
 
