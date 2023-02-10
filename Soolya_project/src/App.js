@@ -1,8 +1,6 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import React, {useState} from "react" 
+import { Route, Routes } from 'react-router-dom';
+import React from "react" 
 // import './App.css';
-import Footer from './footer';
-// import Header from './header';
 import Home from './home';
 import Plumbing from './js_files/plumbing';
 import SignIn from './signIn';
@@ -29,10 +27,12 @@ import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
+import ApplicationForm from './js_files/applictionform';
+import Footer from './footer';
 
 function App() {
 
-    const nav = useNavigate();
+    
 
    
     const array = [
@@ -83,10 +83,6 @@ function App() {
 
     
 
-    const navLogin = ()=>{
-        nav("/sign_in");
-        setLogin(null);     
-   }
 
 
     return (
@@ -99,7 +95,7 @@ function App() {
 
             {/* <Header></Header> */}
            <Routes>
-            <Route path='/header' element={<Header navLogin = {navLogin} ></Header>}></Route>
+            <Route path='/header' element={<Header></Header>}></Route>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn ></SignIn>}></Route>
@@ -126,6 +122,8 @@ function App() {
                 <Route path="/category" element={<Category></Category>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
+                <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
+                <Route path="/footer" element={<Footer></Footer>}></Route>                
             </Routes>
             <br></br>
             {/* <Footer></Footer> */}
