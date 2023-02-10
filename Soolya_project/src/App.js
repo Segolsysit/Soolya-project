@@ -1,8 +1,6 @@
-import { Route, Routes ,useNavigate} from 'react-router-dom';
-import React, {useState,Suspense} from "react" 
+import { Route, Routes} from 'react-router-dom';
+import React, {Suspense} from "react" 
 // import './App.css';
-import Footer from './footer';
-// import Header from './header';
 import Home from './home';
 import Plumbing from './js_files/plumbing';
 import SignIn from './signIn';
@@ -35,7 +33,6 @@ export let AppContext =React.createContext()
 
 function App() {
 
-    const nav = useNavigate();
 
    
     const array = [
@@ -86,10 +83,6 @@ function App() {
 
     
 
-    const navLogin = ()=>{
-        nav("/sign_in");
-        setLogin(null);     
-   }
 
 
     return (
@@ -99,10 +92,10 @@ function App() {
 <React.Fragment>
         <div>
     <ToastContainer/>
-
+<AppContext.Provider value={{cartdata,setcartdata}}>
             {/* <Header></Header> */}
            <Routes>
-            <Route path='/header' element={<Header navLogin = {navLogin} ></Header>}></Route>
+            <Route path='/header' element={<Header></Header>}></Route>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn ></SignIn>}></Route>
@@ -112,6 +105,7 @@ function App() {
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
+                <Route path="/cart" element={<Cart cart={cartdata}></Cart>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
@@ -129,8 +123,9 @@ function App() {
                 <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
+                <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
+                <Route path="/footer" element={<Footer></Footer>}></Route>                
             </Routes>
-           
             <br></br>
             {/* <Footer></Footer> */}
             
