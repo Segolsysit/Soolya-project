@@ -1,135 +1,41 @@
-import React, { useRef } from 'react'
-import "./Admin.css";
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } from '@mui/material';
-import { toast } from "react-toastify"
-// import { useForm } from 'react-hook-form';
+import "../css_files/applicationform.css";
+import React, { useEffect, useState } from 'react';
+import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
+import Switch from '@mui/material/Switch';
+import axios from "axios";
 
-function Sub_Category_Setup() {
+function ApplicationForm() {
 
-    const [categorySetup, setCatagorySetup] = useState("");
-    const [img, setImg] = useState("");
-    const [getData, setgetData] = useState([]);
-    const [count, setCount] = useState();
-    let a = 1;
+  let serialNumber = 1;
 
-    useEffect(() => {
-        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
-            setgetData(res.data);
+    const [getServiceManData, setGetServiceManData] = useState([]);
+  
+
+    useEffect(()=>{
+        axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((response)=>{
+            setGetServiceManData(response.data);
+            console.log(response);
         })
-
-    }, [getData])
-
-    const AddService = (e) => {
-
-        e.preventDefault();
-
-        if (categorySetup.length === 0) {
-            toast.error("enter service category", {
-                position: "top-right",
-                theme: "colored"
-
-            })
-        }
-        else if (img.length === 0) {
-            if (img.size > 2000000) {
+    },[]);
 
 
-                toast.error("file size should be less than 2MB", {
-                    position: "top-center",
-                    theme: "colored"
-                })
-            }
-
-
-            toast.error("please upload service image", {
-                position: "top-right",
-                theme: "colored"
-            })
-        }
-        else if (img.type !== "image/jpeg" && file.type !== "image/jpg") {
-
-            toast.error("jpeg,jpg,png can upload", {
-                position: "top-center"
-            })
-        }
-
-        else {
-            const formdata = new FormData()
-            formdata.append("catagorySetup", categorySetup);
-            formdata.append("file", img)
-            axios.post("http://localhost:3001/api/new_catagory/", formdata).then((res) => {
-
-                toast.success(' uploaded Successed!', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-
-                });
-
-                setCatagorySetup("")
-
-
-
-            })
-        }
-
-
-    }
-    const handleImgChange = (e) => {
-        let file = e.target.files[0]
-        if (file.size > 2000000) {
-
-
-            toast.error("file size should be less than 2MB", {
-                position: "top-center",
-                theme: "colored"
-            })
-
-        }
-        else if (file.type !== "image/jpeg" && file.type !== "image/jpg") {
-
-            toast.error("jpeg,jpg,png can upload", {
-                position: "top-center"
-            })
-
-        }
-    
-        else {
-            setImg(file)
-        }
-    }
-    const delete_item = (id) => {
-        axios.delete(`http://localhost:3001/api/delete_item/${id}`).then(() => {
-            toast.error('😈 Deleted Successed!', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-
-            });
-        })
+    const delete_data = (id)=>{
+         axios.delete("https://63bd5802d660062388a24683.mockapi.io/Soolya",{params:id}).then(()=>{
+            alert("deleted");
+         })
+         
     }
 
-    const localpath = "http://localhost:3001/"
 
+
+ 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled")
         }
-        else {
+        else{
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
@@ -138,7 +44,7 @@ function Sub_Category_Setup() {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1")
         }
-        else {
+        else{
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
@@ -172,6 +78,12 @@ function Sub_Category_Setup() {
                             <i className="fas fa-fw fa-tachometer-alt"></i>
                             <span>Dashboard</span></a>
                     </li>
+
+                    <li className="nav-item active">
+                            <a className="nav-link" href="/application">
+                                <i className="fas fa-fw fa-tachometer-alt"></i>
+                                <span>Application</span></a>
+                        </li>
 
                     {/* <!-- Divider --> */}
                     <hr className="sidebar-divider" />
@@ -216,7 +128,7 @@ function Sub_Category_Setup() {
                                 <a className="collapse-item" href="/Servicelist">Service List</a>
                                 <a className="collapse-item" href="/Add_new_service">Add New Service</a>
                                 {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                                <a className="collapse-item" href="utilities-other.js">Other</a> */}
+<a className="collapse-item" href="utilities-other.js">Other</a> */}
                             </div>
                         </div>
                     </li>
@@ -493,64 +405,50 @@ function Sub_Category_Setup() {
                             </ul>
 
                         </nav>
-
-
                         {/* <!-- End of Topbar --> */}
-                        <div className="container-fluid">
-                            <h1>Category Setup</h1>
-                            <div className="category_form_div">
-                                <form className="category_form" id="category_form" onSubmit={AddService}>
-                                    <TextField type="text" value={categorySetup} label="Service" onChange={(e) => setCatagorySetup(e.target.value)} /><br></br>
-                                    <TextField type="file" id="file" onChange={handleImgChange} /><br></br>
-                                    <Button type='submit' variant='contained'>Addservice</Button><br></br>
-                                    <Button type='reset' variant='contained'>clear</Button>
 
-                                </form>
-                            </div>
-
-
-                            <div >
-                                <Table className='table-cat'>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>SN</TableCell>
-                                            <TableCell>Category</TableCell>
-                                            <TableCell>Image</TableCell>
-                                            <TableCell>Edit</TableCell>
-                                            <TableCell>Delete</TableCell>
-
-
-
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {
-                                            getData.map((data, index) => (
-
-
-                                                <TableRow key={index}>
-                                                    <TableCell>{a++}</TableCell>
-
-                                                    <TableCell><p>{data.catagorySetup}</p></TableCell>
-                                                    <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                    <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
-                                                    <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
-                                                </TableRow>
+                        <div >
+                                    <Table className='table-cat'>
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell>SN</TableCell>
+                                                <TableCell>Name</TableCell>
+                                                <TableCell>Contact info</TableCell>
+                                                <TableCell>Status</TableCell>
+                                                <TableCell>Action</TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                          
+                                                  { getServiceManData.map((data)=>
+                                                        <TableRow >
+                                                        <TableCell>{serialNumber++}</TableCell>
+                                                        <TableCell>{data.FirstName}{data.LastName}</TableCell>
+                                                        <TableCell>
+                                                            <p>{data.Email}</p>
+                                                            <p>{data.MobilePhoneNumber}</p>
+                                                        </TableCell>
+                                                        <TableCell> 
+                                                            <Switch color="primary"/></TableCell>
+                                                        <TableCell>
+                                                            <Button><i class="fa-solid fa-pencil"></i></Button>
+                                                            <Button><i class="fa-solid fa-eye"></i></Button>
+                                                            <Button onClick={()=> delete_data(data.id)}><i class="fa-solid fa-trash"></i></Button>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                  ) }
 
 
-                                            ))
-                                        }
-                                    </TableBody>
-                                </Table>
-                            </div>
+                                           
+                                        </TableBody>
+                                    </Table>
+                                </div>
 
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
     )
 }
 
-export default Sub_Category_Setup;
+export default ApplicationForm;

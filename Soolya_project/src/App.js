@@ -1,8 +1,6 @@
-import { Route, Routes ,useNavigate} from 'react-router-dom';
-import React, {useState,Suspense} from "react" 
+import { Route, Routes} from 'react-router-dom';
+import React, {Suspense} from "react" 
 // import './App.css';
-import Footer from './footer';
-// import Header from './header';
 import Home from './home';
 import Plumbing from './js_files/plumbing';
 import SignIn from './signIn';
@@ -29,15 +27,8 @@ import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
-import { isAuthenticatedLogin } from './js_files/auth';
-import Cart from './js_files/Cart';
-export let AppContext =React.createContext()
 
 function App() {
-
-    const nav = useNavigate();
-    const [cartdata,setcartdata] = useState("hello")
-
 
 
    
@@ -89,10 +80,6 @@ function App() {
 
     
 
-    const navLogin = ()=>{
-        nav("/sign_in");
-        setLogin(null);     
-   }
 
 
     return (
@@ -105,7 +92,7 @@ function App() {
 <AppContext.Provider value={{cartdata,setcartdata}}>
             {/* <Header></Header> */}
            <Routes>
-            <Route path='/header' element={<Header navLogin = {navLogin} ></Header>}></Route>
+            <Route path='/header' element={<Header></Header>}></Route>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn ></SignIn>}></Route>
@@ -132,7 +119,9 @@ function App() {
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
                 <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
-                <Route path="/list" element={<List cartdata={setcartdata}></List>}></Route>
+                <Route path="/list" element={<List></List>}></Route>
+                <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
+                <Route path="/footer" element={<Footer></Footer>}></Route>                
             </Routes>
             </AppContext.Provider>
             <br></br>
