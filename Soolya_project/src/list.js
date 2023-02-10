@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import "./css_files/list.css";
 import Header from "./header";
 import Servicelist from "./Servicelist";
-import { AppContext } from "./App";
+// import { AppContext } from "./App";
 // import list_photo from "./images/1.jpg";
 
 
@@ -11,9 +11,9 @@ function List(props) {
     const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
     const [sublist, setSublist] = useState('')
-    const [cart, setcart] = useState([])
+    // const [cart, setcart] = useState([])
 
-    const { cartdata, setcartdata } = useContext(AppContext)
+    // const { cartdata, setcartdata } = useContext(AppContext)
 
     // const usercontext = createContext()
 
