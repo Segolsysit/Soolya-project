@@ -1,10 +1,5 @@
 import axios from "axios";
-<<<<<<< HEAD
-import { useEffect, useState, useContext } from "react";
-// import { AppContext } from "./App";
-=======
 import { useContext, useEffect, useState } from "react";
->>>>>>> a4c4116e9eabf9752be5264af97a3d8bc16e413a
 import "./css_files/list.css";
 import Header from "./header";
 import Servicelist from "./Servicelist";
@@ -12,14 +7,9 @@ import { AppContext } from "./App";
 // import list_photo from "./images/1.jpg";
 
 
-<<<<<<< HEAD
 function List() {
     // const useContext = useContext(AppContext)
        const [servicedata, setservicedata] = useState([]);
-=======
-function List(props) {
-    const [servicedata, setservicedata] = useState([]);
->>>>>>> a4c4116e9eabf9752be5264af97a3d8bc16e413a
     const [model1, setmodel1] = useState([]);
     const [sublist, setSublist] = useState('')
     const [cart, setcart] = useState([])
@@ -115,27 +105,11 @@ function List(props) {
             localStorage.setItem("fillLen",fil_len);
 
         })
-<<<<<<< HEAD
-    },[])
-var filte;
-filte= servicedata.filter(servi => {
-    return servi.Subcategory === sublist
-})
-const fil_len = filte.length
-// console.log(filte.length)
-
-
-//     const service_filt=(subCat) => {
-//         // console.log(subCat);
-
-//     }
-=======
     }, [])
     var filte;
     filte = servicedata.filter(servi => {
         return servi.Subcategory === sublist
     })
->>>>>>> a4c4116e9eabf9752be5264af97a3d8bc16e413a
 
     const localpath = "http://localhost:3001/";
 

@@ -28,8 +28,7 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import { isAuthenticatedLogin } from './js_files/auth';
-
-export let AppContext =React.createContext()
+export let AppContext =React.createContext(true)
 
 function App() {
 
@@ -92,7 +91,7 @@ function App() {
 <React.Fragment>
         <div>
     <ToastContainer/>
-<AppContext.Provider value={{cartdata,setcartdata}}>
+{/* <AppContext.Provider value={{cartdata,setcartdata}}> */}
             {/* <Header></Header> */}
            <Routes>
             <Route path='/header' element={<Header></Header>}></Route>
