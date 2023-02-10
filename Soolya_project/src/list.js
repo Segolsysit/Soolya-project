@@ -13,6 +13,8 @@ function List(props) {
     const [sublist, setSublist] = useState('')
     const [cart, setcart] = useState([])
 
+    const [open,setopen] = useState(false)
+
     // const { cartdata, setcartdata } = useContext(AppContext)
 
     // const usercontext = createContext()
