@@ -22,7 +22,7 @@ import Sub_Category_Setup from './Sub_Category_Setup';
 import Servicelist from './Servicelist';
 import Admin from './Admin';
 import Add_new_service from './Add_new_service';
-// import Cart from './js_files/Cart';
+import Cart from './js_files/Cart';
 import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
@@ -78,7 +78,7 @@ function App() {
     ];
 
   
-    const [cart,setcart]=useState()
+    // const [cart,setcart]=useState()
 
     
 
@@ -104,7 +104,7 @@ function App() {
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
-                <Route path="/cart" element={<Cart cart={cartdata}></Cart>}></Route>
+                <Route path="/cart" element={<Cart></Cart>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
@@ -122,8 +122,8 @@ function App() {
                 <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
-                <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
-                <Route path="/footer" element={<Footer></Footer>}></Route>                
+                {/* <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route> */}
+                {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
             </Routes>
             <br></br>
             {/* <Footer></Footer> */}
