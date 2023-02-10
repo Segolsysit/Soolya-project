@@ -3,17 +3,21 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import "./Admin.css"
 import { toast } from "react-toastify"
+import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } from '@mui/material';
+
 
 function Sub_Category_Setup() {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
     const [getData, setgetData] = useState([]);
-    const [category,setCatagory] = useState("")
+    const [category, setCatagory] = useState("")
 
-    const [subName,setSubname] = useState("")
-    const [SubDiscription,setSubDescription] = useState("")
-    const [SubImage,setSubImage] = useState('')
+    const [subName, setSubname] = useState("")
+    const [SubDiscription, setSubDescription] = useState("")
+    const [SubImage, setSubImage] = useState('');
+    const [subcategory, setSubCategory] = useState([])
 
+let a=1;
 
 
     const changeStyle = () => {
@@ -39,36 +43,46 @@ function Sub_Category_Setup() {
             setgetData(res.data);
             console.log(res.data);
         })
+        axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
+            setSubCategory(res.data)
+            // console.log(getData_sub);
+        })
 
-    }, [])
+    }, [subcategory])
 
-const AddSubcategory = (e) => {
-    e.preventDefault()
-    const formData = new FormData();
-    formData.append("Category",category);
-    formData.append("Subcategory",subName);
-    formData.append("Discription",SubDiscription);
-    formData.append("file",SubImage)
-    axios.post("http://localhost:3001/sub_api/new_subcategory", formData).then((res) => {
-        console.log(category);
+    const localpath = "http://localhost:3001/"
 
-    toast.success(' uploaded Successed!', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored"
+    const AddSubcategory = (e) => {
+        e.preventDefault()
+        const formData = new FormData();
+        formData.append("Category", category);
+        formData.append("Subcategory", subName);
+        formData.append("Discription", SubDiscription);
+        formData.append("file", SubImage)
+        axios.post("http://localhost:3001/sub_api/new_subcategory", formData).then((res) => {
+            console.log(category);
 
-    })
-})
-}
+            toast.success(' uploaded Successed!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored"
+
+            })
+        })
+    }
+
+    const delete_item =(id) => {
+        axios.delete(`http://localhost:3001/sub_api/delete_item/${id}`)
+    }
     return (
         <div>
             {/* <!-- Page Wrapper --> */}
-            <div id="wrapper">
+            <div id="wrapper" >
 
                 {/* <!-- Sidebar --> */}
                 <ul className={style} id="accordionSidebar">
@@ -153,19 +167,19 @@ const AddSubcategory = (e) => {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                            <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
-                                aria-expanded="true" aria-controls="collapsePages1">
-                                <i className="fas fa-fw fa-user"></i>
-                                <span>Providers</span>
-                            </a>
-                            <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
-                                <div className="bg-white py-2 collapse-inner rounded">
-                                    {/* <h6 className="collapse-header">Login Screens:</h6> */}
-                                    <a className="collapse-item" href="/login.js">Providers List</a>
-                                    <a className="collapse-item" href="register.js">Add New Provider</a>
-                                </div>
+                        <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
+                            aria-expanded="true" aria-controls="collapsePages1">
+                            <i className="fas fa-fw fa-user"></i>
+                            <span>Providers</span>
+                        </a>
+                        <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
+                            <div className="bg-white py-2 collapse-inner rounded">
+                                {/* <h6 className="collapse-header">Login Screens:</h6> */}
+                                <a className="collapse-item" href="/login.js">Providers List</a>
+                                <a className="collapse-item" href="register.js">Add New Provider</a>
                             </div>
-                        </li>
+                        </div>
+                    </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="true" aria-controls="collapsePages">
@@ -416,15 +430,15 @@ const AddSubcategory = (e) => {
 
                         </nav>
                         {/* <!-- End of Topbar --> */}
-                        <div className="container-fluid">
+                        <div className="container-fluid" >
                             <h1>Sub Category Setup</h1>
-                            <form onSubmit={AddSubcategory}>
+                            <form onSubmit={AddSubcategory} className="subcategory_form">
                                 <label>Select Category</label><br />
                                 <select onChange={(e) => setCatagory(e.target.value)} >
                                     <option selected disabled="disabled">--Select Category--</option>
                                     {getData.map((data) => (
-                                        <option className='ak'  
-                                        value={data.catagorySetup}>{data.catagorySetup}</option>
+                                        <option className='ak'
+                                            value={data.catagorySetup}>{data.catagorySetup}</option>
                                     ))
                                     }
                                 </select>
@@ -432,11 +446,50 @@ const AddSubcategory = (e) => {
                                 <label>Sub Category Name</label><br />
                                 <input type="text" onChange={(e) => setSubname(e.target.value)}></input><br /><br />
                                 <label>Dicription</label><br />
-                                <textarea onChange={(e)=>setSubDescription(e.target.value)}></textarea><br /><br />
+                                <textarea onChange={(e) => setSubDescription(e.target.value)}></textarea><br /><br />
                                 <label>Image</label><br />
                                 <input type="file" onChange={(e) => setSubImage(e.target.files[0])}></input><br /><br />
                                 <button type='submit'>Addservice</button>
                             </form>
+                        </div>
+                        <div className='subcategory_list'>
+                        <Table className='table-subcat'>
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell>SN</TableCell>
+                                                <TableCell>Category</TableCell>
+                                                <TableCell>Sub_Category</TableCell>
+                                                <TableCell>Image</TableCell>
+
+                                                <TableCell>Edit</TableCell>
+                                                <TableCell>Delete</TableCell>
+
+
+
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {
+                                                subcategory.map((data, index) => (
+
+
+                                                    <TableRow key={index}>
+                                                        <TableCell>{a++}</TableCell>
+
+                                                        <TableCell><p>{data.Category}</p></TableCell>
+                                                        <TableCell><p>{data.Subcategory}</p></TableCell>
+
+                                                        <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
+                                                        <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                        <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
+                                                    </TableRow>
+
+
+                                                ))
+                                            }
+                                        </TableBody>
+                                    </Table>
+
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+// import { AppContext } from "./App";
 import "./css_files/list.css";
 import Header from "./header";
 import Servicelist from "./Servicelist";
@@ -7,7 +8,8 @@ import Servicelist from "./Servicelist";
 
 
 function List() {
-    const [servicedata, setservicedata] = useState([]);
+    // const useContext = useContext(AppContext)
+       const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
     const [sublist,setSublist] = useState('')
     const [cart,setcart] = useState([])
@@ -84,6 +86,7 @@ function List() {
             // servicedata.map((ser) => {
             // })
             // service_filt(sublist)
+            localStorage.setItem("fillLen",fil_len);
 
         })
     },[])
@@ -91,7 +94,9 @@ var filte;
 filte= servicedata.filter(servi => {
     return servi.Subcategory === sublist
 })
-console.log(filte);
+const fil_len = filte.length
+// console.log(filte.length)
+
 
 //     const service_filt=(subCat) => {
 //         // console.log(subCat);

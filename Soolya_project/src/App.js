@@ -30,7 +30,8 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import { isAuthenticatedLogin } from './js_files/auth';
-export let AppContext =React.createContext(true)
+
+export let AppContext =React.createContext()
 
 function App() {
 
@@ -81,7 +82,7 @@ function App() {
     ];
 
   
-    
+    const [cart,setcart]=useState()
 
     
 
@@ -129,6 +130,7 @@ function App() {
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
             </Routes>
+           
             <br></br>
             {/* <Footer></Footer> */}
             

@@ -49,3 +49,28 @@
     font-size: 18px;
     font-weight: 500;
 }
+
+@media only screen and (max-width: 767px) {
+    *{
+        margin: 0px;
+        padding: 0%;
+    }
+    .category_button_div{
+        width: 60px;
+        height:75px;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 10px gray;
+        outline:none;
+        /* margin:0px 10px 0px 10px ; */
+        /* padding: 10px; */
+       
+    }
+    .category_img{
+        width: 30px;
+        height:40px;
+        margin-left: 22px;
+    }
+  }
