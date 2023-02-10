@@ -7,8 +7,9 @@ import { AppContext } from "./App";
 // import list_photo from "./images/1.jpg";
 
 
-function List(props) {
-    const [servicedata, setservicedata] = useState([]);
+function List() {
+    // const useContext = useContext(AppContext)
+       const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
     const [sublist, setSublist] = useState('')
     const [cart, setcart] = useState([])
@@ -103,6 +104,7 @@ function List(props) {
             // servicedata.map((ser) => {
             // })
             // service_filt(sublist)
+            localStorage.setItem("fillLen",fil_len);
 
         })
     }, [])
