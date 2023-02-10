@@ -1,5 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
-import React from "react" 
+import { Route, Routes} from 'react-router-dom';
+import React, {Suspense} from "react" 
 // import './App.css';
 import Home from './home';
 import Plumbing from './js_files/plumbing';
@@ -27,12 +27,9 @@ import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
-import ApplicationForm from './js_files/applictionform';
-import Footer from './footer';
 
 function App() {
 
-    
 
    
     const array = [
@@ -92,7 +89,7 @@ function App() {
 <React.Fragment>
         <div>
     <ToastContainer/>
-
+<AppContext.Provider value={{cartdata,setcartdata}}>
             {/* <Header></Header> */}
            <Routes>
             <Route path='/header' element={<Header></Header>}></Route>
@@ -105,6 +102,7 @@ function App() {
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
+                <Route path="/cart" element={<Cart cart={cartdata}></Cart>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
@@ -119,12 +117,13 @@ function App() {
                 <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
                 <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
-                <Route path="/category" element={<Category></Category>}></Route>
+                <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
                 <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
                 <Route path="/footer" element={<Footer></Footer>}></Route>                
             </Routes>
+            </AppContext.Provider>
             <br></br>
             {/* <Footer></Footer> */}
             
