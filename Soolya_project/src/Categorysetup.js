@@ -24,9 +24,9 @@ function Sub_Category_Setup() {
     const AddService = (e) => {
 
         e.preventDefault();
-      
-        if(categorySetup.length === 0){
-            toast.error("enter service category",{
+
+        if (categorySetup.length === 0) {
+            toast.error("enter service category", {
                 position: "top-right",
                 theme: "colored"
 
@@ -48,17 +48,18 @@ function Sub_Category_Setup() {
                 theme: "colored"
             })
         }
-       else if (img.type !== "image/jpeg" && file.type !== "image/jpg" ){
-       
-            toast.error("jpeg,jpg,png can upload",{
-                position:"top-center"
-            })}
-    
-      else{
-        const formdata = new FormData()
-        formdata.append("catagorySetup", categorySetup);
-        formdata.append("file", img)
-        axios.post("http://localhost:3001/api/new_catagory/", formdata).then((res) => {
+        else if (img.type !== "image/jpeg" && file.type !== "image/jpg") {
+
+            toast.error("jpeg,jpg,png can upload", {
+                position: "top-center"
+            })
+        }
+
+        else {
+            const formdata = new FormData()
+            formdata.append("catagorySetup", categorySetup);
+            formdata.append("file", img)
+            axios.post("http://localhost:3001/api/new_catagory/", formdata).then((res) => {
 
                 toast.success(' uploaded Successed!', {
                     position: "top-right",
@@ -230,19 +231,19 @@ function Sub_Category_Setup() {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                            <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
-                                aria-expanded="true" aria-controls="collapsePages1">
-                                <i className="fas fa-fw fa-user"></i>
-                                <span>Providers</span>
-                            </a>
-                            <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
-                                <div className="bg-white py-2 collapse-inner rounded">
-                                    {/* <h6 className="collapse-header">Login Screens:</h6> */}
-                                    <a className="collapse-item" href="/login.js">Providers List</a>
-                                    <a className="collapse-item" href="register.js">Add New Provider</a>
-                                </div>
+                        <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
+                            aria-expanded="true" aria-controls="collapsePages1">
+                            <i className="fas fa-fw fa-user"></i>
+                            <span>Providers</span>
+                        </a>
+                        <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
+                            <div className="bg-white py-2 collapse-inner rounded">
+                                {/* <h6 className="collapse-header">Login Screens:</h6> */}
+                                <a className="collapse-item" href="/login.js">Providers List</a>
+                                <a className="collapse-item" href="register.js">Add New Provider</a>
                             </div>
-                        </li>
+                        </div>
+                    </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="true" aria-controls="collapsePages">
@@ -492,63 +493,63 @@ function Sub_Category_Setup() {
                             </ul>
 
                         </nav>
-                      
-                                
+
+
                         {/* <!-- End of Topbar --> */}
                         <div className="container-fluid">
                             <h1>Category Setup</h1>
                             <div className="category_form_div">
-                            <form className="category_form" id="category_form" onSubmit={AddService}>
-                              <TextField  type="text" value={categorySetup} label="Service" onChange={(e) =>  setCatagorySetup(e.target.value) }/><br></br>
-                              <TextField type="file" id="file" onChange={handleImgChange}/><br></br>
-                              <Button type='submit' variant='contained'>Addservice</Button><br></br>
-                              <Button type='reset' variant='contained'>clear</Button>
+                                <form className="category_form" id="category_form" onSubmit={AddService}>
+                                    <TextField type="text" value={categorySetup} label="Service" onChange={(e) => setCatagorySetup(e.target.value)} /><br></br>
+                                    <TextField type="file" id="file" onChange={handleImgChange} /><br></br>
+                                    <Button type='submit' variant='contained'>Addservice</Button><br></br>
+                                    <Button type='reset' variant='contained'>clear</Button>
 
-                                    </form>
-                                </div>
-
-
-                                <div >
-                                    <Table className='table-cat'>
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell>SN</TableCell>
-                                                <TableCell>Category</TableCell>
-                                                <TableCell>Image</TableCell>
-                                                <TableCell>Edit</TableCell>
-                                                <TableCell>Delete</TableCell>
-
-
-
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {
-                                                getData.map((data, index) => (
-
-
-                                                    <TableRow key={index}>
-                                                        <TableCell>{a++}</TableCell>
-
-                                                        <TableCell><p>{data.catagorySetup}</p></TableCell>
-                                                        <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                        <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
-                                                        <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
-                                                    </TableRow>
-
-
-                                                ))
-                                            }
-                                        </TableBody>
-                                    </Table>
-                                </div>
-
+                                </form>
                             </div>
-                        </div>
 
+
+                            <div >
+                                <Table className='table-cat'>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>SN</TableCell>
+                                            <TableCell>Category</TableCell>
+                                            <TableCell>Image</TableCell>
+                                            <TableCell>Edit</TableCell>
+                                            <TableCell>Delete</TableCell>
+
+
+
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {
+                                            getData.map((data, index) => (
+
+
+                                                <TableRow key={index}>
+                                                    <TableCell>{a++}</TableCell>
+
+                                                    <TableCell><p>{data.catagorySetup}</p></TableCell>
+                                                    <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
+                                                    <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                    <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
+                                                </TableRow>
+
+
+                                            ))
+                                        }
+                                    </TableBody>
+                                </Table>
+                            </div>
+
+                        </div>
                     </div>
+
                 </div>
             </div>
+        </div>
     )
 }
 

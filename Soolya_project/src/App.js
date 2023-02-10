@@ -22,7 +22,7 @@ import Sub_Category_Setup from './Sub_Category_Setup';
 import Servicelist from './Servicelist';
 import Admin from './Admin';
 import Add_new_service from './Add_new_service';
-// import Cart from './js_files/Cart';
+import Cart from './js_files/Cart';
 import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
@@ -79,7 +79,7 @@ function App() {
     ];
 
   
-    
+    // const [cart,setcart]=useState()
 
     
 
@@ -123,8 +123,8 @@ function App() {
                 <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
-                <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
-                <Route path="/footer" element={<Footer></Footer>}></Route>                
+                {/* <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route> */}
+                {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
             </Routes>
             {/* </AppContext.Provider> */}
             <br></br>

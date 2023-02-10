@@ -193,8 +193,6 @@ function List(props) {
                                     </div>
                                 </div>
                             </div >
-
-
                         </div>
                     </div>
                 </div>

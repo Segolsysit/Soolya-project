@@ -71,3 +71,10 @@
 .ak{
     width: 300px;
 }
+
+.subcategory_form{
+   transform: translateX(40%);
+}
+.subcategory_list{
+    padding-top: 50px;
+}

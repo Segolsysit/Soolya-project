@@ -127,7 +127,7 @@ function Add_new_service() {
                 setsubCatagory("")
                 setdiscription("")
                 setprice("")
-                setImg("")
+                // setImg("")
                 // file.current.value = null
             })
         }
@@ -595,7 +595,7 @@ function Add_new_service() {
                         <footer className="sticky-footer bg-white">
                             <div className="container my-auto">
                                 <div className="copyright text-center my-auto">
-                                    <span>Copyright &copy; Your Website 2021</span>
+                                    <span>Copyright &copy; Soolya 2023</span>
                                 </div>
                             </div>
                         </footer>
