@@ -15,7 +15,7 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import {useState } from 'react';
 import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import { logOut } from './js_files/auth';
 
