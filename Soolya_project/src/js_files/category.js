@@ -22,7 +22,7 @@ function Category(props) {
         className: "center",
         infinite: true,
         // centerPadding: "60px",
-        slidesToShow: 7,
+        slidesToShow: getData.length,
         arrows: false,
         swipeToSlide: true
 
@@ -181,7 +181,7 @@ function Category(props) {
                                 <div className="sub_category_page_content_div">
                                     <h2>{Subcategory}</h2>
                                     <p className="sub_category_page_content_para">{Discription}</p>
-                                    <a href="/list">{filt.length} services</a>
+                                    {/* <a href="/list">{filt.length} services</a> */}
                                 </div>
                             </button>
 

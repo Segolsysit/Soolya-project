@@ -11,7 +11,11 @@ function Sub_Category_Setup() {
     const [categorySetup, setCatagorySetup] = useState("");
     const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
-    const [count, setCount] = useState();
+    const [getbyid, setgetbyid] = useState('');
+
+    const [Editservice, setEditservice] = useState('');
+    const [EditImage, setEditImage] = useState('');
+
     let a = 1;
 
     useEffect(() => {
@@ -100,7 +104,7 @@ function Sub_Category_Setup() {
             })
 
         }
-    
+
         else {
             setImg(file)
         }
@@ -143,6 +147,24 @@ function Sub_Category_Setup() {
         }
     }
 
+    const EditFun = (id) => {
+        axios.get(`http://localhost:3001/api/fetch_items_id/${id}`).then((res) => {
+            setgetbyid(res.data)
+        })
+
+        console.log(getbyid);
+    }
+
+    const saveChange = (e) => {
+        e.preventDefault()
+        const formdata = new FormData();
+        formdata.append("catagorySetup",Editservice);
+        formdata.append("file",EditImage)
+        axios.patch(`http://localhost:3001/api//update_items/${getbyid._id}`,formdata).then(() => {
+            alert("updated")
+        })
+        console.log(formdata);
+    }
     return (
         <div>
             {/* <!-- Page Wrapper --> */}
@@ -533,7 +555,7 @@ function Sub_Category_Setup() {
 
                                                     <TableCell><p>{data.catagorySetup}</p></TableCell>
                                                     <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                    <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                    <TableCell><Button data-bs-toggle="modal" onClick={()=>EditFun(data._id)} data-bs-target="#EditCategory"><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                     <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
                                                 </TableRow>
 
@@ -543,7 +565,28 @@ function Sub_Category_Setup() {
                                     </TableBody>
                                 </Table>
                             </div>
+                            <div class="modal fade" id="EditCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form className="category_form" id="category_form" onSubmit={()=>saveChange(getbyid._id)}>
+                                                <TextField type="text" placeholder={getbyid.catagorySetup} onChange={(e) =>setEditservice(e.target.value) } label="Service"/><br></br>
+                                                <TextField type="file" onChange={(e) =>setEditImage(e.target.files[0]) }  /><br></br>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
 
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
