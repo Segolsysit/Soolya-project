@@ -1,4 +1,3 @@
-// import { data } from 'jquery'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import "./Admin.css"
