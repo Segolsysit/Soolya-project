@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import "./Admin.css"
 import { toast } from "react-toastify"
-import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } from '@mui/material';
+import {
+    Button, Table, TableBody, TableCell, TableRow, TableHead, TextField, FormControl,
+    Select, MenuItem, InputLabel
+} from '@mui/material';
 
 
 function Sub_Category_Setup() {
@@ -17,7 +20,13 @@ function Sub_Category_Setup() {
     const [SubImage, setSubImage] = useState('');
     const [subcategory, setSubCategory] = useState([])
 
-let a=1;
+    const [editdata, seteditdata] = useState([]);
+    const [editcategory,seteditcategory] = useState("");
+    const [editsubcategory,seteditsubcategory] = useState("");
+    const [editDiscription,seteditDiscription] = useState("");
+    const [editImage,seteditImage] = useState("");
+
+    let a = 1;
 
 
 
@@ -42,14 +51,14 @@ let a=1;
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         })
         axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
             setSubCategory(res.data)
             // console.log(getData_sub);
         })
 
-    }, [subcategory])
+    },[getData,subcategory])
 
     const localpath = "http://localhost:3001/"
 
@@ -77,7 +86,19 @@ let a=1;
         })
     }
 
-    const delete_item =(id) => {
+    const edit = (id) => {
+        axios.get(`http://localhost:3001/sub_api/new_fetch_items/${id}`).then((res)=>{
+            seteditdata(res.data)
+            
+        })
+        // console.log(editdata);
+    }
+
+    const subedit = (id) => {
+        axios.patch(`http://localhost:3001/sub_api/update_subcategory/${id}`)
+    }
+
+    const delete_item = (id) => {
         axios.delete(`http://localhost:3001/sub_api/delete_item/${id}`)
     }
     return (
@@ -454,43 +475,85 @@ let a=1;
                             </form>
                         </div>
                         <div className='subcategory_list'>
-                        <Table className='table-subcat'>
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell>SN</TableCell>
-                                                <TableCell>Category</TableCell>
-                                                <TableCell>Sub_Category</TableCell>
-                                                <TableCell>Image</TableCell>
+                            <Table className='table-subcat'>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>SN</TableCell>
+                                        <TableCell>Category</TableCell>
+                                        <TableCell>Sub_Category</TableCell>
+                                        <TableCell>Image</TableCell>
+                                        <TableCell>Edit</TableCell>
+                                        <TableCell>Delete</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        subcategory.map((data, index) => (
 
-                                                <TableCell>Edit</TableCell>
-                                                <TableCell>Delete</TableCell>
 
-
-
+                                            <TableRow key={index}>
+                                                <TableCell>{a++}</TableCell>
+                                                <TableCell><p>{data.Category}</p></TableCell>
+                                                <TableCell><p>{data.Subcategory}</p></TableCell>
+                                                <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
+                                                <TableCell><Button
+                                                    type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                                                    onClick={() => edit(data._id)}
+                                                ><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
                                             </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {
-                                                subcategory.map((data, index) => (
-
-
-                                                    <TableRow key={index}>
-                                                        <TableCell>{a++}</TableCell>
-
-                                                        <TableCell><p>{data.Category}</p></TableCell>
-                                                        <TableCell><p>{data.Subcategory}</p></TableCell>
-
-                                                        <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                        <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
-                                                        <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
-                                                    </TableRow>
-
-
-                                                ))
-                                            }
-                                        </TableBody>
-                                    </Table>
-
+                                        ))
+                                    }
+                                </TableBody>
+                            </Table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* <!-- Modal --> */}
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Sub Category</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <FormControl sx={{ minWidth: 100 }}>
+                                    <InputLabel id="demo-simple-select-label"
+                                    >Select Category</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        label="Select Category"
+                                        // value={editdata.Category}
+                                        >
+                                        {getData.map((data) => (
+                                            <MenuItem 
+                                            value={data.catagorySetup}
+                                            onChange={(e)=>seteditcategory(e.target.value)}
+                                            >{data.catagorySetup}</MenuItem>
+                                        ))
+                                        }
+                                    </Select>
+                                </FormControl><br /><br />
+                                <TextField type="text" label="Sub Category Name" value={editdata.Subcategory}
+                                onChange={(e)=>seteditsubcategory(e.target.value)} /><br /><br />
+                                <TextField rows={3} multiline type="text" label="Discription"
+                                value={editdata.Discription}
+                                onChange={(e)=>seteditDiscription(e.target.value)} 
+                                /><br /><br />
+                                <TextField type="file"
+                                onChange={(e)=>seteditImage(e.target.value)} 
+                                /><br /><br />
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onClick={subedit(data._id)}>Save changes</button>
                         </div>
                     </div>
                 </div>

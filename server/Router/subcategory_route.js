@@ -66,12 +66,14 @@ subcategory_router.patch("/update_subcategory/:id",upload.single('file'),async(r
 
     }));
     const update_subcategory = await subcategoyr_schema.findByIdAndUpdate(req.params.id)
+    update_items.Category=req.body.Category;
+    update_items.Subcategory=req.body.Subcategory;
+    update_items.Discription=req.body.Discription;
     update_items.originalname=req.file.originalname;
     update_items.mimetype=req.file.mimetype;
     update_items.filename=req.file.filename;
     update_items.path = req.file.path;
     update_items.size = req.file.size;
-    update_items.name=req.body.name;
 
     await update_subcategory .save();
     res.status(200).json("File Updated")

@@ -27,8 +27,9 @@ import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
-import { isAuthenticatedLogin } from './js_files/auth';
-export let AppContext =React.createContext(true)
+import ApplicationForm from './js_files/applictionform';
+import Footer from './footer';
+
 
 function App() {
 
@@ -125,6 +126,7 @@ function App() {
                 {/* <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route> */}
                 {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
             </Routes>
+            {/* </AppContext.Provider> */}
             <br></br>
             {/* <Footer></Footer> */}
             
