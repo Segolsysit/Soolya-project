@@ -99,12 +99,12 @@ function Sub_Category_Setup() {
         // e.preventDefault()
         console.log(editdata._id);
 
-        const subcategorydata = new FormData();
-        subcategorydata.append("Category",editcategory);
-        subcategorydata.append("Subcategory",editsubcategory);
-        subcategorydata.append("Discription",editDiscription);
-        subcategorydata.append("file",editImage);
-        axios.patch(`http://localhost:3001/sub_api/update_subcategory/${editdata._id}`,subcategorydata).then(()=>{
+        const formdata = new FormData();
+        formdata.append("Category",editcategory);
+        formdata.append("Subcategory",editsubcategory);
+        formdata.append("Discription",editDiscription);
+        formdata.append("file",editImage);
+        axios.patch(`http://localhost:3001/sub_api/update_subcategory/${editdata._id}`,formdata).then(()=>{
             alert("updated")
         })
     }
