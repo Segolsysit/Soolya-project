@@ -69,7 +69,7 @@ function Sub_Category_Setup() {
         formData.append("Discription", SubDiscription);
         formData.append("file", SubImage)
         axios.post("http://localhost:3001/sub_api/new_subcategory", formData).then((res) => {
-            console.log(category);
+            // console.log(category);
 
             toast.success(' uploaded Successed!', {
                 position: "top-right",
