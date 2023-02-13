@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { AppContext } from '../App'
+// import { AppContext } from '../App'
 import '../css_files/Cart.css'
-function Cart({cart}) {
+function Cart() {
   // console.log(cart);
-  const {cartdata} = React.useContext(AppContext)
-  console.log(cartdata);
+  // const {cartdata} = React.useContext(AppContext)
+  // console.log(cartdata);
 
 
   return (

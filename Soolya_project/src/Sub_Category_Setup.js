@@ -21,6 +21,10 @@ function Sub_Category_Setup() {
     const [subcategory, setSubCategory] = useState([])
 
     const [editdata, seteditdata] = useState([]);
+    const [editcategory,seteditcategory] = useState("");
+    const [editsubcategory,seteditsubcategory] = useState("");
+    const [editDiscription,seteditDiscription] = useState("");
+    const [editImage,seteditImage] = useState("");
 
     let a = 1;
 
@@ -54,7 +58,7 @@ function Sub_Category_Setup() {
             // console.log(getData_sub);
         })
 
-    }, [subcategory])
+    },[getData,subcategory])
 
     const localpath = "http://localhost:3001/"
 
@@ -82,12 +86,16 @@ function Sub_Category_Setup() {
         })
     }
 
-    const edit = (_id) => {
-        axios.get(`http://localhost:3001/sub_api/new_fetch_items/${_id}`).then((res)=>{
+    const edit = (id) => {
+        axios.get(`http://localhost:3001/sub_api/new_fetch_items/${id}`).then((res)=>{
             seteditdata(res.data)
             
         })
-        console.log(editdata);
+        // console.log(editdata);
+    }
+
+    const subedit = (id) => {
+        axios.patch(`http://localhost:3001/sub_api/update_subcategory/${id}`)
     }
 
     const delete_item = (id) => {
@@ -525,21 +533,27 @@ function Sub_Category_Setup() {
                                         >
                                         {getData.map((data) => (
                                             <MenuItem 
-                                            value={data.catagorySetup}s
+                                            value={data.catagorySetup}
+                                            onChange={(e)=>seteditcategory(e.target.value)}
                                             >{data.catagorySetup}</MenuItem>
                                         ))
                                         }
                                     </Select>
                                 </FormControl><br /><br />
-                                <TextField type="text" label="Sub Category Name" value={editdata.Subcategory} /><br /><br />
+                                <TextField type="text" label="Sub Category Name" value={editdata.Subcategory}
+                                onChange={(e)=>seteditsubcategory(e.target.value)} /><br /><br />
                                 <TextField rows={3} multiline type="text" label="Discription"
-                                value={editdata.Discription} /><br /><br />
-                                <TextField type="file"/><br /><br />
+                                value={editdata.Discription}
+                                onChange={(e)=>seteditDiscription(e.target.value)} 
+                                /><br /><br />
+                                <TextField type="file"
+                                onChange={(e)=>seteditImage(e.target.value)} 
+                                /><br /><br />
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" onClick={subedit(data._id)}>Save changes</button>
                         </div>
                     </div>
                 </div>
