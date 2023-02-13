@@ -48,7 +48,7 @@ router.post("/new_catagory",upload.single("file"),async(req,res) => {
 
 router.get("/fetch_items",async(req,res)=>{
     const fetch_items = await schema.find()
-    res.json( fetch_items)
+    res.json(fetch_items)
 })
 
 router.get("/fetch_items_id/:id",async(req,res)=>{

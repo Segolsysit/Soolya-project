@@ -31,6 +31,7 @@ app.listen(3001,(err) => {
     if(err){
         console.log(err);
     }
+    
 
     else{
         console.log("server started on 3001 port");
