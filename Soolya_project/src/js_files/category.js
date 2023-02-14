@@ -22,7 +22,7 @@ function Category(props) {
         className: "center",
         infinite: true,
         // centerPadding: "60px",
-        slidesToShow: 7,
+        slidesToShow: getData.length,
         arrows: false,
         swipeToSlide: true
 
@@ -36,7 +36,7 @@ function Category(props) {
 
         axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
             setgetDataSub(res.data)
-            // console.log(getData_sub);
+            console.log(getData_sub);
         })
 
     }, [])
