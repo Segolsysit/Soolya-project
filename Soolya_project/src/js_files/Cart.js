@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { AppContext } from '../App'
+// import { AppContext } from '../App'
 import '../css_files/Cart.css'
 function Cart({cart}) {
   // console.log(cart);

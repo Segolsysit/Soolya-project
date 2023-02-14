@@ -29,6 +29,8 @@ import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import ApplicationForm from './js_files/applictionform';
 import Footer from './footer';
+import CustomerDetails from './js_files/customerdetails';
+import BookingSteps from './js_files/bookingsteps';
 
 
 function App() {
@@ -123,7 +125,9 @@ function App() {
                 <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
-                {/* <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route> */}
+                <Route path="/customerdetails" element={<CustomerDetails></CustomerDetails>}></Route>
+                <Route path="/bookingsteps" element={<BookingSteps></BookingSteps>}></Route>
+                <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
                 {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
             </Routes>
             {/* </AppContext.Provider> */}
