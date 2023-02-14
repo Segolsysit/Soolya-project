@@ -1,7 +1,19 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios';
-import { Button, TextField, FormHelperText, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button,
+    TextField,
+    FormHelperText,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    Table,
+    TableBody,
+    TableCell,
+    TableRow,
+    TableHead, 
+     } from '@mui/material';
 import { toast } from 'react-toastify';
 
 
@@ -17,6 +29,8 @@ function Add_new_service() {
     const [price, setprice] = useState("");
     const [img, setImg] = useState("");
     const [subcatlist, setsubcatlist] = useState([]);
+    const [servicelist, setServicelist] = useState([]);
+let a=1;
 
 
     const handleImgChange = (e) => {
@@ -127,7 +141,7 @@ function Add_new_service() {
                 setsubCatagory("")
                 setdiscription("")
                 setprice("")
-                setImg("")
+                // setImg("")
                 // file.current.value = null
             })
         }
@@ -159,10 +173,36 @@ function Add_new_service() {
         })
         axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
             setsubcatlist(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         })
+
+        axios.get("http://localhost:3001/service_api/new_fetch_service_items").then((res) => {
+            setServicelist(res.data)
+            // console.log(servicelist);
+
+    })
     }, [])
 
+    const delete_list = (id) => {
+        axios.delete(`http://localhost:3001/service_api/delete_item/${id}`).then(() => {
+
+        toast.error('😈 Deleted Successed!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+
+        });
+
+
+        })
+    }
+
+    const localpath="http://localhost:3001/"
     return (
         <div>
             <body id="page-top">
@@ -562,7 +602,7 @@ function Add_new_service() {
                                                 id="demo-simple-select"
                                                 label="Select Category"
                                                 value={subcategory}
-                                                onChange={(e) => setsubCatagory(e.target.value) }>
+                                                onChange={(e) => setsubCatagory(e.target.value)}>
                                                 <MenuItem value="sub" selected disabled>Select Sub Category</MenuItem>
 
                                                 {subcatlist.map((subcatlist) => (
@@ -587,6 +627,49 @@ function Add_new_service() {
                                     </form>
                                 </div>
                             </div>
+                            <div className='Addservice_list'>
+                            <Table className='table-cat'>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>SN</TableCell>
+                                            <TableCell>service</TableCell>
+                                            <TableCell>category</TableCell>
+                                            <TableCell>subCategory</TableCell>
+                                            <TableCell>price</TableCell>
+                                            <TableCell>Image</TableCell>
+
+                                            <TableCell>Edit</TableCell>
+                                            <TableCell>Delete</TableCell>
+
+
+
+
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {
+                                            servicelist.map((data, index) => (
+
+
+                                                <TableRow key={index}>
+                                                    <TableCell>{a++}</TableCell>
+
+                                                    <TableCell><p>{data.Service}</p></TableCell>
+                                                    <TableCell><p>{data.Category}</p></TableCell>
+                                                    <TableCell><p>{data.Subcategory}</p></TableCell>
+                                                    <TableCell><p><i class="fa-solid fa-indian-rupee-sign"></i>{data.price}</p></TableCell>
+                                                    <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
+                                                    <TableCell><Button data-bs-toggle="modal" data-bs-target="#EditCategory"><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                    <TableCell><Button onClick={()=>delete_list(data._id)}><i class="fa-regular fa-trash-can" style={{color:"red"}}></i></Button></TableCell>
+                                                </TableRow>
+
+
+                                            ))
+                                        }
+                                    </TableBody>
+                                </Table>
+
+                            </div>
 
                         </div>
                         {/* <!-- End of Main Content --> */}
@@ -595,7 +678,7 @@ function Add_new_service() {
                         <footer className="sticky-footer bg-white">
                             <div className="container my-auto">
                                 <div className="copyright text-center my-auto">
-                                    <span>Copyright &copy; Your Website 2021</span>
+                                    <span>Copyright &copy; Soolya 2023</span>
                                 </div>
                             </div>
                         </footer>
@@ -635,5 +718,6 @@ function Add_new_service() {
         </div>
     )
 }
+
 
 export default Add_new_service

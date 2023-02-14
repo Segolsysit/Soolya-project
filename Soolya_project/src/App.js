@@ -1,8 +1,6 @@
-import { Route, Routes ,useNavigate} from 'react-router-dom';
-import React, {useState,Suspense} from "react" 
+import { Route, Routes} from 'react-router-dom';
+import React, {Suspense} from "react" 
 // import './App.css';
-import Footer from './footer';
-// import Header from './header';
 import Home from './home';
 import Plumbing from './js_files/plumbing';
 import SignIn from './signIn';
@@ -24,20 +22,16 @@ import Sub_Category_Setup from './Sub_Category_Setup';
 import Servicelist from './Servicelist';
 import Admin from './Admin';
 import Add_new_service from './Add_new_service';
-// import Cart from './js_files/Cart';
+import Cart from './js_files/Cart';
 import List from './list';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
-import { isAuthenticatedLogin } from './js_files/auth';
-import Cart from './js_files/Cart';
-export let AppContext =React.createContext()
+import ApplicationForm from './js_files/applictionform';
+import Footer from './footer';
+
 
 function App() {
-
-    const nav = useNavigate();
-    const [cartdata,setcartdata] = useState("hello")
-
 
 
    
@@ -85,14 +79,10 @@ function App() {
     ];
 
   
-    
+    // const [cart,setcart]=useState()
 
     
 
-    const navLogin = ()=>{
-        nav("/sign_in");
-        setLogin(null);     
-   }
 
 
     return (
@@ -102,10 +92,10 @@ function App() {
 <React.Fragment>
         <div>
     <ToastContainer/>
-<AppContext.Provider value={{cartdata,setcartdata}}>
+{/* <AppContext.Provider value={{cartdata,setcartdata}}> */}
             {/* <Header></Header> */}
            <Routes>
-            <Route path='/header' element={<Header navLogin = {navLogin} ></Header>}></Route>
+            <Route path='/header' element={<Header></Header>}></Route>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn ></SignIn>}></Route>
@@ -115,7 +105,7 @@ function App() {
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
-                <Route path="/cart" element={<Cart cart={cartdata}></Cart>}></Route>
+                <Route path="/cart" element={<Cart ></Cart>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
@@ -132,9 +122,11 @@ function App() {
                 <Route path="/emp-profile" element={<EmployeeProfile/>}></Route>
                 <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
-                <Route path="/list" element={<List cartdata={setcartdata}></List>}></Route>
+                <Route path="/list" element={<List></List>}></Route>
+                {/* <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route> */}
+                {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
             </Routes>
-            </AppContext.Provider>
+            {/* </AppContext.Provider> */}
             <br></br>
             {/* <Footer></Footer> */}
             

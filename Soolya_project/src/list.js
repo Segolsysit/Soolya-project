@@ -12,9 +12,9 @@ function List(props) {
     const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
     const [sublist, setSublist] = useState('')
-    const [cart, setcart] = useState([])
+    // const [cart, setcart] = useState([])
 
-    const { cartdata, setcartdata } = useContext(AppContext)
+    // const { cartdata, setcartdata } = useContext(AppContext)
 
     // const usercontext = createContext()
 
@@ -208,8 +208,6 @@ setcart([...cart,re.data])
                                     </div>
                                 </div>
                             </div >
-
-
                         </div>
                     </div>
                 </div>

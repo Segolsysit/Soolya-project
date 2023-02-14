@@ -51,6 +51,7 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import "aos/dist/aos.css";
 import Header from './header';
+import Footer from './footer';
 
     
 
@@ -204,7 +205,7 @@ function Home(props) {
 
             <div class="sub_body">
                 <div>
-                    <div className="sub_header">
+                    {/* <div className="sub_header">
                         <ul className="sub_header__unorder">
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/vendors_list" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/vendors_list" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}>Electrician</NavLink></li>
@@ -214,9 +215,12 @@ function Home(props) {
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/category">AC repair services</NavLink></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/emp-profile">Employee Profiles</NavLink></li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
                 {/* header finished */}
+
+ 
+
                 <div>
                     <div className="carousel_div">
 
@@ -244,7 +248,7 @@ function Home(props) {
 
                     <div className="carousel_z_index_div " >
                         <div className="caruosel_z_index">
-                            <div >
+                            <div className="caruosel_z_index_title">
                                 <h2 className="z_index_title">World's Largest NoBrokerage Handyman Site</h2>
                             </div>
                             <div id="gap">
@@ -256,9 +260,9 @@ function Home(props) {
                             <div className="z_index_search" id="gap">
                                 <div className="select_div">
                                     <select className="locality" onChange={dist} >
-                                        <option selected disabled>Select District</option>
-                                        <option value="erode">Erode</option>
-                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option  className="locality_option" selected disabled>Select District</option>
+                                        <option className="locality_option" value="erode">Erode</option>
+                                        <option className="locality_option" value="Coimbatore">Coimbatore</option>
                                     </select>
                                 </div>
                                 <div className="search_div">
@@ -436,8 +440,9 @@ function Home(props) {
                     </div>
                 </div>
 
-                {/* two ad */}
-
+              
+                {/* scroll div */}
+                 
                 <div className="scroll_div">
                     <button className="scroll_up" onClick={scrollToUp}>
                         <i id="scroll_up_icon" class="fa-solid fa-arrow-up"></i>
@@ -446,7 +451,7 @@ function Home(props) {
 
 
 
-
+               {/* two ad */}
 
                 <div className="owl_carou_2">
                     <div className="advertise_phase" class="row">
@@ -577,7 +582,7 @@ function Home(props) {
                             <img src={carousel_slide_2} alt="advert-1" className="advertise_image"></img>
                             <div className="advertise_cont">
                                 <div className="advertise_cont_head">
-                                    <h3>Best services</h3>
+                                    <h3>Best</h3>
                                 </div>
                                 <button className="advertise_button">View all</button>
                             </div>
@@ -591,54 +596,15 @@ function Home(props) {
 
 
 
-
-                {/* <div className="service_category">
-            <div className="row_title"><h3>There's a service for <span className="title_color">everyone</span></h3></div>
-            <div className="row_line">
-                <div className="row_line_col">
-                    <div className="col_img">
-                        <img id="row_line_image" src={owl_1} alt="owl-1"></img>
-                    </div>
-                    <div className="col_cont">
-                        <h4>Plumbing</h4>
-                        <p>From Bikes and Autos to Prime Sedans and Prime SUVs,
-                            you will find a ride in your budget at your convenience any time.</p>
-                    </div>
-                </div>
-                <div className="row_line_col">
-                    <div className="col_img">
-                        <img id="row_line_image" src={owl_2} alt="owl-1"></img>
-                    </div>
-                    <div className="col_cont">
-                        <h4>Electrician</h4>
-                        <p>From Bikes and Autos to Prime Sedans and Prime SUVs,
-                            you will find a ride in your budget at your convenience any time.</p>
-                    </div>
-                </div>
-                <div className="row_line_col">
-                    <div className="col_img">
-                        <img id="row_line_image" src={owl_3} alt="owl-1"></img>
-                    </div>
-                    <div className="col_cont">
-                        <h4>Refitting</h4>
-                        <p>From Bikes and Autos to Prime Sedans and Prime SUVs,
-                            you will find a ride in your budget at your convenience any time.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div> */}
-
-
                 <div className="frame_line">
                     <div className="one">
-                        <div className="frame_line_border">
-                            <div id="border">
+                        {/* <div className="frame_line_border"> */}
+                            {/* <div id="border"> */}
                                 <img className="frame_img_size" src={frame_line} alt="you"></img>
-                            </div>
-                        </div>
+                            {/* </div> */}
+                        {/* </div> */}
                     </div>
-                    <div data-aos="fade-left" id="frame_line_right_side">
+                    <div id="frame_line_right_side">
                         <div>
                             <h2>Reasons to  <span className="title_color">Choose Us</span></h2>
                             <p id="frame_line_para">
@@ -726,6 +692,7 @@ function Home(props) {
 
 
             </div>
+            <Footer></Footer>
         </div>
     )
 }

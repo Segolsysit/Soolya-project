@@ -48,7 +48,7 @@ router.post("/new_catagory",upload.single("file"),async(req,res) => {
 
 router.get("/fetch_items",async(req,res)=>{
     const fetch_items = await schema.find()
-    res.json( fetch_items)
+    res.json(fetch_items)
 })
 
 router.get("/fetch_items_id/:id",async(req,res)=>{
@@ -70,12 +70,13 @@ router.patch("/update_items/:id",upload.single('file'),async(req,res)=>{
 
     }));
     const update_items = await schema.findByIdAndUpdate(req.params.id)
+    update_items.catagorySetup=req.body.catagorySetup;
+
     update_items.originalname=req.file.originalname;
     update_items.mimetype=req.file.mimetype;
     update_items.filename=req.file.filename;
     update_items.path = req.file.path;
     update_items.size = req.file.size;
-    update_items.name=req.body.name;
 
     await update_items .save();
     res.status(200).json("File Updated")
