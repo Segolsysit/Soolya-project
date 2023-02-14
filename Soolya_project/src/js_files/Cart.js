@@ -10,7 +10,6 @@ function Cart() {
   console.log(cartdata);
 
 
-},[])
 
 // console.log(arr);
 
