@@ -3,15 +3,27 @@ import "./Admin.css";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } from '@mui/material';
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
+
 // import { useForm } from 'react-hook-form';
+
 
 function Sub_Category_Setup() {
 
     const [categorySetup, setCatagorySetup] = useState("");
     const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
-    const [count, setCount] = useState();
+    const [getbyid, setgetbyid] = useState('');
+
+    const [Editservice, setEditservice] = useState('');
+    const [EditImage, setEditImage] = useState('');
+    
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     let a = 1;
 
     useEffect(() => {
@@ -20,7 +32,17 @@ function Sub_Category_Setup() {
         })
 
     }, [getData])
-
+    const modelstyle = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
     const AddService = (e) => {
 
         e.preventDefault();
@@ -100,7 +122,7 @@ function Sub_Category_Setup() {
             })
 
         }
-    
+
         else {
             setImg(file)
         }
@@ -143,6 +165,25 @@ function Sub_Category_Setup() {
         }
     }
 
+    const EditFun = (id) => {
+        axios.get(`http://localhost:3001/api/fetch_items_id/${id}`).then((res) => {
+            setgetbyid(res.data)
+        })
+        handleOpen()
+        console.log(getbyid);
+    }
+
+    const saveChange = (e) => {
+        e.preventDefault()
+        const formdata = new FormData();
+        formdata.append("catagorySetup", Editservice);
+        formdata.append("file", EditImage)
+        axios.patch(`http://localhost:3001/api//update_items/${getbyid._id}`, formdata).then(() => {
+            alert("updated")
+        })
+        // console.log(formdata);
+        handleClose();
+    }
     return (
         <div>
             {/* <!-- Page Wrapper --> */}
@@ -533,7 +574,7 @@ function Sub_Category_Setup() {
 
                                                     <TableCell><p>{data.catagorySetup}</p></TableCell>
                                                     <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                    <TableCell><Button><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                    <TableCell><Button data-bs-toggle="modal" onClick={() => EditFun(data._id)} data-bs-target="#EditCategory"><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                     <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
                                                 </TableRow>
 
@@ -543,7 +584,49 @@ function Sub_Category_Setup() {
                                     </TableBody>
                                 </Table>
                             </div>
+                            <div>
+                                {/* <Button onClick={handleOpen}>Open modal</Button> */}
+                                <Modal
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
+                                >
+                                    <Box sx={modelstyle}>
+                                        <form className="category_form" id="category_form" onSubmit={saveChange}>
+                                            <TextField type="text" placeholder={getbyid.catagorySetup} onChange={(e) => setEditservice(e.target.value)} label="Service" /><br></br>
+                                            <TextField type="file" onChange={(e) => setEditImage(e.target.files[0])} /><br></br>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" onClick={()=>handleClose()}>Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
 
+                                        </form>
+                                    </Box>
+                                </Modal>
+                            </div>
+                            {/* <div class="modal fade" id="EditCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form className="category_form" id="category_form" onSubmit={()=>saveChange(getbyid._id)}>
+                                                <TextField type="text" placeholder={getbyid.catagorySetup} onChange={(e) =>setEditservice(e.target.value) } label="Service"/><br></br>
+                                                <TextField type="file" onChange={(e) =>setEditImage(e.target.files[0]) }  /><br></br>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> */}
                         </div>
                     </div>
 

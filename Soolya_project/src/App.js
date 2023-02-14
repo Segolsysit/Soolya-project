@@ -107,7 +107,7 @@ function App() {
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
-                {/* <Route path="/cart" element={<Cart cart={cartdata}></Cart>}></Route> */}
+                <Route path="/cart" element={<Cart ></Cart>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}

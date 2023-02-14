@@ -1,4 +1,3 @@
-import { data } from 'jquery'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import "./Admin.css"
@@ -21,6 +20,10 @@ function Sub_Category_Setup() {
     const [subcategory, setSubCategory] = useState([])
 
     const [editdata, seteditdata] = useState([]);
+    const [editcategory,seteditcategory] = useState("");
+    const [editsubcategory,seteditsubcategory] = useState("");
+    const [editDiscription,seteditDiscription] = useState("");
+    const [editImage,seteditImage] = useState("");
 
     let a = 1;
 
@@ -47,14 +50,14 @@ function Sub_Category_Setup() {
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
-            // console.log(res.data);
+            console.log(res.data);
         })
         axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
             setSubCategory(res.data)
             // console.log(getData_sub);
         })
 
-    }, [subcategory])
+    },[])
 
     const localpath = "http://localhost:3001/"
 
@@ -66,7 +69,7 @@ function Sub_Category_Setup() {
         formData.append("Discription", SubDiscription);
         formData.append("file", SubImage)
         axios.post("http://localhost:3001/sub_api/new_subcategory", formData).then((res) => {
-            console.log(category);
+            // console.log(category);
 
             toast.success(' uploaded Successed!', {
                 position: "top-right",
@@ -82,12 +85,27 @@ function Sub_Category_Setup() {
         })
     }
 
-    const edit = (_id) => {
-        axios.get(`http://localhost:3001/sub_api/new_fetch_items/${_id}`).then((res)=>{
+    const edit = (id) => {
+        axios.get(`http://localhost:3001/sub_api/new_fetch_items/${id}`).then((res)=>{
             seteditdata(res.data)
             
         })
-        console.log(editdata);
+        // console.log(editdata);
+    }
+
+    const subedit = (e) => {
+
+        // e.preventDefault()
+        console.log(editdata._id);
+
+        const formdata = new FormData();
+        formdata.append("Category",editcategory);
+        formdata.append("Subcategory",editsubcategory);
+        formdata.append("Discription",editDiscription);
+        formdata.append("file",editImage);
+        axios.patch(`http://localhost:3001/sub_api/update_subcategory/${editdata._id}`,formdata).then(()=>{
+            alert("updated")
+        })
     }
 
     const delete_item = (id) => {
@@ -521,25 +539,31 @@ function Sub_Category_Setup() {
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
                                         label="Select Category"
-                                        // value={editdata.Category}
+                                        placeholder={editdata.Category}
                                         >
                                         {getData.map((data) => (
                                             <MenuItem 
-                                            value={data.catagorySetup}s
+                                            value={data.catagorySetup}
+                                            onChange={(e)=>seteditcategory(e.target.value)}
                                             >{data.catagorySetup}</MenuItem>
                                         ))
                                         }
                                     </Select>
                                 </FormControl><br /><br />
-                                <TextField type="text" label="Sub Category Name" value={editdata.Subcategory} /><br /><br />
+                                <TextField type="text" label="Sub Category Name" placeholder={editdata.Subcategory}
+                                onChange={(e)=>seteditsubcategory(e.target.value)} /><br /><br />
                                 <TextField rows={3} multiline type="text" label="Discription"
-                                value={editdata.Discription} /><br /><br />
-                                <TextField type="file"/><br /><br />
+                                placeholder={editdata.Discription}
+                                onChange={(e)=>seteditDiscription(e.target.value)} 
+                                /><br /><br />
+                                <TextField type="file"
+                                onChange={(e)=>seteditImage(e.target.value)} 
+                                /><br /><br />
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" onClick={() => subedit()}>Save changes</button>
                         </div>
                     </div>
                 </div>
