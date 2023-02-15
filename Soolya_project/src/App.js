@@ -29,6 +29,9 @@ import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import ApplicationForm from './js_files/applictionform';
 import Footer from './footer';
+import Servicemanlist from './Servicemanlist';
+import CustomerDetails from './js_files/customerdetails';
+import BookingSteps from './js_files/bookingsteps';
 
 
 function App() {
@@ -106,6 +109,7 @@ function App() {
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
                 <Route path="/cart" element={<Cart ></Cart>}></Route>
+                <Route path='/servicemanlist' element={<Servicemanlist></Servicemanlist>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}
@@ -123,7 +127,9 @@ function App() {
                 <Route path="/category" element={<Suspense fallback="Loading....."><Category></Category></Suspense>}></Route>
                 <Route path="/sub_category" element={<SubCategory></SubCategory>}></Route>
                 <Route path="/list" element={<List></List>}></Route>
-                {/* <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route> */}
+                <Route path="/customerdetails" element={<CustomerDetails></CustomerDetails>}></Route>
+                <Route path="/bookingsteps" element={<BookingSteps></BookingSteps>}></Route>
+                <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
                 {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
             </Routes>
             {/* </AppContext.Provider> */}

@@ -205,7 +205,7 @@ function Home(props) {
 
             <div class="sub_body">
                 <div>
-                    {/* <div className="sub_header">
+                    <div className="sub_header">
                         <ul className="sub_header__unorder">
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/vendors_list" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}>Plumbing</NavLink></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/vendors_list" onClick={() => { localStorage.setItem("search", "electrician"); localStorage.setItem("dist", '') }}>Electrician</NavLink></li>
@@ -215,7 +215,7 @@ function Home(props) {
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/category">AC repair services</NavLink></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/emp-profile">Employee Profiles</NavLink></li>
                         </ul>
-                    </div> */}
+                    </div>
                 </div>
                 {/* header finished */}
 

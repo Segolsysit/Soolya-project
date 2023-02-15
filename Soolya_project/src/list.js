@@ -4,6 +4,7 @@ import "./css_files/list.css";
 import Header from "./header";
 import Servicelist from "./Servicelist";
 // import { AppContext } from "./App";
+import { useNavigate } from "react-router-dom";
 // import list_photo from "./images/1.jpg";
 
 
@@ -17,20 +18,29 @@ function List(props) {
 
     // const usercontext = createContext()
 
-    async function model(_id) {
-        await axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
+     function model(_id) {
+         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
             setmodel1(res.data)
             // console.log(res.data);
         })
     }
-
+// console.log(model1);
 
 
     function addtocart(_id) {
-
-        axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
-            // setcart(...cart, res.data)
-            setcartdata(...cartdata, res.data)
+    
+        axios.get('http://localhost:3001/service_api/new_fetch_service_items/'+_id).then((re)=>{
+setcart([...cart,re.data])
+// localStorage.setItem("da",_id)
+// console.log(re.data);
+        })
+        // setcart([])
+        // localStorage.setItem("addtocart",_id);
+        // console.log(_id);
+// console.log(_id);
+        // axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
+        //     // setcart(...cart, res.data)
+        //     setcartdata(...cartdata, res.data)
             // return props.setcartdata(cart)
             // localStorage.setItem("cartdata",...cart)
             // localStorage.setItem("Category",cart.Category)
@@ -41,8 +51,8 @@ function List(props) {
 
 
             // console.log(cart);
-        })
-        console.log(cartdata);
+        // })
+        // console.log(cartdata);
     }
     // console.log(cart);
     //    let list = [
@@ -93,6 +103,8 @@ function List(props) {
     //     setModal(true);
     // }
 
+    const nav = useNavigate();
+
     useEffect(() => {
         axios.get("http://localhost:3001/service_api/new_fetch_service_items").then((res) => {
             setservicedata(res.data)
@@ -141,8 +153,11 @@ function List(props) {
                                         <i id="list_add_icon" class="fa-solid fa-plus"></i>
                                     </button>
                                 </div>
+
                             </div>
                         </button>
+<button onClick={()=>nav('/cart')}>cart</button>
+
                         {/* {modal? */}
                         {/* ( */}
 
@@ -198,7 +213,11 @@ function List(props) {
                 </div>
             </div>
 
-
+<div>
+    {cart.map((c)=>(
+        <p>{c.price}</p>
+    ))}
+</div>
         </div >
     )
 }

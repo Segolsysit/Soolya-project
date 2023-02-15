@@ -8,7 +8,6 @@ const subcategory_router = require("./Router/subcategory_route");
 const service_router = require("./Router/service_route");
 const serviceman_route = require("./Router/serviceman_route");
 
-
 app.use(cors())
 app.use("/api", router)
 app.use("/sub_api", subcategory_router)
