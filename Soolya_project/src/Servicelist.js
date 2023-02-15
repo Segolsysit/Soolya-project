@@ -138,7 +138,7 @@ function Servicelist() {
 
                     {/* <!-- Heading --> */}
                     <div className="sidebar-heading">
-                        PROVIDERS
+                    SERVICE MAN MANAGEMENT
                     </div>
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
@@ -146,13 +146,13 @@ function Servicelist() {
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
                                 aria-expanded="true" aria-controls="collapsePages1">
                                 <i className="fas fa-fw fa-user"></i>
-                                <span>Providers</span>
+                                <span>SERVICE MAN</span>
                             </a>
                             <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Login Screens:</h6> */}
-                                    <a className="collapse-item" href="/login.js">Providers List</a>
-                                    <a className="collapse-item" href="register.js">Add New Provider</a>
+                                    <a className="collapse-item" href="/servicemanlist">Service Man List</a>
+                                    <a className="collapse-item" href="register.js">Add New Service Man</a>
                                 </div>
                             </div>
                         </li>

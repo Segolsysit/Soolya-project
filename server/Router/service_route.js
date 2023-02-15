@@ -67,7 +67,12 @@ service_router.patch("/update_service/:id",upload.single('file'),async(req,res)=
         }
 
     }));
-    const update_service = await Service_schem.findByIdAndUpdate(req.params.id)
+    const  update_items = await Service_schem.findByIdAndUpdate(req.params.id)
+    update_items.Service=req.body.Service,
+    update_items.Category=req.body.Category,
+    update_items.Subcategory=req.body.Subcategory,
+    update_items.Discription=req.body.Discription,
+    update_items.price=req.body.price,
     update_items.originalname=req.file.originalname;
     update_items.mimetype=req.file.mimetype;
     update_items.filename=req.file.filename;
@@ -75,7 +80,7 @@ service_router.patch("/update_service/:id",upload.single('file'),async(req,res)=
     update_items.size = req.file.size;
     update_items.name=req.body.name;
 
-    await update_service .save();
+    await  update_items .save();
     res.status(200).json("File Updated")
 })
 

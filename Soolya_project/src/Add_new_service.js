@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios';
-import { Button,
+import {
+    Button,
     TextField,
     FormHelperText,
     FormControl,
@@ -12,9 +13,12 @@ import { Button,
     TableBody,
     TableCell,
     TableRow,
-    TableHead, 
-     } from '@mui/material';
+    TableHead,
+    useStepContext,
+} from '@mui/material';
 import { toast } from 'react-toastify';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
 
 function Add_new_service() {
@@ -30,7 +34,17 @@ function Add_new_service() {
     const [img, setImg] = useState("");
     const [subcatlist, setsubcatlist] = useState([]);
     const [servicelist, setServicelist] = useState([]);
-let a=1;
+    const [getByIdList,setgetByIdList] = useState([]);
+    const [Editservice, setEditservice] = useState("");
+    const [Editcategory, setEditcategory] = useState("");
+    const [Editsubcategory, setEditsubcategory] = useState("");
+    // const [discription, setdiscription] = useState("");
+    const [Editprice, setEditprice] = useState("");
+    const [Editimg, setEditimg] = useState("");
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    let a = 1;
 
 
     const handleImgChange = (e) => {
@@ -55,6 +69,18 @@ let a=1;
             setImg(file)
         }
     }
+
+    const modelstyle = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
 
     const AddService = (e) => {
 
@@ -147,6 +173,28 @@ let a=1;
         }
     }
 
+    const EditList = (id) => {
+        handleOpen()
+        axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${id}`).then((res)=>{
+            setgetByIdList(res.data)
+            console.log(res.data);
+        })
+    }
+
+    const saveChangeList = (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append("Service",Editservice)
+        formData.append("Category",Editcategory)
+        formData.append("Subcategory",Editsubcategory)
+        formData.append("price", Editprice)
+        formData.append("file", Editimg)
+
+        axios.patch(`http/:localhost:3001/service_api/update_service/${getByIdList._id}`,formData).then(()=>{
+                    alert("ListUpdated")
+                })
+
+    }
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -180,29 +228,29 @@ let a=1;
             setServicelist(res.data)
             // console.log(servicelist);
 
-    })
-    }, [])
+        })
+    }, [servicelist])
 
     const delete_list = (id) => {
         axios.delete(`http://localhost:3001/service_api/delete_item/${id}`).then(() => {
 
-        toast.error('😈 Deleted Successed!', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
+            toast.error('😈 Deleted Successed!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
 
-        });
+            });
 
 
         })
     }
 
-    const localpath="http://localhost:3001/"
+    const localpath = "http://localhost:3001/"
     return (
         <div>
             <body id="page-top">
@@ -288,7 +336,7 @@ let a=1;
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                            PROVIDER MANAGEMENT
+                            SERVICE MAN MANAGEMENT
                         </div>
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
@@ -296,13 +344,13 @@ let a=1;
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
                                 aria-expanded="true" aria-controls="collapsePages1">
                                 <i className="fas fa-fw fa-user"></i>
-                                <span>Providers</span>
+                                <span>SERVICE MAN</span>
                             </a>
                             <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Login Screens:</h6> */}
-                                    <a className="collapse-item" href="/login.js">Providers List</a>
-                                    <a className="collapse-item" href="register.js">Add New Provider</a>
+                                    <a className="collapse-item" href="/servicemanlist">Service Man List</a>
+                                    <a className="collapse-item" href="register.js">Add New Service Man</a>
                                 </div>
                             </div>
                         </li>
@@ -628,7 +676,7 @@ let a=1;
                                 </div>
                             </div>
                             <div className='Addservice_list'>
-                            <Table className='table-cat'>
+                                <Table className='table-cat'>
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>SN</TableCell>
@@ -653,22 +701,74 @@ let a=1;
 
                                                 <TableRow key={index}>
                                                     <TableCell>{a++}</TableCell>
-
                                                     <TableCell><p>{data.Service}</p></TableCell>
                                                     <TableCell><p>{data.Category}</p></TableCell>
                                                     <TableCell><p>{data.Subcategory}</p></TableCell>
                                                     <TableCell><p><i class="fa-solid fa-indian-rupee-sign"></i>{data.price}</p></TableCell>
                                                     <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                    <TableCell><Button data-bs-toggle="modal" data-bs-target="#EditCategory"><i class="fa-solid fa-pencil"></i></Button></TableCell>
-                                                    <TableCell><Button onClick={()=>delete_list(data._id)}><i class="fa-regular fa-trash-can" style={{color:"red"}}></i></Button></TableCell>
+                                                    <TableCell><Button onClick={()=>EditList(data._id)}><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                    <TableCell><Button onClick={() => delete_list(data._id)}><i class="fa-regular fa-trash-can" style={{ color: "red" }}></i></Button></TableCell>
                                                 </TableRow>
-
-
                                             ))
                                         }
                                     </TableBody>
                                 </Table>
 
+                            </div>
+                            <div>
+                                {/* <Button onClick={handleOpen}>Open modal</Button> */}
+                                <Modal
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
+                                >
+                                    <Box sx={modelstyle}>
+                                        <form className="category_form" id="category_form" onSubmit={saveChangeList}>
+                                            <TextField type="text" label="Service" onChange={(e)=>setEditservice(e.target.value)} /><br></br>
+                                            <FormControl sx={{ minWidth: 100 }}>
+                                            <InputLabel id="demo-simple-select-label"
+                                            >Select Category</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                label="Select Category"
+                                                // value={category}
+                                                onChange={(e) => setEditcategory(e.target.value)}>
+                                                {getData.map((data) => (
+                                                    <MenuItem key={data._id} value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
+                                                ))
+                                                }
+                                            </Select>
+                                            <FormHelperText></FormHelperText>
+                                        </FormControl><br></br>
+                                        <FormControl sx={{ minWidth: 100 }}>
+                                            <InputLabel id="demo-simple-select-label">Select Sub Category</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                label="Select Category"
+                                               
+                                                onChange={(e) => setEditsubcategory(e.target.value)}>
+                                                    
+                                                {/* <MenuItem value="sub" selected disabled>Select Sub Category</MenuItem> */}
+
+                                                {subcatlist.map((subcatlist) => (
+                                                    <MenuItem key={subcatlist} value={subcatlist.Subcategory}>{subcatlist.Subcategory}</MenuItem>
+                                                ))
+                                                }
+                                            </Select>
+                                            <FormHelperText></FormHelperText>
+                                        </FormControl><br></br>
+                                            <TextField type="text" label="price" onChange={(e)=>setEditprice(e.target.value)}/><br></br>
+                                            <TextField type="file" onChange={(e)=>setEditimg(e.target.files[0])}/><br></br>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" onClick={() => handleClose()}>Close</button>
+                                                <button type="submit" class="btn btn-primary" >Save changes</button>
+                                            </div>
+                                        </form>
+                                    </Box>
+                                </Modal>
                             </div>
 
                         </div>
