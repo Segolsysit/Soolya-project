@@ -115,11 +115,11 @@ function Serviceman() {
                                     formData.MobilePhoneNumber.length > 10) {
                                     setMobilePhoneNumbererror(true)
                                 }
-                                else if (formData.ConfirmMobilePhoneNumber.length === 0 ||
-                                    formData.ConfirmMobilePhoneNumber.length < 10 ||
-                                    formData.ConfirmMobilePhoneNumber.length > 10) {
-                                    setConfirmMobilePhoneNumbererror(true)
-                                }
+                                // else if (formData.ConfirmMobilePhoneNumber.length === 0 ||
+                                //     formData.ConfirmMobilePhoneNumber.length < 10 ||
+                                //     formData.ConfirmMobilePhoneNumber.length > 10) {
+                                //     setConfirmMobilePhoneNumbererror(true)
+                                // }
                                 else if (formData.StreetAddress.length === 0) {
                                     setStreetAddresserror(true)
                                 }

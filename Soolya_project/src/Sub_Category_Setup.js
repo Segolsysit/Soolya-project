@@ -50,7 +50,7 @@ function Sub_Category_Setup() {
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         })
         axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
             setSubCategory(res.data)
