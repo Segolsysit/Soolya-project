@@ -1,0 +1,56 @@
+.customer_details_overall{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.customer_details_overall_div{
+    width:90%;
+}
+
+.customer_details_cont{
+    margin-top: 40px;
+    padding: 0px 50px 0px 50px  ;
+}
+
+.customer_details_cont_div{
+    border-bottom: 1px solid gray;
+    padding: 5px 0px 5px 0px;
+    margin-top: 20px;
+}
+
+.customer_details_cont_hover{
+    border-bottom: 1px solid red;
+    padding: 5px 0px 5px 0px;
+    margin-top: 20px;
+}
+
+.customer_details_label{
+    width:150px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.customer_details_input{
+    width:100%;
+    max-width: 80%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.save_location_btn_div{
+    margin-top: 15px;
+}
+
+.save_location_btn{
+    width:100%;
+    min-width:200px ;
+    line-height: 35px;
+    border-radius: 5px;
+    outline:none;
+    border: none;
+    background-color: #2874f0;
+    color:#fff;
+    font-weight: 500px;
+}
