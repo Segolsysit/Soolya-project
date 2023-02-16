@@ -6,8 +6,8 @@ import { AppContext } from '../App'
 import '../css_files/Cart.css'
 function Cart() {
   // console.log(cart);
-  const {cartdata} = React.useContext(AppContext)
-  console.log(cartdata);
+  // const {cartdata} = React.useContext(AppContext)
+  // console.log(cartdata);
 
 
 

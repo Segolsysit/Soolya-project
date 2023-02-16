@@ -6,36 +6,44 @@ import axios from "axios";
 
 function ApplicationForm() {
 
-  let serialNumber = 1;
+    let serialNumber = 1;
 
     const [getServiceManData, setGetServiceManData] = useState([]);
-  
+    const [viewdata,setviewdata] = useState([]);
 
-    useEffect(()=>{
-        axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((response)=>{
+
+    useEffect(() => {
+        axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((response) => {
             setGetServiceManData(response.data);
-            console.log(response);
+            // console.log(response);
         })
-    },[]);
+    }, []);
+
+    const viewdeatils = (id) => {
+        axios.get(`https://63bd5802d660062388a24683.mockapi.io/Soolya/${id}`).then((response) => {
+         setviewdata(response.data);
+        //  console.log(response.data);
+        })
+    }
 
 
-    const delete_data = (id)=>{
-         axios.delete("https://63bd5802d660062388a24683.mockapi.io/Soolya",{params:id}).then(()=>{
+    const delete_data = (id) => {
+        axios.delete("https://63bd5802d660062388a24683.mockapi.io/Soolya", { params: id }).then(() => {
             alert("deleted");
-         })
-         
+        })
+
     }
 
 
 
- 
+
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled")
         }
-        else{
+        else {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
@@ -44,7 +52,7 @@ function ApplicationForm() {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1")
         }
-        else{
+        else {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
@@ -80,10 +88,10 @@ function ApplicationForm() {
                     </li>
 
                     <li className="nav-item active">
-                            <a className="nav-link" href="/application">
-                                <i className="fas fa-fw fa-tachometer-alt"></i>
-                                <span>Application</span></a>
-                        </li>
+                        <a className="nav-link" href="/application">
+                            <i className="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Application</span></a>
+                    </li>
 
                     {/* <!-- Divider --> */}
                     <hr className="sidebar-divider" />
@@ -138,7 +146,7 @@ function ApplicationForm() {
 
                     {/* <!-- Heading --> */}
                     <div className="sidebar-heading">
-                    SERVICE MAN MANAGEMENT
+                        SERVICE MAN MANAGEMENT
                     </div>
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
@@ -408,41 +416,69 @@ function ApplicationForm() {
                         {/* <!-- End of Topbar --> */}
 
                         <div >
-                                    <Table className='table-cat'>
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell>SN</TableCell>
-                                                <TableCell>Name</TableCell>
-                                                <TableCell>Contact info</TableCell>
-                                                <TableCell>Status</TableCell>
-                                                <TableCell>Action</TableCell>
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                          
-                                                  { getServiceManData.map((data)=>
-                                                        <TableRow >
-                                                        <TableCell>{serialNumber++}</TableCell>
-                                                        <TableCell>{data.FirstName}{data.LastName}</TableCell>
-                                                        <TableCell>
-                                                            <p>{data.Email}</p>
-                                                            <p>{data.MobilePhoneNumber}</p>
-                                                        </TableCell>
-                                                        <TableCell> 
-                                                            <Switch color="primary"/></TableCell>
-                                                        <TableCell>
-                                                            <Button><i class="fa-solid fa-pencil"></i></Button>
-                                                            <Button><i class="fa-solid fa-eye"></i></Button>
-                                                            <Button onClick={()=> delete_data(data.id)}><i class="fa-solid fa-trash"></i></Button>
-                                                        </TableCell>
-                                                    </TableRow>
-                                                  ) }
+                            <Table className='table-cat'>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>SN</TableCell>
+                                        <TableCell>Name</TableCell>
+                                        <TableCell>Contact info</TableCell>
+                                        <TableCell>Status</TableCell>
+                                        <TableCell>Action</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+
+                                    {getServiceManData.map((data) =>
+                                        <TableRow >
+                                            <TableCell>{serialNumber++}</TableCell>
+                                            <TableCell>{data.FirstName}{data.LastName}</TableCell>
+                                            <TableCell>
+                                                <p>{data.Email}</p>
+                                                <p>{data.MobilePhoneNumber}</p>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Switch color="primary" /></TableCell>
+                                            <TableCell>
+                                                <Button><i class="fa-solid fa-pencil"></i></Button>
+                                                <Button
+                                                    type="button"  data-toggle="modal" data-target="#exampleModalCenter"
+                                                    onClick={()=> viewdeatils(data.id)}
+                                                ><i class="fa-solid fa-eye"></i></Button>
+                                                <Button onClick={() => delete_data(data.id)}><i class="fa-solid fa-trash"></i></Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    )}
 
 
-                                           
-                                        </TableBody>
-                                    </Table>
+
+                                </TableBody>
+                            </Table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {/* <!-- Modal --> */}
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"  id="exampleModalLongTitle">Service Man Deatails</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <div>
+                                <h3>Name : {viewdata.FirstName} {viewdata.LastName} </h3><br/>
+                                <h3>Mobile Number : {viewdata.MobilePhoneNumber}</h3><br/>
+                                <h3>Email : {viewdata.Email}</h3><br/>
+                                <h3>Work Type : {viewdata.WorkType}</h3><br/>
+                                <h3>Address : {viewdata.StreetAddress}</h3><br/>
+                                <Button>Delete</Button>
+                                <Button>Accept</Button>
                                 </div>
+                        </div>
 
                     </div>
                 </div>

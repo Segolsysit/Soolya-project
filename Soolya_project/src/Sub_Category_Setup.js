@@ -508,7 +508,7 @@ function Sub_Category_Setup() {
                                                 <TableCell><p>{data.Subcategory}</p></TableCell>
                                                 <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
                                                 <TableCell><Button
-                                                    type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                                                     data-toggle="modal" data-target="#exampleModalCenter"
                                                     onClick={() => edit(data._id)}
                                                 ><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                 <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
