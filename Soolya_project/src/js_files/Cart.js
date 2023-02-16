@@ -2,10 +2,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
+// import { AppContext } from '../App'
 import '../css_files/Cart.css'
 function Cart() {
   // console.log(cart);
-  const {cartdata} = React.useContext()
+  // const {cartdata} = React.useContext(AppContext)
   console.log(cartdata);
 
 

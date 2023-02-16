@@ -55,17 +55,29 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
                 helperText={IdentityNumbererror === true ?"Identity Number is Required.":""}/>
                 </div>
                 </div><br/>
+                <label for="photo">Photo</label>
                 <input 
                  type="file"
                  id="photo" 
+                 name="file"
+                className='form-control w-50'
+                
+                 onChange={(e)=>{setformData({...formData, file:e.target.files[0]});
+                  setfileerror(false)}}
+                 error={fileerror}
+                 ></input><br/>
+                 {/* <label for="id_proof">Document</label>
+                  <input 
+                 type="file"
+                 id="id_proof" 
                  name="photo"
                  accept="image/png, image/jpeg" className='form-control w-50'
                  value={formData.file}
                  onChange={(e)=>{setformData({...formData, file:e.target.value});
                   setfileerror(false)}}
                  error={fileerror}
-                 ></input><br/>
-                 <div className="ser_input_password">
+                 ></input><br/> */}
+                 {/* <div className="ser_input_password">
                  <TextField id="outlined-basic" label="Password" variant="outlined" className='form-control w-25'
                  value={formData.Password}
                  onChange={(e)=>{setformData({...formData, Password:e.target.value});
@@ -80,7 +92,7 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
                  error={ConfirmPassworderror}
                  helperText={ConfirmPassworderror === true ?"Confirm Password is Not Same.":""}/>
                  </div>
-                 </div><br/>
+                 </div><br/> */}
                </center>  
             </div>
     )

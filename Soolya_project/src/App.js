@@ -29,6 +29,7 @@ import "react-toastify/dist/ReactToastify.css"
 import Header from './header';
 import ApplicationForm from './js_files/applictionform';
 import Footer from './footer';
+import Servicemanlist from './Servicemanlist';
 import CustomerDetails from './js_files/customerdetails';
 import BookingSteps from './js_files/bookingsteps';
 import BookingDetails from './js_files/bookingdetails';
@@ -111,6 +112,7 @@ function App() {
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
                 <Route path="/cart" element={<Cart ></Cart>}></Route>
+                <Route path='/servicemanlist' element={<Servicemanlist></Servicemanlist>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}

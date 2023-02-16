@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import "./css_files/list.css";
 import Header from "./header";
 import Servicelist from "./Servicelist";
-import { AppContext } from "./App";
+// import { AppContext } from "./App";
 import { useNavigate } from "react-router-dom";
 // import list_photo from "./images/1.jpg";
 
@@ -213,11 +213,11 @@ setcart([...cart,re.data])
                 </div>
             </div>
 
-<div>
+{/* <div>
     {cart.map((c)=>(
         <p>{c.price}</p>
     ))}
-</div>
+</div> */}
         </div >
     )
 }

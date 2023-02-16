@@ -45,14 +45,11 @@ function Serviceman() {
         FirstName: "",
         LastName: "",
         MobilePhoneNumber: "",
-        ConfirmMobilePhoneNumber: "",
         StreetAddress: "",
         PostalCode: "",
         Email: "",
         IdentityType: "",
         IdentityNumber: "",
-        Password: "",
-        ConfirmPassword: "",
         file: ""
     })
 
@@ -115,11 +112,11 @@ function Serviceman() {
                                     formData.MobilePhoneNumber.length > 10) {
                                     setMobilePhoneNumbererror(true)
                                 }
-                                else if (formData.ConfirmMobilePhoneNumber.length === 0 ||
-                                    formData.ConfirmMobilePhoneNumber.length < 10 ||
-                                    formData.ConfirmMobilePhoneNumber.length > 10) {
-                                    setConfirmMobilePhoneNumbererror(true)
-                                }
+                                // else if (formData.ConfirmMobilePhoneNumber.length === 0 ||
+                                //     formData.ConfirmMobilePhoneNumber.length < 10 ||
+                                //     formData.ConfirmMobilePhoneNumber.length > 10) {
+                                //     setConfirmMobilePhoneNumbererror(true)
+                                // }
                                 else if (formData.StreetAddress.length === 0) {
                                     setStreetAddresserror(true)
                                 }
@@ -141,38 +138,56 @@ function Serviceman() {
                                 else if (formData.file.length === 0) {
                                     setfileerror(true)
                                 }
-                                else if (formData.Password.length === 0 || formData.Password.length < 6) {
-                                    setPassworderror(true)
-                                }
-                                else if (formData.ConfirmPassword.length === 0 || formData.ConfirmPassword !== formData.Password) {
-                                    setConfirmPassworderror(true)
-                                }
+                                // else if (formData.Password.length === 0 || formData.Password.length < 6) {
+                                //     setPassworderror(true)
+                                // }
+                                // else if (formData.ConfirmPassword.length === 0 || formData.ConfirmPassword !== formData.Password) {
+                                //     setConfirmPassworderror(true)
+                                // }
                                 else {
-                                    swal({
-                                        title: "Good job!",
-                                        text: "We will Contact Through Email",
-                                        icon: "success",
-                                        button: "ok",
-                                    });
+
+                                    // alert("worked")
+                                    // swal({
+                                    //     title: "Good job!",
+                                    //     text: "We will Contact Through Email",
+                                    //     icon: "success",
+                                    //     button: "ok",
+                                    // });
                                     console.log(formData);
-                                    axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya", {
-                                        WorkType: formData.WorkType,
-                                        district: formData.district,
-                                        Title: formData.Title,
-                                        FirstName: formData.FirstName,
-                                        LastName: formData.LastName,
-                                        MobilePhoneNumber: formData.MobilePhoneNumber,
-                                        ConfirmMobilePhoneNumber: formData.ConfirmMobilePhoneNumber,
-                                        StreetAddress: formData.StreetAddress,
-                                        PostalCode: formData.PostalCode,
-                                        Email: formData.Email,
-                                        IdentityType: formData.IdentityType,
-                                        IdentityNumber: formData.IdentityNumber,
-                                        Password: formData.Password,
-                                        ConfirmPassword: formData.ConfirmPassword,
-                                        file: formData.file
+                                    const formdata = new FormData()
+                                    formdata.append("WorkType",formData.WorkType)
+                                    formdata.append("district",formData.district)
+                                    formdata.append("Title",formData.Title)
+                                    formdata.append("FirstName",formData.FirstName)
+                                    formdata.append("LastName",formData.LastName)
+                                    formdata.append("MobilePhoneNumber",formData.MobilePhoneNumber)
+                                    formdata.append("StreetAddress",formData.StreetAddress)
+                                    formdata.append("PostalCode",formData.PostalCode)
+                                    formdata.append("Email",formData.Email)
+                                    formdata.append("IdentityType",formData.IdentityType)
+                                    formdata.append("IdentityNumber",formData.IdentityNumber)
+                                    formdata.append("file",formData.file)
+                                    console.log(formdata);
+
+                                    axios.post("http://localhost:3001/serviceman/user", formdata)
+                                    .then((res) => {
+                                        console.log("posted");
+
                                     })
-                                    nav("/")
+                                        // WorkType: formData.WorkType,
+                                        // district: formData.district,
+                                        // Title: formData.Title,
+                                        // FirstName: formData.FirstName,
+                                        // LastName: formData.LastName,
+                                        // MobilePhoneNumber: formData.MobilePhoneNumber,
+                                        // StreetAddress: formData.StreetAddress,
+                                        // PostalCode: formData.PostalCode,
+                                        // Email: formData.Email,
+                                        // IdentityType: formData.IdentityType,
+                                        // IdentityNumber: formData.IdentityNumber,
+                                        // file: formData.file
+                                   
+                                  
                                 }
 
                             }

@@ -25,7 +25,7 @@ function Generalinfo({ formData, setformData, WorkTypeerror, districterror, Titl
         {/* <h1>General Info</h1>     */}
         <div className="ser_input_Worktype">
           <Box >
-            <FormControl sx={{ minWidth: 300 }}>
+            {/* <FormControl sx={{ minWidth: 300 }}>
               <InputLabel id="demo-simple-select-label" value={formData.WorkType}
               >Work Type</InputLabel>
               <Select
@@ -43,7 +43,17 @@ function Generalinfo({ formData, setformData, WorkTypeerror, districterror, Titl
               </Select>
               <FormHelperText error
               >{WorkTypeerror === true ? "Choose Work type" : ""}</FormHelperText>
-            </FormControl>
+            </FormControl> */}
+            <TextField label="Work Type" 
+            value={formData.WorkType}
+               onChange={(e) => {
+                setformData({ ...formData, WorkType: e.target.value });
+                setWorkTypeerror(false)
+              }}
+              error={WorkTypeerror}
+              helperText={WorkTypeerror === true ? "Work Type is Required." : ""}
+
+            ></TextField>
           </Box>
           {/* <TextField id="outlined-basic" label="Company Name*" variant="outlined" className='form-control w-50'
         value={formData.CompanyName}
@@ -94,7 +104,7 @@ function Generalinfo({ formData, setformData, WorkTypeerror, districterror, Titl
             </Box>
           </div>
           <div className='name'>
-            <TextField id="outlined-basic" label="First Name" variant="outlined" className='form-control'
+            <TextField id="outlined-basic" type="text" label="First Name" variant="outlined" className='form-control'
               value={formData.FirstName}
               onChange={(e) => {
                 setformData({ ...formData, FirstName: e.target.value });
@@ -103,7 +113,7 @@ function Generalinfo({ formData, setformData, WorkTypeerror, districterror, Titl
               error={FirstNameerror}
               helperText={FirstNameerror === true ? "First Name is Required." : ""} /></div>
           <div className='name'>
-            <TextField id="outlined-basic" label="Last Name" variant="outlined" className='form-control'
+            <TextField id="outlined-basic" type="text" label="Last Name" variant="outlined" className='form-control'
               value={formData.LastName}
               onChange={(e) => {
                 setformData({ ...formData, LastName: e.target.value });

@@ -19,9 +19,6 @@ const serviceManSchema = mongoose.Schema({
     MobilePhoneNumber:{
         type:Number
     },
-    ConfirmMobilePhoneNumber:{
-        type:Number
-    },
     StreetAddress:{
         type:String
     },
@@ -35,13 +32,7 @@ const serviceManSchema = mongoose.Schema({
         type:String
     },
     IdentityNumber:{
-        type:String
-    },
-    Password:{
-        type:String
-    },
-    ConfirmPassword:{
-        type:String
+        type:Number
     },
     originalname:{
         type:String

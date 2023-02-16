@@ -50,7 +50,7 @@ function Sub_Category_Setup() {
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         })
         axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
             setSubCategory(res.data)
@@ -95,8 +95,9 @@ function Sub_Category_Setup() {
 
     const subedit = (e) => {
 
-        // e.preventDefault()
-        console.log(editdata._id);
+        e.preventDefault()
+        // console.log(editdata._id);
+        console.log(editImage);
 
         const formdata = new FormData();
         formdata.append("Category",editcategory);
@@ -201,7 +202,7 @@ function Sub_Category_Setup() {
 
                     {/* <!-- Heading --> */}
                     <div className="sidebar-heading">
-                        PROVIDERS
+                        SERVICE MAN MANAGEMENT
                     </div>
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
@@ -209,13 +210,13 @@ function Sub_Category_Setup() {
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
                             aria-expanded="true" aria-controls="collapsePages1">
                             <i className="fas fa-fw fa-user"></i>
-                            <span>Providers</span>
+                            <span>SERVICE MAN</span>
                         </a>
                         <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
                                 {/* <h6 className="collapse-header">Login Screens:</h6> */}
-                                <a className="collapse-item" href="/login.js">Providers List</a>
-                                <a className="collapse-item" href="register.js">Add New Provider</a>
+                                <a className="collapse-item" href="/servicemanlist">Service Man List</a>
+                                <a className="collapse-item" href="register.js">Add New Service Man</a>
                             </div>
                         </div>
                     </li>
@@ -514,7 +515,7 @@ function Sub_Category_Setup() {
                                                 <TableCell><p>{data.Subcategory}</p></TableCell>
                                                 <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
                                                 <TableCell><Button
-                                                    type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                                                     data-toggle="modal" data-target="#exampleModalCenter"
                                                     onClick={() => edit(data._id)}
                                                 ><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                 <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
@@ -538,7 +539,7 @@ function Sub_Category_Setup() {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form onSubmit={subedit}>
                                 <FormControl sx={{ minWidth: 100 }}>
                                     <InputLabel id="demo-simple-select-label"
                                     >Select Category</InputLabel>
@@ -566,12 +567,13 @@ function Sub_Category_Setup() {
                                 <TextField type="file"
                                 onChange={(e)=>seteditImage(e.target.value)} 
                                 /><br /><br />
+                                <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onClick={() => subedit()}>Save changes</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
