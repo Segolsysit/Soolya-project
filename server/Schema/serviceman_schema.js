@@ -34,10 +34,6 @@ const serviceManSchema = mongoose.Schema({
     IdentityNumber:{
         type:Number
     },
-    Password:{
-        type:String
-    },
-
     originalname:{
         type:String
     },

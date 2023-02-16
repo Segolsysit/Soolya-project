@@ -59,7 +59,7 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
                 <input 
                  type="file"
                  id="photo" 
-                 name="photo"
+                 name="file"
                  accept="image/png, image/jpeg" className='form-control w-50'
                  value={formData.file}
                  onChange={(e)=>{setformData({...formData, file:e.target.value});

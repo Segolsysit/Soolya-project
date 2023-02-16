@@ -45,6 +45,7 @@ function Generalinfo({ formData, setformData, WorkTypeerror, districterror, Titl
               >{WorkTypeerror === true ? "Choose Work type" : ""}</FormHelperText>
             </FormControl> */}
             <TextField label="Work Type" 
+            value={formData.WorkType}
                onChange={(e) => {
                 setformData({ ...formData, WorkType: e.target.value });
                 setWorkTypeerror(false)
