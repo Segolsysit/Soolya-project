@@ -12,7 +12,7 @@ function ApplicationForm() {
   
 
     useEffect(()=>{
-        axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((response)=>{
+        axios.get("http://localhost:3001/serviceman/get_user").then((response)=>{
             setGetServiceManData(response.data);
             console.log(response);
         })
@@ -20,7 +20,7 @@ function ApplicationForm() {
 
 
     const delete_data = (id)=>{
-         axios.delete("https://63bd5802d660062388a24683.mockapi.io/Soolya",{params:id}).then(()=>{
+         axios.delete("http://63bd5802d660062388a24683.mockapi.io/Soolya",{params:id}).then(()=>{
             alert("deleted");
          })
          

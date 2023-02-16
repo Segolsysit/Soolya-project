@@ -153,26 +153,41 @@ function Serviceman() {
                                     //     icon: "success",
                                     //     button: "ok",
                                     // });
-                                    // console.log(formData);
-                                    axios.post("http://localhost:3001/serviceman/user", {
+                                    console.log(formData);
+                                    const formdata = new FormData()
+                                    formdata.append("WorkType",formData.WorkType)
+                                    formdata.append("district",formData.district)
+                                    formdata.append("Title",formData.Title)
+                                    formdata.append("FirstName",formData.FirstName)
+                                    formdata.append("LastName",formData.LastName)
+                                    formdata.append("MobilePhoneNumber",formData.MobilePhoneNumber)
+                                    formdata.append("StreetAddress",formData.StreetAddress)
+                                    formdata.append("PostalCode",formData.PostalCode)
+                                    formdata.append("Email",formData.Email)
+                                    formdata.append("IdentityType",formData.IdentityType)
+                                    formdata.append("IdentityNumber",formData.IdentityNumber)
+                                    formdata.append("file",formData.file)
+                                    console.log(formdata);
 
-                                        WorkType: formData.WorkType,
-                                        district: formData.district,
-                                        Title: formData.Title,
-                                        FirstName: formData.FirstName,
-                                        LastName: formData.LastName,
-                                        MobilePhoneNumber: formData.MobilePhoneNumber,
-                                        StreetAddress: formData.StreetAddress,
-                                        PostalCode: formData.PostalCode,
-                                        Email: formData.Email,
-                                        IdentityType: formData.IdentityType,
-                                        IdentityNumber: formData.IdentityNumber,
-                                        file: formData.file
-                                    })
+                                    axios.post("http://localhost:3001/serviceman/user", formdata)
                                     .then((res) => {
                                         console.log("posted");
 
                                     })
+                                        // WorkType: formData.WorkType,
+                                        // district: formData.district,
+                                        // Title: formData.Title,
+                                        // FirstName: formData.FirstName,
+                                        // LastName: formData.LastName,
+                                        // MobilePhoneNumber: formData.MobilePhoneNumber,
+                                        // StreetAddress: formData.StreetAddress,
+                                        // PostalCode: formData.PostalCode,
+                                        // Email: formData.Email,
+                                        // IdentityType: formData.IdentityType,
+                                        // IdentityNumber: formData.IdentityNumber,
+                                        // file: formData.file
+                                   
+                                  
                                 }
 
                             }
