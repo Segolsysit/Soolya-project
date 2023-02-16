@@ -45,14 +45,11 @@ function Serviceman() {
         FirstName: "",
         LastName: "",
         MobilePhoneNumber: "",
-        ConfirmMobilePhoneNumber: "",
         StreetAddress: "",
         PostalCode: "",
         Email: "",
         IdentityType: "",
         IdentityNumber: "",
-        Password: "",
-        ConfirmPassword: "",
         file: ""
     })
 
@@ -141,38 +138,41 @@ function Serviceman() {
                                 else if (formData.file.length === 0) {
                                     setfileerror(true)
                                 }
-                                else if (formData.Password.length === 0 || formData.Password.length < 6) {
-                                    setPassworderror(true)
-                                }
-                                else if (formData.ConfirmPassword.length === 0 || formData.ConfirmPassword !== formData.Password) {
-                                    setConfirmPassworderror(true)
-                                }
+                                // else if (formData.Password.length === 0 || formData.Password.length < 6) {
+                                //     setPassworderror(true)
+                                // }
+                                // else if (formData.ConfirmPassword.length === 0 || formData.ConfirmPassword !== formData.Password) {
+                                //     setConfirmPassworderror(true)
+                                // }
                                 else {
-                                    swal({
-                                        title: "Good job!",
-                                        text: "We will Contact Through Email",
-                                        icon: "success",
-                                        button: "ok",
-                                    });
-                                    console.log(formData);
-                                    axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya", {
+
+                                    // alert("worked")
+                                    // swal({
+                                    //     title: "Good job!",
+                                    //     text: "We will Contact Through Email",
+                                    //     icon: "success",
+                                    //     button: "ok",
+                                    // });
+                                    // console.log(formData);
+                                    axios.post("http://localhost:3001/serviceman/user", {
+
                                         WorkType: formData.WorkType,
                                         district: formData.district,
                                         Title: formData.Title,
                                         FirstName: formData.FirstName,
                                         LastName: formData.LastName,
                                         MobilePhoneNumber: formData.MobilePhoneNumber,
-                                        ConfirmMobilePhoneNumber: formData.ConfirmMobilePhoneNumber,
                                         StreetAddress: formData.StreetAddress,
                                         PostalCode: formData.PostalCode,
                                         Email: formData.Email,
                                         IdentityType: formData.IdentityType,
                                         IdentityNumber: formData.IdentityNumber,
-                                        Password: formData.Password,
-                                        ConfirmPassword: formData.ConfirmPassword,
                                         file: formData.file
                                     })
-                                    nav("/")
+                                    .then((res) => {
+                                        console.log("posted");
+
+                                    })
                                 }
 
                             }
