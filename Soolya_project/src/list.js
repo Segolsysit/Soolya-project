@@ -213,11 +213,11 @@ setcart([...cart,re.data])
                 </div>
             </div>
 
-<div>
+{/* <div>
     {cart.map((c)=>(
         <p>{c.price}</p>
     ))}
-</div>
+</div> */}
         </div >
     )
 }
