@@ -31,6 +31,9 @@ import ApplicationForm from './js_files/applictionform';
 import Footer from './footer';
 import CustomerDetails from './js_files/customerdetails';
 import BookingSteps from './js_files/bookingsteps';
+import BookingDetails from './js_files/bookingdetails';
+import BookingBill from './js_files/bookingbill';
+import BookingFinish from './js_files/bookingfinish';
 
 
 function App() {
@@ -127,6 +130,9 @@ function App() {
                 <Route path="/list" element={<List></List>}></Route>
                 <Route path="/customerdetails" element={<CustomerDetails></CustomerDetails>}></Route>
                 <Route path="/bookingsteps" element={<BookingSteps></BookingSteps>}></Route>
+                <Route path="/bookingdetails" element={<BookingDetails></BookingDetails>}></Route>
+                <Route path="/bookingbill" element={<BookingBill></BookingBill>}></Route>
+                <Route path="/bookingfinish" element={<BookingFinish></BookingFinish>}></Route>
                 <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
                 {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
             </Routes>

@@ -235,6 +235,13 @@ let a=1;
                                 <span>Dashboard</span></a>
                         </li>
 
+                        
+                    <li className="nav-item active">
+                            <a className="nav-link" href="/application">
+                                <i className="fas fa-fw fa-tachometer-alt"></i>
+                                <span>Application</span></a>
+                        </li>
+
                         {/* <!-- Divider --> */}
                         <hr className="sidebar-divider" />
 
