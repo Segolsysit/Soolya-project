@@ -1,11 +1,12 @@
 import ReCAPTCHA from "react-google-recaptcha";
+import swal from 'sweetalert';
 
 
 function BookingFinish({setpage}){
 
     
     const onChange=(value)=>{
-        localStorage.setItem("captcha:", value)
+        localStorage.setItem("captcha", value)
       }
   
   
@@ -14,18 +15,29 @@ function BookingFinish({setpage}){
       }
   
       const authenticate = ()=>{
-          captchaValue()!==""?true:false;
+          captchaValue() ===""?true:false;
       }
   
       const captchaSubmit = (e)=>{
   
             e.preventDefault();
   
-          if (authenticate()){
-                 console.log("vignesh done");
-                 alert('vignesh');
+          if (!authenticate()){
+            swal({
+                title: "Booked Successfull!",
+                text: "Your Booking is confirmed!",
+                icon: "success",
+                button: "Ok",
+              });
           }
+
+        else{
+            console.log("captcha error");
+
+            }
+      
       }
+
   
     return(
         <div>
@@ -76,15 +88,20 @@ function BookingFinish({setpage}){
                                         </div>
                                     </div>
                                 </div> */}
-                                <form onSubmit={captchaSubmit}>
-                                <ReCAPTCHA
-                                        sitekey="6LdyhYIkAAAAAJj04Umnf4rQ427h49pItJtiBJ_l"
-                                        onChange={onChange}
-                                />
-                                {/* <button type="submit" name="submit">Confirm order</button> */}
-               
-                                <input type="button" name="previous"  onClick={()=>{setpage((currentpage)=> currentpage - 1)}} class="previous action-button-previous" value="Previous"/>
-                                <input type="submit" name="make_payment" class="next action-button" value="Confirm"/>
+                                <form>
+                                    <div className="captcha_overall">
+                                        <div>
+                                            <h5 className="captcha_heading">Confirm here!</h5>
+                                            <div className="alig"> 
+                                            <ReCAPTCHA 
+                                                    sitekey="6LdyhYIkAAAAAJj04Umnf4rQ427h49pItJtiBJ_l"
+                                                    onChange={onChange}
+                                            />               
+                                            </div>
+                                <input type="button" name="previous" onClick={()=>{setpage((currentpage)=> currentpage - 1)}} class="previous action-button-previous" value="Previous"/>
+                                <input type="submit" name="make_payment" onClick={captchaSubmit} class="next action-button" value="Confirm Booking"/>
+                                </div>
+                                    </div>
                                 </form>
                             </fieldset>
             

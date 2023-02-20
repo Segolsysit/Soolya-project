@@ -16,10 +16,10 @@ function ApplicationForm() {
             setGetServiceManData(response.data);
             // console.log(response);
         })
-    }, []);
+    }, [getServiceManData]);
 
     const viewdeatils = (id) => {
-        axios.get(`https://63bd5802d660062388a24683.mockapi.io/Soolya/${id}`).then((response) => {
+        axios.get(`http://localhost:3001/serviceman/get_by_id/${id}`).then((response) => {
          setviewdata(response.data);
         //  console.log(response.data);
         })
@@ -27,7 +27,7 @@ function ApplicationForm() {
 
 
     const delete_data = (id)=>{
-         axios.delete("http://63bd5802d660062388a24683.mockapi.io/Soolya",{params:id}).then(()=>{
+         axios.delete(`http://localhost:3001/serviceman/delete_item/${id}`).then(()=>{
             alert("deleted");
         })
 
@@ -441,9 +441,9 @@ function ApplicationForm() {
                                                 <Button><i class="fa-solid fa-pencil"></i></Button>
                                                 <Button
                                                     type="button"  data-toggle="modal" data-target="#exampleModalCenter"
-                                                    onClick={()=> viewdeatils(data.id)}
+                                                    onClick={()=> viewdeatils(data._id)}
                                                 ><i class="fa-solid fa-eye"></i></Button>
-                                                <Button onClick={() => delete_data(data.id)}><i class="fa-solid fa-trash"></i></Button>
+                                                <Button onClick={() => delete_data(data._id)}><i class="fa-solid fa-trash"></i></Button>
                                             </TableCell>
                                         </TableRow>
                                     )}

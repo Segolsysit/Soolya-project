@@ -86,7 +86,7 @@ html {
 
 /*Blue Buttons*/
 #msform .action-button {
-    width: 100px;
+    width: 150px;
     background: skyblue;
     font-weight: bold;
     color: white;
@@ -103,7 +103,7 @@ html {
 
 /*Previous Buttons*/
 #msform .action-button-previous {
-    width: 100px;
+    width: 150px;
     background: #616161;
     font-weight: bold;
     color: white;
@@ -217,6 +217,7 @@ select.list-dt:focus {
 }
 
 /*Color number of the step and the connector before it*/
+
 #progressbar li.active:before, #progressbar li.active:after {
     background: skyblue;
 }
@@ -261,15 +262,22 @@ select.list-dt:focus {
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    /* border: 1px solid black;
+    padding: 8px 10px 0px 10px; */
 }
 
 .card_summary_left h4{
     font-size: 20px;
+    font-weight: 450;
     color:rgb(65, 59, 59);
 }
 
 .card_summary_left h6{
     font-size: 13px;
+}
+.card_summar_right_para{
+    font-weight: 450;
+    color:rgb(65, 59, 59);
 }
 
 /* .total_amount{
@@ -282,8 +290,9 @@ select.list-dt:focus {
 } */
 
 .total{
-    font-weight: 500;
-    color:rgb(65, 59, 59);
+    font-weight: 600;
+    /* color:rgb(65, 59, 59); */
+    color:#ff0000b0;
 }
 
 
@@ -308,4 +317,23 @@ select.list-dt:focus {
     margin-right: 10px;
     color:rgb(54, 41, 41);
     font-weight: bolder;
+}
+
+
+.captcha_overall{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.captcha_heading{
+    text-align: center;
+    font-weight: bolder;
+    color:#ff0000b0;
+}
+
+.alig{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: 10px;
 }

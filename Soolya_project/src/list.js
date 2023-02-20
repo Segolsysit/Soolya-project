@@ -5,6 +5,7 @@ import Header from "./header";
 import Servicelist from "./Servicelist";
 // import { AppContext } from "./App";
 import { useNavigate } from "react-router-dom";
+import { margin } from "@mui/system";
 // import list_photo from "./images/1.jpg";
 
 
@@ -91,7 +92,8 @@ function List(props) {
 
                 {filte.map((data, index) =>
                     <div className="list_overall_div" key={index}>
-                        <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                   
+                        <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" onClick={()=>setActive(true)}>
                             <div>
                                 <img className="list_image" src={localpath + data.filename} alt="list_img"></img>
                             </div>

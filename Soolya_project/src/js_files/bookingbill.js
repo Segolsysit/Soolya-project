@@ -1,4 +1,10 @@
+import axios from "axios";
+
 function BookingBill({setpage}){
+
+
+    axios.get("")
+
     return(
         <div>
 
@@ -18,9 +24,9 @@ function BookingBill({setpage}){
                                             </div>
                                         </div>
                                         <div className="card_summary_right">
-                                            <p>₹ 300</p>
+                                            <p className="card_summar_right_para">₹ 300</p>
                                             <div className="amount_div">
-                                                <p className="total_amount">₹ 300</p>
+                                                <p className="total">₹ 300</p>
                                             </div>
                                         </div>
                                     </div>
@@ -47,7 +53,7 @@ function BookingBill({setpage}){
                                 </div>
                                 <input type="button" name="previous" onClick={()=>{setpage((currentpage)=> currentpage - 1)}
                             } class="previous action-button-previous" value="Previous"/>
-                                <input type="button" name="next" onClick={()=>{setpage((currentpage)=> currentpage + 1)}} class="next action-button" value="Next Step"/>
+                                <input type="button" name="next" onClick={()=>{setpage((currentpage)=> currentpage + 1)}} class="next action-button" value="Continue Booking"/>
                             </fieldset>
 
 
