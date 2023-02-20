@@ -78,16 +78,6 @@ function Sub_Category_Setup() {
             // console.log(getData_sub);
         })
     }
-     
-const catdata = () => {
-    axios.get("http://localhost:3001/api/fetch_items").then((res) => {
-        setgetData(res.data);
-        // console.log(res.data);
-    })
-}
-  
-
-
 
     const localpath = "http://localhost:3001/"
 
