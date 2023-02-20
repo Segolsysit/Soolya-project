@@ -5,6 +5,7 @@ import Header from "./header";
 import Servicelist from "./Servicelist";
 // import { AppContext } from "./App";
 import { useNavigate } from "react-router-dom";
+import { margin } from "@mui/system";
 // import list_photo from "./images/1.jpg";
 
 
@@ -137,7 +138,8 @@ setcart([...cart,re.data])
 
                 {filte.map((data, index) =>
                     <div className="list_overall_div" key={index}>
-                        <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                   
+                        <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" onClick={()=>setActive(true)}>
                             <div>
                                 <img className="list_image" src={localpath + data.filename} alt="list_img"></img>
                             </div>
@@ -156,16 +158,10 @@ setcart([...cart,re.data])
 
                             </div>
                         </button>
+                
 <button onClick={()=>nav('/cart')}>cart</button>
-
-                        {/* {modal? */}
-                        {/* ( */}
-
-
-                        {/* ):""} */}
-
-        </div>
-    )
+</div>
+        )
 }
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">

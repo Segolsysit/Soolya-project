@@ -14,6 +14,7 @@ function Category(props) {
 
     const [getData, setgetData] = useState([]);
     const [getData_sub, setgetDataSub] = useState([]);
+    // const [listActive, setListActive] = useState(false);
 
 
     let nav = useNavigate();
@@ -21,7 +22,6 @@ function Category(props) {
     const settings = {
         className: "center",
         infinite: true,
-        // centerPadding: "60px",
         slidesToShow: getData.length,
         arrows: false,
         swipeToSlide: true
@@ -44,83 +44,8 @@ function Category(props) {
     const localpath = "http://localhost:3001/";
 
 
-    // let category = [
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Plumbing"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Electrician"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Plumbing"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Plumbing"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Electrician"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Plumbing"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Electrician"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Plumbing"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "Electrician"
-    //     },
-    //     {
-    //         img: "/images/plumber_category.png",
-    //         text: "wiring"
-    //     }
-
-    // ];
-
     const [active, setActive] = useState(false);
-    // let subCategory = [
-    //     {
-    //        img:"/images/1.jpg",
-    //        title:"electric Service",
-    //        type:"Electrician",
-    //        para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-    //     },
-    //     {
-    //         img:"/images/1.jpg",
-    //         title:"electrical work",
-    //        type:"Electrician",
-    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-    //     },
-    //     {
-    //         img:"/images/1.jpg",
-    //        type:"Plumbing",
-    //        title:"plumbing work",
-    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-    //     },
-    //     {
-    //         img:"/images/1.jpg",
-    //        type:"Plumbing",
-    //        title:"Plumbing Checkup Service",
-    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-    //     },
-    //      {
-    //        type:"Electrician",
-    //        img:"/images/1.jpg",
-    //         title:"electrical works",
-    //         para:"From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time."
-    //     },
-    // ]
+   
     const [sub, setSub] = useState("")
 
     let filt;
@@ -139,7 +64,9 @@ function Category(props) {
 
         localStorage.setItem("subcategory", Subcategory);
         nav("/list")
+
     }
+
     return (
         <div>
             <Header></Header>
@@ -169,7 +96,6 @@ function Category(props) {
                 </Slider>
 
 
-                {/* {active?<SubCategory fil={category}></SubCategory>:false} */}
                 <div className="grid">
                     {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({ img, Subcategory, Discription, filename }, index) =>
                         <div className="sub_category_overall" key={index}>
@@ -181,7 +107,7 @@ function Category(props) {
                                 <div className="sub_category_page_content_div">
                                     <h2>{Subcategory}</h2>
                                     <p className="sub_category_page_content_para">{Discription}</p>
-                                    {/* <a href="/list">{filt.length} services</a> */}
+                                    
                                 </div>
                             </button>
 

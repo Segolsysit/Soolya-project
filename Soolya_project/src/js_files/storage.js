@@ -37,3 +37,5 @@ export const getUserData3= ()=>{
 export const removeForgetUserData = ()=>{
     localStorage.removeItem("kind");
 }
+
+

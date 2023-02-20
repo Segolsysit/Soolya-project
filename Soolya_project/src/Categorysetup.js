@@ -26,14 +26,18 @@ function Sub_Category_Setup() {
     const handleClose = () => setOpen(false);
     let a = 1;
 
-    function getd() {
+    useEffect(() => {
+       
+        categorydata()
+
+    }, [])
+    
+    const categorydata = () => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
         })
-    }
-    useEffect(() => {
-        getd();
-    }, [])
+
+    }, [getData])
     const modelstyle = {
         position: 'absolute',
         top: '50%',
@@ -99,7 +103,7 @@ function Sub_Category_Setup() {
 
                 setCatagorySetup("")
 
-                getd()
+
 
             })
         }
@@ -140,9 +144,8 @@ function Sub_Category_Setup() {
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
-            });
-            getd()
 
+            });
         })
 
     }
@@ -218,6 +221,13 @@ function Sub_Category_Setup() {
                             <i className="fas fa-fw fa-tachometer-alt"></i>
                             <span>Dashboard</span></a>
                     </li>
+
+                    
+                    <li className="nav-item active">
+                            <a className="nav-link" href="/application">
+                                <i className="fas fa-fw fa-tachometer-alt"></i>
+                                <span>Application</span></a>
+                        </li>
 
                     {/* <!-- Divider --> */}
                     <hr className="sidebar-divider" />

@@ -57,7 +57,9 @@ html {
     color: #9E9E9E;
 }
 
-#msform input, #msform textarea {
+
+
+/* #msform input, #msform textarea {
     padding: 0px 8px 4px 8px;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -70,9 +72,9 @@ html {
     color: #2C3E50;
     font-size: 16px;
     letter-spacing: 1px;
-}
+} */
 
-#msform input:focus, #msform textarea:focus {
+/* #msform input:focus, #msform textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -80,16 +82,16 @@ html {
     font-weight: bold;
     border-bottom: 2px solid skyblue;
     outline-width: 0;
-}
+} */
 
 /*Blue Buttons*/
 #msform .action-button {
-    width: 100px;
+    width: 150px;
     background: skyblue;
     font-weight: bold;
     color: white;
     border: 0 none;
-    border-radius: 0px;
+    border-radius: 5px;
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px;
@@ -101,12 +103,12 @@ html {
 
 /*Previous Buttons*/
 #msform .action-button-previous {
-    width: 100px;
+    width: 150px;
     background: #616161;
     font-weight: bold;
     color: white;
     border: 0 none;
-    border-radius: 0px;
+    border-radius: 5px;
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px;
@@ -143,12 +145,14 @@ select.list-dt:focus {
     color: #2C3E50;
     margin-bottom: 10px;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
 }
 
 /*progressbar*/
 #progressbar {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
     color: lightgrey;
 }
@@ -171,7 +175,7 @@ select.list-dt:focus {
     content: "\f023";
 }
 
-#progressbar #personal:before {
+#progressbar #personal1:before {
     font-family: FontAwesome;
     content: "\f007";
 }
@@ -213,6 +217,7 @@ select.list-dt:focus {
 }
 
 /*Color number of the step and the connector before it*/
+
 #progressbar li.active:before, #progressbar li.active:after {
     background: skyblue;
 }
@@ -247,4 +252,88 @@ select.list-dt:focus {
 .fit-image{
     width: 100%;
     object-fit: cover;
+}
+
+
+/* card summary */
+
+.card_summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    /* border: 1px solid black;
+    padding: 8px 10px 0px 10px; */
+}
+
+.card_summary_left h4{
+    font-size: 20px;
+    font-weight: 450;
+    color:rgb(65, 59, 59);
+}
+
+.card_summary_left h6{
+    font-size: 13px;
+}
+.card_summar_right_para{
+    font-weight: 450;
+    color:rgb(65, 59, 59);
+}
+
+/* .total_amount{
+    margin-top: 10px;
+}
+
+.amount_div{
+    border-top:1px solid black;
+    border-bottom: 1px solid black;
+} */
+
+.total{
+    font-weight: 600;
+    /* color:rgb(65, 59, 59); */
+    color:#ff0000b0;
+}
+
+
+
+.card_summary_address{
+   line-height: 20px;
+   margin-top: 20px;
+  
+}
+
+.card_summary_address div{
+   margin-top: -6px;
+}
+
+
+.card_summary_address_div{
+    display: flex;
+}
+
+#card_summary_icon{
+    margin-top: 1px;
+    margin-right: 10px;
+    color:rgb(54, 41, 41);
+    font-weight: bolder;
+}
+
+
+.captcha_overall{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.captcha_heading{
+    text-align: center;
+    font-weight: bolder;
+    color:#ff0000b0;
+}
+
+.alig{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: 10px;
 }
