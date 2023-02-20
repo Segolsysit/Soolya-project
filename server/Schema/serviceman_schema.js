@@ -32,7 +32,7 @@ const serviceManSchema = mongoose.Schema({
         type:String
     },
     IdentityNumber:{
-        type:Number
+        type:String
     },
     originalname:{
         type:String
