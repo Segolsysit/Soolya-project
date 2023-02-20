@@ -36,7 +36,7 @@ const detailSubmit = ()=>{
     error.zip ="Post Code must have 6 digit";
     hasError = true;
 }
-
+    
 
    if(input.person === ""){
     // setError({...error, person:"Name is required"});
