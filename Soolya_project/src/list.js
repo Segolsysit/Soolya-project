@@ -12,90 +12,44 @@ function List(props) {
     const [servicedata, setservicedata] = useState([]);
     const [model1, setmodel1] = useState([]);
     const [sublist, setSublist] = useState('')
-    // const [cart, setcart] = useState([])
+    const [cart, setcart] = useState([])
 
     // const { cartdata, setcartdata } = useContext(AppContext)
 
     // const usercontext = createContext()
 
-     function model(_id) {
-         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
+    function model(_id) {
+        axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
             setmodel1(res.data)
             // console.log(res.data);
         })
     }
-// console.log(model1);
+    // console.log(model1);
 
 
-    function addtocart(_id) {
-    
-        axios.get('http://localhost:3001/service_api/new_fetch_service_items/'+_id).then((re)=>{
-setcart([...cart,re.data])
-// localStorage.setItem("da",_id)
-// console.log(re.data);
+    function addtocart() {
+        axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya", {
+           ...model1
+        }).then((res) => {
+            console.log(res.data);
         })
-        // setcart([])
-        // localStorage.setItem("addtocart",_id);
-        // console.log(_id);
-// console.log(_id);
-        // axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
-        //     // setcart(...cart, res.data)
-        //     setcartdata(...cartdata, res.data)
-            // return props.setcartdata(cart)
-            // localStorage.setItem("cartdata",...cart)
-            // localStorage.setItem("Category",cart.Category)
-            // localStorage.setItem("Subcategory",cart.Subcategory)
-            // localStorage.setItem("Discription",cart.Discription)
-            // localStorage.setItem("price",cart.price)
-            // localStorage.setItem("filename",cart.filename)
-
-
-            // console.log(cart);
-        // })
-        // console.log(cartdata);
+        localStorage.setItem( "modeldata", JSON.stringify(model1))
     }
-    // console.log(cart);
-    //    let list = [
-    //       {  id:1,
-    //          img:"/images/1.jpg",
-    //          heading:"Commercial space shifting",
-    //          type:"Commercial space shifting",
-    //          category:"start from",
-    //          amt:"₹ 200"
-    //       },
-    //       {
-    //          id:2,
-    //          img:"/images/1.jpg",
-    //          heading:"Scooty service",
-    //          type:"Scooty service",
-    //          category:"start from",
-    //          amt:"₹ 1999"
-    //       },
-    //       {
-    //          id:3,
-    //          img:"/images/1.jpg",
-    //          heading:"plumbing",
-    //          type:"plumbing",
-    //          category:"start from",
-    //          amt:"₹ 100"
-    //       },
-    //       {
-    //          id:4,
-    //          img:"/images/1.jpg",
-    //          heading:"Electrician",
-    //          type:"Electrician",
-    //          category:"start from",
-    //          amt:"₹ 99"
-    //       },
-    //       {
-    //          id:5,
-    //          img:"/images/1.jpg",
-    //          heading:"wiring",
-    //          type:"wiring",
-    //          category:"start from",
-    //          amt:"₹ 49"
-    //       }
-    //    ]
+    // setcart([])
+    // localStorage.setItem("addtocart",_id);
+    // console.log(_id);
+    // console.log(_id);
+    // axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${_id}`).then((res) => {
+    //     // setcart(...cart, res.data)
+    //     setcartdata(...cartdata, res.data)
+    // return props.setcartdata(cart)
+    // localStorage.setItem("cartdata",...cart)
+    // localStorage.setItem("Category",cart.Category)
+    // localStorage.setItem("Subcategory",cart.Subcategory)
+    // localStorage.setItem("Discription",cart.Discription)
+    // localStorage.setItem("price",cart.price)
+    // localStorage.setItem("filename",cart.filename)
+
 
     // const [modal, setModal] = useState(false);
 
@@ -156,7 +110,7 @@ setcart([...cart,re.data])
 
                             </div>
                         </button>
-<button onClick={()=>nav('/cart')}>cart</button>
+                        <button onClick={() => nav('/cart')}>cart</button>
 
                         {/* {modal? */}
                         {/* ( */}
@@ -164,45 +118,45 @@ setcart([...cart,re.data])
 
                         {/* ):""} */}
 
-        </div>
-    )
-}
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div className="share_profile_cont">
-                    <div>
-                        <div>
-                            <h4 className="add_card_profile_heading">Book Here</h4>
-                        </div>
                     </div>
-                    <div>
-                        <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">
-                                <i class="fa-solid fa-xmark"></i>
-                            </span>
-                        </button>
-                    </div>
-                </ div>
-                <div className="add_card_profile_div">
-                    <div>
-                        <img className="add_card_img" src={localpath + model1.filename} alt="plumber_profile_book_image"></img>
-                    </div>
-                    <div>
-                        {/* <h5>{heading}</h5> */}
-                        <h5>{model1.Category}</h5>
-                    </div>
-                </div>
-                <div className="add_to_card_div">
-                    <div>
-                        {/* <h6>{category}</h6>
+                )
+                }
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div className="share_profile_cont">
+                                    <div>
+                                        <div>
+                                            <h4 className="add_card_profile_heading">Book Here</h4>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button id="book_now_links_close_btn" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </ div>
+                                <div className="add_card_profile_div">
+                                    <div>
+                                        <img className="add_card_img" src={localpath + model1.filename} alt="plumber_profile_book_image"></img>
+                                    </div>
+                                    <div>
+                                        {/* <h5>{heading}</h5> */}
+                                        <h5>{model1.Category}</h5>
+                                    </div>
+                                </div>
+                                <div className="add_to_card_div">
+                                    <div>
+                                        {/* <h6>{category}</h6>
                         <h6>{amt}</h6>*/}
                                         <h6>{model1.Subcategory}</h6>
                                         <h6>{model1.price}</h6>
                                     </div>
                                     <div className="add_to_card_btn_div">
-                                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal" onClick={() => addtocart(model1._id)}>
+                                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal" onClick={(e) => addtocart(model1._id)}>
                                             Add to cart
                                         </button>
                                     </div>
@@ -213,11 +167,11 @@ setcart([...cart,re.data])
                 </div>
             </div>
 
-{/* <div>
-    {cart.map((c)=>(
-        <p>{c.price}</p>
-    ))}
-</div> */}
+            {/* <div>
+          {cart.map((c)=>(
+           <p>{c.price}</p>
+            ))}
+          </div> */}
         </div >
     )
 }

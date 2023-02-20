@@ -3,7 +3,7 @@ import "../css_files/dashboard.css";
 // import Header from "../header";
 // import { logOut } from "./auth";
 // import { removeUserData1 } from "./storage";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 
 

@@ -15,15 +15,24 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useState } from 'react';
+import {useEffect, useState } from 'react';
 import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import { logOut } from './js_files/auth';
+import axios from 'axios';
 
 
 
 function Header() {
 
     const nav = useNavigate();
+
+    const [cartdata, setcartdata] = useState([])
+
+    useEffect(() => {
+        axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res) => {
+          setcartdata(res.data)
+        })
+      }, [])
 
 
     const [register, setRegister] = useState(true);
@@ -73,9 +82,9 @@ function Header() {
 
 
                                 <div onClick={() => nav("/cart")}>
-                                    <i class="fa-solid fa-cart-shopping"></i>
+                                <i class="bi bi-cart2"></i>
                                     <span className="badge badge-danger badge-counter">
-                                        {/* {cartdata.length} */}
+                                        {cartdata.length}
                                     </span>
                                 </div>
                                 <div className="header_content_div">
