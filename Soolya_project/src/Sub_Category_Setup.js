@@ -6,6 +6,10 @@ import {
     Button, Table, TableBody, TableCell, TableRow, TableHead, TextField, FormControl,
     Select, MenuItem, InputLabel
 } from '@mui/material';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
+
 
 
 function Sub_Category_Setup() {
@@ -24,6 +28,9 @@ function Sub_Category_Setup() {
     const [editsubcategory,seteditsubcategory] = useState("");
     const [editDiscription,seteditDiscription] = useState("");
     const [editImage,seteditImage] = useState("");
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     let a = 1;
 
@@ -38,6 +45,7 @@ function Sub_Category_Setup() {
         }
     }
 
+
     const changeStyle1 = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1")
@@ -47,17 +55,39 @@ function Sub_Category_Setup() {
         }
     }
 
+    const modelstyle = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+
     useEffect(() => {
-        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
-            setgetData(res.data);
-            // console.log(res.data);
-        })
+        subcategoryData();
+        catdata()
+    },[])
+
+    const subcategoryData = () => {
         axios.get("http://localhost:3001/sub_api/new_fetch_items").then((res) => {
             setSubCategory(res.data)
             // console.log(getData_sub);
         })
+    }
+     
+const catdata = () => {
+    axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+        setgetData(res.data);
+        // console.log(res.data);
+    })
+}
+  
 
-    },[])
+
 
     const localpath = "http://localhost:3001/"
 
@@ -82,10 +112,14 @@ function Sub_Category_Setup() {
                 theme: "colored"
 
             })
-        })
+            subcategoryData()
+        }
+       
+        )
     }
 
     const edit = (id) => {
+        handleOpen()
         axios.get(`http://localhost:3001/sub_api/new_fetch_items/${id}`).then((res)=>{
             seteditdata(res.data)
             
@@ -97,7 +131,7 @@ function Sub_Category_Setup() {
 
         e.preventDefault()
         // console.log(editdata._id);
-        console.log(editImage);
+        // console.log(editImage);
 
         const formdata = new FormData();
         formdata.append("Category",editcategory);
@@ -107,10 +141,16 @@ function Sub_Category_Setup() {
         axios.patch(`http://localhost:3001/sub_api/update_subcategory/${editdata._id}`,formdata).then(()=>{
             alert("updated")
         })
+
+        handleClose()
     }
 
     const delete_item = (id) => {
-        axios.delete(`http://localhost:3001/sub_api/delete_item/${id}`)
+        axios.delete(`http://localhost:3001/sub_api/delete_item/${id}`).then(()=> {
+            subcategoryData();
+        })
+      
+        
     }
     return (
         <div>
@@ -466,25 +506,54 @@ function Sub_Category_Setup() {
                         <div className="container-fluid" >
                             <h1>Sub Category Setup</h1>
                             <form onSubmit={AddSubcategory} className="subcategory_form">
-                                <label>Select Category</label><br />
-                                <select onChange={(e) => setCatagory(e.target.value)} >
-                                    <option selected disabled="disabled">--Select Category--</option>
-                                    {getData.map((data) => (
-                                        <option className='ak'
-                                            value={data.catagorySetup}>{data.catagorySetup}</option>
-                                    ))
-                                    }
-                                </select>
-                                <br /><br />
-                                <label>Sub Category Name</label><br />
-                                <input type="text" onChange={(e) => setSubname(e.target.value)}></input><br /><br />
-                                <label>Dicription</label><br />
-                                <textarea onChange={(e) => setSubDescription(e.target.value)}></textarea><br /><br />
-                                <label>Image</label><br />
-                                <input type="file" onChange={(e) => setSubImage(e.target.files[0])}></input><br /><br />
-                                <button type='submit'>Addservice</button>
+                            <FormControl sx={{ minWidth: 200 }}>
+                                        <InputLabel 
+                                        id="demo-simple-select-label">
+                                        Select Category
+                                        </InputLabel>
+                                        
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            label="Select Category"
+                                            value={category}
+                                            onChange={(e) => setCatagory(e.target.value)}                                            >
+                                            {getData.map((data) => (
+
+                                            <MenuItem
+                                            value={data.catagorySetup}>
+                                            {data.catagorySetup}
+                                            </MenuItem>
+
+                                        ))
+                                        }
+                                        </Select>
+                            
+                                        </FormControl><br></br> <br></br>
+                               
+                                 <TextField 
+                                 type="text" 
+                                 label="Subcategory"
+                                 onChange={(e) => setSubname(e.target.value)}>
+                                </TextField><br /><br />
+
+                                 <TextField 
+                                onChange={(e) => setSubDescription(e.target.value)}  
+                                rows={3}
+                                multiline
+                                type="text"
+                                label="Discription">
+                                </TextField><br /><br />
+
+                                <TextField 
+                                type="file" 
+                                onChange={(e) => setSubImage(e.target.files[0])}>
+                                </TextField><br /><br />
+
+                                <Button type='submit' variant='contained'>Addservice</Button>
                             </form>
                         </div>
+
                         <div className='subcategory_list'>
                             <Table className='table-subcat'>
                                 <TableHead>
@@ -508,7 +577,7 @@ function Sub_Category_Setup() {
                                                 <TableCell><p>{data.Subcategory}</p></TableCell>
                                                 <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
                                                 <TableCell><Button
-                                                     data-toggle="modal" data-target="#exampleModalCenter"
+                                                    
                                                     onClick={() => edit(data._id)}
                                                 ><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                 <TableCell><Button onClick={() => delete_item(data._id)}><i class="fa-regular fa-trash-can"></i></Button></TableCell>
@@ -531,25 +600,89 @@ function Sub_Category_Setup() {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div>
+                                {/* <Button onClick={handleOpen}>Open modal</Button> */}
+                                <Modal
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
+                                >
+                                    <Box sx={modelstyle}>
+                                <form className="category_form" id="category_form" onSubmit={subedit}>
+                                            {/* <TextField type="text" label="Service" onChange={(e)=>setEditservice(e.target.value)} /><br></br> */}
+                                    <FormControl sx={{ minWidth: 100 }}>
+                                        <InputLabel 
+                                        id="demo-simple-select-label">
+                                        Select Category
+                                        </InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            label="Select Category"
+                                            value={editcategory}
+                                            onChange={(e)=>seteditcategory(e.target.value)}
+                                            >
+                                            {getData.map((data) => (
+                                            <MenuItem
+                                            value={data.catagorySetup}>
+
+                                            {data.catagorySetup}
+
+                                            </MenuItem>
+                                        ))
+                                        }
+                                        </Select>
+                                        {/* <FormHelperText></FormHelperText> */}
+                                        </FormControl><br></br>
+                                <TextField 
+                                type="text" 
+                                label="Sub Category Name" 
+                                placeholder={editdata.Subcategory}
+                                onChange={(e)=>seteditsubcategory(e.target.value)} 
+                                /><br /><br />
+
+                                <TextField 
+                                rows={3}
+                                multiline
+                                type="text"
+                                label="Discription"
+                                placeholder={editdata.Discription}
+                                onChange={(e)=>seteditDiscription(e.target.value)} 
+                                /><br /><br />   
+
+                                <TextField type="file"
+                                onChange={(e)=>seteditImage(e.target.files[0])} 
+                                /><br /><br />      
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" onClick={() => handleClose()}>Close</button>
+                                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                                </div>
+
+                            </form>
+                                    </Box>
+                                </Modal>
+                            </div>
+                        {/* <div class="modal-body">
                             <form onSubmit={subedit}>
                                 <FormControl sx={{ minWidth: 100 }}>
                                     <InputLabel id="demo-simple-select-label"
                                     >Select Category</InputLabel>
-                                    <Select
+                                    <select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
                                         label="Select Category"
                                         placeholder={editdata.Category}
                                         >
                                         {getData.map((data) => (
-                                            <MenuItem 
+                                            <option 
                                             value={data.catagorySetup}
                                             onChange={(e)=>seteditcategory(e.target.value)}
-                                            >{data.catagorySetup}</MenuItem>
+                                            >{data.catagorySetup}</option>
                                         ))
                                         }
-                                    </Select>
+                                    </select>
                                 </FormControl><br /><br />
                                 <TextField type="text" label="Sub Category Name" placeholder={editdata.Subcategory}
                                 onChange={(e)=>seteditsubcategory(e.target.value)} /><br /><br />
@@ -565,7 +698,7 @@ function Sub_Category_Setup() {
                             <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                             </form>
-                        </div>
+                        </div> */}
                         
                     </div>
                 </div>

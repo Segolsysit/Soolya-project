@@ -190,9 +190,11 @@ function Add_new_service() {
         formData.append("price", Editprice)
         formData.append("file", Editimg)
 
-        axios.patch(`http/:localhost:3001/service_api/update_service/${getByIdList._id}`,formData).then(()=>{
+        axios.patch(`http://localhost:3001/service_api/update_service/${getByIdList._id}`,formData).then(()=>{
                     alert("ListUpdated")
                 })
+
+                handleClose()
 
     }
 
@@ -733,10 +735,10 @@ function Add_new_service() {
                                                 labelId="demo-simple-select-label"
                                                 id="demo-simple-select"
                                                 label="Select Category"
-                                                // value={category}
+                                                value={Editcategory}
                                                 onChange={(e) => setEditcategory(e.target.value)}>
                                                 {getData.map((data) => (
-                                                    <MenuItem key={data._id} value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
+                                                    <MenuItem  value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
                                                 ))
                                                 }
                                             </Select>
@@ -748,13 +750,13 @@ function Add_new_service() {
                                                 labelId="demo-simple-select-label"
                                                 id="demo-simple-select"
                                                 label="Select Category"
-                                               
+                                               value={Editsubcategory}
                                                 onChange={(e) => setEditsubcategory(e.target.value)}>
                                                     
                                                 {/* <MenuItem value="sub" selected disabled>Select Sub Category</MenuItem> */}
 
                                                 {subcatlist.map((subcatlist) => (
-                                                    <MenuItem key={subcatlist} value={subcatlist.Subcategory}>{subcatlist.Subcategory}</MenuItem>
+                                                    <MenuItem value={subcatlist.Subcategory}>{subcatlist.Subcategory}</MenuItem>
                                                 ))
                                                 }
                                             </Select>

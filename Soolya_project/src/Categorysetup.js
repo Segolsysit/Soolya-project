@@ -27,11 +27,17 @@ function Sub_Category_Setup() {
     let a = 1;
 
     useEffect(() => {
+       
+        categorydata()
+
+    }, [])
+    
+    const categorydata = () => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
         })
+    }
 
-    }, [getData])
     const modelstyle = {
         position: 'absolute',
         top: '50%',
@@ -97,7 +103,7 @@ function Sub_Category_Setup() {
 
                 setCatagorySetup("")
 
-
+                categorydata()
 
             })
         }
@@ -139,7 +145,10 @@ function Sub_Category_Setup() {
                 progress: undefined,
                 theme: "colored",
 
-            });
+            }
+            
+            );
+            categorydata()
         })
     }
 
