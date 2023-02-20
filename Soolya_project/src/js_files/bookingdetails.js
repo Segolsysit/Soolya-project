@@ -4,32 +4,59 @@ function BookingDetails({setpage, input, setInput, error, setError}){
 const detailSubmit = ()=>{
 
 
+    let hasError =  false;
+    
+
   if(input.address === ""){
-    setError({...error, address: "Address is required"});
+    // setError({...error, address: "Address is required"});
     // setError({...error, street:"Street is required"});
-
+    error.address = "Address is required";
+    hasError = true;
   }
 
- else if(input.street === ""){
-    setError({...error, street:"Street is required"});
+ if(input.street === ""){
+    // setError({...error, street:"Street is required"});
+    error.street = "Street is required";
+    hasError = true;
   }
 
- else if(input.city === ""){
-    setError({...error, city:"city is required"});
+  if(input.city === ""){
+    // setError({...error, city:"city is required"});
+    error.city = "City is required";
+    hasError = true;
   }
    
-  else if(input.zip === ""){
-    setError({...error, zip:"zip is required"});
+  if(input.zip === ""){
+    // setError({...error, zip:"zip is required"});
+    error.zip = "Zip is required";
+    hasError = true;
   }
 
-  else if(input.person === ""){
-    setError({...error, person:"Name is required"});
+   if(input.person === ""){
+    // setError({...error, person:"Name is required"});
+    error.person = "Person is required";
+    hasError = true;
   }
 
- else if(input.number === ""){
-    setError({...error, number:"Number is required"});
+ if(input.number === ""){
+    // setError({...error, number:"Number is required"});
+    error.number = "Number is required";
+    hasError = true;
   }
 
+  else if(input.number.length <10 || input.number.length >10){
+    error.number ="Number must have 10 digit";
+    hasError = true;
+}
+
+  if(input.address === "" || input.street === "" || input.city === "" || input.zip === "" || input.person ==="" || input.number === ""){
+    setError({...error, custom_error:"Please fill required field"});
+    hasError = true;
+  }
+
+  if(!hasError){
+    setpage(2);     
+  }
 
 
 
@@ -39,9 +66,8 @@ const detailSubmit = ()=>{
 
 //   }
 
-   else{
-    setpage(2); 
-   }        
+//    else{
+//    }        
 }
 
     return(
@@ -56,6 +82,16 @@ const detailSubmit = ()=>{
                                     <input type="password" name="cpwd" placeholder="Confirm Password"/> */}
                                     
                                     {/* <CustomerDetails></CustomerDetails> */}
+
+                                    {error.custom_error?
+                                (<div id="d_flex_center_new" className="sign_in_form_validation">
+                                    <div>
+                                        <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
+                                    </div>
+                                    <div>
+                                        <h6>{error.custom_error}</h6>
+                                    </div>
+                                </div>) : null}
 
                                     <div className="customer_details_overall">
                 <div className="customer_details_overall_div" >
@@ -74,9 +110,10 @@ const detailSubmit = ()=>{
                                 <input className="customer_details_input" value={input.address} onChange={(e)=>{
                                     setInput({...input,address:e.target.value});
                                     error.address = null;
+                                    setError({...error, custom_error:null})
                                     }} type="text" ></input>
                             </div>
-                            {error.address ?
+                            {error.address?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -91,9 +128,10 @@ const detailSubmit = ()=>{
                                 <input className="customer_details_input" value={input.street} onChange={(e)=>{
                                     setInput({...input,street:e.target.value});
                                     error.street = null;
+                                    setError({...error, custom_error:null});
                                     }} type="text" ></input>
                             </div>
-                            {error.street ?
+                            {error.street?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -108,9 +146,10 @@ const detailSubmit = ()=>{
                                 <input className="customer_details_input" value={input.city} onChange={(e)=>{
                                     setInput({...input,city:e.target.value});
                                     error.city = null;
+                                    setError({...error, custom_error:null});
                                     }} type="text"></input>
                             </div>
-                            {error.city ?
+                            {error.city?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -129,9 +168,10 @@ const detailSubmit = ()=>{
                                 <input className="customer_details_input" value={input.zip} onChange={(e)=>{
                                     setInput({...input,zip:e.target.value});
                                     error.zip = null;
+                                    setError({...error, custom_error:null});
                                     }} type="text"></input>
                             </div>
-                            {error.zip ?
+                            {error.zip?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -146,9 +186,10 @@ const detailSubmit = ()=>{
                                 <input className="customer_details_input" value={input.person} onChange={(e)=>{
                                     setInput({...input,person:e.target.value});
                                     error.person = null;
+                                    setError({...error, custom_error:null});
                                     }} type="text"></input>
                             </div>
-                            {error.person ?
+                            {error.person?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -163,9 +204,10 @@ const detailSubmit = ()=>{
                                 <input className="customer_details_input" value={input.number} onChange={(e)=>{
                                     setInput({...input,number:e.target.value});
                                     error.number = null;
+                                    setError({...error, custom_error:null});
                                     }} type="text"></input>
                             </div>
-                            {error.number ?
+                            {error.number?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>

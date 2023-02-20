@@ -12,16 +12,25 @@ function BookingSteps(){
 
     // details page
 
-    const initialErrors = {
+    // const initialErrors = {
+    //     address:null,
+    //     street:null,
+    //     city:null,
+    //     zip:null,
+    //     person:null,
+    //     number:null,
+    //     custom_error:null
+    // }
+
+    const [error, setError] = useState({
         address:null,
         street:null,
         city:null,
         zip:null,
         person:null,
-        number:null
-    }
-
-    const [error, setError] = useState(initialErrors);
+        number:null,
+        custom_error:null
+    });
  
     const [input, setInput] = useState({
   
@@ -113,7 +122,6 @@ const props = {input, setInput, error, setError}
         </div>
     </div>
 </div>
-
 
 
         </div>
