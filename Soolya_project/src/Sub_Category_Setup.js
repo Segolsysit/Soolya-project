@@ -77,8 +77,7 @@ function Sub_Category_Setup() {
             setSubCategory(res.data)
             // console.log(getData_sub);
         })
-
-    },[])
+    }
 
     const localpath = "http://localhost:3001/"
 

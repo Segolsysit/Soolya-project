@@ -27,17 +27,17 @@ function Sub_Category_Setup() {
     let a = 1;
 
     useEffect(() => {
-       
+
         categorydata()
 
     }, [])
-    
+
     const categorydata = () => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
         })
 
-    }, [getData])
+    }
     const modelstyle = {
         position: 'absolute',
         top: '50%',
@@ -222,12 +222,12 @@ function Sub_Category_Setup() {
                             <span>Dashboard</span></a>
                     </li>
 
-                    
+
                     <li className="nav-item active">
-                            <a className="nav-link" href="/application">
-                                <i className="fas fa-fw fa-tachometer-alt"></i>
-                                <span>Application</span></a>
-                        </li>
+                        <a className="nav-link" href="/application">
+                            <i className="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Application</span></a>
+                    </li>
 
                     {/* <!-- Divider --> */}
                     <hr className="sidebar-divider" />
