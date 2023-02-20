@@ -32,6 +32,12 @@ const detailSubmit = ()=>{
     hasError = true;
   }
 
+  else if(input.zip.length <6 || input.zip.length >6){
+    error.zip ="Post Code must have 6 digit";
+    hasError = true;
+}
+
+
    if(input.person === ""){
     // setError({...error, person:"Name is required"});
     error.person = "Person is required";
@@ -164,12 +170,12 @@ const detailSubmit = ()=>{
                                 <input className="customer_details_input"  type="text"></input>
                             </div> */}
                             <div className="customer_details_cont_div">
-                                <label className="customer_details_label">Zip</label>      
+                                <label className="customer_details_label">Post code</label>      
                                 <input className="customer_details_input" value={input.zip} onChange={(e)=>{
                                     setInput({...input,zip:e.target.value});
                                     error.zip = null;
                                     setError({...error, custom_error:null});
-                                    }} type="text"></input>
+                                    }} type="tel"></input>
                             </div>
                             {error.zip?
                                 (<div id="d_flex" className="sign_in_form_validation">

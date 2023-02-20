@@ -1,4 +1,10 @@
+import axios from "axios";
+
 function BookingBill({setpage}){
+
+
+    axios.get("")
+
     return(
         <div>
 
