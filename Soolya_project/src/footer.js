@@ -6,8 +6,13 @@ function Footer(){
     return(
         <div>
         
+        <div className="footer_relative">
+
+        </div>
 
         <footer>
+                <div>
+
         <div className="footer_content">
             <div className="left_div">
                 <h2>About us</h2>
@@ -71,9 +76,10 @@ function Footer(){
 
             </div>
         </div>
-
+     
+     
         <div className="policy">
-            <ul>
+            <ul className="policy_unorder">
                 <li>
                     <a href="_self">Privacy Policy</a>
                 </li>
@@ -85,11 +91,14 @@ function Footer(){
                 </li>
             </ul>
         </div>
-        <div className="footer">
+        <div className="footer_class">
             <p>
                 All rights reserved By @SoolyaLtd
             </p>
         </div>
+
+        </div>
+
         </footer>
        
         </div>
