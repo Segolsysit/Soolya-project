@@ -14,7 +14,7 @@ function Cart() {
   // const storedata = JSON.parse(localStorage.getItem("modeldata"))
 
   useEffect(() => {
-    axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res) => {
+    axios.get("http://localhost:3001/cart_api/new_cart_items").then((res) => {
       setcartdata(res.data)
       // console.log(res.data);
     })
