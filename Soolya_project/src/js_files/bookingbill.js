@@ -1,9 +1,14 @@
 import axios from "axios";
+import { useEffect } from "react";
 
 function BookingBill({setpage}){
 
-
-    axios.get("")
+useEffect(()=>{
+    axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res)=>{
+        console.log(res.data);
+    })
+},[])
+   
 
     return(
         <div>

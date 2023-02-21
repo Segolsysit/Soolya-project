@@ -20,6 +20,14 @@ function Cart() {
     })
   }, [cartdata])
   // console.log(cartdata);
+
+  const nav = useNavigate();
+
+ const bookBtn = ()=>{
+      nav('/bookingsteps');
+ }
+
+
   return (
 
     <div>
@@ -35,7 +43,7 @@ function Cart() {
                     <h5 class="card-title">{item.Category}</h5>
                     <p class="card-text">{item.Service}</p>
                     <p class="card-text"><i class="fa-solid fa-indian-rupee-sign"></i>{item.price}</p>
-                    <Button variant="contained">Bokk Now</Button>
+                    <Button variant="contained" onClick={bookBtn} >Book Now</Button>
                   </div>
               </div>  
             </div>

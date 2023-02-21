@@ -102,7 +102,7 @@ function Sub_Category_Setup() {
                 });
 
                 setCatagorySetup("")
-
+                categorydata()
 
 
             })
