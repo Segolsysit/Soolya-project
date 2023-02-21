@@ -14,6 +14,7 @@ function List(props) {
     const [model1, setmodel1] = useState([]);
     const [sublist, setSublist] = useState('')
     const [cart, setcart] = useState([])
+    const nav = useNavigate();
 
     // const { cartdata, setcartdata } = useContext(AppContext)
 
@@ -28,13 +29,8 @@ function List(props) {
     // console.log(model1);
 
 
-    function addtocart() {
-        axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya", {
-           ...model1
-        }).then((res) => {
-            console.log(res.data);
-        })
-        localStorage.setItem( "modeldata", JSON.stringify(model1))
+    function booknow() {
+        nav("/bookingsteps")
     }
     // setcart([])
     // localStorage.setItem("addtocart",_id);
@@ -58,7 +54,6 @@ function List(props) {
     //     setModal(true);
     // }
 
-    const nav = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:3001/service_api/new_fetch_service_items").then((res) => {
@@ -158,8 +153,8 @@ function List(props) {
                                         <h6>{model1.price}</h6>
                                     </div>
                                     <div className="add_to_card_btn_div">
-                                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal" onClick={(e) => addtocart(model1._id)}>
-                                            Add to cart
+                                        <button className="add_to_card_btn btn btn-primary" data-bs-dismiss="modal" onClick={(e) => booknow(model1._id)}>
+                                            Book Now
                                         </button>
                                     </div>
                                 </div>
