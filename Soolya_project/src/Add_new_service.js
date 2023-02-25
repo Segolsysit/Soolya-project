@@ -167,7 +167,7 @@ function Add_new_service() {
                 setsubCatagory("")
                 setdiscription("")
                 setprice("")
-                // setImg("")
+                setImg("")
                 // file.current.value = null
             })
         }
