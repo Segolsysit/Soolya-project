@@ -378,7 +378,7 @@ function SignUp(){
                                     setValues({ ...values, [e.target.name]: e.target.value })
                                   }
                             htmlFor="rem" ></input>
-                                <label className="sign_up_checkbox_label">I agree with the <a href="_self">Terms & Conditions</a></label>
+                                <label className="sign_up_checkbox_label" for="terms">I agree with the <a href="_self">Terms & Conditions</a></label>
                             </div>
                         </div>
 {/* 

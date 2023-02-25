@@ -123,12 +123,12 @@ function Header() {
 
 
 
-                                <div onClick={() => nav("/cart")}>
-                                    <i class="fa-solid fa-cart-shopping"></i>
+                                {/* <div onClick={() => nav("/cart")}>
+                                <i class="bi bi-cart2"></i>
                                     <span className="badge badge-danger badge-counter">
-                                        {/* {cartdata.length} */}
+                                        {cartdata.length}
                                     </span>
-                                </div>
+                                </div> */}
                                 <div className="header_content_div">
                                     {/* onClick={() => { nav('/sign_in') }} */}
 

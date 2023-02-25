@@ -135,7 +135,7 @@
       
        
         #offcanvasRight{
-          width:22%;
+          width:300px;
           border-radius: 0px 0px 0px 20px;
          background-color: #f1f3f6;
          transition: 0.5s;
@@ -190,6 +190,9 @@
         
         .offcanvas_menu_item_name{
           margin-left: 10px;
+          width:100%;
+          min-width: 160px;
+          text-align: left;
         }
         
         .offcanvas_font_img{
