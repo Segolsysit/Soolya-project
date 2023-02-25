@@ -47,8 +47,6 @@ function BookingSteps() {
     const [page, setPage] = useState(1);
 
 
-
-
     const PageDisplay = () => {
         if (page === 1) {
             return <BookingDetails setpage={setPage} {...props}></BookingDetails>
@@ -149,16 +147,24 @@ function BookingSteps() {
 
         e.preventDefault();
 
-        const formData = new FormData();
-        formData.append("address", address);
-        formData.append("street", street);
-        formData.append("city", city);
-        formData.append("zip", zip);
-        formData.append("person", person);
-        formData.append("number", number);
-        axios.post("http://localhost:3001/booking_api/new_booking", formData);
+        // const formData = new FormData();
+        // formData.append("address", address);
+        // formData.append("street", street);
+        // formData.append("city", city);
+        // formData.append("zip", zip);
+        // formData.append("person", person);
+        // formData.append("number", number);
+        axios.post("http://localhost:3001/booking_api/new_booking", {
+            address,
+            street,
+            city,
+            zip,
+            person,
+            number
 
-        console.log(person);
+        })
+        // console.log(person);
+        // console.log(address);
 
         if (!authenticate()) {
             swal({
