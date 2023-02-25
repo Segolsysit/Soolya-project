@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-const bookingdetails_schema = mongoose.Schema({
+const bookingdetai_schema =new mongoose.Schema({
     address:{
         type:String
     },
@@ -22,4 +22,4 @@ const bookingdetails_schema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("bookingdetails_schema", bookingdetails_schema)
+module.exports = mongoose.model("bookingdetails_schema", bookingdetai_schema)

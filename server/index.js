@@ -7,12 +7,17 @@ const path = require("path");
 const subcategory_router = require("./Router/subcategory_route");
 const service_router = require("./Router/service_route");
 const serviceman_route = require("./Router/serviceman_route");
+const cart_router = require("./Router/cart_router");
+const bookingdetails_router = require("./Router/bookingdetails_router");
 
+app.use(express.json());
 app.use(cors())
-app.use("/api", router)
-app.use("/sub_api", subcategory_router)
-app.use("/service_api", service_router )
+app.use("/api", router);
+app.use("/sub_api", subcategory_router);
+app.use("/service_api", service_router );
 app.use("/serviceman",serviceman_route);
+app.use("/cart_api",cart_router);
+app.use("/booking_api",bookingdetails_router);
 app.use(express.static(path.join(__dirname, "files&img")));
 
 

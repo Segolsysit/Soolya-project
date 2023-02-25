@@ -1,10 +1,10 @@
 .footer_content{
     display: flex;
     justify-content: space-around;
-    /* background-color:#f1f3f6; */
-    background-color: #fff;
-    padding: 40px 10px 40px 10px;
-    margin-top: 30px;
+    background-color:#f1f3f6;
+    /* background-color: #fff; */
+    padding: 40px 10px 25px 10px;
+    margin-top: 60px;
   }
   
   .footer_content h2{
@@ -24,6 +24,7 @@
   .social_links{
     display: flex;
     justify-content: space-between;
+    
   }
   
   .social_links a{
@@ -34,6 +35,7 @@
     border-right: 1px solid black;
     height:80px;
     width:30px;
+    display: block;
   }
   
   .payment_div img{
@@ -87,31 +89,79 @@
   .policy {
     background-color: #010102;
   }
-  .policy ul {
+  .policy_unorder {
     list-style-type: none;
     display: flex;
     justify-content: center;
-    justify-items: center;
+    align-items: center;
+    margin: 0px;
   }
-  .policy ul li {
+  .policy_unorder li {
     padding: 15px;
   }
-  .policy ul li a {
+  .policy_unorder li a {
     text-decoration: none;
     color: white;
   }
-  .policy ul li span {
+  .policy_unorder li span {
     color: white;
   }
   
-  .footer {
+  .footer_class {
     text-align: center;
     border-bottom: 1px solid black;
-    background-color:#f1f3f6;
-  }
+    /* background-color:#f1f3f6; */
+    background-color: #fff;
+    padding: 10px 0px 0px 0px;
+    margin-bottom: 0px;
+}
   
   .contact_us_head{
     font-weight: 600;
   }
   
 
+.footer_relative{
+  position: relative;
+}
+
+footer{
+  position: absolute;
+  left: 0px;
+  right:0px;
+}
+
+@media only screen and (min-width:320px) {
+     
+}
+
+@media only screen and (min-width:480px) {
+     
+}
+
+@media only screen and (min-width:600px) {
+     
+}
+
+@media only screen and (min-width:801px) {
+     
+}
+
+
+
+@media only screen and (max-width:1165px) {
+
+  .border_div{
+    display: none;
+  }
+  
+  .social_links{
+    display: unset;
+    text-align: center;
+  }
+
+}
+
+@media only screen and (min-width:1281px) {
+     
+}

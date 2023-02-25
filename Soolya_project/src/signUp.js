@@ -325,13 +325,13 @@ function SignUp(){
    
                         <div className="sign_up_checkbox">
                             <div className="sign_up_checkbox">
-                                <input type="checkbox" checked={inputs.checked}
+                                <input id="terms" type="checkbox" checked={inputs.checked}
                                 onChange={(event)=>{
                                     setInputs({...inputs,checked:event.target.checked})
                                     errors.checked = null;
                                 }} 
                             htmlFor="rem" ></input>
-                                <label className="sign_up_checkbox_label">I agree with the <a href="_self">Terms & Conditions</a></label>
+                                <label className="sign_up_checkbox_label" for="terms">I agree with the <a href="_self">Terms & Conditions</a></label>
                             </div>
                         </div>
 

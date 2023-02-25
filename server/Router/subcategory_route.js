@@ -15,7 +15,7 @@ cb(null , "files&img")
     }
 })
 const fileFilter = (req, file, cb) => {
-    const acceptFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    const acceptFileTypes = ['image/jpeg', 'image/jpg', 'image/png']
     if (acceptFileTypes.includes(file.mimetype)) {
         cb(null, true)
     }

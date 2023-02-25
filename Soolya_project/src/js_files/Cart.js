@@ -14,12 +14,20 @@ function Cart() {
   // const storedata = JSON.parse(localStorage.getItem("modeldata"))
 
   useEffect(() => {
-    axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res) => {
+    axios.get("http://localhost:3001/cart_api/new_cart_items").then((res) => {
       setcartdata(res.data)
       // console.log(res.data);
     })
   }, [cartdata])
   // console.log(cartdata);
+
+  const nav = useNavigate();
+
+ const bookBtn = ()=>{
+      nav('/bookingsteps');
+ }
+
+
   return (
 
     <div>
@@ -35,7 +43,7 @@ function Cart() {
                     <h5 class="card-title">{item.Category}</h5>
                     <p class="card-text">{item.Service}</p>
                     <p class="card-text"><i class="fa-solid fa-indian-rupee-sign"></i>{item.price}</p>
-                    <Button variant="contained">Bokk Now</Button>
+                    <Button variant="contained" onClick={bookBtn} >Book Now</Button>
                   </div>
               </div>  
             </div>

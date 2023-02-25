@@ -74,6 +74,14 @@ function Home(props) {
     };
     // scroll up btn finished 
 
+    // const res = window.matchMedia("(max-width:940)");
+
+    // function responsive(res) {
+    //     if(res.matches){
+
+    //     }
+    // }
+
 
     const settings = {
         className: "center",
@@ -91,6 +99,7 @@ function Home(props) {
         //         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
         //     );
         // }
+      
     };
 
 
@@ -217,7 +226,6 @@ function Home(props) {
                         </ul>
                     </div>
                 </div>
-                {/* header finished */}
 
  
 
@@ -225,7 +233,6 @@ function Home(props) {
                     <div className="carousel_div">
 
 
-                    {/* add ons === slide data-bs-interval="1000" data-bs-pause="none"  data-bs-ride="carousel"*/}
 
                         <div id="carouselExampleControls" class="carousel" data-bs-pause="none" data-bs-ride="carousel">
                             <div class="carousel-inner">
@@ -253,7 +260,6 @@ function Home(props) {
                             </div>
                             <div id="gap">
                                 <span className="z_index_offer">
-                                    {/* <img className="z_index_offer_img" src={plumbing_offer}></img> */}
                                     <h6 className="z_index_offer_cont">Plumbing work | 50% off</h6>
                                 </span>
                             </div>
@@ -276,16 +282,13 @@ function Home(props) {
                             {show ? <label for="search" className='suggest'>
 
                                 {filter.map((arr) => (
-                                    //  <NavLink to="/plumbing"
                                     <div className='sugg' onClick={() => { setSearch(arr.type); setShow(false) }}>
                                         <span >{arr.type}</span>
 
                                     </div>
                                 ))}
 
-                                {/* // </NavLink> */}
-                                {/* <NavLink to="/plumbing"><div className='sugg'><p>plumber</p></div></NavLink>
-                            <p><NavLink to="/plumbing">electrician</NavLink></p> */}
+
                             </label> : <div></div>}
 
                         </div>
@@ -383,7 +386,6 @@ function Home(props) {
 
                                             <div className="carosel_box_image">
                                                 <NavLink to="/vendors_list" onClick={() => { localStorage.setItem("search", "plumbing"); localStorage.setItem("dist", '') }}> <img alt="demo" src={electrician}></img></NavLink>
-                                                {/* <img alt="demo" src={electrician_work}></img> */}
                                             </div>
                                             <div className="carousel_box_content">
                                                 <h5>Plumbing</h5>
@@ -434,9 +436,7 @@ function Home(props) {
                                 </Slider>
                             </div>
                         </div>
-                        {/* <div className="advertise_3" class="column right">
-                    <img src={owl_1} alt="advert-2" className="advertise_image"></img>
-                </div> */}
+                       
                     </div>
                 </div>
 
@@ -598,11 +598,9 @@ function Home(props) {
 
                 <div className="frame_line">
                     <div className="one">
-                        {/* <div className="frame_line_border"> */}
-                            {/* <div id="border"> */}
+                      
                                 <img className="frame_img_size" src={frame_line} alt="you"></img>
-                            {/* </div> */}
-                        {/* </div> */}
+                         
                     </div>
                     <div id="frame_line_right_side">
                         <div>
@@ -636,40 +634,7 @@ function Home(props) {
 
 
 
-                {/* download div */}
 
-                {/* <div className="download_div">
-                    <div className="download_inline">
-
-                        <div data-aos="fade-right" className="download_inline_bio">
-                            <div>
-                                <h2>Download our app</h2>
-                            </div>
-                            <div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                </p>
-                            </div>
-                            <div>
-                                <button className="download_btn"><img src={playstore} alt="download-1"></img></button>
-                                <button className="download_btn"><img src={appstore} alt="download-2"></img></button>
-
-                            </div>
-                        </div>
-                        <div>
-                            <img className="download_img" src={phone_image} alt="phone_photo"></img>
-                        </div>
-
-                    </div>
-                </div> */}
-
-
-
-
-                {/*             
-<button type="button" class="btn btn-primary" >
-  Launch static backdrop modal
-</button> */}
 
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" id="one_w">
@@ -682,7 +647,6 @@ function Home(props) {
                                 {modalName}
                             </div>
                             <div class="modal-footer">
-                                {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={() => { setSearch(""); setShow(false) }}>Understood</button>
                             </div>
                         </div>
