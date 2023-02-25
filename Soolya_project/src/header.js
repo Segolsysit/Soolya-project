@@ -15,38 +15,89 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useState } from 'react';
+import {useEffect,useState } from 'react';
 import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import { logOut } from './js_files/auth';
-
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 
 function Header() {
 
     const nav = useNavigate();
-
-
+   
     const [register, setRegister] = useState(true);
-
     const [login, setLogin] = useState(true);
-
-    const logOutUser = () => {
-        logOut();
-        nav("/sign_in");
-    }
-
-    const navLogin = () => {
-        nav("/sign_in");
-        setLogin(null);
-    }
+    const [logout, setlogOut] = useState(true);
 
 
+    const [cookies, setCookie, removeCookie] = useCookies([]);
+    useEffect(() => {
+      const verifyUser = async () => {
+        if (cookies.jwt) {
+          setRegister(false)
+          setLogin(false)
+        } 
 
 
-        const navRegister = () => {
-            nav("/sign_up");
-            setRegister(null);
+        // else {
+          const { data } = await axios.post(
+            "http://localhost:4000",
+            {},
+            {
+              withCredentials: true,
+            }
+          );
+          if (!data.status) {
+            removeCookie("jwt");
+            nav("/sign_in");
+          } else
+            toast(`Hi ${data.user} 🦄`, {
+              theme: "dark",
+            });
         }
+    //   };
+      verifyUser();
+      logOuthide()
+    }, [cookies, nav, removeCookie]);
+  
+   const logOuthide = () => {
+    if (!cookies.jwt) {
+        setlogOut(false)
+      } 
+   }
+
+    const logOut = () => {
+      removeCookie("jwt");
+      
+      setRegister(true)
+      setLogin(true)
+      nav("/sign_in");
+
+    };
+
+    // const [register, setRegister] = useState(true);
+
+    // const [login, setLogin] = useState(true);
+
+    // const logOutUser = () => {
+    //     logOut();
+    //     nav("/sign_in");
+    // }
+
+    // const navLogin = () => {
+    //     nav("/sign_in");
+    //     setLogin(null);
+    // }
+
+
+
+
+    //     const navRegister = () => {
+    //         nav("/sign_up");
+    //         setRegister(null);
+    //     }
 
         // const cartdata = useContext(usercontext)
 
@@ -81,13 +132,19 @@ function Header() {
                                 <div className="header_content_div">
                                     {/* onClick={() => { nav('/sign_in') }} */}
 
-
-                                    {!isAuthenticatedLogin() && login ?
+                                    {
+                                        login?<button type="button" className="sign_in__buttton" onClick={()=>nav("/sign_in")}>
+                                            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                            Login
+                                        </button>: ""
+                                        }
+                                    {/* {!isAuthenticatedLogin() && login ?
                                         <button type="button" className="sign_in__buttton"
                                             onClick={navLogin} >
                                             <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                             Login
-                                        </button> : null}
+                                        </button> : null
+                                        } */}
 
                                     {/* {login?
                                     <button type="button" className="sign_in__buttton" 
@@ -95,26 +152,43 @@ function Header() {
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Login
                                     </button>:null} */}
-
+{/* 
                                     {isAuthenticated() || !isAuthenticatedLogin() && register ?
                                         <button type="button" className="sign_up__buttton" onClick={navRegister}>
                                             <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                             Register
-                                        </button> : null}
+                                        </button> : null} */}
 
+                                       {
+                                          register? <button type="button" className="sign_up__buttton" onClick={
+                                            ()=>{
+
+                                                nav("/sign_up")
+                                            }
+                                        } >
+                                            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                            Register
+                                        </button>:""
+
+                                       } 
                                     {/* {register?
                                     <button type="button" className="sign_up__buttton" onClick={navRegister}>
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Register
                                     </button>:null} */}
+                                        {
+                                          logout?  <button type="button" className="sign_in__buttton" onClick={logOut} >
+                                            <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
+                                            Log Out
+                                        </button> :""
+                                        }
 
 
-
-                                    {isAuthenticatedLogin() ?
+                                    {/* {isAuthenticatedLogin() ?
                                         <button type="button" className="sign_in__buttton" onClick={logOutUser}>
                                             <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                             Log Out
-                                        </button> : null}
+                                        </button> : null} */}
 
                                     {/* {!isAuthenticated() && !isAuthenticatedLogin()?
                                     <button type="button" className="sign_in__buttton" onClick={()=>{nav("/dashboard")}}>
