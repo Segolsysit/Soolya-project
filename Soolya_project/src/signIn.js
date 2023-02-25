@@ -3,12 +3,15 @@ import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import {  useState } from 'react';
-import { LoginApi } from './js_files/api';
-import { removeUserData1, storeUserData2 } from './js_files/storage';
-import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
+import {  useState , useEffect} from 'react';
+// import { LoginApi } from './js_files/api';
+// import { removeUserData1, storeUserData2 } from './js_files/storage';
+// import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import Header from './header';
 import Footer from './footer';
+import { toast } from 'react-toastify';
+import axios from "axios";
+import { useCookies } from "react-cookie";
 
 function SignIn() {
 
@@ -16,78 +19,113 @@ function SignIn() {
 
     
   const nav = useNavigate();
+  const [cookies] = useCookies([]);
+  const navigate = useNavigate();
+//   useEffect(() => {
+//     if (cookies.jwt) {
+//       navigate("/");
+//     }
+//   }, [cookies, navigate]);
 
-
-
-    const initialErrors = {
-        email: null,
-        password: null,
-        custom_error: null
-    }
-
-
-    const [errors, setErrors] = useState(initialErrors);
-
-
-    const [loading, setLoading] = useState(false);
-
-    const [inputs, setInputs] = useState({
-        email: "",
-        password: ""
+  const [values, setValues] = useState({ email: "", password: "" });
+  const generateError = (error) =>
+    toast.error(error, {
+      position: "bottom-right",
     });
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        let errors = initialErrors;
-
-        let hasErrors = false;
-
-
-        if (inputs.email === "") {
-            errors.email = "Email or Phone number is required";
-            hasErrors = true;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3001/auth_router/login",
+        {
+          ...values,
+        },
+        { withCredentials: true }
+      );
+      if (data) {
+        if (data.errors) {
+          const { email, password } = data.errors;
+          if (email) generateError(email);
+          else if (password) generateError(password);
+        } else {
+          navigate("/");
         }
-
-        if (inputs.password === "") {
-            errors.password = "Password is required";
-            hasErrors = true;
-        }
-
-
-
-        if (!hasErrors) {
-            setLoading(true);
-
-            LoginApi(inputs).then((response) => {
-                storeUserData2(response.data.idToken);
-            }).catch((err) => {
-                if (err.response.data.error.message == "MISSING_EMAIL") {
-                    console.log(err);
-                    setErrors({ ...errors, custom_error: "Invalid credential" });
-                }
-                if (err.code === "ERR_BAD_REQUEST") {
-                    setErrors({ ...errors, custom_error: "Invalid credential" });
-                }
-
-            }).finally(() => {
-                setLoading(false);
-            })
-        }
-
-
-        setErrors({ ...errors });
-
+      }
+    } catch (ex) {
+      console.log(ex);
     }
+  };
+
+
+    // const initialErrors = {
+    //     email: null,
+    //     password: null,
+    //     custom_error: null
+    // }
+
+
+    // const [errors, setErrors] = useState(initialErrors);
+
+
+    // const [loading, setLoading] = useState(false);
+
+    // const [inputs, setInputs] = useState({
+    //     email: "",
+    //     password: ""
+    // });
+
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+
+    //     let errors = initialErrors;
+
+    //     let hasErrors = false;
+
+
+    //     if (inputs.email === "") {
+    //         errors.email = "Email or Phone number is required";
+    //         hasErrors = true;
+    //     }
+
+    //     if (inputs.password === "") {
+    //         errors.password = "Password is required";
+    //         hasErrors = true;
+    //     }
 
 
 
-    if (isAuthenticatedLogin() ) {
-        // removeUserData1();
-        removeUserData1();
-        // return <Navigate to="/dashboard"></Navigate>
-        return <Navigate to="/"></Navigate>
-    }
+    //     if (!hasErrors) {
+    //         setLoading(true);
+
+    //         LoginApi(inputs).then((response) => {
+    //             storeUserData2(response.data.idToken);
+    //         }).catch((err) => {
+    //             if (err.response.data.error.message == "MISSING_EMAIL") {
+    //                 console.log(err);
+    //                 setErrors({ ...errors, custom_error: "Invalid credential" });
+    //             }
+    //             if (err.code === "ERR_BAD_REQUEST") {
+    //                 setErrors({ ...errors, custom_error: "Invalid credential" });
+    //             }
+
+    //         }).finally(() => {
+    //             setLoading(false);
+    //         })
+    //     }
+
+
+    //     setErrors({ ...errors });
+
+    // }
+
+
+
+    // if (isAuthenticatedLogin() ) {
+    //     // removeUserData1();
+    //     removeUserData1();
+    //     // return <Navigate to="/dashboard"></Navigate>
+    //     return <Navigate to="/"></Navigate>
+    // }
 
 
 
@@ -113,14 +151,13 @@ function SignIn() {
                                 <label>
                                     Email/Phone
                                 </label>
-                                <input className="data_input" onChange={(event) => {
-                                    setInputs({ ...inputs, email: event.target.value })
-                                    errors.email = null;
-                                }}
-                                    value={inputs.email} type="text" placeholder="Enter email or phone number"></input>
+                                <input className="data_input" onChange={(e) =>
+              setValues({ ...values, [e.target.name]: e.target.value })
+            }
+                                 name="email"  type="text" placeholder="Enter email or phone number"></input>
                             </div>
 
-                            {errors.email ?
+                            {/* {errors.email ?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -129,21 +166,21 @@ function SignIn() {
                                         <h6>{errors.email}</h6>
                                     </div>
                                 </div>) : null
-                            }
+                            } */}
 
                             <div className="form_input">
                                 <label>
                                     Password
                                 </label>
                                 <input className="data_input"
-                                    onChange={(event) => {
-                                        setInputs({ ...inputs, password: event.target.value })
-                                        errors.password = null;
-                                    }}
-                                    value={inputs.password} type="password" placeholder="********"></input>
+                                   onChange={(e) =>
+                                    setValues({ ...values, [e.target.name]: e.target.value })
+                                  }
+                                  name="password"
+                                   type="password" placeholder="********"></input>
                             </div>
 
-                            {errors.password ?
+                            {/* {errors.password ?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -152,9 +189,9 @@ function SignIn() {
                                         <h6>{errors.password}</h6>
                                     </div>
                                 </div>) : null
-                            }
+                            } */}
 
-
+{/* 
                             {errors.custom_error ?
                                 (<div id="d_flex_center" className="sign_in_form_validation">
                                     <div>
@@ -164,7 +201,7 @@ function SignIn() {
                                         <h5>{errors.custom_error}</h5>
                                     </div>
                                 </div>) : null
-                            }
+                            } */}
 
 
                             <div className="form_checkbox">
@@ -186,16 +223,16 @@ function SignIn() {
 
 
 
-                            {loading ?
+                            {/* {loading ?
                                 (<div id="spinner_roll">
                                     <div className="spinner-border text-primary" role="status">
                                     </div>
                                 </div>) : null
-                            }
+                            } */}
 
 
                             <div className="form_sign_in_button_div">
-                                <button type="submit" disabled={loading} className="form_sign_in_button" >sign in</button>
+                                <button type="submit"  className="form_sign_in_button" >sign in</button>
                             </div>
 
 

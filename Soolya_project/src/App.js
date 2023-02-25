@@ -35,6 +35,7 @@ import BookingSteps from './js_files/bookingsteps';
 import BookingDetails from './js_files/bookingdetails';
 import BookingBill from './js_files/bookingbill';
 import BookingFinish from './js_files/bookingfinish';
+import Vendor_admin from './vendor_admin';
 
 
 function App() {
@@ -113,6 +114,7 @@ function App() {
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
                 <Route path="/cart" element={<Cart ></Cart>}></Route>
                 <Route path='/servicemanlist' element={<Servicemanlist></Servicemanlist>}></Route>
+                <Route path="/vendor_admin" element={<Vendor_admin></Vendor_admin>}></Route>
                 {/* {array.map((arr)=>(
                 <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
                  ))} */}

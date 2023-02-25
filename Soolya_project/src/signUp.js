@@ -3,143 +3,195 @@ import logo from "./images/logo.png";
 import google from "./images/google.png";
 import facebook from "./images/facebook.png";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios'
 import { RegisterApi } from "./js_files/api";
 import { storeUserData } from "./js_files/storage";
 import { isAuthenticated, isAuthenticatedLogin } from "./js_files/auth";
 import Header from "./header";
-
+import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 function SignUp(){
 
-    const nav = useNavigate();
+    
+    const [cookies] = useCookies(["cookie-name"]);
+    const navigate = useNavigate();
+    // useEffect(() => {
+    //   if (cookies.jwt) {
+    //     navigate("/");
+    //   }
+    // }, [cookies, navigate]);
+//     const [loading,setLoading] = useState(false);
+  
+    const [values, setValues] = useState({
+        firstName:"",
+        lastName:"",
+        phoneNumber:"", 
+        email: "", 
+        password: "",
+        confirmpassword:"",
+        checked:false
+    });
+    const generateError = (error) =>
+      toast.error(error, {
+        position: "bottom-right",
+      });
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      console.log(values);
+      try {
+        const { data } = await axios.post(
+          "http://localhost:3001/auth_router/register",
+          {
+            firstName:values.firstName,
+            lastName:values.lastName,
+            PhoneNumber:values.PhoneNumber,
+            email:values.email,
+            password:values.password
 
+          },
+          { withCredentials: true }
+        );
+        if (data) {
+          if (data.errors) {
+            const { email, password } = data.errors;
+            if (email) generateError(email);
+            else if (password) generateError(password);
+          } else {
+            navigate("/sign_in");
+          }
+        }
+      } catch (ex) {
+        console.log(ex);
+      }
+    };
 
-    const initialErrors = {
-        fname:null,
-        lname:null,
-        email:null,
-        number:null,
-        password:null,
-        c_password:null,
-        checked:null,
-        custom_error:null
-    }
+//     const initialErrors = {
+//         fname:null,
+//         lname:null,
+//         email:null,
+//         number:null,
+//         password:null,
+//         c_password:null,
+//         checked:null,
+//         custom_error:null
+//     }
      
-    const [errors,setErrors] = useState(initialErrors);
+//     const [errors,setErrors] = useState(initialErrors);
     
 
-    const [loading,setLoading] = useState(false);
+//     const [loading,setLoading] = useState(false);
 
    
    
-   const handleSubmit = (event)=>{
-           event.preventDefault();
+//    const handleSubmit = (event)=>{
+//            event.preventDefault();
 
-           let errors = initialErrors;
+//            let errors = initialErrors;
 
-           let hasErrors = false;
+//            let hasErrors = false;
 
 
-           if (inputs.fname === "") {
+//            if (inputs.fname === "") {
 
-               errors.fname = "First name is required";
-               hasErrors = true;
-           }
+//                errors.fname = "First name is required";
+//                hasErrors = true;
+//            }
 
-           if (inputs.lname === "") {
-            errors.lname = "Last name is required";
-            hasErrors = true;
-           }
+//            if (inputs.lname === "") {
+//             errors.lname = "Last name is required";
+//             hasErrors = true;
+//            }
 
-            if (inputs.email === "") {
-                errors.email ="Email is required";
-               hasErrors = true;
-            }
+//             if (inputs.email === "") {
+//                 errors.email ="Email is required";
+//                hasErrors = true;
+//             }
 
-            if (inputs.number === "") {
-                errors.number = "Number is required";
-               hasErrors = true;
-            }
+//             if (inputs.number === "") {
+//                 errors.number = "Number is required";
+//                hasErrors = true;
+//             }
 
-            else if(inputs.number.length <10 || inputs.number.length >10){
-                errors.number ="Number must have 10 digit";
-                hasErrors = true;
-            }
+//             else if(inputs.number.length <10 || inputs.number.length >10){
+//                 errors.number ="Number must have 10 digit";
+//                 hasErrors = true;
+//             }
 
             
 
 
-            if (inputs.password === ""  ) {
-                errors.password = "Password is required";
-               hasErrors = true;
-            }
+//             if (inputs.password === ""  ) {
+//                 errors.password = "Password is required";
+//                hasErrors = true;
+//             }
 
-            if (inputs.c_password === "") {
-                errors.c_password = "Confirm password is required";
-               hasErrors = true;
-            }
+//             if (inputs.c_password === "") {
+//                 errors.c_password = "Confirm password is required";
+//                hasErrors = true;
+//             }
 
-            if (inputs.password !== inputs.c_password) {
-                errors.c_password = "Password and Confirm password are not same";
-               hasErrors = true;
-            }
+//             if (inputs.password !== inputs.c_password) {
+//                 errors.c_password = "Password and Confirm password are not same";
+//                hasErrors = true;
+//             }
 
-            if (inputs.checked === false) {
-                 errors.checked = "Agree terms & Conditions is required";
-                 hasErrors = true; 
-            }
+//             if (inputs.checked === false) {
+//                  errors.checked = "Agree terms & Conditions is required";
+//                  hasErrors = true; 
+//             }
 
            
           
-            if (!hasErrors) {
-                setLoading(true); 
+//             if (!hasErrors) {
+//                 setLoading(true); 
                 
-                RegisterApi(inputs).then((response)=>{
-                    // console.log(response);
-                    storeUserData(response.data.idToken);
+//                 RegisterApi(inputs).then((response)=>{
+//                     // console.log(response);
+//                     storeUserData(response.data.idToken);
                 
-                    if(isAuthenticated() === true){
-                    nav("/sign_in");
-                    }
+//                     if(isAuthenticated() === true){
+//                     nav("/sign_in");
+//                     }
 
-                }).catch((err)=>{
-                    if(err.response.data.error.message === "EMAIL_EXISTS"){
-                        setErrors({...errors,custom_error:"Already this email has been registered"});
-                    }
-                    else if ( String(err.response.data.error.message).includes("WEAK_PASSWORD")) {
-                        setErrors({...errors,custom_error:"Password should be at least 6 characters"});
-                    }
+//                 }).catch((err)=>{
+//                     if(err.response.data.error.message === "EMAIL_EXISTS"){
+//                         setErrors({...errors,custom_error:"Already this email has been registered"});
+//                     }
+//                     else if ( String(err.response.data.error.message).includes("WEAK_PASSWORD")) {
+//                         setErrors({...errors,custom_error:"Password should be at least 6 characters"});
+//                     }
 
-                }).finally(()=>{
-                    setLoading(false);
-                })
+//                 }).finally(()=>{
+//                     setLoading(false);
+//                 })
 
-            }
+//             }
          
-            setErrors({...errors});
-    }
+//             setErrors({...errors});
+//     }
 
-    const [inputs,setInputs] = useState({
-        fname:"",
-        lname:"",
-        email:"",
-        number:"",
-        password:"",
-        c_password:"",
-        checked:false
-    })
+//     const [inputs,setInputs] = useState({
+//         fname:"",
+//         lname:"",
+//         email:"",
+//         number:"",
+//         password:"",
+//         c_password:"",
+//         checked:false
+//     })
 
     
     
  
-    if(isAuthenticated()){
-        // return <Navigate to="/sign_in"></Navigate>   
-    }
+//     if(isAuthenticated()){
+//         // return <Navigate to="/sign_in"></Navigate>   
+//     }
 
-    if(isAuthenticatedLogin()){
-        return <Navigate to="/"></Navigate>   
-    }
+//     if(isAuthenticatedLogin()){
+//         return <Navigate to="/"></Navigate>   
+//     }
 
     return(
     <div>
@@ -157,7 +209,7 @@ function SignUp(){
                 </div>
              </div>
             
-            <form onSubmit={handleSubmit} className="sign_up_form">
+            <form onSubmit={(e) => handleSubmit(e)} className="sign_up_form">
           
              <div className="form_div">
                     <div className="label_display">
@@ -167,13 +219,12 @@ function SignUp(){
                             First name
                         </label>
                         <input className="sign_up_inupt_box" type="text" 
-                        onChange={(event)=>{
-                            setInputs({...inputs,fname:event.target.value});
-                            errors.fname = null;
-                        }} 
-                        value={inputs.fname} name="name"  placeholder="Enter your first name"></input>
+                        onChange={(e) =>
+                            setValues({ ...values, [e.target.name]: e.target.value })
+                          }
+                        name="firstName"  placeholder="Enter your first name"></input>
                     </div>
-
+{/* 
                     {errors.fname?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
@@ -183,20 +234,19 @@ function SignUp(){
                             <h6>{errors.fname}</h6>
                         </div>
                     </div>):null
-                    }
+                    } */}
 
                     <div className="sign_up_input">
                         <label>
                             Last name
                         </label>
                         <input className="sign_up_inupt_box" type="text" 
-                        onChange={(event)=>{
-                            setInputs({...inputs,lname:event.target.value})
-                              errors.lname = null;
-                            }} 
-                        value={inputs.lname} name="lname" placeholder="Enter your first name"></input>
+                       onChange={(e) =>
+                        setValues({ ...values, [e.target.name]: e.target.value })
+                      }
+                         name="lastName" placeholder="Enter your first name"></input>
                     </div>
-
+{/* 
                     {errors.lname?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
@@ -206,31 +256,31 @@ function SignUp(){
                             <h6>{errors.lname}</h6>
                         </div>
                         </div>):null
-                    }
+                    } */}
 
                     <div className="sign_up_input">
                         <label>
                             Email Address
                         </label>
                         <input className="sign_up_inupt_box" type="email" 
-                        onChange={(event)=>{
-                            setInputs({...inputs,email:event.target.value})
-                            errors.email = null;
-                            }} 
-                        value={inputs.email} name="email" placeholder="Enter your email address"></input>
+                
+                       onChange={(e) =>
+                        setValues({ ...values, [e.target.name]: e.target.value })
+                      }
+                        name="email" placeholder="Enter your email address"></input>
                     </div>
 
-                    {errors.email?
+                    {/* {errors.email?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            {/* <h6>Email address is required</h6> */}
+                         
                             <h6>{errors.email}</h6>
                         </div>
                     </div>):null
-                    }
+                    } */}
                         </div>
 
                      
@@ -242,24 +292,23 @@ function SignUp(){
                             Mobile Number
                         </label>
                         <input className="sign_up_inupt_box" type="tel"  
-                        onChange={(event)=>{
-                            setInputs({...inputs,number:event.target.value})
-                            errors.number = null;
-                            }}
-                        name="number" value={inputs.number} placeholder="Enter your Phone Number"></input>
+                       onChange={(e) =>
+                        setValues({ ...values, [e.target.name]: e.target.value })
+                      }
+                        name="phoneNumber"  placeholder="Enter your Phone Number"></input>
                     </div>
-
+{/* 
                     {errors.number?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
                         </div>
                         <div>
-                            {/* <h6>Mobile Number is required</h6> */}
+                          
                              <h6>{errors.number}</h6>
                         </div>
                     </div>):null
-                    }
+                    } */}
 
                     
                     <div className="sign_up_input">
@@ -267,13 +316,12 @@ function SignUp(){
                             Password
                         </label>
                         <input className="sign_up_inupt_box" type="password" 
-                        onChange={(event)=>{
-                            setInputs({...inputs,password:event.target.value})
-                            errors.password = null;
-                        }} 
-                        value={inputs.password} name="password" placeholder="***********"></input>
+                      onChange={(e) =>
+                        setValues({ ...values, [e.target.name]: e.target.value })
+                      }
+                       name="password" placeholder="***********"></input>
                     </div>
-
+{/* 
                     {errors.password?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
@@ -283,20 +331,19 @@ function SignUp(){
                             <h6>{errors.password}</h6>
                         </div>
                     </div>):null
-                    }
+                    } */}
 
                     <div className="sign_up_input">
                         <label>
                             confirm Password
                         </label>
                         <input className="sign_up_inupt_box" type="Password" 
-                        onChange={(event)=>{
-                            setInputs({...inputs,c_password:event.target.value})
-                            errors.c_password = null;
-                            }} 
-                        value={inputs.c_password} name="c_password" placeholder="************"></input>
+                       onChange={(e) =>
+                        setValues({ ...values, [e.target.name]: e.target.value })
+                      }
+                        name="confirmpassword" placeholder="************"></input>
                     </div>
-
+{/* 
                     {errors.c_password?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
@@ -306,13 +353,13 @@ function SignUp(){
                             <h6>{errors.c_password}</h6>
                         </div>
                     </div>):null
-                    }
+                    } */}
 
                         </div>
                         </div>  
 
 
-                    {errors.custom_error?
+                    {/* {errors.custom_error?
                         (<div id="d_flex_center_new" className="sign_in_form_validation">
                         <div>
                             <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
@@ -321,20 +368,20 @@ function SignUp(){
                             <h5>{errors.custom_error}</h5>
                         </div>
                     </div>):null
-                    }
+                    } */}
    
                         <div className="sign_up_checkbox">
                             <div className="sign_up_checkbox">
-                                <input id="terms" type="checkbox" checked={inputs.checked}
-                                onChange={(event)=>{
-                                    setInputs({...inputs,checked:event.target.checked})
-                                    errors.checked = null;
-                                }} 
+                                <input type="checkbox" checked={values.checked}
+                                name="checked"
+                                  onChange={(e) =>
+                                    setValues({ ...values, [e.target.name]: e.target.value })
+                                  }
                             htmlFor="rem" ></input>
                                 <label className="sign_up_checkbox_label" for="terms">I agree with the <a href="_self">Terms & Conditions</a></label>
                             </div>
                         </div>
-
+{/* 
                         {errors.checked?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
@@ -344,17 +391,17 @@ function SignUp(){
                             <h6>{errors.checked}</h6>
                         </div>
                     </div>):null
-                    }
+                    } */}
                     
-                    {loading?
+                    {/* {loading?
                         (<div id="spinner_roll">
                             <div class="spinner-border text-primary" role="status">
                             </div>
                         </div>):null
-                    }
+                    } */}
                    
                     <div className="form_sign_up_button_div">
-                        <button type="submit" disabled={loading} className="form_sign_up_button">sign up</button>
+                        <button type="submit" className="form_sign_up_button">sign up</button>
                     </div>
                     <div className="form_center">
                     <div className="or_cont">

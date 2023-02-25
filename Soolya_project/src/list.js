@@ -30,6 +30,7 @@ function List(props) {
 
 
     function booknow() {
+        localStorage.setItem("service_id",model1._id)
         nav("/bookingsteps")
     }
     // setcart([])
