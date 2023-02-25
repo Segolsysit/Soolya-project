@@ -34,7 +34,7 @@ function Add_new_service() {
     const [img, setImg] = useState("");
     const [subcatlist, setsubcatlist] = useState([]);
     const [servicelist, setServicelist] = useState([]);
-    const [getByIdList,setgetByIdList] = useState([]);
+    const [getByIdList, setgetByIdList] = useState([]);
     const [Editservice, setEditservice] = useState("");
     const [Editcategory, setEditcategory] = useState("");
     const [Editsubcategory, setEditsubcategory] = useState("");
@@ -175,7 +175,7 @@ function Add_new_service() {
 
     const EditList = (id) => {
         handleOpen()
-        axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${id}`).then((res)=>{
+        axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${id}`).then((res) => {
             setgetByIdList(res.data)
             console.log(res.data);
         })
@@ -184,17 +184,17 @@ function Add_new_service() {
     const saveChangeList = (e) => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append("Service",Editservice)
-        formData.append("Category",Editcategory)
-        formData.append("Subcategory",Editsubcategory)
+        formData.append("Service", Editservice)
+        formData.append("Category", Editcategory)
+        formData.append("Subcategory", Editsubcategory)
         formData.append("price", Editprice)
         formData.append("file", Editimg)
 
-        axios.patch(`http://localhost:3001/service_api/update_service/${getByIdList._id}`,formData).then(()=>{
-                    alert("ListUpdated")
-                })
+        axios.patch(`http://localhost:3001/service_api/update_service/${getByIdList._id}`, formData).then(() => {
+            alert("ListUpdated")
+        })
 
-                handleClose()
+        handleClose()
 
     }
 
@@ -285,8 +285,8 @@ function Add_new_service() {
                                 <span>Dashboard</span></a>
                         </li>
 
-                        
-                    <li className="nav-item active">
+
+                        <li className="nav-item active">
                             <a className="nav-link" href="/application">
                                 <i className="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Application</span></a>
@@ -715,7 +715,7 @@ function Add_new_service() {
                                                     <TableCell><p>{data.Subcategory}</p></TableCell>
                                                     <TableCell><p><i class="fa-solid fa-indian-rupee-sign"></i>{data.price}</p></TableCell>
                                                     <TableCell><img src={localpath + data.filename} style={{ width: "5em", height: "5em" }} alt=".........."></img> </TableCell>
-                                                    <TableCell><Button onClick={()=>EditList(data._id)}><i class="fa-solid fa-pencil"></i></Button></TableCell>
+                                                    <TableCell><Button onClick={() => EditList(data._id)}><i class="fa-solid fa-pencil"></i></Button></TableCell>
                                                     <TableCell><Button onClick={() => delete_list(data._id)}><i class="fa-regular fa-trash-can" style={{ color: "red" }}></i></Button></TableCell>
                                                 </TableRow>
                                             ))
@@ -734,43 +734,43 @@ function Add_new_service() {
                                 >
                                     <Box sx={modelstyle}>
                                         <form className="category_form" id="category_form" onSubmit={saveChangeList}>
-                                            <TextField type="text" label="Service" onChange={(e)=>setEditservice(e.target.value)} /><br></br>
+                                            <TextField type="text" label="Service" onChange={(e) => setEditservice(e.target.value)} /><br></br>
                                             <FormControl sx={{ minWidth: 100 }}>
-                                            <InputLabel id="demo-simple-select-label"
-                                            >Select Category</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                label="Select Category"
-                                                value={Editcategory}
-                                                onChange={(e) => setEditcategory(e.target.value)}>
-                                                {getData.map((data) => (
-                                                    <MenuItem  value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
-                                                ))
-                                                }
-                                            </Select>
-                                            <FormHelperText></FormHelperText>
-                                        </FormControl><br></br>
-                                        <FormControl sx={{ minWidth: 100 }}>
-                                            <InputLabel id="demo-simple-select-label">Select Sub Category</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                label="Select Category"
-                                               value={Editsubcategory}
-                                                onChange={(e) => setEditsubcategory(e.target.value)}>
-                                                    
-                                                {/* <MenuItem value="sub" selected disabled>Select Sub Category</MenuItem> */}
+                                                <InputLabel id="demo-simple-select-label"
+                                                >Select Category</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    label="Select Category"
+                                                    value={Editcategory}
+                                                    onChange={(e) => setEditcategory(e.target.value)}>
+                                                    {getData.map((data) => (
+                                                        <MenuItem value={data.catagorySetup}>{data.catagorySetup}</MenuItem>
+                                                    ))
+                                                    }
+                                                </Select>
+                                                <FormHelperText></FormHelperText>
+                                            </FormControl><br></br>
+                                            <FormControl sx={{ minWidth: 100 }}>
+                                                <InputLabel id="demo-simple-select-label">Select Sub Category</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    label="Select Category"
+                                                    value={Editsubcategory}
+                                                    onChange={(e) => setEditsubcategory(e.target.value)}>
 
-                                                {subcatlist.map((subcatlist) => (
-                                                    <MenuItem value={subcatlist.Subcategory}>{subcatlist.Subcategory}</MenuItem>
-                                                ))
-                                                }
-                                            </Select>
-                                            <FormHelperText></FormHelperText>
-                                        </FormControl><br></br>
-                                            <TextField type="text" label="price" onChange={(e)=>setEditprice(e.target.value)}/><br></br>
-                                            <TextField type="file" onChange={(e)=>setEditimg(e.target.files[0])}/><br></br>
+                                                    {/* <MenuItem value="sub" selected disabled>Select Sub Category</MenuItem> */}
+
+                                                    {subcatlist.map((subcatlist) => (
+                                                        <MenuItem value={subcatlist.Subcategory}>{subcatlist.Subcategory}</MenuItem>
+                                                    ))
+                                                    }
+                                                </Select>
+                                                <FormHelperText></FormHelperText>
+                                            </FormControl><br></br>
+                                            <TextField type="text" label="price" onChange={(e) => setEditprice(e.target.value)} /><br></br>
+                                            <TextField type="file" onChange={(e) => setEditimg(e.target.files[0])} /><br></br>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" onClick={() => handleClose()}>Close</button>
                                                 <button type="submit" class="btn btn-primary" >Save changes</button>
@@ -784,13 +784,13 @@ function Add_new_service() {
                         {/* <!-- End of Main Content --> */}
 
                         {/* <!-- Footer --> */}
-                        <footer className="sticky-footer bg-white">
+                        {/* <footer className="sticky-footer bg-white">
                             <div className="container my-auto">
                                 <div className="copyright text-center my-auto">
                                     <span>Copyright &copy; Soolya 2023</span>
                                 </div>
                             </div>
-                        </footer>
+                        </footer> */}
                         {/* <!-- End of Footer --> */}
 
                     </div>
