@@ -793,6 +793,8 @@ select {
      
 }
 
+
+
 @media only screen and (max-width:725px) {
   .category_div_mobile_overall{
     display: grid;
