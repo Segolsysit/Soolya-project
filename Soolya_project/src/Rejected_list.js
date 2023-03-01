@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import "./Admin.css"
+import React, { useState } from 'react'
+import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 
-export const Admin = () => {
+
+const Rejected_list = () => {
+
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
     const changeStyle = () => {
@@ -21,6 +23,7 @@ export const Admin = () => {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
+
     return (
         <div>
             <body id="page-top">
@@ -37,11 +40,11 @@ export const Admin = () => {
                                 <i className="fas fa-laugh-wink"></i>
                             </div>
                             <div className="sidebar-brand-text mx-3">Soolya</div>
-                        </a>    
-                            <div className="text-center d-none d-md-inline">
+                        </a>
+                        <div className="text-center d-none d-md-inline">
                             <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
                         </div>
-                        
+
 
                         {/* <!-- Divider --> */}
                         <hr className="sidebar-divider my-0" />
@@ -64,13 +67,13 @@ export const Admin = () => {
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                        SERVICE MANAGEMENT
+                            SERVICE MANAGEMENT
                         </div>
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
                             <a className="nav-link" href="/orders">
-                            <i class="fa-regular fa-link-horizontal"></i>
+                                <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Orders</span></a>
                         </li>
                         <li className="nav-item">
@@ -102,7 +105,7 @@ export const Admin = () => {
                                     <a className="collapse-item" href="/Servicelist">Service List</a>
                                     <a className="collapse-item" href="/Add_new_service">Add New Service</a>
                                     {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                                    <a className="collapse-item" href="utilities-other.js">Other</a> */}
+                    <a className="collapse-item" href="utilities-other.js">Other</a> */}
                                 </div>
                             </div>
                         </li>
@@ -112,7 +115,7 @@ export const Admin = () => {
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                        SERVICE MAN MANAGEMENT
+                            SERVICE MAN MANAGEMENT
                         </div>
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
@@ -169,15 +172,15 @@ export const Admin = () => {
 
                         {/* <!-- Sidebar Toggler (Sidebar) --> */}
                         {/* <div className="text-center d-none d-md-inline">
-                            <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
-                        </div> */}
+            <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
+        </div> */}
 
                         {/* <!-- Sidebar Message --> */}
                         {/* <div className="sidebar-card d-none d-lg-flex">
-                            <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
-                            <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                            <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-                        </div> */}
+            <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
+            <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+        </div> */}
 
                     </ul>
                     {/* <!-- End of Sidebar --> */}
@@ -392,20 +395,59 @@ export const Admin = () => {
 
                             </nav>
                             {/* <!-- End of Topbar --> */}
+                            <div className="container-fluid">
+                                <h1>Rejected List</h1>
+                                <Table className='table-cat'>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>SN</TableCell>
+                                        <TableCell>Name</TableCell>
+                                        <TableCell>Contact info</TableCell>
+                                        <TableCell>Status</TableCell>
+                                        <TableCell>Action</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
 
-                        
+                                    {/* {getServiceManData.map((data) =>
+                                        <TableRow >
+                                            <TableCell>{serialNumber++}</TableCell>
+                                            <TableCell>{data.FirstName} {data.LastName}</TableCell>
+                                            <TableCell>
+                                                <p>{data.Email}</p>
+                                                <p>{data.MobilePhoneNumber}</p>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Switch color="primary" /></TableCell>
+                                            <TableCell>
+                                                <Button
+                                                    type="button"  data-toggle="modal" data-target="#exampleModalCenter"
+                                                    onClick={()=> viewdeatils(data._id)}
+                                                ><i class="fa-solid fa-eye"></i></Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    )} */}
+
+
+
+                                </TableBody>
+                            </Table>
+
+                            </div>
+
+
 
                         </div>
                         {/* <!-- End of Main Content --> */}
 
                         {/* <!-- Footer --> */}
                         {/* <footer className="sticky-footer bg-white">
-                            <div className="container my-auto">
-                                <div className="copyright text-center my-auto">
-                                    <span>Copyright &copy; Your Website 2021</span>
-                                </div>
-                            </div>
-                        </footer> */}
+            <div className="container my-auto">
+                <div className="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
+                </div>
+            </div>
+        </footer> */}
                         {/* <!-- End of Footer --> */}
 
                     </div>
@@ -443,4 +485,4 @@ export const Admin = () => {
     )
 }
 
-export default Admin;
+export default Rejected_list

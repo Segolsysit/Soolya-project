@@ -36,6 +36,9 @@ function BookingSteps() {
 
     const [input, setInput] = useState([])
 
+    const [bookingdata, setbookingdata] = useState({})
+
+
     const [address, setaddress] = useState("")
     const [street, setstreet] = useState("")
     const [city, setcity] = useState("")
@@ -160,8 +163,10 @@ function BookingSteps() {
             city,
             zip,
             person,
-            number
-
+            number,
+            Service:bookingdata.Service,
+            Category:bookingdata.Category,
+            price:bookingdata.price
         })
         // console.log(person);
         // console.log(address);
@@ -184,7 +189,7 @@ function BookingSteps() {
 
     const props = {
         input, setInput, error, setError, address, setaddress, street, setstreet, city, setcity, zip, setzip,
-        person, setperson, number, setnumber, onChange
+        person, setperson, number, setnumber, onChange, bookingdata, setbookingdata
     }
 
 

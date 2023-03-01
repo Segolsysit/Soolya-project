@@ -9,6 +9,7 @@ const service_router = require("./Router/service_route");
 const serviceman_route = require("./Router/serviceman_route");
 const cart_router = require("./Router/cart_router");
 const bookingdetails_router = require("./Router/bookingdetails_router");
+const RejectedList_router = require("./Router/RejectedList_router");
 
 app.use(express.json());
 app.use(cors())
@@ -18,6 +19,7 @@ app.use("/service_api", service_router );
 app.use("/serviceman",serviceman_route);
 app.use("/cart_api",cart_router);
 app.use("/booking_api",bookingdetails_router);
+app.use("/reject_api",RejectedList_router);
 app.use(express.static(path.join(__dirname, "files&img")));
 
 
