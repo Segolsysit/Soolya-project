@@ -4,12 +4,17 @@ import "../css_files/bookingsteps.css";
 import BookingDetails from "./bookingdetails";
 import BookingBill from "./bookingbill";
 import BookingFinish from "./bookingfinish";
-import { useState } from "react";
+import { useState,useEffect} from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 
 function BookingSteps() {
 
+    const [cookies] = useCookies(["cookie-name"]);
+    const navigate = useNavigate();
 
 
     // details page
@@ -23,6 +28,17 @@ function BookingSteps() {
     //     number:null,
     //     custom_error:null
     // }
+
+    useEffect(() => {
+      const tokenVerify = () => {
+        if(!cookies.jwt2){
+            navigate("/sign_in")
+        }
+      }
+      tokenVerify()
+
+    }, [])
+    
 
     const [error, setError] = useState({
         address: null,

@@ -12,6 +12,8 @@ import santhosh_kumar from "./images/1.jpg";
 import PlumberProfile from './js_files/plumber_profile';
 import Serviceman from './js_files/serviceman';
 import DashBoard from './js_files/dashboard';
+import NotFound from './js_files/NotFound';
+
 import ForgetPassword from './js_files/forgetPassword';
 import EmployeeProfile from './js_files/Employee-Profile';
 import Category from './js_files/category';
@@ -99,8 +101,7 @@ function App() {
 <React.Fragment>
         <div>
     <ToastContainer/>
-{/* <AppContext.Provider value={{cartdata,setcartdata}}> */}
-            {/* <Header></Header> */}
+
            <Routes>
             <Route path='/header' element={<Header></Header>}></Route>
                 <Route path="/"  element={<Home array ={array}></Home>}></Route>
@@ -115,16 +116,7 @@ function App() {
                 <Route path="/cart" element={<Cart ></Cart>}></Route>
                 <Route path='/servicemanlist' element={<Servicemanlist></Servicemanlist>}></Route>
                 <Route path="/vendor_admin" element={<Vendor_admin></Vendor_admin>}></Route>
-                {/* {array.map((arr)=>(
-                <Route path={`/${arr.type || arr.district}`} element={<Plumbing array={array}></Plumbing>}></Route>
-                 ))} */}
-
-                
                 <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>
-
-                 
-                {/* <Route path="/electrician" element={<Electrician array={array}></Electrician>}></Route> */}
-
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
                 <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
                 <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
@@ -138,9 +130,8 @@ function App() {
                 <Route path="/bookingbill" element={<BookingBill></BookingBill>}></Route>
                 <Route path="/bookingfinish" element={<BookingFinish></BookingFinish>}></Route>
                 <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
-                {/* <Route path="/footer" element={<Footer></Footer>}></Route>                 */}
+                <Route path="/*" element={<NotFound></NotFound>}></Route>                
             </Routes>
-            {/* </AppContext.Provider> */}
             <br></br>
             {/* <Footer></Footer> */}
             

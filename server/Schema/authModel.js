@@ -4,25 +4,21 @@ const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true
   },
   lastName: {
     type: String,
-    required: true
+   
   },
   phoneNumber:{
     type:String
-    
-  },
+ },
   email: {
     type: String,
-    required: [true, "Email is Required"],
     unique: true,
   },
   password: {
     type: String,
-    required: [true, "Password is Required"],
-  },
+   },
   // confirmPassword: {
   //   type: String,
   //   required: [true, "ConfirmPassword is Required"],
@@ -49,4 +45,4 @@ userSchema.statics.login = async function (email, password) {
   throw Error("incorrect email");
 };
 
-module.exports = mongoose.model("authUser", userSchema);
+module.exports = mongoose.model("User", userSchema);

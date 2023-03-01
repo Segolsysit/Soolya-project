@@ -12,6 +12,7 @@ import Footer from './footer';
 import { toast } from 'react-toastify';
 import axios from "axios";
 import { useCookies } from "react-cookie";
+// axios.defaults.withCredentials = true
 
 function SignIn() {
 
@@ -21,39 +22,75 @@ function SignIn() {
   const nav = useNavigate();
   const [cookies] = useCookies([]);
   const navigate = useNavigate();
-//   useEffect(() => {
-//     if (cookies.jwt) {
-//       navigate("/");
-//     }
-//   }, [cookies, navigate]);
+  useEffect(() => {
+    if (cookies.jwt2) {
+      navigate("/");
+    }
+  }, [cookies, navigate]);
 
   const [values, setValues] = useState({ email: "", password: "" });
   const generateError = (error) =>
     toast.error(error, {
       position: "bottom-right",
     });
+
+ const initialErrors = {
+        email: null,
+        password: null,
+      
+    }
+
+
+    const [errors, setErrors] = useState(initialErrors);
+
+
+    const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const { data } = await axios.post(
-        "http://localhost:3001/auth_router/login",
-        {
-          ...values,
-        },
-        { withCredentials: true }
-      );
-      if (data) {
-        if (data.errors) {
-          const { email, password } = data.errors;
-          if (email) generateError(email);
-          else if (password) generateError(password);
-        } else {
-          navigate("/");
-        }
-      }
-    } catch (ex) {
-      console.log(ex);
-    }
+    // try {
+
+        let errors = initialErrors;
+
+            let hasErrors = false;
+    
+    
+            if (values.email === "") {
+                errors.email = "Email is required";
+                hasErrors = true;
+            }
+    
+            if (values.password === "") {
+                errors.password = "Password is required";
+                hasErrors = true;
+            }
+    
+            if (!hasErrors) {
+                  setLoading(true);
+
+                  const { data } = await axios.post(
+                    "http://localhost:3001/auth_router/login",
+                    {
+                      ...values,
+                    },
+                    { withCredentials: true }
+                  );
+                  if (data) {
+                    if (data.errors) {
+                      const { email, password } = data.errors;
+                      if (email) generateError(email);
+                      else if (password) generateError(password);
+                    } else {
+                      navigate("/");
+                    }
+                  }
+                }
+            // catch (ex) {
+            //       console.log(ex);
+            //     }
+            setLoading(false)
+
+            setErrors({...errors})
   };
 
 
@@ -149,15 +186,19 @@ function SignIn() {
                         <div className="form_div">
                             <div className="form_input">
                                 <label>
-                                    Email/Phone
+                                    Email
                                 </label>
-                                <input className="data_input" onChange={(e) =>
-              setValues({ ...values, [e.target.name]: e.target.value })
+                                <input className="data_input" onChange={(e) =>{
+              setValues({ ...values, [e.target.name]: e.target.value });
+              errors.email = null;
+                                    
+                                }
             }
-                                 name="email"  type="text" placeholder="Enter email or phone number"></input>
+            autoComplete="off"
+                                 name="email"  type="text" placeholder="Enter email "></input>
                             </div>
 
-                            {/* {errors.email ?
+                            {errors.email ?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -166,21 +207,23 @@ function SignIn() {
                                         <h6>{errors.email}</h6>
                                     </div>
                                 </div>) : null
-                            } */}
+                            }
 
                             <div className="form_input">
                                 <label>
                                     Password
                                 </label>
                                 <input className="data_input"
-                                   onChange={(e) =>
+                                   onChange={(e) =>{
                                     setValues({ ...values, [e.target.name]: e.target.value })
+                                    errors.password = null;
+                                   }
                                   }
                                   name="password"
                                    type="password" placeholder="********"></input>
                             </div>
 
-                            {/* {errors.password ?
+                            {errors.password ?
                                 (<div id="d_flex" className="sign_in_form_validation">
                                     <div>
                                         <i id="cross_sign" className="fa-regular fa-circle-xmark"></i>
@@ -189,7 +232,7 @@ function SignIn() {
                                         <h6>{errors.password}</h6>
                                     </div>
                                 </div>) : null
-                            } */}
+                            }
 
 {/* 
                             {errors.custom_error ?
@@ -223,12 +266,12 @@ function SignIn() {
 
 
 
-                            {/* {loading ?
+                            {loading ?
                                 (<div id="spinner_roll">
                                     <div className="spinner-border text-primary" role="status">
                                     </div>
                                 </div>) : null
-                            } */}
+                            }
 
 
                             <div className="form_sign_in_button_div">

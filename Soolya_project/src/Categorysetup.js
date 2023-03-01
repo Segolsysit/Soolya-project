@@ -146,8 +146,9 @@ function Sub_Category_Setup() {
                 theme: "colored",
 
             });
+            categorydata()
         })
-
+        
     }
 
     const localpath = "http://localhost:3001/"
