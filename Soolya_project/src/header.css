@@ -73,6 +73,10 @@
           max-width:20px
         }
         */
+
+        .service_man{
+          display: block;
+        }
         
         .service_man__register{
         color:#fff;
@@ -270,3 +274,11 @@
           font-size: 16px;
           margin-right: 3px;
         }
+
+        
+@media only screen and (max-width:850px) {
+  .service_man{
+    display: none;
+  }
+     
+}
