@@ -11,26 +11,43 @@ function ApplicationForm() {
     const [getServiceManData, setGetServiceManData] = useState([]);
     const [viewdata,setviewdata] = useState([]);
 
-    useEffect(()=>{
+    const getdata1 = () =>{
         axios.get("http://localhost:3001/serviceman/get_user").then((response)=>{
             setGetServiceManData(response.data);
             // console.log(response);
         })
-    }, [getServiceManData]);
+    }
+
+    useEffect(()=>{
+        getdata1()
+    });
 
     const viewdeatils = (id) => {
         axios.get(`http://localhost:3001/serviceman/get_by_id/${id}`).then((response) => {
          setviewdata(response.data);
-        //  console.log(response.data);
+         console.log(response.data);
         })
     }
 
 
-    const delete_data = (id)=>{
-         axios.delete(`http://localhost:3001/serviceman/delete_item/${id}`).then(()=>{
-            alert("deleted");
-        })
+    const reject_data = ()=>{
+        // e.preventDefault()
+         axios.post("http://localhost:3001/reject_api/new_rejection"),{
+            WorkType:viewdata.WorkType,
 
+
+
+            
+            district:viewdata.district,
+            FirstName:viewdata.FirstName,
+            LastName:viewdata.LastName,
+            MobilePhoneNumber:viewdata.MobilePhoneNumber,
+            StreetAddress:viewdata.StreetAddress,
+            PostalCode:viewdata.PostalCode,
+            Email:viewdata.Email,
+            IdentityType:viewdata.IdentityType,
+            IdentityNumber:viewdata.IdentityNumber,
+         }
     }
 
 
@@ -102,9 +119,9 @@ function ApplicationForm() {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                        <a className="nav-link" href="charts.js">
+                        <a className="nav-link" href="/orders">
                             <i class="fa-regular fa-link-horizontal"></i>
-                            <span>Service Zones</span></a>
+                            <span>Orders</span></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -159,7 +176,7 @@ function ApplicationForm() {
                             <div className="bg-white py-2 collapse-inner rounded">
                                 {/* <h6 className="collapse-header">Login Screens:</h6> */}
                                 <a className="collapse-item" href="/servicemanlist">Service Man List</a>
-                                <a className="collapse-item" href="register.js">Add New Service Man</a>
+                                <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                             </div>
                         </div>
                     </li>
@@ -430,7 +447,7 @@ function ApplicationForm() {
                                     {getServiceManData.map((data) =>
                                         <TableRow >
                                             <TableCell>{serialNumber++}</TableCell>
-                                            <TableCell>{data.FirstName}{data.LastName}</TableCell>
+                                            <TableCell>{data.FirstName} {data.LastName}</TableCell>
                                             <TableCell>
                                                 <p>{data.Email}</p>
                                                 <p>{data.MobilePhoneNumber}</p>
@@ -438,12 +455,12 @@ function ApplicationForm() {
                                             <TableCell>
                                                 <Switch color="primary" /></TableCell>
                                             <TableCell>
-                                                <Button><i class="fa-solid fa-pencil"></i></Button>
+                                                {/* <Button><i class="fa-solid fa-pencil"></i></Button> */}
                                                 <Button
                                                     type="button"  data-toggle="modal" data-target="#exampleModalCenter"
                                                     onClick={()=> viewdeatils(data._id)}
                                                 ><i class="fa-solid fa-eye"></i></Button>
-                                                <Button onClick={() => delete_data(data._id)}><i class="fa-solid fa-trash"></i></Button>
+                                                {/* <Button onClick={() => delete_data(data._id)}><i class="fa-solid fa-trash"></i></Button> */}
                                             </TableCell>
                                         </TableRow>
                                     )}
@@ -474,7 +491,7 @@ function ApplicationForm() {
                                 <h3>Email : {viewdata.Email}</h3><br/>
                                 <h3>Work Type : {viewdata.WorkType}</h3><br/>
                                 <h3>Address : {viewdata.StreetAddress}</h3><br/>
-                                <Button>Delete</Button>
+                                <Button onClick={() => reject_data()}>Reject</Button>
                                 <Button>Accept</Button>
                                 </div>
                         </div>

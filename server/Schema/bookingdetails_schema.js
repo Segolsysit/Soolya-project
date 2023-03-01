@@ -19,6 +19,15 @@ const bookingdetai_schema =new mongoose.Schema({
     },
     number:{
         type:Number
+    },
+    Service:{
+        type:String
+    },
+    Category:{
+        type:String
+    },
+    price:{
+        type:Number
     }
 })
 

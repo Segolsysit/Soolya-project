@@ -8,7 +8,10 @@ bookingdetails_router.post("/new_booking", async (req, res) => {
         city: req.body.city,
         zip: req.body.zip,
         person: req.body.person,
-        number: req.body.number
+        number: req.body.number,
+        Service: req.body.Service,
+        Category: req.body.Category,
+        price: req.body.price
     })
     await deatails.save();
     res.status(200).json({message:"Uploaded Successfully",deatails})

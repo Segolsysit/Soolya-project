@@ -102,9 +102,9 @@ function Servicelist() {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                        <a className="nav-link" href="charts.js">
+                        <a className="nav-link" href="/orders">
                             <i class="fa-regular fa-link-horizontal"></i>
-                            <span>Service Zones</span></a>
+                            <span>Orders</span></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -159,7 +159,7 @@ function Servicelist() {
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Login Screens:</h6> */}
                                     <a className="collapse-item" href="/servicemanlist">Service Man List</a>
-                                    <a className="collapse-item" href="register.js">Add New Service Man</a>
+                                    <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                                 </div>
                             </div>
                         </li>

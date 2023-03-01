@@ -48,22 +48,30 @@ import frame_line from "./images/frame_img.png";
 import Slider from 'react-slick';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import AOS from 'aos';
-import "aos/dist/aos.css";
 import Header from './header';
 import Footer from './footer';
 
-    
+import axios from "axios";
+
+
+
 
 
 function Home(props) {
 
+    const [getData, setgetData] = useState([]);
+
 
     useEffect(() => {
-        AOS.init({
-            duration: 1000
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+            setgetData(res.data);
         })
+
+
+
     }, [])
+
+    const localpath = "http://localhost:3001/";
 
     // scroll up btn
     const scrollToUp = () => {
@@ -99,7 +107,7 @@ function Home(props) {
         //         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
         //     );
         // }
-      
+
     };
 
 
@@ -205,7 +213,7 @@ function Home(props) {
 
 
 
-   
+
 
     return (
         <div>
@@ -222,12 +230,12 @@ function Home(props) {
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Installations</a></li>
                             <li className="sub_header__list"><a className="sub_header__link" href="_slef">Home services</a></li>
                             <li className="sub_header__list"><NavLink className="sub_header__link" to="/category">AC repair services</NavLink></li>
-                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/emp-profile">Employee Profiles</NavLink></li>
+                            <li className="sub_header__list"><NavLink className="sub_header__link" to="/plumber_profile">Employee Profiles</NavLink></li>
                         </ul>
                     </div>
                 </div>
 
- 
+
 
                 <div>
                     <div className="carousel_div">
@@ -266,7 +274,7 @@ function Home(props) {
                             <div className="z_index_search" id="gap">
                                 <div className="select_div">
                                     <select className="locality" onChange={dist} >
-                                        <option  className="locality_option" selected disabled>Select District</option>
+                                        <option className="locality_option" selected disabled>Select District</option>
                                         <option className="locality_option" value="erode">Erode</option>
                                         <option className="locality_option" value="Coimbatore">Coimbatore</option>
                                     </select>
@@ -436,13 +444,78 @@ function Home(props) {
                                 </Slider>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
 
-              
+
+                {/* MOBILE VIEW DIV */}
+
+
+                {/* <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sub-Category</a>
+                    </li>
+
+                </ul> */}
+
+                <div className="review_div_mobile">
+                    <ul class="nav nav-tabs" id="myTabMobile" role="tablist">
+                        <div className="front_category_div">
+                        <li class="nav-item" id="first_li" role="presentation">
+                            <button class="nav-link-category active" id="home-tab_mobile" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                                Category
+                            </button>
+                        </li>
+                        <li class="nav-item"  id="second_li" role="presentation">
+                            <button class="nav-link-category" id="profile-tab_mobile" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                Sub-category
+                            </button>
+                        </li>
+                        </div>
+                    </ul>
+                    {/* <button class="nav-link-category active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                                Category
+                            </button>
+
+                            <button class="nav-link-category" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                Sub-category
+                            </button> */}
+
+                    <div class="tab-content" id="myTabContent_mobile">
+                        <div>
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab_mobile">
+                                <div className="category_div_mobile_overall">
+
+                                    {getData.map((data, index) =>
+                                        <div className="category_div_mobile" key={index}>
+
+                                            <button className="category_button_div_mobile" >
+                                                {/* <div> */}
+                                                <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
+                                                {/* </div> */}
+                                                <div>
+                                                    <h5 className="category_text_mobile">{data.catagorySetup}</h5>
+                                                </div>
+                                            </button>
+
+                                        </div>
+                                    )}
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab_mobile">...</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 {/* scroll div */}
-                 
+
                 <div className="scroll_div">
                     <button className="scroll_up" onClick={scrollToUp}>
                         <i id="scroll_up_icon" class="fa-solid fa-arrow-up"></i>
@@ -451,7 +524,7 @@ function Home(props) {
 
 
 
-               {/* two ad */}
+                {/* two ad */}
 
                 <div className="owl_carou_2">
                     <div className="advertise_phase" class="row">
@@ -591,16 +664,15 @@ function Home(props) {
                 </div>
 
 
-                {/* service category div */}
 
 
 
 
                 <div className="frame_line">
                     <div className="one">
-                      
-                                <img className="frame_img_size" src={frame_line} alt="you"></img>
-                         
+
+                        <img className="frame_img_size" src={frame_line} alt="you"></img>
+
                     </div>
                     <div id="frame_line_right_side">
                         <div>

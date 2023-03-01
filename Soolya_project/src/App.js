@@ -38,6 +38,8 @@ import BookingDetails from './js_files/bookingdetails';
 import BookingBill from './js_files/bookingbill';
 import BookingFinish from './js_files/bookingfinish';
 import Vendor_admin from './vendor_admin';
+import Orders from './Orders';
+import Rejected_list from './Rejected_list';
 
 
 function App() {
@@ -116,6 +118,8 @@ function App() {
                 <Route path="/cart" element={<Cart ></Cart>}></Route>
                 <Route path='/servicemanlist' element={<Servicemanlist></Servicemanlist>}></Route>
                 <Route path="/vendor_admin" element={<Vendor_admin></Vendor_admin>}></Route>
+                <Route path='/orders' element={<Orders></Orders>}/>
+                <Route path="/rejectedlist" element={<Rejected_list/>}></Route>
                 <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>
                 <Route path="/plumber_profile" element={<PlumberProfile></PlumberProfile>}></Route>
                 <Route path="/dashboard" element={<DashBoard></DashBoard>}></Route>
