@@ -19,6 +19,7 @@ import {
 import { toast } from 'react-toastify';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 
 function Add_new_service() {
@@ -45,6 +46,17 @@ function Add_new_service() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     let a = 1;
+
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
 
 
     const handleImgChange = (e) => {
@@ -217,6 +229,7 @@ function Add_new_service() {
     }
 
     useEffect(() => {
+        verify()
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
             // console.log(res.data);
@@ -302,9 +315,9 @@ function Add_new_service() {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="charts.js">
+                            <a className="nav-link" href="/orders">
                                 <i class="fa-regular fa-link-horizontal"></i>
-                                <span>Service Zones</span></a>
+                                <span>Orders</span></a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -359,7 +372,7 @@ function Add_new_service() {
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Login Screens:</h6> */}
                                     <a className="collapse-item" href="/servicemanlist">Service Man List</a>
-                                    <a className="collapse-item" href="register.js">Add New Service Man</a>
+                                    <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                                 </div>
                             </div>
                         </li>

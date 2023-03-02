@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Admin.css"
 
 export const Admin = () => {
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+    const nav = useNavigate()
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -21,6 +25,24 @@ export const Admin = () => {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
+
+    const adminlogout = ()=>{
+        localStorage.removeItem("adminemail")
+        localStorage.removeItem("adminpassword")
+        nav("/admin")
+    }
+
+    useEffect(() => {
+
+        verify()
+    }, [])
+
     return (
         <div>
             <body id="page-top">
@@ -69,9 +91,9 @@ export const Admin = () => {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="charts.js">
+                            <a className="nav-link" href="/orders">
                             <i class="fa-regular fa-link-horizontal"></i>
-                                <span>Service Zones</span></a>
+                                <span>Orders</span></a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -126,7 +148,7 @@ export const Admin = () => {
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     {/* <h6 className="collapse-header">Login Screens:</h6> */}
                                     <a className="collapse-item" href="/servicemanlist">Service Man List</a>
-                                    <a className="collapse-item" href="register.js">Add New Service Man</a>
+                                    <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                                 </div>
                             </div>
                         </li>
@@ -433,7 +455,7 @@ export const Admin = () => {
                             <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                             <div className="modal-footer">
                                 <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a className="btn btn-primary" href="login.js">Logout</a>
+                                <button className="btn btn-primary" onClick={adminlogout}>Logout</button>
                             </div>
                         </div>
                     </div>

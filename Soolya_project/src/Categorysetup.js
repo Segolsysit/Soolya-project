@@ -6,6 +6,7 @@ import { Button, Table, TableBody, TableCell, TableRow, TableHead, TextField } f
 import { toast } from "react-toastify";
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 
 // import { useForm } from 'react-hook-form';
@@ -17,6 +18,7 @@ function Sub_Category_Setup() {
     const [img, setImg] = useState("");
     const [getData, setgetData] = useState([]);
     const [getbyid, setgetbyid] = useState('');
+    const nav = useNavigate()
 
     const [Editservice, setEditservice] = useState('');
     const [EditImage, setEditImage] = useState('');
@@ -26,11 +28,26 @@ function Sub_Category_Setup() {
     const handleClose = () => setOpen(false);
     let a = 1;
 
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
+
     useEffect(() => {
 
         categorydata()
-
+        verify()
     }, [])
+
+    const adminlogout = ()=>{
+        localStorage.removeItem("adminemail")
+        localStorage.removeItem("adminpassword")
+        nav("/admin")
+    }
 
     const categorydata = () => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
@@ -146,8 +163,9 @@ function Sub_Category_Setup() {
                 theme: "colored",
 
             });
+            categorydata()
         })
-
+        
     }
 
     const localpath = "http://localhost:3001/"
@@ -239,9 +257,9 @@ function Sub_Category_Setup() {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                        <a className="nav-link" href="charts.js">
+                        <a className="nav-link" href="/orders">
                             <i class="fa-regular fa-link-horizontal"></i>
-                            <span>Service Zones</span></a>
+                            <span>Orders</span></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -296,7 +314,7 @@ function Sub_Category_Setup() {
                             <div className="bg-white py-2 collapse-inner rounded">
                                 {/* <h6 className="collapse-header">Login Screens:</h6> */}
                                 <a className="collapse-item" href="/servicemanlist">Service Man List</a>
-                                <a className="collapse-item" href="register.js">Add New Service Man</a>
+                                <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                             </div>
                         </div>
                     </li>
@@ -599,6 +617,30 @@ function Sub_Category_Setup() {
                                     </TableBody>
                                 </Table>
                             </div>
+                             {/* <!-- Scroll to Top Button--> */}
+                <a className="scroll-to-top rounded" href="#page-top">
+                    <i className="fas fa-angle-up"></i>
+                </a>
+
+                {/* <!-- Logout Modal--> */}
+                <div className="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div className="modal-footer">
+                                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <button className="btn btn-primary" onClick={adminlogout}>Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                             <div>
                                 {/* <Button onClick={handleOpen}>Open modal</Button> */}
                                 <Modal

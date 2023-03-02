@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import Switch from '@mui/material/Switch';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -8,6 +9,20 @@ import Switch from '@mui/material/Switch';
 function Servicemanlist() {
 
   const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+  const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
+
+    useEffect(()=>{
+      verify()
+    })
 
   const changeStyle = () => {
     if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -74,9 +89,9 @@ function Servicemanlist() {
 
             {/* <!-- Nav Item - Pages Collapse Menu --> */}
             <li className="nav-item">
-              <a className="nav-link" href="charts.js">
+              <a className="nav-link" href="/orders">
                 <i class="fa-regular fa-link-horizontal"></i>
-                <span>Service Zones</span></a>
+                <span>Orders</span></a>
             </li>
             <li className="nav-item">
               <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -131,7 +146,7 @@ function Servicemanlist() {
                 <div className="bg-white py-2 collapse-inner rounded">
                   {/* <h6 className="collapse-header">Login Screens:</h6> */}
                   <a className="collapse-item" href="/servicemanlist">Service Man List</a>
-                  <a className="collapse-item" href="register.js">Add New Service Man</a>
+                  <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                 </div>
               </div>
             </li>

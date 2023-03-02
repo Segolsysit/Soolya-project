@@ -1,14 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function BookingBill({ setpage }) {
+function BookingBill({bookingdata,setbookingdata}) {
 
-    const [bookingdata, setbookingdata] = useState("")
     const id = localStorage.getItem("service_id")
     const address = localStorage.getItem("address")
-    const street =localStorage.getItem("street")
-    const city =localStorage.getItem("city")
-    const zip =localStorage.getItem("zip")
     const person =localStorage.getItem("person")
     const number =localStorage.getItem("number")
 

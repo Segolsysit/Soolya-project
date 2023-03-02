@@ -3,37 +3,89 @@ import React, { useEffect, useState } from 'react';
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 
 function ApplicationForm() {
 
     let serialNumber = 1;
-
     const [getServiceManData, setGetServiceManData] = useState([]);
     const [viewdata,setviewdata] = useState([]);
 
-    useEffect(()=>{
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
+
+    const getdata1 = () =>{
         axios.get("http://localhost:3001/serviceman/get_user").then((response)=>{
             setGetServiceManData(response.data);
             // console.log(response);
         })
-    }, [getServiceManData]);
+    }
+
+    useEffect(()=>{
+        getdata1()
+        verify()
+    });
 
     const viewdeatils = (id) => {
         axios.get(`http://localhost:3001/serviceman/get_by_id/${id}`).then((response) => {
          setviewdata(response.data);
-        //  console.log(response.data);
+         console.log(response.data);
         })
     }
-
-
-    const delete_data = (id)=>{
-         axios.delete(`http://localhost:3001/serviceman/delete_item/${id}`).then(()=>{
-            alert("deleted");
-        })
-
+    const adminlogout = ()=>{
+        localStorage.removeItem("adminemail")
+        localStorage.removeItem("adminpassword")
+        nav("/admin")
     }
 
+    const reject_data = ()=>{
+        // e.preventDefault()
+         axios.post("http://localhost:3001/reject_api/new_rejection",{
+            WorkType:viewdata.WorkType,
+            district:viewdata.district,
+            FirstName:viewdata.FirstName,
+            LastName:viewdata.LastName,
+            MobilePhoneNumber:viewdata.MobilePhoneNumber,
+            StreetAddress:viewdata.StreetAddress,
+            PostalCode:viewdata.PostalCode,
+            Email:viewdata.Email,
+            IdentityType:viewdata.IdentityType,
+            IdentityNumber:viewdata.IdentityNumber,
+         })
+        //  deletedata(id)
+        // console.log(viewdata._id);
+    axios.delete(`http://localhost:3001/serviceman/delete_item/${viewdata._id}`).then(() => {
+        toast.error('😈 Deleted Successed!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
 
+        });
+    })
+
+
+         
+    }
+
+const deletedata = (id)=>{
+    axios.delete(`http://localhost:3001/serviceman/delete_item/${id}`)
+
+}
 
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
@@ -102,9 +154,9 @@ function ApplicationForm() {
 
                     {/* <!-- Nav Item - Pages Collapse Menu --> */}
                     <li className="nav-item">
-                        <a className="nav-link" href="charts.js">
+                        <a className="nav-link" href="/orders">
                             <i class="fa-regular fa-link-horizontal"></i>
-                            <span>Service Zones</span></a>
+                            <span>Orders</span></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -159,7 +211,7 @@ function ApplicationForm() {
                             <div className="bg-white py-2 collapse-inner rounded">
                                 {/* <h6 className="collapse-header">Login Screens:</h6> */}
                                 <a className="collapse-item" href="/servicemanlist">Service Man List</a>
-                                <a className="collapse-item" href="register.js">Add New Service Man</a>
+                                <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                             </div>
                         </div>
                     </li>
@@ -430,7 +482,7 @@ function ApplicationForm() {
                                     {getServiceManData.map((data) =>
                                         <TableRow >
                                             <TableCell>{serialNumber++}</TableCell>
-                                            <TableCell>{data.FirstName}{data.LastName}</TableCell>
+                                            <TableCell>{data.FirstName} {data.LastName}</TableCell>
                                             <TableCell>
                                                 <p>{data.Email}</p>
                                                 <p>{data.MobilePhoneNumber}</p>
@@ -438,12 +490,12 @@ function ApplicationForm() {
                                             <TableCell>
                                                 <Switch color="primary" /></TableCell>
                                             <TableCell>
-                                                <Button><i class="fa-solid fa-pencil"></i></Button>
+                                                {/* <Button><i class="fa-solid fa-pencil"></i></Button> */}
                                                 <Button
                                                     type="button"  data-toggle="modal" data-target="#exampleModalCenter"
                                                     onClick={()=> viewdeatils(data._id)}
                                                 ><i class="fa-solid fa-eye"></i></Button>
-                                                <Button onClick={() => delete_data(data._id)}><i class="fa-solid fa-trash"></i></Button>
+                                                {/* <Button onClick={() => delete_data(data._id)}><i class="fa-solid fa-trash"></i></Button> */}
                                             </TableCell>
                                         </TableRow>
                                     )}
@@ -457,6 +509,25 @@ function ApplicationForm() {
                     </div>
                 </div>
             </div>
+            {/* <!-- Logout Modal--> */}
+            <div className="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div className="modal-footer">
+                                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <button className="btn btn-primary" onClick={adminlogout}>Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {/* <!-- Modal --> */}
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -474,7 +545,7 @@ function ApplicationForm() {
                                 <h3>Email : {viewdata.Email}</h3><br/>
                                 <h3>Work Type : {viewdata.WorkType}</h3><br/>
                                 <h3>Address : {viewdata.StreetAddress}</h3><br/>
-                                <Button>Delete</Button>
+                                <Button onClick={() => reject_data()}>Reject</Button>
                                 <Button>Accept</Button>
                                 </div>
                         </div>

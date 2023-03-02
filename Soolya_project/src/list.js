@@ -89,7 +89,7 @@ function List(props) {
                 {filte.map((data, index) =>
                     <div className="list_overall_div" key={index}>
                    
-                        <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" onClick={()=>setActive(true)}>
+                        <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" >
                             <div>
                                 <img className="list_image" src={localpath + data.filename} alt="list_img"></img>
                             </div>
