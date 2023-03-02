@@ -80,7 +80,7 @@ function Header() {
       
       setRegister(true)
       setLogin(true)
-    //   nav("/sign_in");
+      nav("/sign_in");
 
     };
 

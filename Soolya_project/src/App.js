@@ -89,14 +89,7 @@ function App() {
 
     ];
 
-  
-    // const [cart,setcart]=useState()
-
-    
-
-
-
-    return (
+ return (
 
       
         
