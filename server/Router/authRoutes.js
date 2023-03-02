@@ -11,14 +11,24 @@ const createToken = (id) => {
   });
 };
 
+const createToken2 = (id) => {
+  return jwt.sign({ id }, "soolya super secret key", {
+    expiresIn: maxAge,
+  });
+};
 const handleErrors = (err) => {
-  let errors = { email: "", password: "" };
+  let errors = {firstName:"", lastName:"", email: "", password: "" };
 
   console.log(err);
+
+  // if (err.email === " Email is Required"){
+  //   errors.email = "Email is Required";
+  // }
+  
   if (err.message === "incorrect email") {
     errors.email = "That email is not registered";
   }
-
+  
   if (err.message === "incorrect password") {
     errors.password = "That password is incorrect";
   }
@@ -88,8 +98,8 @@ auth_router.post("/", (req, res, next) => {
     const { email, password } = req.body;
     try {
       const user = await User.login(email, password);
-      const token = createToken(user._id);
-      res.cookie("jwt", token, { httpOnly: false, maxAge: maxAge * 1000 });
+      const token = createToken2(user._id);
+      res.cookie("jwt2", token, { httpOnly: false, maxAge: maxAge * 1000 });
       res.status(200).json({ user: user._id, status: true });
     } catch (err) {
       const errors = handleErrors(err);

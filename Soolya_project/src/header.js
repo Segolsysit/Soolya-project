@@ -20,8 +20,9 @@ import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import { logOut } from './js_files/auth';
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
+axios.defaults.withCredentials = true
 
 function Header() {
 
@@ -35,29 +36,34 @@ function Header() {
     const [cookies, setCookie, removeCookie] = useCookies([]);
     useEffect(() => {
       const verifyUser = async () => {
-        if (cookies.jwt) {
+
+        if (cookies.jwt){
+            setlogOut(false)
+        }
+
+        if (cookies.jwt2 && cookies.jwt) {
           setRegister(false)
           setLogin(false)
+          setlogOut(true)
         } 
 
 
-        // else {
+        else {
           const { data } = await axios.post(
-            "http://localhost:4000",
-            {},
+            "http://localhost:3001/auth_router",
             {
               withCredentials: true,
             }
           );
           if (!data.status) {
-            removeCookie("jwt");
-            nav("/sign_in");
+            // removeCookie("jwt");
+            removeCookie("jwt2");
           } else
             toast(`Hi ${data.user} 🦄`, {
               theme: "dark"
             });
         }
-    //   };
+      };
       verifyUser();
       logOuthide()
     }, [cookies, nav, removeCookie]);
@@ -69,7 +75,8 @@ function Header() {
    }
 
     const logOut = () => {
-      removeCookie("jwt");
+    //   removeCookie("jwt");
+      removeCookie("jwt2");
       
       setRegister(true)
       setLogin(true)
