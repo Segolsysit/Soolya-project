@@ -7,6 +7,22 @@ html, body{
     background-color:#f1f3f6 ; */
 }
 
+.hero_video{
+  position: relative;
+   opacity: 1;
+   padding: 5px;
+   /* height:600px; */
+}
+
+video{
+  height: 530px;
+  width: 100%;
+}
+
+video::-webkit-media-controls {
+  display: none;
+}
+
 /* sub body  */
 
  /* ::-webkit-scrollbar {
@@ -66,7 +82,7 @@ text-decoration: none;
 
 .carousel{
   position: relative;
-   opacity: 1;
+   /* opacity: 1; */
 }
 
 .carousel_div{
@@ -293,19 +309,23 @@ select {
 .owl_carou_2{
   padding: 10px;
   display: block;
+  margin-top: -37px;
+  background-color: #f1f3f6;
 }
 
 /* MOBILE VIEW DIV  ----Start  */
 
 .review_div_mobile{
-   background-color: #fff;
+   background-color: #f1f3f6;
+   height:auto;
    display: none;
+   padding: 10px 5px 25px 5px;
 }
 
 .category_div_mobile_overall{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 120px;
+  grid-template-rows: 170px;
   grid-row-gap: 30px;
   grid-column-gap: 40px;
   margin-top: 40px;
@@ -326,7 +346,7 @@ select {
 .category_button_div_mobile{
   width: 140px;
   height:130px;
-  background-color: #f1f3f6;
+  background-color: #fff;
   border-radius: 5px;
   text-align: center;
   border: 1px solid gray;
@@ -778,10 +798,10 @@ select {
 
 
 @media only screen and (max-width:550px) {
-  .category_div_mobile_overall{
+  #category_div_mobile_overall{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 120px;
+    grid-template-rows: 140px;
     grid-row-gap: 30px;
     grid-column-gap: 40px;
     margin-top: 40px;
@@ -799,7 +819,7 @@ select {
   .category_div_mobile_overall{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 120px;
+    grid-template-rows: 140px;
     grid-row-gap: 30px;
     grid-column-gap: 40px;
     margin-top: 40px;
@@ -810,8 +830,14 @@ select {
 }
 
 @media only screen and (max-width:850px) {
+    
+     
+}
+
+@media only screen and (max-width:800px) {
   .frame_line{
-    display: none;
+    display: block;
+    /* margin-top: -50px; */
   }
      
 }
@@ -829,8 +855,12 @@ select {
      .review_div_mobile{
       display: block;
      }
-
-   
+     .scroll_div{
+      display: none;
+    }
+     /* .frame_line{
+       margin-top: -50px;
+    } */
 }
 
 @media only screen and (min-width:1025px) {

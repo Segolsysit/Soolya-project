@@ -13,7 +13,7 @@
     text-align: center;
   }
   
-   .left_div{
+   .left_div_overall_mobile{
    flex-basis: 50%;
   } 
 
@@ -206,37 +206,102 @@ footer{
      
 }
 
-@media only screen and (min-width:480px) {
+@media only screen and (min-width:490px) {
      
 }
 
-@media only screen and (min-width:600px) {
-     
+/* @media only screen and (max-width:638px) {
+  .last_two_div div{
+    margin-left: 0px;
+  }
+  .last_two_div{
+    display: block;
+ }
+ .div_content div{
+  margin-top: 0px;
+}
+
+} */
+
+@media only screen and (max-width:520px) {
+  #email_box_mob{
+    width:100%;
+    min-width:150px;
+  }
+}
+
+@media only screen and (max-width:660px) {
+  .last_two_div div{
+    margin-left: 0px;
+  }
+  #margin_left_mob{
+    margin-left: -80px;
+  }
+  
+  #right_div_mob{
+    margin-left: -30px;
+  }
+  
 }
 
 @media only screen and (max-width:700px) {
+  /* .footer_content{
+    margin-top: -40px;
+ } */
   
-  .left_div div{
-    margin-top: 0px;
+  .left_div_overall_mobile {
+    margin-top: 35px;
   }
    #div_content{
       flex-wrap: wrap;
    }
-   .footer_content{
-    margin-top: -20px;
-   }  
-   /* .social_links{
-    margin-top: -40px;
-   } */
+ 
+   .div_content div{
+      margin-top: 0px;
+   }
+
    .last_two_div{
     margin-top: 40px;
    }
- 
+   .address_mobile_space div{ 
+      margin-top: 10px;
+   }
+   .email_box{
+    width:100%;
+    min-width:190px;
+  }
+
+  .comment_box{
+    width:100%;
+    min-width:190px;
+    resize: none;
+  }
+
+  .footer_button{
+    border: 1px solid grey;
+    padding: 1px 10px 1px 10px;
+    width:100%;
+    min-width: 190px;
+  }
 }
+
+/* @media only screen and (max-width:717px) {
+  .last_two_div div{
+    margin-left: 25px;
+  }
+} */
+
+/* @media only screen and (max-width:770px) {
+  .last_two_div div{
+    margin-left: 35px;
+  }
+} */
+
 
 @media only screen and (max-width:850px) {
      .footer_content{
         display: block;
+        /* margin-top: -60px; */
      }
      .center_div h2{
       text-align: center;
@@ -247,6 +312,9 @@ footer{
      }
      .right_div h2{
       text-align: center;
+     }
+     .left_div{
+      margin-top: -80px;
      }
      .right_div{
       margin-top: 10px;
@@ -261,22 +329,18 @@ footer{
     }
     .left_div div {
     padding: 5px;
-}
+    }
     .left_div_title_mobile{
       display: block;
     }
-    /* #address_center_mob{
-      margin-top: -80px;
-    }
-    #contact_center_mob{
-      margin-top:-31px;
-    } */
+
     .center_div{
-      margin-top: 80px;
+      margin-top: 60px;
     }
     .right_div{
-      margin-top: 80px;
+      margin-top: 60px;
     }
+  
     .email_box{
       width:100%;
       max-width:300px;
@@ -286,12 +350,12 @@ footer{
       max-width:300px;
       resize: none;
     }
-    /* .policy{
-      margin-top: 23px;
-    } */
-  
-    
+ 
+    .last_two_div div{
+      margin-left: 40px;
+    }
   }
+  
 
 
 

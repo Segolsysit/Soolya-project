@@ -52,6 +52,7 @@ import Header from './header';
 import Footer from './footer';
 
 import axios from "axios";
+import video_back from "./videos/video_background.mp4";
 
 
 
@@ -90,6 +91,16 @@ function Home(props) {
     //     }
     // }
 
+    const set = {
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        autoplay: true
+    };
+
 
     const settings = {
         className: "center",
@@ -99,7 +110,7 @@ function Home(props) {
         autoplay: true,
         speed: 1000,
         arrows: false,
-        dots: true,
+        dots: false,
         swipeToSlide: true
 
         // afterChange: function (index) {
@@ -120,7 +131,7 @@ function Home(props) {
         autoplay: true,
         speed: 1000,
         arrows: false,
-        dots: true,
+        dots:false,
         swipeToSlide: true
 
     }
@@ -242,8 +253,8 @@ function Home(props) {
 
 
 
-                        <div id="carouselExampleControls" class="carousel" data-bs-pause="none" data-bs-ride="carousel">
-                            <div class="carousel-inner">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-pause="none" data-bs-ride="carousel" >
+                            {/* <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src={main_1} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
                                 </div>
@@ -256,8 +267,31 @@ function Home(props) {
                                 <div class="carousel-item">
                                     <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-3"></img>
                                 </div>
-                            </div>
+                            </div> */}
+                            <Slider {...set}>
+                                <div>
+                                    <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                                <div>
+                                    <img src={main_2} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                                {/* <div>
+            <img src={main_3} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
+          </div> */}
+
+                            </Slider>
                         </div>
+
+
+
+                        {/* <div class="hero_video">
+                        <video controls="false" plays-inline muted loop autoPlay preload>
+                            <source src={video_back}></source>
+                        </video>
+                        
+                    </div> */}
+
+
                     </div>
 
 
@@ -304,11 +338,21 @@ function Home(props) {
 
 
 
+                    {/* <div class="hero_video">
+                        <video controls="false" plays-inline muted loop autoPlay preload>
+                            <source src={video_back}></source>
+                        </video>
+                        
+                    </div> */}
+
+
                 </div>
 
                 {/* First carousel finished */}
 
                 {/* one ad */}
+
+
 
                 <div className="owl_carou_1">
                     <div className="advertise_phase" class="row">
@@ -465,16 +509,16 @@ function Home(props) {
                 <div className="review_div_mobile">
                     <ul class="nav nav-tabs" id="myTabMobile" role="tablist">
                         <div className="front_category_div">
-                        <li class="nav-item" id="first_li" role="presentation">
-                            <button class="nav-link-category active" id="home-tab_mobile" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-                                Category
-                            </button>
-                        </li>
-                        <li class="nav-item"  id="second_li" role="presentation">
-                            <button class="nav-link-category" id="profile-tab_mobile" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                                Sub-category
-                            </button>
-                        </li>
+                            <li class="nav-item" id="first_li" role="presentation">
+                                <button class="nav-link-category active" id="home-tab_mobile" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                                    Category
+                                </button>
+                            </li>
+                            <li class="nav-item" id="second_li" role="presentation">
+                                <button class="nav-link-category" id="profile-tab_mobile" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                    Sub-category
+                                </button>
+                            </li>
                         </div>
                     </ul>
                     {/* <button class="nav-link-category active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
@@ -488,7 +532,7 @@ function Home(props) {
                     <div class="tab-content" id="myTabContent_mobile">
                         <div>
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab_mobile">
-                                <div className="category_div_mobile_overall">
+                                <div className="category_div_mobile_overall" id="category_div_mobile_overall">
 
                                     {getData.map((data, index) =>
                                         <div className="category_div_mobile" key={index}>
@@ -728,6 +772,30 @@ function Home(props) {
 
 
             </div>
+
+
+            {/* <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src={main_1} alt="First slide"></img>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src={main_2} alt="Second slide"></img>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src={main_3} alt="Third slide"></img>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>    */}
+
             <Footer></Footer>
         </div>
     )
