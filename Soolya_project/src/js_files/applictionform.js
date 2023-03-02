@@ -3,13 +3,26 @@ import React, { useEffect, useState } from 'react';
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 
 function ApplicationForm() {
 
     let serialNumber = 1;
-
     const [getServiceManData, setGetServiceManData] = useState([]);
     const [viewdata,setviewdata] = useState([]);
+
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
 
     const getdata1 = () =>{
         axios.get("http://localhost:3001/serviceman/get_user").then((response)=>{
@@ -20,6 +33,7 @@ function ApplicationForm() {
 
     useEffect(()=>{
         getdata1()
+        verify()
     });
 
     const viewdeatils = (id) => {
@@ -28,16 +42,16 @@ function ApplicationForm() {
          console.log(response.data);
         })
     }
-
+    const adminlogout = ()=>{
+        localStorage.removeItem("adminemail")
+        localStorage.removeItem("adminpassword")
+        nav("/admin")
+    }
 
     const reject_data = ()=>{
         // e.preventDefault()
-         axios.post("http://localhost:3001/reject_api/new_rejection"),{
+         axios.post("http://localhost:3001/reject_api/new_rejection",{
             WorkType:viewdata.WorkType,
-
-
-
-            
             district:viewdata.district,
             FirstName:viewdata.FirstName,
             LastName:viewdata.LastName,
@@ -47,10 +61,31 @@ function ApplicationForm() {
             Email:viewdata.Email,
             IdentityType:viewdata.IdentityType,
             IdentityNumber:viewdata.IdentityNumber,
-         }
+         })
+        //  deletedata(id)
+        // console.log(viewdata._id);
+    axios.delete(`http://localhost:3001/serviceman/delete_item/${viewdata._id}`).then(() => {
+        toast.error('😈 Deleted Successed!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+
+        });
+    })
+
+
+         
     }
 
+const deletedata = (id)=>{
+    axios.delete(`http://localhost:3001/serviceman/delete_item/${id}`)
 
+}
 
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
@@ -474,6 +509,25 @@ function ApplicationForm() {
                     </div>
                 </div>
             </div>
+            {/* <!-- Logout Modal--> */}
+            <div className="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div className="modal-footer">
+                                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <button className="btn btn-primary" onClick={adminlogout}>Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {/* <!-- Modal --> */}
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">

@@ -38,6 +38,7 @@ import BookingFinish from './js_files/bookingfinish';
 import Vendor_admin from './vendor_admin';
 import Orders from './Orders';
 import Rejected_list from './Rejected_list';
+import Admin_login from './admin_login';
 
 
 function App() {
@@ -109,7 +110,8 @@ function App() {
                 <Route path="/sign_up" element={<SignUp></SignUp>}></Route>
                 <Route path="/sign_in" element={<SignIn ></SignIn>}></Route>
                 <Route path="service_man" element={<Serviceman></Serviceman>}></Route>
-                <Route path="/admin" element={<Admin></Admin>}></Route>
+                <Route path="/admin" element={<Admin_login></Admin_login>}></Route>
+                <Route path="/admin_home" element={<Admin></Admin>}/>
                 <Route path="/categorysetup" element={<Categorysetup></Categorysetup>}></Route>
                 <Route path="/subcategorysetup" element={<Sub_Category_Setup></Sub_Category_Setup>}></Route>
                 <Route path="/servicelist" element={<Servicelist></Servicelist>}></Route>

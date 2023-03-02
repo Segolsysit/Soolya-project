@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -67,9 +68,21 @@ function Sub_Category_Setup() {
         p: 4,
     };
 
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
+
     useEffect(() => {
         subcategoryData();
         catdata()
+        verify()
     },[])
 
     const subcategoryData = () => {
@@ -144,9 +157,14 @@ function Sub_Category_Setup() {
         axios.delete(`http://localhost:3001/sub_api/delete_item/${id}`).then(()=> {
             subcategoryData();
         })
-      
-        
     }
+
+    const adminlogout = ()=>{
+        localStorage.removeItem("adminemail")
+        localStorage.removeItem("adminpassword")
+        nav("/admin")
+    }
+
     return (
         <div>
             {/* <!-- Page Wrapper --> */}
@@ -592,6 +610,25 @@ function Sub_Category_Setup() {
                     </div>
                 </div>
             </div>
+            {/* <!-- Logout Modal--> */}
+            <div className="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div className="modal-footer">
+                                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <button className="btn btn-primary" onClick={adminlogout}>Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {/* <!-- Modal --> */}
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">

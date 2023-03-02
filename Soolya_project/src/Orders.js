@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -8,6 +9,16 @@ const Orders = () => {
 
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
     const [orderdetails,setorderdetails] = useState([])
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -37,6 +48,7 @@ const Orders = () => {
 
     useEffect(()=>{
         getdata()
+        verify()
     })
 
     return (

@@ -1,10 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
+import axios from 'axios';
+import Switch from '@mui/material/Switch';
 
 
 const Rejected_list = () => {
 
+    let serialNumber = 1;
+
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+    const [rejected,setregected] = useState([])
+    const [viewdata,setviewdata] = useState([]);
+
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
+
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -22,6 +40,24 @@ const Rejected_list = () => {
         else{
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
+    }
+
+    const getrejected_list = ()=>{
+        axios.get("http://localhost:3001/reject_api/rejected_data").then((res)=>{
+            setregected(res.data)
+        })
+    }
+
+    useEffect(()=>{
+        getrejected_list()
+        verify()
+    })
+
+    const viewdeatils = (id) => {
+        axios.get(`http://localhost:3001/reject_api/rejected_data/${id}`).then((response) => {
+         setviewdata(response.data);
+         console.log(response.data);
+        })
     }
 
     return (
@@ -409,7 +445,7 @@ const Rejected_list = () => {
                                 </TableHead>
                                 <TableBody>
 
-                                    {/* {getServiceManData.map((data) =>
+                                    {rejected.map((data) =>
                                         <TableRow >
                                             <TableCell>{serialNumber++}</TableCell>
                                             <TableCell>{data.FirstName} {data.LastName}</TableCell>
@@ -426,7 +462,7 @@ const Rejected_list = () => {
                                                 ><i class="fa-solid fa-eye"></i></Button>
                                             </TableCell>
                                         </TableRow>
-                                    )} */}
+                                    )}
 
 
 
@@ -434,7 +470,31 @@ const Rejected_list = () => {
                             </Table>
 
                             </div>
+{/* <!-- Modal --> */}
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"  id="exampleModalLongTitle">Service Man Deatails</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <div>
+                                <h3>Name : {viewdata.FirstName} {viewdata.LastName} </h3><br/>
+                                <h3>Mobile Number : {viewdata.MobilePhoneNumber}</h3><br/>
+                                <h3>Email : {viewdata.Email}</h3><br/>
+                                <h3>Work Type : {viewdata.WorkType}</h3><br/>
+                                <h3>Address : {viewdata.StreetAddress}</h3><br/>
+                                <Button>Reject</Button>
+                                <Button>Accept</Button>
+                                </div>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
 
 
                         </div>

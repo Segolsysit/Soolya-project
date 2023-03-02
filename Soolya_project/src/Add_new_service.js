@@ -19,6 +19,7 @@ import {
 import { toast } from 'react-toastify';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 
 function Add_new_service() {
@@ -45,6 +46,17 @@ function Add_new_service() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     let a = 1;
+
+    const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
 
 
     const handleImgChange = (e) => {
@@ -217,6 +229,7 @@ function Add_new_service() {
     }
 
     useEffect(() => {
+        verify()
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
             // console.log(res.data);

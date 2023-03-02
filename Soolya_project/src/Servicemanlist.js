@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import Switch from '@mui/material/Switch';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -8,6 +9,20 @@ import Switch from '@mui/material/Switch';
 function Servicemanlist() {
 
   const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+  const aemail = localStorage.getItem("adminemail")
+    const apassword = localStorage.getItem("adminpassword")
+    const nav = useNavigate()
+
+
+    const verify = ()=>{
+        if(aemail === null && apassword === null){
+            nav("/admin")
+        }
+    }
+
+    useEffect(()=>{
+      verify()
+    })
 
   const changeStyle = () => {
     if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {

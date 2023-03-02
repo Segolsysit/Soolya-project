@@ -54,7 +54,7 @@ function Header() {
             nav("/sign_in");
           } else
             toast(`Hi ${data.user} 🦄`, {
-              theme: "dark",
+              theme: "dark"
             });
         }
     //   };

@@ -29,8 +29,7 @@ RejectedList_router.get("/rejected_data/:id",async(req,res)=>{
 })
 
 RejectedList_router.delete("/delete_item/:id",async(req,res)=>{
-    await RejectedListSchema
-    .findByIdAndDelete(req.params.id)
+    await RejectedListSchema.findByIdAndDelete(req.params.id)
     return res.json('Deleted')
 })
 
