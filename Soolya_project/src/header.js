@@ -15,7 +15,7 @@ import refund_policy from "./images/refund_policy.png";
 import help from "./images/help_support.png";
 import sign_in from "./images/sign_in.png";
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { isAuthenticated, isAuthenticatedLogin } from './js_files/auth';
 import { logOut } from './js_files/auth';
 import { useCookies } from "react-cookie";
@@ -27,7 +27,7 @@ axios.defaults.withCredentials = true
 function Header() {
 
     const nav = useNavigate();
-   
+
     const [register, setRegister] = useState(true);
     const [login, setLogin] = useState(true);
     const [logout, setlogOut] = useState(true);
@@ -35,52 +35,52 @@ function Header() {
 
     const [cookies, setCookie, removeCookie] = useCookies([]);
     useEffect(() => {
-      const verifyUser = async () => {
+        const verifyUser = async () => {
 
-        if (cookies.jwt){
+            if (cookies.jwt) {
+                setlogOut(false)
+            }
+
+            if (cookies.jwt2 && cookies.jwt) {
+                setRegister(false)
+                setLogin(false)
+                setlogOut(true)
+            }
+
+
+            else {
+                const { data } = await axios.post(
+                    "http://localhost:3001/auth_router",
+                    {
+                        withCredentials: true,
+                    }
+                );
+                if (!data.status) {
+                    // removeCookie("jwt");
+                    removeCookie("jwt2");
+                } else
+                    toast(`Hi ${data.user} 🦄`, {
+                        theme: "dark"
+                    });
+            }
+        };
+        verifyUser();
+        logOuthide()
+    }, [cookies, nav, removeCookie]);
+
+    const logOuthide = () => {
+        if (!cookies.jwt) {
             setlogOut(false)
         }
-
-        if (cookies.jwt2 && cookies.jwt) {
-          setRegister(false)
-          setLogin(false)
-          setlogOut(true)
-        } 
-
-
-        else {
-          const { data } = await axios.post(
-            "http://localhost:3001/auth_router",
-            {
-              withCredentials: true,
-            }
-          );
-          if (!data.status) {
-            // removeCookie("jwt");
-            removeCookie("jwt2");
-          } else
-            toast(`Hi ${data.user} 🦄`, {
-              theme: "dark"
-            });
-        }
-      };
-      verifyUser();
-      logOuthide()
-    }, [cookies, nav, removeCookie]);
-  
-   const logOuthide = () => {
-    if (!cookies.jwt) {
-        setlogOut(false)
-      } 
-   }
+    }
 
     const logOut = () => {
-    //   removeCookie("jwt");
-      removeCookie("jwt2");
-      
-      setRegister(true)
-      setLogin(true)
-      nav("/sign_in");
+        //   removeCookie("jwt");
+        removeCookie("jwt2");
+
+        setRegister(true)
+        setLogin(true)
+        nav("/sign_in");
 
     };
 
@@ -106,45 +106,47 @@ function Header() {
     //         setRegister(null);
     //     }
 
-        // const cartdata = useContext(usercontext)
+    // const cartdata = useContext(usercontext)
 
 
-        return (
-            <div>
-                <header>
-                    <div className="header">
-                        <div className="header_content">
+    return (
+        <div>
+            <header>
+                <div className="header">
+                    <div className="header_content">
+                        <div className="header_content_div">
+                            <NavLink to="/"><img className="company_logo" src={logo} alt="Company-logo"></img></NavLink>
+                        </div>
+                        <div className="d_flex">
+
+
                             <div className="header_content_div">
-                                <NavLink to="/"><img className="company_logo" src={logo} alt="Company-logo"></img></NavLink>
-                            </div>
-                            <div className="d_flex">
+                                <div className="service_man">
+                                    <button className="service_man__register" onClick={() => nav('/service_man')}>Become a Service man</button>
 
-
-                                <div className="header_content_div">
-                                    <div className="service_man">
-                                        <button className="service_man__register" onClick={() => nav('/service_man')}>Become a Service man</button>
-
-                                    </div>
                                 </div>
+                            </div>
 
 
 
 
-                                {/* <div onClick={() => nav("/cart")}>
+                            {/* <div onClick={() => nav("/cart")}>
                                 <i class="bi bi-cart2"></i>
                                     <span className="badge badge-danger badge-counter">
                                         {cartdata.length}
                                     </span>
                                 </div> */}
-                                <div className="header_content_div">
-                                    {/* onClick={() => { nav('/sign_in') }} */}
+                            <div className="header_content_div">
+                                {/* onClick={() => { nav('/sign_in') }} */}
+
+                                <div className="off_canvas_block">
 
                                     {
-                                        login?<button type="button" className="sign_in__buttton" onClick={()=>nav("/sign_in")}>
+                                        login ? <button type="button" className="sign_in__buttton" onClick={() => nav("/sign_in")}>
                                             <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                             Login
-                                        </button>: ""
-                                        }
+                                        </button> : ""
+                                    }
                                     {/* {!isAuthenticatedLogin() && login ?
                                         <button type="button" className="sign_in__buttton"
                                             onClick={navLogin} >
@@ -159,36 +161,36 @@ function Header() {
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Login
                                     </button>:null} */}
-{/* 
+                                    {/* 
                                     {isAuthenticated() || !isAuthenticatedLogin() && register ?
                                         <button type="button" className="sign_up__buttton" onClick={navRegister}>
                                             <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                             Register
                                         </button> : null} */}
 
-                                       {
-                                          register? <button type="button" className="sign_up__buttton" onClick={
-                                            ()=>{
+                                    {
+                                        register ? <button type="button" className="sign_up__buttton" onClick={
+                                            () => {
 
                                                 nav("/sign_up")
                                             }
                                         } >
                                             <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                             Register
-                                        </button>:""
+                                        </button> : ""
 
-                                       } 
+                                    }
                                     {/* {register?
                                     <button type="button" className="sign_up__buttton" onClick={navRegister}>
                                         <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                         Register
                                     </button>:null} */}
-                                        {
-                                          logout?  <button type="button" className="sign_in__buttton" onClick={logOut} >
+                                    {
+                                        logout ? <button type="button" className="sign_in__buttton" onClick={logOut} >
                                             <i id="sign_icon" className="fa-solid fa-arrow-right-to-bracket"></i>
                                             Log Out
-                                        </button> :""
-                                        }
+                                        </button> : ""
+                                    }
 
 
                                     {/* {isAuthenticatedLogin() ?
@@ -208,17 +210,51 @@ function Header() {
 
 
                                     {/* offcanvas */}
-
                                     <button id="off_canvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                                         <i id="menu_space" className="fa-solid fa-list-ul"></i>
                                         Menu
+                                    </button>
+
+                                    <button id="off_canvas_mob" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                        <i id="menu_space_mob" className="fa-solid fa-list-ul"></i>
                                     </button>
                                     <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                         <div className="offcanvas-header">
                                             <h4>Menu</h4>
                                         </div>
                                         <div className="offcanvas-body">
-                                            <button className="offcanvas_menu_btn">
+
+
+                                            {login ? <button className="offcanvas_menu_btn" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas" >
+                                                <div className="offcanvas_menu_item">
+                                                    <div className="offcanvas_menu_item_img">
+                                                        <img className="offcanvas_font_img" src={sign_in} alt="settings" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas"></img>
+                                                    </div>
+                                                    <div className="offcanvas_menu_item_name">
+                                                        <h6>Sign In</h6>
+                                                    </div>
+                                                </div>
+                                            </button> : ""}
+
+
+                                            {register ? <button className="offcanvas_menu_btn" onClick={
+                                                () => {
+
+                                                    nav("/sign_up")
+                                                }
+                                            } data-bs-dismiss="offcanvas" >
+                                                <div className="offcanvas_menu_item">
+                                                    <div className="offcanvas_menu_item_img">
+                                                        <img className="offcanvas_font_img" src={profile} alt="settings" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas"></img>
+                                                    </div>
+                                                    <div className="offcanvas_menu_item_name">
+                                                        <h6>Register</h6>
+                                                    </div>
+                                                </div>
+                                            </button> : ""}
+
+
+                                            {/* <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={profile} alt="settings"></img>
@@ -227,19 +263,21 @@ function Header() {
                                                         <h6>Profile</h6>
                                                     </div>
                                                 </div>
-                                            </button>
-                                            <button className="offcanvas_menu_btn">
+                                            </button> */}
+
+                                            <button className="offcanvas_menu_btn" id="service_man_mob" onClick={() => nav('/service_man')}>
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={inbox} alt="settings"></img>
 
                                                     </div>
                                                     <div className="offcanvas_menu_item_name">
-                                                        <h6>Inbox</h6>
+                                                        <h6>Become a Service man</h6>
                                                     </div>
                                                 </div>
                                             </button>
-                                            <button className="offcanvas_menu_btn">
+
+                                            {/* <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={setting} alt="settings"></img>
@@ -248,7 +286,8 @@ function Header() {
                                                         <h6>Settings</h6>
                                                     </div>
                                                 </div>
-                                            </button>
+                                            </button> */}
+
                                             <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
@@ -259,7 +298,8 @@ function Header() {
                                                     </div>
                                                 </div>
                                             </button>
-                                            <button className="offcanvas_menu_btn">
+
+                                            {/* <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={coupons} alt="settings"></img>
@@ -268,7 +308,8 @@ function Header() {
                                                         <h6>coupons</h6>
                                                     </div>
                                                 </div>
-                                            </button>
+                                            </button> */}
+
                                             <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
@@ -279,6 +320,7 @@ function Header() {
                                                     </div>
                                                 </div>
                                             </button>
+
                                             <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
@@ -289,6 +331,7 @@ function Header() {
                                                     </div>
                                                 </div>
                                             </button>
+
                                             <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
@@ -299,6 +342,7 @@ function Header() {
                                                     </div>
                                                 </div>
                                             </button>
+
                                             <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
@@ -309,6 +353,7 @@ function Header() {
                                                     </div>
                                                 </div>
                                             </button>
+
                                             <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
@@ -319,7 +364,8 @@ function Header() {
                                                     </div>
                                                 </div>
                                             </button>
-                                            <button className="offcanvas_menu_btn">
+
+                                            {/* <button className="offcanvas_menu_btn">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={help} alt="settings"></img>
@@ -328,31 +374,34 @@ function Header() {
                                                         <h6>Help & Support</h6>
                                                     </div>
                                                 </div>
-                                            </button>
+                                            </button> */}
 
-                                            <button className="offcanvas_menu_btn" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas" >
+                                            {logout ? <button className="offcanvas_menu_btn" onClick={logOut} data-bs-dismiss="offcanvas" >
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={sign_in} alt="settings" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas"></img>
                                                     </div>
                                                     <div className="offcanvas_menu_item_name">
-                                                        <h6>Sign In</h6>
+                                                        <h6>Log Out</h6>
                                                     </div>
                                                 </div>
-                                            </button>
+                                            </button> : ""}
+
+
                                         </div>
                                     </div>
-
                                 </div>
+
                             </div>
+                        </div>
 
 
-                            {/* </header > */}
-                        </div >
-                    </div>
-                </header>
-            </div>
-        );
-    }
+                        {/* </header > */}
+                    </div >
+                </div>
+            </header>
+        </div>
+    );
+}
 
-    export default Header;
+export default Header;

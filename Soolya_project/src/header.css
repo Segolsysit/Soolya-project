@@ -204,6 +204,9 @@
           height: 30px;
         }
         
+        .off_canvas_block{
+          display: block;
+        }
   
         #off_canvas{
           width:90px;
@@ -221,6 +224,29 @@
          #menu_space{
             margin-right: 3px;
          }
+
+         #off_canvas_mob{
+          display: none;
+          width:60px;
+          height: 45px;
+          border: 1px solid #2874f0;
+          border-left:none;
+          border-radius: 5px;
+          color:#fff;
+          background-color:rgba(174, 203, 254, 0.8);
+          font-weight:500;
+          font-size:30px;
+          margin-top: -5px;
+         }
+
+         #service_man_mob{
+          display: none;
+         }
+
+         #menu_space_mob{
+            margin-right: 3px;
+         }
+
 
          #off_canvas:hover{
           background-color:#f1f3f6; 
@@ -275,10 +301,30 @@
           margin-right: 3px;
         }
 
-        
-@media only screen and (max-width:850px) {
-  .service_man{
+
+@media only screen and (max-width:600px) {
+  #off_canvas{
     display: none;
   }
+   #off_canvas_mob{
+    display:block;
+   }
+   .sign_in__buttton{
+    display: none;
+   }
+   .sign_up__buttton{
+    display: none;
+   }
+   .service_man{
+    display: none;
+  }
+  #service_man_mob{
+    display: block;
+  }
+     
+}
+        
+@media only screen and (max-width:850px) {
+ 
      
 }
