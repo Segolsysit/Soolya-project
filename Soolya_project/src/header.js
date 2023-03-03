@@ -225,19 +225,19 @@ function Header() {
                                         <div className="offcanvas-body">
 
 
-                                            {login ? <button className="offcanvas_menu_btn" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas" >
+                                            {login ? <button className="offcanvas_menu_btn" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas" id="mob_menu_auth">
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={sign_in} alt="settings" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas"></img>
                                                     </div>
                                                     <div className="offcanvas_menu_item_name">
-                                                        <h6>Sign In</h6>
+                                                        <h6>Login</h6>
                                                     </div>
                                                 </div>
                                             </button> : ""}
 
 
-                                            {register ? <button className="offcanvas_menu_btn" onClick={
+                                            {register ? <button className="offcanvas_menu_btn" id="mob_menu_auth" onClick={
                                                 () => {
 
                                                     nav("/sign_up")
@@ -376,7 +376,7 @@ function Header() {
                                                 </div>
                                             </button> */}
 
-                                            {logout ? <button className="offcanvas_menu_btn" onClick={logOut} data-bs-dismiss="offcanvas" >
+                                            {logout ? <button className="offcanvas_menu_btn" id="mob_menu_auth" onClick={logOut} data-bs-dismiss="offcanvas" >
                                                 <div className="offcanvas_menu_item">
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={sign_in} alt="settings" onClick={() => nav('sign_in')} data-bs-dismiss="offcanvas"></img>
