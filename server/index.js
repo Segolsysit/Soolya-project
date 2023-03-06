@@ -11,7 +11,8 @@ const auth_router = require("./Router/authRoutes");
 const cookieParser= require("cookie-parser")
 const cart_router = require("./Router/cart_router");
 const bookingdetails_router = require("./Router/bookingdetails_router");
-const RejectedList_router = require("./Router/RejectedList_router")
+const RejectedList_router = require("./Router/RejectedList_router");
+const Vendor_register_router = require("./Router/Vendor_register_route");
 
 app.use(express.json())
 app.use(cookieParser())
@@ -30,6 +31,7 @@ app.use("/auth_router",auth_router);
 app.use("/cart_api",cart_router);
 app.use("/booking_api",bookingdetails_router);
 app.use("/reject_api",RejectedList_router);
+app.use("/vendor_register",Vendor_register_router);
 app.use(express.static(path.join(__dirname, "js")));
 app.use(express.static(path.join(__dirname, "files&img")));
 

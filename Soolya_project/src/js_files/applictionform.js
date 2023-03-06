@@ -528,7 +528,7 @@ const deletedata = (id)=>{
                         </div>
                     </div>
                 </div>
-            {/* <!-- Modal --> */}
+            {/* <!-- Modal 1 --> */}
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -545,8 +545,37 @@ const deletedata = (id)=>{
                                 <h3>Email : {viewdata.Email}</h3><br/>
                                 <h3>Work Type : {viewdata.WorkType}</h3><br/>
                                 <h3>Address : {viewdata.StreetAddress}</h3><br/>
-                                <Button onClick={() => reject_data()}>Reject</Button>
-                                <Button>Accept</Button>
+                                <div class="d-flex justify-content-around">
+                                <button type="button" onClick={() => reject_data()}
+                                class="btn btn-danger" data-dismiss="modal" aria-label="Close">Reject</button> 
+
+                                <button type="button" data-toggle="modal" data-target="#exampleModalCenter1"
+                                class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Accept</span></button>
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {/* <!-- Modal 2 --> */}
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"  id="exampleModalLongTitle">Service Man Registration</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <div>
+                                <label>Email</label><br/>
+                                <input></input><br/><br/>
+                                <label>Password</label><br/>
+                                <input></input><br/><br/>
+                                <Button>Creat</Button>
                                 </div>
                         </div>
 
