@@ -5,11 +5,7 @@ import payment_method from "./images/payment.png";
 function Footer() {
     return (
         <div>
-
-            {/* <div className="footer_relative">
-
-            </div> */}
-
+        
             <footer>
                 <div>
 

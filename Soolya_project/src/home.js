@@ -229,7 +229,11 @@ function Home(props) {
     return (
         <div>
 
+{/* header component ----INCLUDED --- */}
+
             <Header></Header>
+
+{/* sub-header ---  START--- */}
 
             <div class="sub_body">
                 <div>
@@ -246,59 +250,26 @@ function Home(props) {
                     </div>
                 </div>
 
+{/* sub-header ---  END--- */}
 
+{/* carousel and z-index div --- START ----*/}
 
                 <div>
                     <div className="carousel_div">
-
-
-
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-pause="none" data-bs-ride="carousel" >
-                            {/* <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src={main_1} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src={main_2} id="carousel_image" class="d-block w-100" alt="slider-2"></img>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src={main_3} id="carousel_image" class="d-block w-100" alt="slider-3"></img>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-3"></img>
-                                </div>
-                            </div> */}
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-pause="none" data-bs-ride="carousel" >                            
                             <Slider {...set}>
                                 <div>
                                     <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
                                 </div>
                                 <div>
                                     <img src={main_2} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
-                                </div>
-                                {/* <div>
-            <img src={main_3} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
-          </div> */}
-
+                                </div>           
                             </Slider>
-                        </div>
 
-
-
-                        {/* <div class="hero_video">
-                        <video controls="false" plays-inline muted loop autoPlay preload>
-                            <source src={video_back}></source>
-                        </video>
-                        
-                    </div> */}
-
-
-                    </div>
-
-
-                    <div className="carousel_z_index_div " >
+                            <div className="carousel_z_index_div " >
                         <div className="caruosel_z_index">
                             <div className="caruosel_z_index_title">
-                                <h2 className="z_index_title">World's Largest NoBrokerage Handyman Site</h2>
+                                <h1 className="z_index_title">World's Largest NoBrokerage Handyman Site</h1>
                             </div>
                             <div id="gap">
                                 <span className="z_index_offer">
@@ -334,25 +305,16 @@ function Home(props) {
                             </label> : <div></div>}
 
                         </div>
+                            </div>
+
+                        </div>
                     </div>
-
-
-
-                    {/* <div class="hero_video">
-                        <video controls="false" plays-inline muted loop autoPlay preload>
-                            <source src={video_back}></source>
-                        </video>
-                        
-                    </div> */}
-
-
                 </div>
 
-                {/* First carousel finished */}
-
-                {/* one ad */}
+{/* carousel and z-index div --- END ---- */}
 
 
+{/* owl-carousel one --- START --- */}
 
                 <div className="owl_carou_1">
                     <div className="advertise_phase" class="row">
@@ -492,19 +454,10 @@ function Home(props) {
                     </div>
                 </div>
 
+{/* owl-carousel one --- END --- */}
 
-                {/* MOBILE VIEW DIV */}
 
-
-                {/* <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sub-Category</a>
-                    </li>
-
-                </ul> */}
+                              {/* MOBILE VIEW DIV */}
 
                 <div className="review_div_mobile">
                     <ul class="nav nav-tabs" id="myTabMobile" role="tablist">
@@ -521,14 +474,7 @@ function Home(props) {
                             </li>
                         </div>
                     </ul>
-                    {/* <button class="nav-link-category active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-                                Category
-                            </button>
-
-                            <button class="nav-link-category" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                                Sub-category
-                            </button> */}
-
+                   
                     <div class="tab-content" id="myTabContent_mobile">
                         <div>
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab_mobile">
@@ -558,7 +504,7 @@ function Home(props) {
 
 
 
-                {/* scroll div */}
+{/* scroll div --- START --- */}
 
                 <div className="scroll_div">
                     <button className="scroll_up" onClick={scrollToUp}>
@@ -566,9 +512,9 @@ function Home(props) {
                     </button>
                 </div>
 
+{/* scroll div --- END --- */}
 
-
-                {/* two ad */}
+{/* owl-carousel two --- START --- */}
 
                 <div className="owl_carou_2">
                     <div className="advertise_phase" class="row">
@@ -707,16 +653,14 @@ function Home(props) {
                     </div>
                 </div>
 
+{/* owl-carousel two --- end --- */}
 
 
-
-
+{/* frame line div --- START --- */}
 
                 <div className="frame_line">
                     <div className="one">
-
                         <img className="frame_img_size" src={frame_line} alt="you"></img>
-
                     </div>
                     <div id="frame_line_right_side">
                         <div>
@@ -748,8 +692,7 @@ function Home(props) {
                     </div>
                 </div>
 
-
-
+{/* frame line div --- END --- */}
 
 
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -774,29 +717,10 @@ function Home(props) {
             </div>
 
 
-            {/* <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src={main_1} alt="First slide"></img>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src={main_2} alt="Second slide"></img>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src={main_3} alt="Third slide"></img>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>    */}
-
+            {/* footer content --- INCLUDED ---  */}
+            
             <Footer></Footer>
+            
         </div>
     )
 }
