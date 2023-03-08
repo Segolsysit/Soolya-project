@@ -279,9 +279,10 @@ function Home(props) {
                             <div className="z_index_search" id="gap">
                                 <div className="select_div">
                                     <select className="locality" onChange={dist} >
-                                        <option className="locality_option" selected disabled>Select District</option>
-                                        <option className="locality_option" value="erode">Erode</option>
-                                        <option className="locality_option" value="Coimbatore">Coimbatore</option>
+                                        {/* <option className="locality_option" selected disabled>Select District</option> */}
+                                        <option className="select_div" selected hidden value="erode">Erode</option>
+                                        <option className="select_div" disabled >Upcoming</option>
+                                        {/* <option className="locality_option" value="Coimbatore">Coimbatore</option> */}
                                     </select>
                                 </div>
                                 <div className="search_div">
@@ -459,7 +460,7 @@ function Home(props) {
 
                               {/* MOBILE VIEW DIV */}
 
-                <div className="review_div_mobile">
+                {/* <div className="review_div_mobile">
                     <ul class="nav nav-tabs" id="myTabMobile" role="tablist">
                         <div className="front_category_div">
                             <li class="nav-item" id="first_li" role="presentation">
@@ -484,9 +485,7 @@ function Home(props) {
                                         <div className="category_div_mobile" key={index}>
 
                                             <button className="category_button_div_mobile" >
-                                                {/* <div> */}
                                                 <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
-                                                {/* </div> */}
                                                 <div>
                                                     <h5 className="category_text_mobile">{data.catagorySetup}</h5>
                                                 </div>
@@ -500,7 +499,7 @@ function Home(props) {
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab_mobile">...</div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
 
 
