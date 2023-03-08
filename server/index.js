@@ -4,6 +4,7 @@ const app = express();
 const router = require("./Router/Router")
 const cors = require("cors");
 const path = require("path");
+const dburl = "mongodb+srv://soolya:Xks5Nj3n5njrcYlp@soolyacluster.upoumpf.mongodb.net/soolyaDB?retryWrites=true&w=majority"
 const subcategory_router = require("./Router/subcategory_route");
 const service_router = require("./Router/service_route");
 const serviceman_route = require("./Router/serviceman_route");
@@ -14,6 +15,9 @@ const bookingdetails_router = require("./Router/bookingdetails_router");
 const RejectedList_router = require("./Router/RejectedList_router");
 const Vendor_register_router = require("./Router/Vendor_register_route");
 
+server.on("request", app)
+app.use(express.urlencoded({extended:false}))
+app.set("view engine","ejs")
 app.use(express.json())
 app.use(cookieParser())
 app.use(
@@ -37,7 +41,7 @@ app.use(express.static(path.join(__dirname, "files&img")));
 
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1:27017/soolya_project',(err)=>{
+mongoose.connect(dburl,(err)=>{
     if(err){
         console.log(err);
     }
