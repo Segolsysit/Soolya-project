@@ -5,17 +5,28 @@ import Switch from '@mui/material/Switch';
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 
 function ApplicationForm() {
+    
+    const [cookies] = useCookies(["cookie-name"]);
+    const nav = useNavigate();
+    useEffect(() => {
+      if (cookies.jwt2) {
+        navigate("/");
+      }
+    }, [cookies, nav]);
 
     let serialNumber = 1;
     const [getServiceManData, setGetServiceManData] = useState([]);
     const [viewdata,setviewdata] = useState([]);
+    // const [Username,setusername] = useState("")
+    // const [email,setemail] = useState("")
+    // const [password,setpassword] = useState("")
 
     const aemail = localStorage.getItem("adminemail")
     const apassword = localStorage.getItem("adminpassword")
-    const nav = useNavigate()
 
 
     const verify = ()=>{
@@ -48,6 +59,70 @@ function ApplicationForm() {
         nav("/admin")
     }
 
+    const [values, setValues] = useState({
+        Username:"",
+        Email: "", 
+        Password: "", 
+    });
+
+    const initialErrors = {
+        Username:null,
+        Email:null,
+        Password:null,
+    }
+     
+    const [errors,setErrors] = useState(initialErrors);
+
+    const [loading,setLoading] = useState(false);
+
+    const vendor_login = async ()=>{
+          console.log(values);
+
+        let errors = initialErrors;
+        let hasErrors = false;
+          
+        if (values.Username === ""){
+            errors.Username = "User name is required"
+        }
+        if (values.Email === ""){
+            errors.Email = "Email is required"
+        }
+        if (values.Password === ""){
+            errors.Password = "Password is required"
+        }
+        if(!hasErrors){
+      const {data} = await  axios.post("http://localhost:3001/vendor_register/register",{
+            Username:values.Username,
+            Email:values.Email,
+            Password:values.Password
+        },
+        {withCredentials:true}
+        )
+        console.log(data);
+        if (data) {
+            if (data.errors) {
+                const { Email,Password} = data.errors;
+                if (Email){
+                    toast.error(Email,{
+                        position: "bottom-right",
+                    });
+                }
+                else if (Password) {
+                    toast.error(Password,{
+                        position: "bottom-right",
+                    });
+                }
+            } else {
+                nav("/")
+            }
+        }
+    }
+        setLoading(false);
+
+    setErrors({...errors})
+    }
+    
+
     const reject_data = ()=>{
         // e.preventDefault()
          axios.post("http://localhost:3001/reject_api/new_rejection",{
@@ -76,18 +151,8 @@ function ApplicationForm() {
             theme: "colored",
 
         });
-    })
-
-
-         
+    })        
     }
-
-const deletedata = (id)=>{
-    axios.delete(`http://localhost:3001/serviceman/delete_item/${id}`)
-
-}
-
-
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
     const changeStyle = () => {
@@ -571,11 +636,52 @@ const deletedata = (id)=>{
                         </div>
                         <div class="modal-body">
                                 <div>
+                                <label>User Name</label><br/>
+                                <input onChange={(e)=>{
+                                    setValues({ ...values, [e.target.name]:e.target.value})}}
+                                    name="Username"></input><br/><br/>
+                                    {errors.Username?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                         
+                            <h6>{errors.Username}</h6>
+                        </div>
+                    </div>):null
+                    }
                                 <label>Email</label><br/>
-                                <input></input><br/><br/>
+                                <input onChange={(e)=>{
+                                    setValues({...values, [e.target.name]:e.target.value})}}
+                                    name="Email"></input><br/><br/>
+                                    {errors.Email?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                         
+                            <h6>{errors.Email}</h6>
+                        </div>
+                    </div>):null
+                    }
                                 <label>Password</label><br/>
-                                <input></input><br/><br/>
-                                <Button>Creat</Button>
+                                <input onChange={(e)=>{
+                                    setValues({...values, [e.target.name]:e.target.value})}}
+                                    name="Password"></input><br/><br/>
+                                    {errors.Password?
+                        (<div id="d_flex" className="sign_in_form_validation">
+                        <div>
+                            <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div>
+                         
+                            <h6>{errors.Password}</h6>
+                        </div>
+                    </div>):null
+                    }
+                                <Button onClick={()=>vendor_login()}>Creat</Button>
                                 </div>
                         </div>
 

@@ -7,6 +7,7 @@ import Businessinfo from './businessinfo';
 import axios from "axios";
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
+import Vendor_login from "./Vendor_login";
 // import Accountinfo from './accountinfo';
 
 function Serviceman() {
@@ -58,8 +59,10 @@ function Serviceman() {
             return <Generalinfo formData={formData} setformData={setformData} {...props} />
         } else if (page === 1) {
             return <Personinfo formData={formData} setformData={setformData} {...props} />
-        } else {
+        } else if (page === 2){
             return <Businessinfo formData={formData} setformData={setformData} {...props} />
+        }else{
+            return <Vendor_login></Vendor_login>
         }
         // else {
         //     return<Accountinfo/>
@@ -68,6 +71,7 @@ function Serviceman() {
     return (
         <div class="App">
             <div className='form'>
+                <button onClick={()=>setpage(3)}>login</button>
                 <div className='progressbar'>
                     <div style={{ width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%" }}></div>
                 </div>
@@ -174,20 +178,6 @@ function Serviceman() {
                                         console.log("posted");
 
                                     })
-                                        // WorkType: formData.WorkType,
-                                        // district: formData.district,
-                                        // Title: formData.Title,
-                                        // FirstName: formData.FirstName,
-                                        // LastName: formData.LastName,
-                                        // MobilePhoneNumber: formData.MobilePhoneNumber,
-                                        // StreetAddress: formData.StreetAddress,
-                                        // PostalCode: formData.PostalCode,
-                                        // Email: formData.Email,
-                                        // IdentityType: formData.IdentityType,
-                                        // IdentityNumber: formData.IdentityNumber,
-                                        // file: formData.file
-                                   
-                                  
                                 }
 
                             }
