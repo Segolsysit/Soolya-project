@@ -30,7 +30,7 @@ function Header() {
 
     const [register, setRegister] = useState(true);
     const [login, setLogin] = useState(true);
-    const [logout, setlogOut] = useState(true);
+    const [logout, setlogOut] = useState(false);
 
 
     const [cookies, setCookie, removeCookie] = useCookies([]);
@@ -83,6 +83,7 @@ function Header() {
         nav("/sign_in");
 
     };
+
 
     // const [register, setRegister] = useState(true);
 

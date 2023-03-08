@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../css_files/forgetPassword.css";
 import Footer from "../footer";
 import Header from "../header";
@@ -7,14 +7,25 @@ import resetDone from 'sweetalert';
 import { removeForgetUserData, resetPasswordstoreData } from "./storage";
 import { isAuthenticatedReset } from "./auth";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 
 
 function ForgetPassword() {
 
     let nav = useNavigate();
+    const [cookies] = useCookies(["cookie-name"]);
 
 
+useEffect(() => {
+    const verify = () => {
 
+        if (cookies.jwt2) {
+            nav("/sign_in");
+          }
+    }
+    verify()
+},[cookies, nav])
 
     const initialErrors_1 = {
         email_input: null,
@@ -32,37 +43,52 @@ function ForgetPassword() {
     const handleForgetsubmit = (event) => {
         event.preventDefault();
 
-        let wrong = initialErrors_1;
+        let wrong = initialErrors_1; 
 
 
-        if (email_input === "")
-            wrong.email_input = "Registered Email is required";
+        if (email_input === "") wrong.email_input = "Registered Email is required";
 
-        if (email_input !== "") {
-            settDataLoading(true);
-            ResetApi(email_input).then((response) => {
-                resetPasswordstoreData (response.data.kind);
-                  resetDone({
-            title: "Done!",
-            text: "Password Reset Link Sent Successfully in your Email",
-            icon: "success",
-            button:"ok",
-          }).then(()=>{
-             nav("/sign_in");
-          })
-                console.log(response);
-            }).catch((err) => {
-                // console.log(err);
+       axios.post("http://localhost:3001/auth_router/forgot_password",{
+           email: email_input
+        },{
+            method:"POST",
+            crossDomain:true,
+            withCredentials : true  
+              })
+              .then((res) =>
+              { 
+                console.log(res ,"userRgister")
+              alert(res.data.status)
+            }
+              )
+        // if (email_input !== "") {
+        //     settDataLoading(true);
+        //     console.log(email_input);
+        //    post("http://localhost:3001/auth_router/forgot_password",email_input,{
+        //     withCredentials : true
+        //   }) .then((response) => {
+        //         resetPasswordstoreData (response.data.kind);
+        //           resetDone({
+        //     title: "Done!",
+        //     text: "Password Reset Link Sent Successfully in your Email",
+        //     icon: "success",
+        //     button:"ok",
+        //   }).then(()=>{
+        //      nav("/sign_in");
+        //   })
+        //         console.log(response);
+        //     }).catch((err) => {
+        //         // console.log(err);
 
-                if (err.code === "ERR_BAD_REQUEST") {
-                    setWrong({ ...wrong, custom_error: "Registered email is required" })
-                    settDataLoading(false);
-                }
-            })
-            // .finally(()=>{
-            //     settDataLoading(false);
-            // })
-        }
+        //         if (err.code === "ERR_BAD_REQUEST") {
+        //             setWrong({ ...wrong, custom_error: "Registered email is required" })
+        //             settDataLoading(false);
+        //         }
+        //     })
+        //     // .finally(()=>{
+        //     //     settDataLoading(false);
+        //     // })
+        // }
 
         
 
