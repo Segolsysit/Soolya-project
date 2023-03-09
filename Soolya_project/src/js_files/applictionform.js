@@ -13,7 +13,7 @@ function ApplicationForm() {
     const [cookies] = useCookies(["cookie-name"]);
     const nav = useNavigate();
     useEffect(() => {
-      if (cookies.jwt2) {
+      if (cookies.vjwt2) {
         navigate("/");
       }
     }, [cookies, nav]);
