@@ -41,6 +41,7 @@ import Vendor_admin from './vendor_admin';
 import Orders from './Orders';
 import Rejected_list from './Rejected_list';
 import Admin_login from './admin_login';
+import Vendor_Orders from './Vendor_orders';
 
 
 function App() {
@@ -129,6 +130,7 @@ function App() {
                 <Route path="/bookingbill" element={<BookingBill></BookingBill>}></Route>
                 <Route path="/bookingfinish" element={<BookingFinish></BookingFinish>}></Route>
                 <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
+                <Route path="/vendor_orders" element={<Vendor_Orders></Vendor_Orders>}/>
                 <Route path="/*" element={<NotFound></NotFound>}></Route>                
             </Routes>
             <br></br>

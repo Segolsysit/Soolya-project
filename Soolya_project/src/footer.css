@@ -202,6 +202,25 @@ footer{
   display: none;
 }
 
+.policy_unorder li p{
+  margin-bottom: 0px;
+}
+
+/* p{
+  font-size: calc(1rem + 0.5vw);
+} */
+
+@media only screen and (max-width:370px) {
+      /* .policy_unorder li p{
+          font-size: 1em;
+      } */
+      .policy_unorder li {
+         padding-left: 3px;
+         padding-right: 3px;
+      }
+    
+}
+
 @media only screen and (max-width:460px) {
   #margin_left_mob{
     display:block;

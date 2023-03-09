@@ -1,7 +1,6 @@
 const Vendor_register_schema = require("../Schema/Vendor_register_schema");
 const Vendor_register_router = require("express").Router();
 const jwt = require("jsonwebtoken");
-
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
     return jwt.sign({ id }, "soolya vendor super secret key", {
@@ -46,7 +45,7 @@ const handleErrors = (err) => {
     return errors;
 };
 
-Vendor_register_router.post("/new_vendor", (req, res, next) => {
+Vendor_register_router.post("/", (req, res, next) => {
     const token = req.cookies.jwt;
     if (token) {
         jwt.verify(
@@ -58,7 +57,7 @@ Vendor_register_router.post("/new_vendor", (req, res, next) => {
                     next();
                 } else {
                     const Vendor_register_schema1 = await Vendor_register_schema.findById(decodedToken.id);
-                    if (Vendor_register_schema1) res.json({ status: true, Vendor: Vendor_register_schema.Email });
+                    if (Vendor_register_schema1) res.json({ status: true, Vendor: Vendor_register_schema1.Email });
                     else res.json({ status: false });
                     next();
                 }
@@ -84,7 +83,7 @@ Vendor_register_router.post("/register", async (req, res, next) => {
         maxAge: maxAge * 1000,
       });
   
-      res.status(201).json({ Vendor_register_schema: Vendor_register_schema, created: true });
+      res.status(201).json({ Vendor: Vendor_register_Schema, created: true });
     } catch (err) {
       console.log(err);
       const errors = handleErrors(err);
