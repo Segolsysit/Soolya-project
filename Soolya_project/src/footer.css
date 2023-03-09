@@ -236,6 +236,13 @@ footer{
 
 } */
 
+@media only screen and (max-width:425px) {
+  .payment_img{
+    max-height:35vw;
+    max-width:60vw;
+  }
+}
+
 @media only screen and (max-width:520px) {
   #email_box_mob{
     width:100%;

@@ -41,7 +41,7 @@ function Footer() {
                                                 <h4>We accept</h4>
                                             </div>
                                             <div>
-                                                <img src={payment_method} alt="payment"></img>
+                                                <img className="payment_img" src={payment_method} alt="payment"></img>
                                             </div>
                                         </div>
 
