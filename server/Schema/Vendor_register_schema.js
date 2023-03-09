@@ -22,11 +22,11 @@ const bcrypt = require("bcrypt");
       });
 
       Vendor_register_schema.statics.login = async function (Email, Password) {
-        const user = await this.findOne({ Email });
-        if (user) {
-          const auth = await bcrypt.compare(Password, user.Password);
-          if (auth) {
-            return user;
+        const vendor = await this.findOne({ Email });
+        if (vendor) {
+          const vendor_auth = await bcrypt.compare(Password, vendor.Password);
+          if (vendor_auth) {
+            return vendor;
           }
           throw Error("incorrect password");
         }

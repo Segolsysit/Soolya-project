@@ -71,10 +71,10 @@ function Serviceman() {
     return (
         <div class="App">
             <div className='form'>
-                <button onClick={()=>setpage(3)}>login</button>
-                <div className='progressbar'>
+                { page === 3? (<div></div>) : <button onClick={()=>setpage(3)}>login</button>}
+                { page === 3 ? (<div></div>) : <div className='progressbar'>
                     <div style={{ width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%" }}></div>
-                </div>
+                </div>}
                 <div className='form_container'>
                     <div className='head'>
                         <h1>{FormTitles[page]}</h1>
@@ -82,6 +82,7 @@ function Serviceman() {
                     <div className='body  ' >{PageDisplay()}
                     </div><br />
                 </div><br />
+                { page === 3 ?(<div></div>) : 
                 <div className='button'>
                     <Button variant="contained"
                         disabled={page === 0 || page === 3}
@@ -184,7 +185,7 @@ function Serviceman() {
                         }}>
                         {page === FormTitles.length - 1 ? "Submit" : "Next"}
                     </Button>
-                </div>
+                </div>}
             </div>
         </div>
     )
