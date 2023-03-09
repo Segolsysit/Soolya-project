@@ -64,6 +64,7 @@ function Header() {
                     });
             }
         };
+        
         verifyUser();
         logOuthide()
     }, [cookies, nav, removeCookie]);
