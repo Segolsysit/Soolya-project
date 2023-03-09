@@ -1,3 +1,9 @@
+.sign_in1{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 0px 30px 0px 30px;
+}
 
 .sign_in{
   margin-top: 100px;
@@ -156,5 +162,11 @@
 
 .sign_up_link:link{
   color:red;
+}
+
+.form_sign_in_button_div1{
+  margin-top: 5%;
+  padding:0px 5px 0px 5px;
+
 }
 
