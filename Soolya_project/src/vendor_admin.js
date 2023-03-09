@@ -1,7 +1,22 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 
 const Vendor_admin = () => {
+
+    const [orderdetails,setorderdetails] = useState([])
+
+    const getdata = () => {
+        axios.get("http://localhost:3001/booking_api/booking_data").then((res)=>{
+                setorderdetails(res.data)
+            })
+    }
+    let a = 1;
+
+    useEffect(()=>{
+        getdata()
+    })
+
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
     const changeStyle = () => {
@@ -67,9 +82,12 @@ const Vendor_admin = () => {
 
     {/* <!-- Nav Item - Pages Collapse Menu --> */}
     <li className="nav-item">
-        <a className="nav-link" href="charts.js">
+        <a className="nav-link" href="/vendor_orders">
             <i class="fa-regular fa-link-horizontal"></i>
-            <span>Service Zones</span></a>
+            <span>Orders
+            <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
+            </span>
+            </a>
     </li>
     <li className="nav-item">
         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
