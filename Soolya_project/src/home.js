@@ -276,7 +276,7 @@ function Home(props) {
                                     <h6 className="z_index_offer_cont">Plumbing work | 50% off</h6>
                                 </span>
                             </div>
-                            <div className="z_index_search" id="gap">
+                            <div className="z_index_search" id="gap_last">
                                 <div className="select_div">
                                     <select className="locality" onChange={dist} >
                                         {/* <option className="locality_option" selected disabled>Select District</option> */}

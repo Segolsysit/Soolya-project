@@ -113,13 +113,13 @@ function Footer() {
                     <div className="policy">
                         <ul className="policy_unorder">
                             <li>
-                                <a href="_self">Privacy Policy</a>
+                                <p><a className="policy_mobile" href="_self">Privacy Policy</a></p>
                             </li>
                             <li>
                                 <span>|</span>
                             </li>
                             <li>
-                                <a href="_self">Terms & Conditions</a>
+                                <p><a className="policy_mobile" href="_self">Terms & Conditions</a></p>
                             </li>
                         </ul>
                     </div>
