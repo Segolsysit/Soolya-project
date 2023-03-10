@@ -15,7 +15,7 @@ const bookingdetails_router = require("./Router/bookingdetails_router");
 const RejectedList_router = require("./Router/RejectedList_router");
 const Vendor_register_router = require("./Router/Vendor_register_route");
 
-// server.on("request", app)s
+// server.on("request", app)
 app.use(express.urlencoded({extended:false}))
 app.set("view engine","ejs")
 app.use(express.json())

@@ -77,7 +77,7 @@ Vendor_register_router.post("/register", async (req, res, next) => {
       const Vendor_register_Schema = await Vendor_register_schema.create({Username, Email, Password });
       const token = createToken(Vendor_register_Schema._id);
   
-      res.cookie("jwt", token, {
+      res.cookie("vjwt", token, {
         withCredentials: true,
         httpOnly: false,
         maxAge: maxAge * 1000,
@@ -97,8 +97,8 @@ Vendor_register_router.post("/register", async (req, res, next) => {
     try {
       const Vendor_register_Schema = await Vendor_register_schema.login(Email, Password);
       const token = createToken2(Vendor_register_Schema._id);
-      res.cookie("jwt2", token, { httpOnly: false, maxAge: maxAge * 1000 });
-      res.status(200).json({vendor_user: Vendor_register_Schema._id, status: true });
+      res.cookie("vjwt2", token, { httpOnly: false, maxAge: maxAge * 1000 });
+      res.status(200).json({ Vendor_register_schema: Vendor_register_schema._id, status: true });
     } catch (err) {
       const errors = handleErrors(err);
       res.json({ errors, status: false });

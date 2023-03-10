@@ -11,7 +11,7 @@ const Vendor_login = () => {
     const [cookies] = useCookies([]);
     const navigate = useNavigate();
     useEffect(() => {
-        if (cookies.jwt2) {
+        if (cookies.vjwt2) {
             navigate("/vendor_admin");
         }
     }, [cookies, navigate]);
