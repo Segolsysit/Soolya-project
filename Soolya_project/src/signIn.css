@@ -19,6 +19,11 @@
   height:600px;
 }
 
+.sign_in_div1{
+  width:100%;
+  max-width:800px;
+}
+
 .sign_in_logo_div{
   text-align: center;
 }
@@ -124,7 +129,7 @@
   
   .form_sign_in_button{
     width:100%;
-    min-width:200px ;
+    /* min-width:200px ; */
     line-height: 35px;
     border-radius: 5px;
     outline:none;

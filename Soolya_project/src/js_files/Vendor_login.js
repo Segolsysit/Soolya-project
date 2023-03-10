@@ -85,7 +85,7 @@ const Vendor_login = () => {
     return (
         <div className="sign_in1">
             {/* <center> */}
-            <div className="sign_in_div">
+            <div className="sign_in_div1">
                 <div className="sign_in_logo_div">
                     <div>
                         {/* <img className="sign_in_logo" src={logo} alt="sign_in_page"></img> */}

@@ -23,9 +23,9 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
         <div class="tab">
             <center>
               {/* <h1>Business Info</h1>  */}
-             <div className='ser_id_type'>
-                 <Box >
-                 <FormControl  sx={{ minWidth: 300 }}> 
+             {/* <div className='ser_id_type'> */}
+                 {/* <Box > */}
+                 <FormControl  sx={{ width: 3/4 }} > 
                  <InputLabel id="demo-simple-select-label"
                 //  value={}
                  
@@ -44,28 +44,28 @@ function Businessinfo({formData,setformData,IdentityTypeerror,IdentityNumbererro
                 <MenuItem value="Company Id">Company Id</MenuItem>
                 </Select>
                 <FormHelperText error>{IdentityTypeerror === true ? "Identity Required":""}</FormHelperText>
-                </FormControl> 
-                </Box>
-                <div class="name">
-                <TextField id="outlined-basic" label="Identity Number" variant="outlined" className='form-control '
+                </FormControl> <br/><br/><br/>
+                {/* </Box> */}
+                {/* <div class="name"> */}
+                <TextField id="outlined-basic" label="Identity Number" variant="outlined" className='form-control w-75'
                 value={formData.IdentityNumber}
                 onChange={(e)=>{setformData({...formData, IdentityNumber:e.target.value});
                   setIdentityNumbererror(false)}} 
                 error={IdentityNumbererror}
-                helperText={IdentityNumbererror === true ?"Identity Number is Required.":""}/>
-                </div>
-                </div><br/>
+                helperText={IdentityNumbererror === true ?"Identity Number is Required.":""}/><br/><br/><br/>
+                {/* </div> */}
+                {/* </div><br/> */}
                 <label for="photo">Photo</label>
                 <input 
                  type="file"
                  id="photo" 
                  name="file"
-                className='form-control w-50'
+                className='form-control w-75'
                 
                  onChange={(e)=>{setformData({...formData, file:e.target.files[0]});
                   setfileerror(false)}}
                  error={fileerror}
-                 ></input><br/>
+                 ></input><br/><br/><br/>
                  {/* <label for="id_proof">Document</label>
                   <input 
                  type="file"

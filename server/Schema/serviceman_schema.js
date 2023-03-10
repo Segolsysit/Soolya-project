@@ -7,9 +7,6 @@ const serviceManSchema = mongoose.Schema({
     district:{
         type:String
     },
-    Title:{
-        type:String
-    },
     FirstName:{
         type:String
     },

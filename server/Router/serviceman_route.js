@@ -46,7 +46,7 @@ serviceman_route.post("/user",upload.single("file"),async(req,res) => {
     const userData = new serviceManScheme({
     WorkType: req.body.WorkType,
     district:req.body.district,
-    Title:req.body.Title,
+    // Title:req.body.Title,
     FirstName:req.body.FirstName,
     LastName:req.body.LastName,
     MobilePhoneNumber:req.body.MobilePhoneNumber,
@@ -82,7 +82,7 @@ serviceman_route.patch("/update/:id",upload.single("file"),async(req,res) => {
 
     update_user.WorkType= req.body.WorkType,
     update_user.district=req.body.district,
-    update_user.Title=req.body.Title,
+    // update_user.Title=req.body.Title,
     update_user.FirstName=req.body.FirstName,
     update_user.LastName=req.body.LastName,
     update_user.MobilePhoneNumber=req.body.MobilePhoneNumber,
