@@ -87,7 +87,7 @@ function Serviceman() {
                     </li>
                 </ul>
 
-                {page === 3 ? (<div></div>) : <div className='progressbar'>
+                {page === 3 ? (<div className="prg"></div>) : <div className='progressbar'>
                     <div style={{ width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%" }}></div>
                 </div>}
                 <div className='form_container'>

@@ -45,7 +45,7 @@ function Category(props) {
 
 
     const [active, setActive] = useState(false);
-   
+
     const [sub, setSub] = useState("")
 
     let filt;
@@ -73,7 +73,7 @@ function Category(props) {
             <div className="category_page">
 
 
-                <Slider {...settings}>
+                {getData.length < 8 ? (<Slider {...settings}>
 
                     {getData.map((data, index) =>
                         <div className="category_div" key={index}>
@@ -86,14 +86,24 @@ function Category(props) {
                                     <h5 className="category_text">{data.catagorySetup}</h5>
                                 </div>
                             </button>
-
-
                         </div>
                     )}
+                </Slider>) : 
+                     getData.map((data,index) =>
+                        <div className="category_div" key={index}>
 
-
-
-                </Slider>
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )
+                }
+                
 
 
                 <div className="grid">
@@ -107,7 +117,7 @@ function Category(props) {
                                 <div className="sub_category_page_content_div">
                                     <h2>{Subcategory}</h2>
                                     <p className="sub_category_page_content_para">{Discription}</p>
-                                    
+
                                 </div>
                             </button>
 
