@@ -205,7 +205,7 @@ function Sub_Category_Setup() {
         formdata.append("file", EditImage)
         axios.patch(`http://localhost:3001/api//update_items/${getbyid._id}`, formdata).then(() => {
             // alert("updated")
-            getd();
+            categorydata();
         })
         // console.log(formdata);
         handleClose();
