@@ -99,7 +99,7 @@ const Vendor_Orders = () => {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="/orders">
+                            <a className="nav-link" href="/vendor_orders">
                                 <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Orders
                                     <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
