@@ -252,8 +252,8 @@ function SignIn() {
 
                             <div className="form_checkbox">
                                 <div className="form_checkbox">
-                                    <input type="checkbox" htmlFor="rem"></input>
-                                    <label className="form_checkbox_label">Remember me?</label>
+                                    <input type="checkbox" id="rem"></input>
+                                    <label className="form_checkbox_label" htmlFor="rem" >Remember me?</label>
                                 </div>
                                 {/* <div>
                                     <button className="forget_pass" href="_self">Forgot Password?</button>

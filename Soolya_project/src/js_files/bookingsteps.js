@@ -165,15 +165,15 @@ function BookingSteps() {
     const captchaSubmit = (e) => {
 
         e.preventDefault();
-
-        // const formData = new FormData();
-        // formData.append("address", address);
-        // formData.append("street", street);
-        // formData.append("city", city);
-        // formData.append("zip", zip);
-        // formData.append("person", person);
-        // formData.append("number", number);
-        axios.post("http://localhost:3001/booking_api/new_booking", {
+        
+        if (!authenticate()) {
+            swal({
+                title: "Booked Successfull!",
+                text: "Your Booking is confirmed!",
+                icon: "success",
+                button: "Ok",
+            });
+            axios.post("http://localhost:3001/booking_api/new_booking", {
             address,
             street,
             city,
@@ -184,19 +184,15 @@ function BookingSteps() {
             Category:bookingdata.Category,
             price:bookingdata.price
         })
-        // console.log(person);
-        // console.log(address);
-
-        if (!authenticate()) {
-            swal({
-                title: "Booked Successfull!",
-                text: "Your Booking is confirmed!",
-                icon: "success",
-                button: "Ok",
-            });
         }
 
         else {
+            swal({
+                title: "Captcha verification is required",
+                text: "Please verify the captcha",
+                icon: "error",
+                button: "Ok",
+            });
             console.log("captcha error");
 
         }

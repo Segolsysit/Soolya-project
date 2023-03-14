@@ -61,13 +61,15 @@ import video_back from "./videos/video_background.mp4";
 function Home(props) {
 
     const [getData, setgetData] = useState([]);
-
+    const [getData_sub, setgetDataSub] = useState([]);
 
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
         })
-
+        axios.get("http://localhost:3001/sub_api/new_fetch_items_limits").then((res) => {
+            setgetDataSub(res.data);
+        })
 
 
     }, [])
@@ -131,7 +133,7 @@ function Home(props) {
         autoplay: true,
         speed: 1000,
         arrows: false,
-        dots:false,
+        dots: false,
         swipeToSlide: true
 
     }
@@ -229,11 +231,11 @@ function Home(props) {
     return (
         <div>
 
-{/* header component ----INCLUDED --- */}
+            {/* header component ----INCLUDED --- */}
 
             <Header></Header>
 
-{/* sub-header ---  START--- */}
+            {/* sub-header ---  START--- */}
 
             <div class="sub_body">
                 <div>
@@ -250,72 +252,131 @@ function Home(props) {
                     </div>
                 </div>
 
-{/* sub-header ---  END--- */}
+                {/* sub-header ---  END--- */}
 
-{/* carousel and z-index div --- START ----*/}
+                {/* carousel and z-index div --- START ----*/}
 
                 <div>
                     <div className="carousel_div">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-pause="none" data-bs-ride="carousel" >                            
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-pause="none" data-bs-ride="carousel" >
                             <Slider {...set}>
                                 <div>
                                     <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
                                 </div>
                                 <div>
                                     <img src={main_2} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
-                                </div>           
+                                </div>
                             </Slider>
 
                             <div className="carousel_z_index_div " >
-                        <div className="caruosel_z_index">
-                            <div className="caruosel_z_index_title">
-                                <h1 className="z_index_title">World's Largest NoBrokerage Handyman Site</h1>
-                            </div>
-                            <div id="gap">
-                                <span className="z_index_offer">
-                                    <h6 className="z_index_offer_cont">Plumbing work | 50% off</h6>
-                                </span>
-                            </div>
-                            <div className="z_index_search" id="gap_last">
-                                <div className="select_div">
-                                    <select className="locality" onChange={dist} >
-                                        {/* <option className="locality_option" selected disabled>Select District</option> */}
-                                        <option className="select_div" selected hidden value="erode">Erode</option>
-                                        <option className="select_div" disabled >Upcoming</option>
-                                        {/* <option className="locality_option" value="Coimbatore">Coimbatore</option> */}
-                                    </select>
-                                </div>
-                                <div className="search_div">
-                                    <input id="search" className={search.length === 0 ? "locality_search" : "locality_search_active"} type="search" placeholder="search your service category" onChange={chg} value={search}></input>
-                                </div>
-                                <div className="button_div">
-                                    <button className="locality_search_button" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
-                                </div>
-
-                            </div>
-                            {show ? <label for="search" className='suggest'>
-
-                                {filter.map((arr) => (
-                                    <div className='sugg' onClick={() => { setSearch(arr.type); setShow(false) }}>
-                                        <span >{arr.type}</span>
+                                <div className="caruosel_z_index">
+                                    <div className="caruosel_z_index_title">
+                                        <h1 className="z_index_title">World's Largest NoBrokerage Handyman Site</h1>
+                                    </div>
+                                    <div id="gap">
+                                        <span className="z_index_offer">
+                                            <h6 className="z_index_offer_cont">Plumbing work | 50% off</h6>
+                                        </span>
+                                    </div>
+                                    <div className="z_index_search" id="gap_last">
+                                        <div className="select_div">
+                                            <select className="locality" onChange={dist} >
+                                                {/* <option className="locality_option" selected disabled>Select District</option> */}
+                                                <option className="select_div" selected hidden value="erode">Erode</option>
+                                                <option className="select_div" disabled >Upcoming</option>
+                                                {/* <option className="locality_option" value="Coimbatore">Coimbatore</option> */}
+                                            </select>
+                                        </div>
+                                        <div className="search_div">
+                                            <input id="search" className={search.length === 0 ? "locality_search" : "locality_search_active"} type="search" placeholder="search your service category" onChange={chg} value={search}></input>
+                                        </div>
+                                        <div className="button_div">
+                                            <button className="locality_search_button" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
+                                        </div>
 
                                     </div>
-                                ))}
+                                    {show ? <label for="search" className='suggest'>
+
+                                        {filter.map((arr) => (
+                                            <div className='sugg' onClick={() => { setSearch(arr.type); setShow(false) }}>
+                                                <span >{arr.type}</span>
+
+                                            </div>
+                                        ))}
 
 
-                            </label> : <div></div>}
+                                    </label> : <div></div>}
 
-                        </div>
+                                </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
 
-{/* carousel and z-index div --- END ---- */}
+
+                <div>
+                    <div className="carousel_div_mob">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-pause="none" data-bs-ride="carousel" >
+                            <Slider {...set}>
+                                <div>
+                                    <img src={main_4} id="carousel_image_mob" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                                <div>
+                                    <img src={main_2} id="carousel_image_mob" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                            </Slider>
+
+                            <div className="carousel_z_index_div_mob " >
+                                <div className="caruosel_z_index_mob">
+                                    <div className="caruosel_z_index_title_mob">
+                                        <h1 className="z_index_title_mob">World's Largest NoBrokerage Handyman Site</h1>
+                                    </div>
+                                    <div id="gap_mob">
+                                        <span className="z_index_offer_mob">
+                                            <h6 className="z_index_offer_cont_mob">Plumbing work | 50% off</h6>
+                                        </span>
+                                    </div>
+                                    <div className="z_index_search_mob" id="gap_last_mob">
+                                        <div className="select_div_mob">
+                                            <select className="locality_mob" onChange={dist} >
+                                                {/* <option className="locality_option" selected disabled>Select District</option> */}
+                                                <option className="select_div_mob" selected hidden value="erode">Erode</option>
+                                                <option className="select_div_mob" disabled >Upcoming</option>
+                                                {/* <option className="locality_option" value="Coimbatore">Coimbatore</option> */}
+                                            </select>
+                                        </div>
+                                        <div className="search_div_mob">
+                                            <input id="search_mob" className={search.length === 0 ? "locality_search_mob" : "locality_search_active_mob"} type="search" placeholder="search your service category" onChange={chg} value={search}></input>
+                                        </div> {show ? <label for="search" className='suggest_mob'>
+
+                                            {filter.map((arr) => (
+                                                <div className='sugg_mob' onClick={() => { setSearch(arr.type); setShow(false) }}>
+                                                    <span >{arr.type}</span>
+
+                                                </div>
+                                            ))}
 
 
-{/* owl-carousel one --- START --- */}
+                                        </label> : <div></div>}
+                                        <div className="button_div_mob">
+                                            <button className="locality_search_button_mob" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                {/* carousel and z-index div --- END ---- */}
+
+
+                {/* owl-carousel one --- START --- */}
 
                 <div className="owl_carou_1">
                     <div className="advertise_phase" class="row">
@@ -455,12 +516,12 @@ function Home(props) {
                     </div>
                 </div>
 
-{/* owl-carousel one --- END --- */}
+                {/* owl-carousel one --- END --- */}
 
 
-                              {/* MOBILE VIEW DIV */}
+                {/* MOBILE VIEW DIV */}
 
-                {/* <div className="review_div_mobile">
+                <div className="review_div_mobile">
                     <ul class="nav nav-tabs" id="myTabMobile" role="tablist">
                         <div className="front_category_div">
                             <li class="nav-item" id="first_li" role="presentation">
@@ -475,35 +536,63 @@ function Home(props) {
                             </li>
                         </div>
                     </ul>
-                   
-                    <div class="tab-content" id="myTabContent_mobile">
-                        <div>
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab_mobile">
-                                <div className="category_div_mobile_overall" id="category_div_mobile_overall">
 
-                                    {getData.map((data, index) =>
-                                        <div className="category_div_mobile" key={index}>
+                    <div class="tab-content"  id="myTabContent_mobile">
+                        {/* <div> */}
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab_mobile">
+                            <div className="category_div_mobile_overall" id="category_div_mobile_overall">
 
-                                            <button className="category_button_div_mobile" >
-                                                <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
-                                                <div>
-                                                    <h5 className="category_text_mobile">{data.catagorySetup}</h5>
-                                                </div>
-                                            </button>
+                                {getData.map((data, index) =>
+                                    <div className="category_div_mobile" key={index}>
 
-                                        </div>
-                                    )}
-                                </div>
+                                        <button className="category_button_div_mobile" >
+                                            <div>
+                                            <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
 
+                                            </div>
+                                            <div>
+                                                <h4 className="category_text_mobile">{data.catagorySetup}</h4>
+                                            </div>
+                                        </button>
+
+                                    </div>
+                                )}
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab_mobile">...</div>
+
+                        </div>
+                        
+                        <div class="tab-pane fade profile" id="profile" role="tabpanel" aria-labelledby="profile-tab_mobile">
+                            <div className="sub_category_overall_mob">
+
+                                <div className="sub_category_grid_mob">
+                                {getData_sub.map(({ Subcategory, Discription, filename }) =>
+                                    <div className="sub_category_overall">
+
+                                        <button className="sub_category_div">
+                                            <div className="sub_category_img_div">
+                                                <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
+                                            </div>
+                                            <div className="sub_category_page_content_div">
+                                                <h4>{Subcategory}</h4>
+                                                <p className="sub_category_page_content_para">{Discription}</p>
+
+                                            </div>
+                                        </button>
+
+                                    </div>
+                                )}
+                                </div>
+                            </div>
+                            {/* </div> */}
                         </div>
                     </div>
-                </div> */}
+
+
+                </div>
 
 
 
-{/* scroll div --- START --- */}
+                {/* scroll div --- START --- */}
 
                 <div className="scroll_div">
                     <button className="scroll_up" onClick={scrollToUp}>
@@ -511,9 +600,9 @@ function Home(props) {
                     </button>
                 </div>
 
-{/* scroll div --- END --- */}
+                {/* scroll div --- END --- */}
 
-{/* owl-carousel two --- START --- */}
+                {/* owl-carousel two --- START --- */}
 
                 <div className="owl_carou_2">
                     <div className="advertise_phase" class="row">
@@ -652,10 +741,10 @@ function Home(props) {
                     </div>
                 </div>
 
-{/* owl-carousel two --- end --- */}
+                {/* owl-carousel two --- end --- */}
 
 
-{/* frame line div --- START --- */}
+                {/* frame line div --- START --- */}
 
                 <div className="frame_line">
                     <div className="one">
@@ -691,7 +780,7 @@ function Home(props) {
                     </div>
                 </div>
 
-{/* frame line div --- END --- */}
+                {/* frame line div --- END --- */}
 
 
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -717,9 +806,9 @@ function Home(props) {
 
 
             {/* footer content --- INCLUDED ---  */}
-            
+
             <Footer></Footer>
-            
+
         </div>
     )
 }
