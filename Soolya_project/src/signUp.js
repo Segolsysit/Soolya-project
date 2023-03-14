@@ -549,7 +549,7 @@ function SignUp(){
                         <button className="inline_btn"><img className="inline_img" src={facebook} alt="btn_goo"></img>facebook</button>
                     </div>
                     <div>
-                        <p>Already have an account? <span><Link className="sign_up_link" to="/sign_in">sign in here</Link></span></p>
+                        <p className="sign_in_pa">Already have an account? <span><Link className="sign_up_link" to="/sign_in">sign in here</Link></span></p>
                     </div>
                     <div>
                         <p>Continue as a <span><a href="_self">Guest</a></span></p>

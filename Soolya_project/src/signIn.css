@@ -102,17 +102,20 @@
 
   .form_checkbox_label{
     margin-left: 5px;
+    margin-top: 5px;
+    font-size: 14px;
   }
 
   #forget_pass{
     color:brown;
     font-weight: 490;
+    font-size: 14px;
     border-radius: 5px;
     border: none;
     outline: none;
   }
 
-  .forget_pass:hover{
+  #forget_pass:hover{
     color: brown;
     background-color: rgba(207, 230, 238, 0.76);
     transition: 0.5s;
