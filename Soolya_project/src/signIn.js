@@ -81,6 +81,9 @@ function SignIn() {
                       if (email) generateError(email);
                       else if (password) generateError(password);
                     } else {
+                        toast.info("successfully loggedin", {
+                            position: "top-center",
+                          });
                       navigate("/");
                     }
                   }

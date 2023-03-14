@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
+import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
 
 const Vendor_admin = () => {
 
     const [orderdetails,setorderdetails] = useState([])
+    const [getuser,setGetuser] = useState([])
+
 
     const getdata = () => {
         axios.get("http://localhost:3001/booking_api/booking_data").then((res)=>{
@@ -12,11 +15,27 @@ const Vendor_admin = () => {
             })
     }
     let a = 1;
+    const [cookies] = useCookies(["cookie-name"]);
 
-    useEffect(()=>{
+
+    const nav = useNavigate()
+
+    const getdatabyid = (id) => {
+        axios.get(`http://localhost:3001/vendor_register/fetch_by_id/${id}`).then((res)=>{
+                setorderdetails(res.data)
+            })
+    }
+    useEffect(() => {
+
+      
+            if (!cookies.vjwt2) {
+                nav("/service_man")
+            }
+       
         getdata()
-    })
-
+        getdatabyid()
+    },[cookies,nav])
+  
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
     const changeStyle = () => {

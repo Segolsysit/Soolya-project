@@ -147,6 +147,9 @@ function SignUp(){
                     }
                         
                   } else {
+                    toast.info("successfully registerd", {
+                        position: "top-center",
+                      });
                     navigate("/sign_in");
                   }
                 }
