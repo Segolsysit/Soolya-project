@@ -113,7 +113,7 @@ function App() {
                 <Route path="/Add_new_service" element={<Add_new_service></Add_new_service>}></Route>
                 <Route path="/cart" element={<Cart ></Cart>}></Route>
                 <Route path='/servicemanlist' element={<Servicemanlist></Servicemanlist>}></Route>
-                <Route path="/vendor_admin" element={<Vendor_admin></Vendor_admin>}></Route>
+                <Route path="/vendor_admin/:id" element={<Vendor_admin></Vendor_admin>}></Route>
                 <Route path='/orders' element={<Orders></Orders>}/>
                 <Route path="/rejectedlist" element={<Rejected_list/>}></Route>
                 <Route path={'/vendors_list'} element={<Plumbing array={array}></Plumbing>}></Route>

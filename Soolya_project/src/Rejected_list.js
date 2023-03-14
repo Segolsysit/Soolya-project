@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
-
+import {useNavigate} from "react-router-dom"
 
 const Rejected_list = () => {
 

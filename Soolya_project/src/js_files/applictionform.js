@@ -12,11 +12,13 @@ function ApplicationForm() {
     
     const [cookies] = useCookies(["cookie-name"]);
     const nav = useNavigate();
-    useEffect(() => {
-      if (cookies.vjwt2) {
-        navigate("/");
-      }
-    }, [cookies, nav]);
+    // useEffect(() => {
+    //   if (cookies.vjwt2) {
+    //     nav("/");
+    //   }
+
+    
+    // }, [cookies, nav]);
 
     let serialNumber = 1;
     const [getServiceManData, setGetServiceManData] = useState([]);
@@ -62,7 +64,7 @@ function ApplicationForm() {
     const [values, setValues] = useState({
         Username:"",
         Email: "", 
-        Password: "", 
+        Password: ""
     });
 
     const initialErrors = {
@@ -75,7 +77,8 @@ function ApplicationForm() {
 
     const [loading,setLoading] = useState(false);
 
-    const vendor_login = async ()=>{
+    const vendor_login = async (e)=>{
+        e.preventDefault()
           console.log(values);
 
         let errors = initialErrors;
@@ -92,9 +95,11 @@ function ApplicationForm() {
         }
         if(!hasErrors){
       const {data} = await  axios.post("http://localhost:3001/vendor_register/register",{
-            Username:values.Username,
-            Email:values.Email,
-            Password:values.Password
+
+      ...values
+            // Username:values.Username,
+            // Email:values.Email,
+            // Password:values.Password
         },
         {withCredentials:true}
         )
@@ -635,6 +640,7 @@ function ApplicationForm() {
                             </button>
                         </div>
                         <div class="modal-body">
+                            <form onSubmit={vendor_login}>
                                 <div>
                                 <label>User Name</label><br/>
                                 <input onChange={(e)=>{
@@ -654,7 +660,7 @@ function ApplicationForm() {
                                 <label>Email</label><br/>
                                 <input onChange={(e)=>{
                                     setValues({...values, [e.target.name]:e.target.value})}}
-                                    name="Email"></input><br/><br/>
+                                    name="Email" type="email"></input><br/><br/>
                                     {errors.Email?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
@@ -669,7 +675,7 @@ function ApplicationForm() {
                                 <label>Password</label><br/>
                                 <input onChange={(e)=>{
                                     setValues({...values, [e.target.name]:e.target.value})}}
-                                    name="Password"></input><br/><br/>
+                                    name="Password" type="password"></input><br/><br/>
                                     {errors.Password?
                         (<div id="d_flex" className="sign_in_form_validation">
                         <div>
@@ -681,8 +687,9 @@ function ApplicationForm() {
                         </div>
                     </div>):null
                     }
-                                <Button onClick={()=>vendor_login()}>Creat</Button>
+                                <Button type="submit">Creat</Button>
                                 </div>
+                                </form>
                         </div>
 
                     </div>
