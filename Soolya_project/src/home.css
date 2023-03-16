@@ -604,6 +604,7 @@ select {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 130px;
      grid-column-gap: 20px;
+     grid-row-gap: 10px;
 }
 
 
@@ -1035,7 +1036,7 @@ h6 {
   }
 
   h5 {
-    font-size: 0.875em;
+    font-size: 1em;
   }
 }
 
@@ -1079,7 +1080,7 @@ h6 {
   }
 
   h5 {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 }
 
@@ -1101,7 +1102,7 @@ h6 {
   }
 
   h5 {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
 }
 
