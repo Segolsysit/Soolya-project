@@ -37,11 +37,11 @@ function Header() {
     useEffect(() => {
         const verifyUser = async () => {
 
-            if (cookies.jwt) {
-                setlogOut(false)
-            }
+            // if (cookies.jwt) {
+            //     setlogOut(false)
+            // }
 
-            if (cookies.jwt2 && cookies.jwt) {
+            if (cookies.jwt2) {
                 setRegister(false)
                 setLogin(false)
                 setlogOut(true)
@@ -70,7 +70,7 @@ function Header() {
     }, [cookies, nav, removeCookie]);
 
     const logOuthide = () => {
-        if (!cookies.jwt) {
+        if (!cookies.jwt2) {
             setlogOut(false)
         }
     }
