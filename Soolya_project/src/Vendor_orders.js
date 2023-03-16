@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from "react-cookie";
 
 
 
@@ -11,14 +12,23 @@ const Vendor_Orders = () => {
     const [orderdetails, setorderdetails] = useState([])
     const aemail = localStorage.getItem("adminemail")
     const apassword = localStorage.getItem("adminpassword")
+    const [cookies] = useCookies(["cookie-name"]);
+
+
     const nav = useNavigate()
 
+    useEffect(() => {
 
-    const verify = () => {
-        if (aemail === null && apassword === null) {
-            nav("/admin")
+        const verify = () => {
+            if ( !cookies.vjwt2) {
+                nav("/service_man")
+            }
         }
-    }
+        getdata()
+        verify()
+    },[cookies])
+
+   
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -46,10 +56,13 @@ const Vendor_Orders = () => {
     let a = 1;
 
 
-    useEffect(() => {
-        getdata()
-        verify()
-    })
+  
+
+    const [activeButton, setActiveButton] = useState('');
+
+    const handleClick = (buttonValue) => {
+      setActiveButton(buttonValue);
+    }
 
     return (
         <div>
@@ -99,7 +112,7 @@ const Vendor_Orders = () => {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="/orders">
+                            <a className="nav-link" href="/vendor_orders">
                                 <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Orders
                                     <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
@@ -425,7 +438,7 @@ const Vendor_Orders = () => {
                             </nav>
                             {/* <!-- End of Topbar --> */}
                             <div className="container-fluid">
-                                <h1>Order Deatails</h1>
+                                <h1>Order Details</h1>
                                 <Table className='table-cat'>
                                     <TableHead>
                                         <TableRow>
@@ -434,7 +447,9 @@ const Vendor_Orders = () => {
                                             <TableCell>Category</TableCell>
                                             <TableCell>Price</TableCell>
                                             <TableCell>Address</TableCell>
-                                            <TableCell>Number</TableCell>
+                                            <TableCell>MobileNumber</TableCell>
+                                            <TableCell>Accept</TableCell>
+                                            <TableCell>Reject</TableCell>
 
 
 
@@ -453,6 +468,8 @@ const Vendor_Orders = () => {
                                                     <TableCell><p>{data.price}</p></TableCell>
                                                     <TableCell><p>{data.address}</p></TableCell>
                                                     <TableCell><p>{data.number}</p></TableCell>
+                                                    <TableCell><Button variant='outlined' color='success'><i class="fa-solid fa-check"></i></Button></TableCell>
+                                                    <TableCell><Button variant='outlined' color="error"><i class="fa-solid fa-xmark" ></i></Button></TableCell>
                                                 </TableRow>
 
 

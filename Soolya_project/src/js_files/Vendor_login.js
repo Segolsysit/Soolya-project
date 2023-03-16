@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import '../signIn.css';
-
+import {toast} from "react-toastify"
 
 const Vendor_login = () => {
 
@@ -19,7 +19,7 @@ const Vendor_login = () => {
     const [values, setValues] = useState({ Email: "", Password: "" });
     const generateError = (error) =>
         toast.error(error, {
-            position: "bottom-right",
+            position: "top-center",
         });
 
     const initialErrors = {
@@ -70,7 +70,7 @@ const Vendor_login = () => {
                 if (Email) generateError(Email);
                 else if (Password) generateError(Password);
             } else {
-                navigate("/vendor_admin");
+                navigate(`/vendor_admin/`);
             }
         }
 

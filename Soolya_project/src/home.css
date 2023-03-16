@@ -366,7 +366,7 @@ select {
   width: 100%;
   height: 100%;
   max-width: 100%;
-  border-right: none;
+  /* border-right: none; */
   outline: none;
   cursor: pointer;
   /* border-radius: 10px 0px 0px 10px; */

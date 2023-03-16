@@ -19,15 +19,54 @@ function Category(props) {
 
     let nav = useNavigate();
 
-    const settings = {
+    const settings1 = {
         className: "center",
         infinite: true,
-        slidesToShow: getData.length,
+        slidesToShow: 6,
         arrows: false,
         swipeToSlide: true
 
 
     }
+
+    const settings2 = {
+        className: "center",
+        infinite: true,
+        slidesToShow: 5,
+        arrows: false,
+        swipeToSlide: true
+    }
+
+    const settings3 = {
+        className: "center",
+        infinite: true,
+        slidesToShow: 4,
+        arrows: false,
+        swipeToSlide: true
+    }
+
+    const settings4 = {
+        className: "center",
+        infinite: true,
+        slidesToShow: 3,
+        arrows: false,
+        swipeToSlide: true
+    }
+    const settings5 = {
+        className: "center",
+        infinite: true,
+        slidesToShow: 2.5,
+        arrows: false,
+        swipeToSlide: true
+    }
+    const settings6 = {
+        className: "center",
+        infinite: true,
+        slidesToShow: 1.5,
+        arrows: false,
+        swipeToSlide: true
+    }
+
 
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
@@ -70,10 +109,11 @@ function Category(props) {
     return (
         <div>
             <Header></Header>
-            <div className="category_page">
+
+            <div className="category_page_one">
 
 
-                {getData.length < 8 ? (<Slider {...settings}>
+                {getData.length >= 8 ? (<Slider {...settings1}>
 
                     {getData.map((data, index) =>
                         <div className="category_div" key={index}>
@@ -127,6 +167,286 @@ function Category(props) {
 
             </div>
 
+            <div className="category_page_two">
+
+
+                {getData.length >= 8 ? (<Slider {...settings2}>
+
+                    {getData.map((data, index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )}
+                </Slider>) : 
+                     getData.map((data,index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )
+                }
+                
+
+
+                <div className="grid">
+                    {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({ img, Subcategory, Discription, filename }, index) =>
+                        <div className="sub_category_overall" key={index}>
+
+                            <button className="sub_category_div" onClick={() => { service_list(Subcategory) }}>
+                                <div className="sub_category_img_div">
+                                    <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
+                                </div>
+                                <div className="sub_category_page_content_div">
+                                    <h2>{Subcategory}</h2>
+                                    <p className="sub_category_page_content_para">{Discription}</p>
+
+                                </div>
+                            </button>
+
+                        </div>
+                    ) : ""}
+                </div>
+
+            </div>
+
+            <div className="category_page_three">
+
+
+                {getData.length >= 8 ? (<Slider {...settings3}>
+
+                    {getData.map((data, index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )}
+                </Slider>) : 
+                     getData.map((data,index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )
+                }
+                
+
+
+                <div className="grid">
+                    {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({ img, Subcategory, Discription, filename }, index) =>
+                        <div className="sub_category_overall" key={index}>
+
+                            <button className="sub_category_div" onClick={() => { service_list(Subcategory) }}>
+                                <div className="sub_category_img_div">
+                                    <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
+                                </div>
+                                <div className="sub_category_page_content_div">
+                                    <h2>{Subcategory}</h2>
+                                    <p className="sub_category_page_content_para">{Discription}</p>
+
+                                </div>
+                            </button>
+
+                        </div>
+                    ) : ""}
+                </div>
+
+            </div>
+
+            <div className="category_page_four">
+
+
+                {getData.length >= 8 ? (<Slider {...settings4}>
+
+                    {getData.map((data, index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )}
+                </Slider>) : 
+                     getData.map((data,index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )
+                }
+                
+
+
+                <div className="grid">
+                    {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({ img, Subcategory, Discription, filename }, index) =>
+                        <div className="sub_category_overall" key={index}>
+
+                            <button className="sub_category_div" onClick={() => { service_list(Subcategory) }}>
+                                <div className="sub_category_img_div">
+                                    <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
+                                </div>
+                                <div className="sub_category_page_content_div">
+                                    <h2>{Subcategory}</h2>
+                                    <p className="sub_category_page_content_para">{Discription}</p>
+
+                                </div>
+                            </button>
+
+                        </div>
+                    ) : ""}
+                </div>
+
+            </div>
+
+            <div className="category_page_five">
+
+
+                {getData.length >= 8 ? (<Slider {...settings5}>
+
+                    {getData.map((data, index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )}
+                </Slider>) : 
+                     getData.map((data,index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                {/* <div> */}
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                {/* </div> */}
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )
+                }
+                
+
+
+                <div className="grid">
+                    {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({ img, Subcategory, Discription, filename }, index) =>
+                        <div className="sub_category_overall" key={index}>
+
+                            <button className="sub_category_div" onClick={() => { service_list(Subcategory) }}>
+                                <div className="sub_category_img_div">
+                                    <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
+                                </div>
+                                <div className="sub_category_page_content_div">
+                                    <h2>{Subcategory}</h2>
+                                    <p className="sub_category_page_content_para">{Discription}</p>
+
+                                </div>
+                            </button>
+
+                        </div>
+                    ) : ""}
+                </div>
+
+            </div>
+
+            <div className="category_page_six">
+
+
+                {getData.length >= 8 ? (<Slider {...settings6}>
+
+                    {getData.map((data, index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )}
+                </Slider>) : 
+                     getData.map((data,index) =>
+                        <div className="category_div" key={index}>
+
+                            <button className="category_button_div" onClick={() => fg(data.catagorySetup)}>
+                                <img className="category_img" src={localpath + data.filename} alt="painting"></img>
+                                <div>
+                                    <h5 className="category_text">{data.catagorySetup}</h5>
+                                </div>
+                            </button>
+                        </div>
+                    )
+                }
+                
+
+
+                <div className="grid">
+                    {active ? filt.length === 0 ? (<h1>no service is found!</h1>) : filt.map(({ img, Subcategory, Discription, filename }, index) =>
+                        <div className="sub_category_overall" key={index}>
+
+                            <button className="sub_category_div" onClick={() => { service_list(Subcategory) }}>
+                                <div className="sub_category_img_div">
+                                    <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
+                                </div>
+                                <div className="sub_category_page_content_div">
+                                    <h2>{Subcategory}</h2>
+                                    <p className="sub_category_page_content_para">{Discription}</p>
+
+                                </div>
+                            </button>
+
+                        </div>
+                    ) : ""}
+                </div>
+
+            </div>
         </div>
     )
 }
