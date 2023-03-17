@@ -52,7 +52,7 @@ import Header from './header';
 import Footer from './footer';
 
 import axios from "axios";
-import video_back from "./videos/video_background.mp4";
+// import video_back from "./videos/video_background.mp4";
 
 
 
