@@ -74,8 +74,12 @@ function Category(props) {
         swipeToSlide: true
     }
 
+const [ff , setFf] = useState("");
 
     useEffect(() => {
+
+       setFf(localStorage.getItem("title"));
+
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
         })
@@ -92,12 +96,13 @@ function Category(props) {
 
     const [active, setActive] = useState(false);
 
-    const [sub, setSub] = useState("")
+    const [sub, setSub] = useState(localStorage.getItem('title'))
 
     let filt;
     function fg(te) {
         setActive(true);
         setSub(te);
+        
         console.log(te)
     }
     filt = getData_sub.filter((su) => {
@@ -119,7 +124,7 @@ function Category(props) {
             <div className="center_category_page">
                 <div>
                     <div className="category_page_one">
-
+{ff}
 
                         {getData.length >= 8 ? (<Slider {...settings1}>
 

@@ -62,6 +62,7 @@ function Home(props) {
 
     const [getData, setgetData] = useState([]);
     const [getData_sub, setgetDataSub] = useState([]);
+    const [categorysearch,setCategorysearch] = useState([])
 
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
@@ -69,6 +70,9 @@ function Home(props) {
         })
         axios.get("http://localhost:3001/sub_api/new_fetch_items_limits").then((res) => {
             setgetDataSub(res.data);
+        })
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+            setCategorysearch(res.data);
         })
 
 
@@ -163,20 +167,22 @@ function Home(props) {
         setDistrict(e.target.value)
     }
     function btn() {
-        if (search === "plumbing" || (district === "erode") || (district === "Coimbatore")) {
-            localStorage.setItem("search", search)
-            localStorage.setItem("dist", district)
-            // props.pass(search)
-            // props.array.map((ar)=>{
-            nav('/vendors_list')
 
-            // })
-        } else if (search === "electrician" || (district === "erode") || (district === "Coimbatore")) {
-            localStorage.setItem("search", search)
-            localStorage.setItem("dist", district)
-            //     // props.pass(search)
-            nav('/vendors_list')
-        }
+        nav("/category")
+        // if (search === "plumbing" || (district === "erode") || (district === "Coimbatore")) {
+        //     localStorage.setItem("search", search)
+        //     localStorage.setItem("dist", district)
+        //     // props.pass(search)
+        //     // props.array.map((ar)=>{
+        //     nav('/vendors_list')
+
+        //     // })
+        // } else if (search === "electrician" || (district === "erode") || (district === "Coimbatore")) {
+        //     localStorage.setItem("search", search)
+        //     localStorage.setItem("dist", district)
+        //     //     // props.pass(search)
+        //     nav('/vendors_list')
+        // }
         // else {
 
         // return alert("search the correct word....");
@@ -219,13 +225,16 @@ function Home(props) {
     let filter;
     // if(search.length > 0){
 
-    filter = props.array.filter((arr) => {
-        return arr.type.match(search);
+    filter =categorysearch.filter((arr) => {
+        return arr.catagorySetup.match(search);
     })
     // }
 
 
-
+function cat(vv){
+    localStorage.setItem("title",vv)
+    nav("/category")
+}
 
 
     return (
@@ -298,8 +307,8 @@ function Home(props) {
                                     {show ? <label for="search" className='suggest'>
 
                                         {filter.map((arr) => (
-                                            <div className='sugg' onClick={() => { setSearch(arr.type); setShow(false) }}>
-                                                <span >{arr.type}</span>
+                                            <div className='sugg' onClick={() => { setSearch(arr.catagorySetup); setShow(false) }}>
+                                                <span >{arr.catagorySetup}</span>
 
                                             </div>
                                         ))}
@@ -545,7 +554,7 @@ function Home(props) {
                                 {getData.map((data, index) =>
                                     <div className="category_div_mobile" key={index}>
 
-                                        <button className="category_button_div_mobile" >
+                                        <button className="category_button_div_mobile" onClick={()=>cat(data.catagorySetup)}>
                                             <div>
                                             <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
 
