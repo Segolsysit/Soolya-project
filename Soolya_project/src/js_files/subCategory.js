@@ -58,7 +58,7 @@ function SubCategory(props) {
 
                 <div className="grid">
                     {filt.map(({ img, title, para }) =>
-                        <div className="sub_category_overall">
+                        // <div className="sub_category_overall">
 
                             <button className="sub_category_div">
                                 <div className="sub_category_img_div">
@@ -71,7 +71,7 @@ function SubCategory(props) {
                                 </div>
                             </button>
 
-                        </div>
+                        // </div>
                     )}
                 </div>
 

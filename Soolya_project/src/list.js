@@ -91,7 +91,7 @@ function List(props) {
                         {filte.map((data, index) =>
                             <div className="list_overall_div" key={index}>
 
-                                <button className="list_btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" >
+                                <button className="list_btn"  >
                                     <div>
                                         <img className="list_image" src={localpath + data.filename} alt="list_img"></img>
                                     </div>
@@ -103,7 +103,7 @@ function List(props) {
                                                 <p><i class="fa-solid fa-indian-rupee-sign"></i> {data.price}</p>
                                             </div>
                                             <button className="list_add_btn"
-                                                onClick={() => model(data._id)}>
+                                                onClick={() => model(data._id)} data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                                                 <i id="list_add_icon" class="fa-solid fa-plus"></i>
                                             </button>
                                         </div>
