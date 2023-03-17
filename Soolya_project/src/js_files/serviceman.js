@@ -32,11 +32,13 @@ function Serviceman() {
     const [fileerror, setfileerror] = React.useState(false);
 
     const props = {
+
         WorkTypeerror, setWorkTypeerror, districterror, setdistricterror, FirstNameerror, setFirstNameerror
         , LastNameerror, setLastNameerror, MobilePhoneNumbererror, setMobilePhoneNumbererror, ConfirmMobilePhoneNumbererror, setConfirmMobilePhoneNumbererror
         , StreetAddresserror, setStreetAddresserror, PostalCodeerror, setPostalCodeerror, Emailerror, setEmailerror,
         IdentityTypeerror, setIdentityTypeerror, IdentityNumbererror, setIdentityNumbererror, Passworderror, setPassworderror
         , ConfirmPassworderror, setConfirmPassworderror, fileerror, setfileerror
+
     }
 
     const [formData, setformData] = React.useState({
@@ -64,10 +66,10 @@ function Serviceman() {
         } else {
             return <Vendor_login></Vendor_login>
         }
-        // else {
-        //     return<Accountinfo/>
+         // else {
+         //    return<Accountinfo/>
     }
-    // }
+    //}
     return (
         <div class="App">
             <div className='form'>
