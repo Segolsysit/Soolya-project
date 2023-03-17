@@ -225,7 +225,10 @@ function Home(props) {
     // }
 
 
-
+function cat(vv){
+    localStorage.setItem("title",vv)
+    nav("/category")
+}
 
 
     return (
@@ -545,7 +548,7 @@ function Home(props) {
                                 {getData.map((data, index) =>
                                     <div className="category_div_mobile" key={index}>
 
-                                        <button className="category_button_div_mobile" >
+                                        <button className="category_button_div_mobile" onClick={()=>cat(data.catagorySetup)}>
                                             <div>
                                             <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
 
