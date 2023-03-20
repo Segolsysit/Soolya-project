@@ -54,7 +54,7 @@ function Footer() {
 axios.post("https://63bd5802d660062388a24683.mockapi.io/msg",{
                     email:input.email,
                     comment:input.comment
-                })
+                },{withCredentials:true})
     }
 
     return (
