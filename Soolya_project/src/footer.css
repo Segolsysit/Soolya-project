@@ -206,9 +206,25 @@ footer{
   margin-bottom: 0px;
 }
 
-/* p{
-  font-size: calc(1rem + 0.5vw);
-} */
+#d_flex_foot{
+  display: flex;
+  /* margin-left: 10px; */
+  margin-top: -7px;
+}
+
+
+#cross_sign_foot{
+  color: rgba(255, 0, 0, 0.719);
+  font-size: 15px;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+
+.sign_in_form_validation h6{
+  color: rgba(255, 0, 0, 0.719);
+  font-size: 13px; 
+  margin: 3px 0px 0px 5px;
+}
 
 @media only screen and (max-width:370px) {
       /* .policy_unorder li p{
