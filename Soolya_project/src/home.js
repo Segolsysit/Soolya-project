@@ -65,13 +65,13 @@ function Home(props) {
     const [categorysearch,setCategorysearch] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+        axios.get("https://soolya-backend.onrender.com/api/fetch_items").then((res) => {
             setgetData(res.data);
         })
-        axios.get("http://localhost:3001/sub_api/new_fetch_items_limits").then((res) => {
+        axios.get("https://soolya-backend.onrender.com/sub_api/new_fetch_items_limits").then((res) => {
             setgetDataSub(res.data);
         })
-        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
+        axios.get("https://soolya-backend.onrender.com/api/fetch_items").then((res) => {
             setCategorysearch(res.data);
         })
 
