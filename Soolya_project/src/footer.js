@@ -1,11 +1,65 @@
+import axios from 'axios';
+import { useState } from 'react';
 import './footer.css';
 import payment_method from "./images/payment.png";
 
 
 function Footer() {
+
+    const initialErrors = {
+        email: null,
+        comment: null
+    }
+
+    const [error, setError] = useState(initialErrors);
+
+    const [input, setInput] = useState({
+        email: "",
+        comment: ""
+    });
+
+    const handleSubmit = (event) => {
+
+        event.preventDefault();
+
+        // let error = initialErrors;
+
+        // let hasErrors = false;
+
+        // if (input.email === "") {
+        //     console.log("done");
+        //     error.email = "Email is required";
+        //     hasErrors = true;
+        // }
+        // if (input.comment === "") {
+        //     console.log("done 2");
+        //     error.comment = "comment is required";
+        //     hasErrors = true;
+        // }
+//         if(!hasErrors){
+//             setError(true);
+//             let gg = {
+//                 email:input.email,
+//                 comment:input.comment
+//             }
+//             axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
+//                 ll:input.email,
+//                 lk:input.comment
+//             })
+           
+//             console.log(gg);
+//         }
+        
+//   setError({...error});
+axios.post("http://localhost:3001/footer_api/new_footer",{
+                    email:input.email,
+                    comment:input.comment
+                },{withCredentials:true})
+    }
+
     return (
         <div>
-        
+
             <footer>
                 <div>
 
@@ -19,8 +73,8 @@ function Footer() {
                                         <div>
                                             <p>
                                                 From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time.
-                                                From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time.                                           
-                                        </p>
+                                                From Bikes and Autos to Prime Sedans and Prime SUVs, you will find a ride in your budget at your convenience any time.
+                                            </p>
                                         </div>
                                     </div>
                                     <div className="social_links">
@@ -49,7 +103,7 @@ function Footer() {
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div className="last_two_div" id="margin_left_mob">
                             <div className="center_div">
                                 <h2>Address</h2>
@@ -85,25 +139,57 @@ function Footer() {
                             </div>
                             <div className="right_div" id="right_div_mob">
                                 <h2>Contact us</h2>
-                            <div id="contact_center_mob">
-                                <div>
+                                <div id="contact_center_mob">
+
                                     <div>
-                                        <div className="contact_us_head ">Email *</div>
-                                        <input className="email_box form-control" id="email_box_mob" type="email" required></input>
+                                        <form onSubmit={handleSubmit}>
+                                            <div>
+                                                <div className="contact_us_head ">Email *</div>
+                                                <input className="email_box form-control" id="email_box_mob" type="email" value={input.email} onChange={(e) => {
+                                                    setInput({ ...input, email: e.target.value });
+                                                    error.email = null;
+                                                }}></input>
+                                            </div>
+                                            {error.email ?
+                                                (<div id="d_flex_foot" className="sign_in_form_validation">
+                                                    {/* <div>
+                                                        <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                                                    </div> */}
+                                                    <div className="d_flex_error_name">
+                                                    <h6><i id="cross_sign_foot" class="fa-regular fa-circle-xmark"></i>
+                                                       {error.email}</h6>
+                                                    </div>
+                                                </div>) : null
+                                            }
+                                            <div>
+                                                <div className="contact_us_head">Message *</div>
+                                                <textarea row="3" col="20" className='comment_box form-control' value={input.comment} onChange={(e) => {
+                                                    setInput({ ...input, comment: e.target.value });
+                                                    error.comment = null;
+                                                }} id="email_box_mob">
+                                                </textarea>
+                                            </div>
+                                            {error.comment ?
+                                                (<div id="d_flex_foot" className="sign_in_form_validation">
+                                                    {/* <div>
+                                                        <i id="cross_sign" class="fa-regular fa-circle-xmark"></i>
+                                                    </div> */}
+                                                    <div className="d_flex_error_name">
+                                                    <h6><i id="cross_sign_foot" class="fa-regular fa-circle-xmark"></i>
+                                                        {error.comment}</h6>
+                                                    </div>
+                                                </div>) : null
+                                            }
+                                            <div>
+                                                <button type="submit" className="footer_button btn btn-outline-primary" id="email_box_mob">
+                                                    send
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div>
-                                        <div className="contact_us_head">Message *</div>
-                                        <textarea row="3" col="20" className='comment_box form-control' id="email_box_mob">
-                                        </textarea>
-                                    </div>
-                                    <div>
-                                        <button type="submit" className="footer_button btn btn-outline-primary" id="email_box_mob">
-                                            send
-                                        </button>
-                                    </div>
+
                                 </div>
-                            </div>
-                                
+
 
                             </div>
                         </div>
@@ -128,7 +214,7 @@ function Footer() {
                             All rights reserved By @SoolyaLtd
                         </p>
                     </div>
-                
+
 
                 </div>
 

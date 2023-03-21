@@ -13,11 +13,12 @@ const subcategory_router = require("./Router/subcategory_route");
 const service_router = require("./Router/service_route");
 const serviceman_route = require("./Router/serviceman_route");
 const auth_router = require("./Router/authRoutes");
-const cookieParser= require("cookie-parser")
+const cookieParser = require("cookie-parser")
 const cart_router = require("./Router/cart_router");
 const bookingdetails_router = require("./Router/bookingdetails_router");
 const RejectedList_router = require("./Router/RejectedList_router");
 const Vendor_register_router = require("./Router/Vendor_register_route");
+const Footer_form_router = require("./Router/Footer_form_router");
 
 // server.on("request", app)
 app.use(express.urlencoded({extended:false}))
@@ -40,6 +41,7 @@ app.use("/cart_api",cart_router);
 app.use("/booking_api",bookingdetails_router);
 app.use("/reject_api",RejectedList_router);
 app.use("/vendor_register",Vendor_register_router);
+app.use("/footer_api",Footer_form_router);
 app.use(express.static(path.join(__dirname, "js")));
 app.use(express.static(path.join(__dirname, "files&img")));
 

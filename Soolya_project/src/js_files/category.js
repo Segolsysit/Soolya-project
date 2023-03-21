@@ -124,7 +124,7 @@ const [ff , setFf] = useState("");
             <div className="center_category_page">
                 <div>
                     <div className="category_page_one">
-{ff}
+{/* {ff} */}
 
                         {getData.length >= 8 ? (<Slider {...settings1}>
 

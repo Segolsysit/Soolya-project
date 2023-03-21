@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Admin.css"
@@ -7,6 +8,13 @@ export const Admin = () => {
     const nav = useNavigate()
     const aemail = localStorage.getItem("adminemail")
     const apassword = localStorage.getItem("adminpassword")
+    const [orderdetails, setorderdetails] = useState([])
+
+
+    const getdata2 = () => {
+        axios.get("http://localhost:3001/booking_api/booking_data").then((res) => {
+            setorderdetails(res.data)
+        })}
 
     const changeStyle = () => {
         if (style === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -39,7 +47,7 @@ export const Admin = () => {
     }
 
     useEffect(() => {
-
+        getdata2()
         verify()
     }, [])
 
@@ -93,7 +101,9 @@ export const Admin = () => {
                         <li className="nav-item">
                             <a className="nav-link" href="/orders">
                             <i class="fa-regular fa-link-horizontal"></i>
-                                <span>Orders</span></a>
+                                <span>Orders
+                                <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
+                                    </span></a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"

@@ -58,6 +58,14 @@ function Add_new_service() {
         }
     }
 
+    const [orderdetails, setorderdetails] = useState([])
+
+
+    const getdata2 = () => {
+        axios.get("http://localhost:3001/booking_api/booking_data").then((res) => {
+            setorderdetails(res.data)
+        })}
+
 
     const handleImgChange = (e) => {
         let file = e.target.files[0]
@@ -244,6 +252,7 @@ function Add_new_service() {
             // console.log(servicelist);
 
         })
+     getdata2()
     }, [servicelist])
 
     const delete_list = (id) => {
@@ -317,7 +326,9 @@ function Add_new_service() {
                         <li className="nav-item">
                             <a className="nav-link" href="/orders">
                                 <i class="fa-regular fa-link-horizontal"></i>
-                                <span>Orders</span></a>
+                                <span>Orders
+                                <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
+                                    </span></a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
