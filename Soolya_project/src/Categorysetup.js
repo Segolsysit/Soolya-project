@@ -37,8 +37,16 @@ function Sub_Category_Setup() {
         }
     }
 
-    useEffect(() => {
+    const [orderdetails, setorderdetails] = useState([])
 
+
+    const getdata2 = () => {
+        axios.get("http://localhost:3001/booking_api/booking_data").then((res) => {
+            setorderdetails(res.data)
+        })}
+
+    useEffect(() => {
+        getdata2()
         categorydata()
         verify()
     }, [])
@@ -259,7 +267,9 @@ function Sub_Category_Setup() {
                     <li className="nav-item">
                         <a className="nav-link" href="/orders">
                             <i class="fa-regular fa-link-horizontal"></i>
-                            <span>Orders</span></a>
+                            <span>Orders
+                            <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
+                                </span></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"

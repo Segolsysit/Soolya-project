@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Vendor_admin = () => {
 
-    const [orderdetails,setorderdetails] = useState([])
     const [getuser,setGetuser] = useState([])
+
+    const [orderdetails,setorderdetails] = useState([])
 
 
     const getdata = () => {
