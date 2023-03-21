@@ -44,7 +44,7 @@ const handleErrors = (err) => {
 };
 
 Vendor_register_router.post("/", (req, res, next) => {
-    const token = req.cookies.jwt;
+    const token = req.cookies.vjwt2;
     if (token) {
         jwt.verify(
             token,
@@ -55,7 +55,7 @@ Vendor_register_router.post("/", (req, res, next) => {
                     next();
                 } else {
                     const Vendor_register_schema1 = await Vendor_register_schema.findById(decodedToken.id);
-                    if (Vendor_register_schema1) res.json({ status: true, Vendor: Vendor_register_schema1.Email });
+                    if (Vendor_register_schema1) res.json({ status: true, Vendor: Vendor_register_schema1.Username });
                     else res.json({ status: false });
                     next();
                 }
@@ -97,7 +97,10 @@ Vendor_register_router.post("/register", async (req, res, next) => {
       const Vendor_register_Schema = await Vendor_register_schema.login(Email, Password);
       const token = createToken2(Vendor_register_Schema._id);
       res.cookie("vjwt2", token, { httpOnly: false, maxAge: maxAge * 1000 });
-      res.status(200).json({ Vendor_login: Vendor_register_Schema._id, status: true });
+     
+        const getbyid = await Vendor_register_schema.findById(Vendor_register_Schema._id)
+    
+      res.status(200).json({ Vendor_login: Vendor_register_Schema._id,getdata:getbyid, status: true });
     } catch (err) {
       const errors = handleErrors(err);
       res.json({ errors, status: false });
@@ -105,15 +108,15 @@ Vendor_register_router.post("/register", async (req, res, next) => {
   });
 
   Vendor_register_router.get("/fetch",async(req,res) => {
-    const getbyid = await Vendor_register_schema.find()
-    await getbyid.save()
+    const getdata= await Vendor_register_schema.find()
+   getdata.save()
     res.json(getbyid)
   })
     
 
   Vendor_register_router.get("/fetch_by_id/:id",async(req,res) => {
     const getbyid = await Vendor_register_schema.findById(req.params.id)
-    await getbyid.save()
+     getbyid.save()
     res.json(getbyid)
   })
     
