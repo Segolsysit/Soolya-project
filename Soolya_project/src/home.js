@@ -4,9 +4,9 @@ import './home.css'
 // import slider_2 from "./images/slider-2.jpg";
 // import slider_3 from "./images/slider-3.jpg";
 // import slider_4 from "./images/slider-4.jpg";
-import main_1 from "./images/main_1.jpg";
+import main_1 from "./images/elect1.jpg";
 import main_2 from "./images/main_2.jpg";
-import main_3 from "./images/main_3.jpg";
+import main_3 from "./images/elect.jpg";
 import main_4 from "./images/main_4.jpg";
 import carousel_slide_1 from "./images/two.jpg";
 import carousel_slide_2 from "./images/carousel_slider_2.jpg";
@@ -65,13 +65,13 @@ function Home(props) {
     const [categorysearch,setCategorysearch] = useState([])
 
     useEffect(() => {
-        axios.get("https://soolya-backend.onrender.com/api/fetch_items").then((res) => {
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setgetData(res.data);
         })
-        axios.get("https://soolya-backend.onrender.com/sub_api/new_fetch_items_limits").then((res) => {
+        axios.get("http://localhost:3001/sub_api/new_fetch_items_limits").then((res) => {
             setgetDataSub(res.data);
         })
-        axios.get("https://soolya-backend.onrender.com/api/fetch_items").then((res) => {
+        axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setCategorysearch(res.data);
         })
 
@@ -273,7 +273,13 @@ function cat(vv){
                                     <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
                                 </div>
                                 <div>
+                                    <img src={main_3} id="carousel_image_mob" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                                <div>
                                     <img src={main_2} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                                <div>
+                                    <img src={main_1} id="carousel_image_mob" class="d-block w-100" alt="slider-1"></img>
                                 </div>
                             </Slider>
 
@@ -333,6 +339,12 @@ function cat(vv){
                                 </div>
                                 <div>
                                     <img src={main_2} id="carousel_image_mob" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                                <div>
+                                    <img src={main_3} id="carousel_image_mob" class="d-block w-100" alt="slider-1"></img>
+                                </div>
+                                <div>
+                                    <img src={main_1} id="carousel_image_mob" class="d-block w-100" alt="slider-1"></img>
                                 </div>
                             </Slider>
 
