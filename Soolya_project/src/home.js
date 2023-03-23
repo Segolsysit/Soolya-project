@@ -62,7 +62,7 @@ function Home(props) {
 
     const [getData, setgetData] = useState([]);
     const [getData_sub, setgetDataSub] = useState([]);
-    const [categorysearch,setCategorysearch] = useState([])
+    const [categorysearch, setCategorysearch] = useState([])
 
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
@@ -74,7 +74,7 @@ function Home(props) {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
             setCategorysearch(res.data);
         })
-        if(search.length >0){
+        if (search.length > 0) {
             setShow(true)
         }
 
@@ -156,26 +156,32 @@ function Home(props) {
     const nav = useNavigate();
     function chg(e) {
 
-      
-      
+
+
         // console.log(e.target.value);
         setSearch(e.target.value);
-        // if (e.target.value === "") {
-        //     setShow(false)
-        // } else {
-        //     setShow(true);
 
-        // }
+        if (e.target.value === "") {
+            setShow(false)
+        } else {
+            setShow(true);
+
+        }
 
 
     }
-   
+
     function dist(e) {
         setDistrict(e.target.value)
     }
     function btn() {
+if(search === ''){
+    // modalName="type any"
+}else{
+    nav("/category")
 
-        nav("/category")
+}
+        // nav("/category")
         // if (search === "plumbing" || (district === "erode") || (district === "Coimbatore")) {
         //     localStorage.setItem("search", search)
         //     localStorage.setItem("dist", district)
@@ -220,11 +226,16 @@ function Home(props) {
         // }
         // if(search.length > 0 || search !== "plumber" || search !== "electrician"){
         modalName = "type any"
-    } else {
-        modalName = "search the correct word...."
-        // setSearch("")
-
+    } 
+    else {
+        modalName="";
     }
+//   modalName = 'wrong';
+
+    //     modalName = "search the correct word...."
+    //     // setSearch("")
+// nav('/category')
+    // }
     // else{
     //     modalName = null;
     // }
@@ -232,20 +243,20 @@ function Home(props) {
     let filter;
     // if(search.length > 0){
 
-    filter =categorysearch.filter((arr) => {
+    filter = categorysearch.filter((arr) => {
         return arr.catagorySetup.toLowerCase().match(search.toLowerCase());
     })
     // }
 
 
-function cat(vv){
-    localStorage.setItem("title",vv)
-    nav("/category")
-}
+    function cat(vv) {
+        localStorage.setItem("title", vv)
+        nav("/category")
+    }
 
 
     return (
-        <div>
+        <div >
 
             {/* header component ----INCLUDED --- */}
 
@@ -273,9 +284,9 @@ function cat(vv){
                 {/* carousel and z-index div --- START ----*/}
 
                 <div>
-                    <div className="carousel_div">
+                    <div className="carousel_div" >
                         <div id="carouselExampleControls" class="carousel slide" data-bs-pause="none" data-bs-ride="carousel" >
-                            <Slider {...set}>
+                            <Slider {...set} >
                                 <div>
                                     <img src={main_4} id="carousel_image" class="d-block w-100" alt="slider-1"></img>
                                 </div>
@@ -309,11 +320,12 @@ function cat(vv){
                                                 {/* <option className="locality_option" value="Coimbatore">Coimbatore</option> */}
                                             </select>
                                         </div>
-                                        <div className="search_div">
-                                            <input id="search" className={search.length === 0 ? "locality_search" : "locality_search_active"} type="search" placeholder="search your service category"  onChange={chg} value={search}></input>
+                                        <div className="search_div" >
+                                        {/* className={search.length === 0 ? "locality_search" : "locality_search_active"} */}
+                                            <input id="search" onClick={()=>{ setShow(true);}} autocomplete="off" type="search" className='locality_search' placeholder="search your service category" onChange={chg} value={search}></input>
                                         </div>
                                         <div className="button_div">
-                                            <button className="locality_search_button" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
+                                            <button className="locality_search_button" onClick={btn} data-bs-toggle={search.length > 0 ? null : "modal"} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
                                         </div>
 
                                     </div>
@@ -375,7 +387,7 @@ function cat(vv){
                                             </select>
                                         </div>
                                         <div className="search_div_mob">
-                                            <input id="search_mob" className={search.length === 0 ? "locality_search_mob" : "locality_search_active_mob"} type="search" placeholder="search your service category" onChange={chg} value={search}></input>
+                                            <input id="search_mob" className={search.length === 0 ? "locality_search_mob" : "locality_search_active_mob"} type="search" placeholder="search your service category" onChange={chg} value={search} ></input>
                                         </div> {show ? <label for="search" className='suggest_mob'>
 
                                             {filter.map((arr) => (
@@ -388,7 +400,7 @@ function cat(vv){
 
                                         </label> : <div></div>}
                                         <div className="button_div_mob">
-                                            <button className="locality_search_button_mob" onClick={btn} data-bs-toggle={(search === "electrician" || search === "plumbing" || district.length > 0 ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
+                                            <button className="locality_search_button_mob" onClick={btn} data-bs-toggle={(search !== ""  ? "" : "modal")} data-bs-target="#staticBackdrop"><i id="Z_index_search_icon" class="fa-solid fa-magnifying-glass" ></i>Search</button>
                                         </div>
                                     </div>
 
@@ -565,7 +577,7 @@ function cat(vv){
                         </div>
                     </ul>
 
-                    <div class="tab-content"  id="myTabContent_mobile">
+                    <div class="tab-content" id="myTabContent_mobile">
                         {/* <div> */}
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab_mobile">
                             <div className="category_div_mobile_overall" id="category_div_mobile_overall">
@@ -573,9 +585,9 @@ function cat(vv){
                                 {getData.map((data, index) =>
                                     <div className="category_div_mobile" key={index}>
 
-                                        <button className="category_button_div_mobile" onClick={()=>cat(data.catagorySetup)}>
+                                        <button className="category_button_div_mobile" onClick={() => cat(data.catagorySetup)}>
                                             <div>
-                                            <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
+                                                <img className="category_img_mobile" src={localpath + data.filename} alt="painting"></img>
 
                                             </div>
                                             <div>
@@ -588,27 +600,27 @@ function cat(vv){
                             </div>
 
                         </div>
-                        
+
                         <div class="tab-pane fade profile" id="profile" role="tabpanel" aria-labelledby="profile-tab_mobile">
                             <div className="sub_category_overall_mob">
 
                                 <div className="sub_category_grid_mob">
-                                {getData_sub.map(({ Subcategory, Discription, filename }) =>
-                                    <div className="sub_category_overall">
+                                    {getData_sub.map(({ Subcategory, Discription, filename }) =>
+                                        <div className="sub_category_overall">
 
-                                        <button className="sub_category_div">
-                                            <div className="sub_category_img_div">
-                                                <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
-                                            </div>
-                                            <div className="sub_category_page_content_div">
-                                                <h4>{Subcategory}</h4>
-                                                <p className="sub_category_page_content_para">{Discription}</p>
+                                            <button className="sub_category_div">
+                                                <div className="sub_category_img_div">
+                                                    <img className="sub_category_img" src={localpath + filename} alt="subCategory_image"></img>
+                                                </div>
+                                                <div className="sub_category_page_content_div">
+                                                    <h4>{Subcategory}</h4>
+                                                    <p className="sub_category_page_content_para">{Discription}</p>
 
-                                            </div>
-                                        </button>
+                                                </div>
+                                            </button>
 
-                                    </div>
-                                )}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             {/* </div> */}

@@ -96,8 +96,9 @@
     /* background-color: rgba(255, 255, 255, 0.33); */
     background-color: #ffe6e6;  
     margin-top: -5px;
-    width: 185px;
+    width: 140px;
     margin-right: 20px;
+    font-size: 10px;
   }
 
   .service_man__register:hover {

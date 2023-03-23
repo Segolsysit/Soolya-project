@@ -175,7 +175,7 @@ function BookingSteps() {
                 icon: "success",
                 button: "Ok",
             }).then(()=>{
-                nav("/")
+                nav("/Bookings")
             })
             axios.post("http://localhost:3001/booking_api/new_booking", {
             address,

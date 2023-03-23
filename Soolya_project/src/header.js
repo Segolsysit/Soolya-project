@@ -295,7 +295,7 @@ function Header() {
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={booking} alt="settings"></img>
                                                     </div>
-                                                    <div className="offcanvas_menu_item_name">
+                                                    <div className="offcanvas_menu_item_name" onClick={()=>nav('/Bookings')}>
                                                         <h6>Bookings</h6>
                                                     </div>
                                                 </div>
