@@ -14,9 +14,15 @@ const Vendor_login = () => {
         if (cookies.vjwt2) {
             navigate("/vendor_admin");
         }
+
+        // axios.get("http://localhost:3001/vendor_register/fetch").then((res)=>{
+        //     setvendorData(res.data)
+        // })
+
     }, [cookies, navigate]);
 
     const [values, setValues] = useState({ Email: "", Password: "" });
+    const [vendor_data,setvendorData] = useState("")
     const generateError = (error) =>
         toast.error(error, {
             position: "top-center",
@@ -57,20 +63,22 @@ const Vendor_login = () => {
 
         setLoading(true);
 
-        const { data } = await axios.post(
+        const  {data}  = await axios.post(
             "http://localhost:3001/vendor_register/login",
             {
                 ...values,
             },
             { withCredentials: true }
-        );
+        )
         if (data) {
             if (data.errors) {
                 const { Email, Password } = data.errors;
                 if (Email) generateError(Email);
                 else if (Password) generateError(Password);
             } else {
-                navigate(`/vendor_admin/`);
+                
+                
+                navigate(`/vendor_admin`);
             }
         }
 

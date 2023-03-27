@@ -9,7 +9,7 @@ export const Admin = () => {
     const aemail = localStorage.getItem("adminemail")
     const apassword = localStorage.getItem("adminpassword")
     const [orderdetails, setorderdetails] = useState([])
-
+// const [ss ,setSs] = useState(orderdetails.length);
 
     const getdata2 = () => {
         axios.get("http://localhost:3001/booking_api/booking_data").then((res) => {
@@ -99,7 +99,7 @@ export const Admin = () => {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="/orders">
+                            <a className="nav-link" href="/orders" onClick={()=> setorderdetails("")}>
                             <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Orders
                                 <span className="badge badge-danger badge-counter">{orderdetails.length}</span>

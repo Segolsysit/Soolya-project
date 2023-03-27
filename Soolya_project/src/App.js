@@ -42,7 +42,11 @@ import Orders from './Orders';
 import Rejected_list from './Rejected_list';
 import Admin_login from './admin_login';
 import Vendor_Orders from './Vendor_orders';
+<<<<<<< HEAD
 import Vendor_forgetpassword from './js_files/Vendor_forgotpassword';
+=======
+import Bookings from './js_files/Bookings';
+>>>>>>> 9aa594c8735547f0e713e881d13eeb6f514d5e10
 
 
 function App() {
@@ -133,6 +137,7 @@ function App() {
                 <Route path="/application" element={<ApplicationForm></ApplicationForm>}></Route>
                 <Route path="/vendor_orders" element={<Vendor_Orders></Vendor_Orders>}/>
                 <Route path='/vendor_forgotpassword' element={<Vendor_forgetpassword></Vendor_forgetpassword>}/>
+                <Route path='/Bookings' element={<Bookings></Bookings>}></Route>
                 <Route path="/*" element={<NotFound></NotFound>}></Route>                
             </Routes>
             <br></br>
