@@ -42,11 +42,8 @@ import Orders from './Orders';
 import Rejected_list from './Rejected_list';
 import Admin_login from './admin_login';
 import Vendor_Orders from './Vendor_orders';
-<<<<<<< HEAD
 import Vendor_forgetpassword from './js_files/Vendor_forgotpassword';
-=======
 import Bookings from './js_files/Bookings';
->>>>>>> 9aa594c8735547f0e713e881d13eeb6f514d5e10
 
 
 function App() {
