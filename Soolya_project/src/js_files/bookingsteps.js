@@ -29,6 +29,8 @@ function BookingSteps() {
     //     custom_error:null
     // }
 
+    const nav = useNavigate();
+
     useEffect(() => {
       const tokenVerify = () => {
         if(!cookies.jwt2){
@@ -172,7 +174,9 @@ function BookingSteps() {
                 text: "Your Booking is confirmed!",
                 icon: "success",
                 button: "Ok",
-            });
+            }).then(()=>{
+                nav("/Bookings")
+            })
             axios.post("http://localhost:3001/booking_api/new_booking", {
             address,
             street,
@@ -228,7 +232,7 @@ function BookingSteps() {
                                         <ul id="progressbar">
                                             <li class={page === 1 ? "active" : " "} id="account"><strong>Details</strong></li>
                                             <li class={page === 2 ? "active" : " "} id="personal1"><strong>Bill</strong></li>
-                                            {/* <li class={page === 3  ? "active" : " "}  id="payment"><strong>Finish</strong></li> */}
+                                            {/* <li class={page === 3  ? "active" : " "}  id="payment"><strong>payment</strong></li> */}
                                             <li class={page === 3 ? "active" : " "} id="confirm"><strong>Finish</strong></li>
                                         </ul>
 

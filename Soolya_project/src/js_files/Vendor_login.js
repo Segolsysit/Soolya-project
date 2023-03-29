@@ -150,6 +150,9 @@ const Vendor_login = () => {
                        </div>
                 </form>
             </div>
+            <button id="forget_pass" type="button" onClick={()=>{navigate("/vendor_forgotpassword")}}>
+                                    Forgot Password?
+                                </button>
             {/* </center> */}
         </div>
 
