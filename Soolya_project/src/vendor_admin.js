@@ -41,7 +41,7 @@ const Vendor_admin = () => {
               );
               if (!data.status) {
                 console.log(data.status);
-                removeCookie("jwt2");
+                removeCookie("vjwt2");
                 // nav("/");
               } else
               setGetuser(data.Vendor)
@@ -74,6 +74,11 @@ const Vendor_admin = () => {
         getdata()
         getdatabyid()
     },[cookies,nav])
+
+    const logout = () => {
+        removeCookie("vjwt2");
+        nav("/service_man")
+    }
   
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
@@ -443,10 +448,10 @@ const Vendor_admin = () => {
                             Activity Log
                         </a>
                         <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">
+                        <button className="dropdown-item" href="/" onClick={logout} data-toggle="modal" data-target="#logoutModal">
                             <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
-                        </a>
+                        </button>
                     </div>
                 </li>
 
