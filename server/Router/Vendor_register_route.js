@@ -1,5 +1,7 @@
-const Vendor_register_schema = require("../Schema/Vendor_register_schema");
+const User = require("../Schema/Vendor_register_schema");
 const Vendor_register_router = require("express").Router();
+const nodemailer = require('nodemailer');
+const bcrypt = require("bcrypt");
 const vjwt = require("jsonwebtoken");
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
@@ -94,31 +96,28 @@ Vendor_register_router.post("/register", async (req, res, next) => {
   Vendor_register_router.post("/login",  async (req, res) => {
     const { Email, Password } = req.body;
     try {
-      const Vendor_register_Schema = await Vendor_register_schema.login(Email, Password);
-      const token = createToken2(Vendor_register_Schema._id);
+      const user = await User.login(Email, Password);
+      const token = createToken2(user._id);
       res.cookie("vjwt2", token, { httpOnly: false, maxAge: maxAge * 1000 });
-     
-        const getbyid = await Vendor_register_schema.findById(Vendor_register_Schema._id)
-    
-      res.status(200).json({ Vendor_login: Vendor_register_Schema._id,getdata:getbyid, status: true });
+      res.status(200).json({ user: user._id, status: true });
     } catch (err) {
       const errors = handleErrors(err);
       res.json({ errors, status: false });
     }
   });
 
-  Vendor_register_router.get("/fetch",async(req,res) => {
-    const getdata= await Vendor_register_schema.find()
-   getdata.save()
-    res.json(getbyid)
-  })
+  // Vendor_register_router.get("/fetch",async(req,res) => {
+  //   const getdata= await User.find()
+  //  getdata.save()
+  //   res.json(getbyid)
+  // })
     
 
-  Vendor_register_router.get("/fetch_by_id/:id",async(req,res) => {
-    const getbyid = await Vendor_register_schema.findById(req.params.id)
-     getbyid.save()
-    res.json(getbyid)
-  })
+  // Vendor_register_router.get("/fetch_by_id/:id",async(req,res) => {
+  //   const getbyid = await User.findById(req.params.id)
+  //    getbyid.save()
+  //   res.json(getbyid)
+  // })
 
 
 

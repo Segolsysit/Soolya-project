@@ -115,6 +115,17 @@
     outline: none;
   }
 
+  #forget_password{
+    color:brown;
+    font-weight: 490;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    margin-left: 43%;
+  }
+
   #forget_pass:hover{
     color: brown;
     background-color: rgba(207, 230, 238, 0.76);
