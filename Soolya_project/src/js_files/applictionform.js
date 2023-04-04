@@ -57,7 +57,7 @@ function ApplicationForm() {
             getdata1()
             verify()
             getdata2()
-        });
+        },[]);
 
         const viewdeatils = (id) => {
             axios.get(`http://localhost:3001/serviceman/get_by_id/${id}`).then((response) => {
@@ -109,10 +109,10 @@ function ApplicationForm() {
             if (!hasErrors) {
                 const { data } = await axios.post("http://localhost:3001/vendor_register/register", {
 
-                    ...values
-                    // Username:values.Username,
-                    // Email:values.Email,
-                    // Password:values.Password
+                    // ...values
+                    Username:values.Username,
+                    Email:values.Email,
+                    Password:values.Password
                 },
                     { withCredentials: true }
                 )
@@ -705,10 +705,10 @@ function ApplicationForm() {
                                                 </div>
                                             </div>) : null
                                         }
-                                        <Button type="submit" class={close ? "btn btn-primary" : ""} data-dismiss={close ? "modal" : ""} aria-label={close ? "Close" : ""}>Creat</Button>
-                                        <button type="submit"
+                                        <Button type="submit" variant="contained" >Create</Button>
+                                        {/* <button type="submit"
                                             class="btn btn-primary" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">create</span></button>
+                                            <span aria-hidden="true">create</span></button> */}
                                     </div>
                                 </form>
                             </div>

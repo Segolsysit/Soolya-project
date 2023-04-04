@@ -3,6 +3,7 @@ import { Button, Table, TableBody, TableCell, TableRow, TableHead } from '@mui/m
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
+import { toast } from 'react-toastify';
 
 
 
@@ -13,19 +14,50 @@ const Vendor_Orders = () => {
     const aemail = localStorage.getItem("adminemail")
     const apassword = localStorage.getItem("adminpassword")
     const [cookies] = useCookies(["cookie-name"]);
+    const [getuser,setGetuser] = useState()
 
 
     const nav = useNavigate()
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const verify = () => {
-            if ( !cookies.vjwt2) {
+    //     const verify = () => {
+    //         if ( !cookies.vjwt2) {
+    //             nav("/service_man")
+    //         }
+    //     }
+    //     getdata()
+    //     verify()
+    // },[cookies])
+
+    useEffect(() => {
+        const verifyUser = async () => {
+            if (!cookies.vjwt2) {
                 nav("/service_man")
+            } else {
+              const { data } = await axios.post(
+                "http://localhost:3001/vendor_register",
+                {},
+                {
+                  withCredentials: true,
+                }
+              );
+              if (!data.status) {
+                console.log(data.status);
+                removeCookie("jwt2");
+                // nav("/");
+              } else
+              setGetuser(data.Vendor)
+                toast(`Hi ${data.Vendor} 🦄`, {
+                  theme: "dark",
+                });
             }
-        }
+          };
+      
+           
+            verifyUser()
         getdata()
-        verify()
+       
     },[cookies])
 
    
@@ -405,7 +437,7 @@ const Vendor_Orders = () => {
                                     <li className="nav-item dropdown no-arrow">
                                         <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{getuser}</span>
                                             <img className="img-profile rounded-circle"
                                                 src="img/undraw_profile.svg"
                                                 alt='...' />
