@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import '../signIn.css';
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 
 const Vendor_login = () => {
 
@@ -14,9 +14,15 @@ const Vendor_login = () => {
         if (cookies.vjwt2) {
             navigate("/vendor_admin");
         }
+
+        // axios.get("http://localhost:3001/vendor_register/fetch").then((res)=>{
+        //     setvendorData(res.data)
+        // })
+
     }, [cookies, navigate]);
 
     const [values, setValues] = useState({ Email: "", Password: "" });
+    const [vendor_data, setvendorData] = useState("")
     const generateError = (error) =>
         toast.error(error, {
             position: "top-center",
@@ -63,14 +69,16 @@ const Vendor_login = () => {
                 ...values,
             },
             { withCredentials: true }
-        );
+        )
         if (data) {
             if (data.errors) {
                 const { Email, Password } = data.errors;
                 if (Email) generateError(Email);
                 else if (Password) generateError(Password);
             } else {
-                navigate(`/vendor_admin/`);
+
+
+                navigate(`/vendor_admin`);
             }
         }
 
@@ -83,30 +91,31 @@ const Vendor_login = () => {
     }
 
     return (
-        <div className="sign_in1">
-            {/* <center> */}
-            <div className="sign_in_div1">
-                <div className="sign_in_logo_div">
-                    <div>
-                        {/* <img className="sign_in_logo" src={logo} alt="sign_in_page"></img> */}
+        <div>
+            <div className="sign_in1">
+                {/* <center> */}
+                <div className="sign_in_div1">
+                    <div className="sign_in_logo_div">
+                        <div>
+                            {/* <img className="sign_in_logo" src={logo} alt="sign_in_page"></img> */}
+                        </div>
+                        <div>
+                            <h4 className='h1'>Vendor login</h4>
+                        </div>
                     </div>
-                    <div>
-                        <h4 className='h1'>Vendor login</h4>
-                    </div>
-                </div>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <div className="form_input">
-                        <label>Email</label>
-                        <input className="data_input"
-                            onChange={(e) => {
-                                setValues({ ...values, [e.target.name]: e.target.value });
-                                errors.Email = null;
+                    <form onSubmit={(e) => handleSubmit(e)}>
+                        <div className="form_input">
+                            <label>Email</label>
+                            <input className="data_input"
+                                onChange={(e) => {
+                                    setValues({ ...values, [e.target.name]: e.target.value });
+                                    errors.Email = null;
 
-                            }
+                                }
 
-                            } name="Email" type="email"></input>
+                                } name="Email" type="email"></input>
 
-                    </div>
+                        </div>
                         {errors.Email ?
                             (<div id="d_flex" className="sign_in_form_validation">
                                 <div>
@@ -118,15 +127,15 @@ const Vendor_login = () => {
                             </div>) : null
                         }
                         <div className="form_input">
-                        <label>Password</label>
-                        <input className="data_input"
-                            onChange={(e) => {
-                                setValues({ ...values, [e.target.name]: e.target.value })
-                                errors.Password = null;
-                            }
-                            }
-                            name="Password" type="password"></input>
-                            </div>
+                            <label>Password</label>
+                            <input className="data_input"
+                                onChange={(e) => {
+                                    setValues({ ...values, [e.target.name]: e.target.value })
+                                    errors.Password = null;
+                                }
+                                }
+                                name="Password" type="password"></input>
+                        </div>
                         {errors.Password ?
                             (<div id="d_flex" className="sign_in_form_validation">
                                 <div>
@@ -138,11 +147,16 @@ const Vendor_login = () => {
                             </div>) : null
                         }
                         <div className="form_sign_in_button_div1">
-                        <button className="form_sign_in_button" >Sign in</button>
-                       </div>
-                </form>
+                            <button className="form_sign_in_button" >Sign in</button>
+                        </div>
+                    </form>
+                </div>
+                
+                {/* </center> */}
             </div>
-            {/* </center> */}
+            <button id="forget_password" type="button" onClick={() => { navigate("/vendor_forgotpassword") }}>
+                    Forgot Password?
+                </button>
         </div>
 
     )

@@ -217,6 +217,14 @@ select {
 
 #search {
   padding-left: 20px;
+  /* position: static;
+  z-index: 1;
+  height: 200px; */
+}
+
+#search:focus{
+  border: 1px solid black;
+  border-bottom: none;
 }
 
 .locality_search {
@@ -224,6 +232,7 @@ select {
   height: 100%;
   outline: none;
   border: 1px solid gray;
+
 }
 
 .locality_search_active {
@@ -232,6 +241,7 @@ select {
   outline: none;
   border: 1px solid gray;
   border-bottom: none;
+ 
 }
 
 /* suggest */
@@ -239,6 +249,8 @@ select {
 .suggest {
   background-color: #f0f0f0;
   width: 400px;
+  height: 180px;
+  overflow-y: auto;
 }
 
 .sugg {

@@ -22,39 +22,39 @@ function Footer() {
 
         event.preventDefault();
 
-        // let error = initialErrors;
+        let error = initialErrors;
 
-        // let hasErrors = false;
+        let hasErrors = false;
 
-        // if (input.email === "") {
-        //     console.log("done");
-        //     error.email = "Email is required";
-        //     hasErrors = true;
-        // }
-        // if (input.comment === "") {
-        //     console.log("done 2");
-        //     error.comment = "comment is required";
-        //     hasErrors = true;
-        // }
-//         if(!hasErrors){
-//             setError(true);
-//             let gg = {
-//                 email:input.email,
-//                 comment:input.comment
-//             }
-//             axios.post("https://63bd5802d660062388a24683.mockapi.io/Soolya",{
-//                 ll:input.email,
-//                 lk:input.comment
-//             })
+        if (input.email === "") {
+            console.log("done");
+            error.email = "Email is required";
+            hasErrors = true;
+        }
+        if (input.comment === "") {
+            console.log("done 2");
+            error.comment = "comment is required";
+            hasErrors = true;
+        }
+        if(!hasErrors){
+            setError(true);
+            let gg = {
+                email:input.email,
+                comment:input.comment
+            }
+            axios.post("http://localhost:3001/feedback_api/feedback",{
+                email:input.email,
+                message:input.comment
+            })
            
-//             console.log(gg);
-//         }
+            console.log(gg);
+        }
         
-//   setError({...error});
-axios.post("https://63bd5802d660062388a24683.mockapi.io/msg",{
-                    email:input.email,
-                    comment:input.comment
-                },{withCredentials:true})
+  setError({...error});
+// axios.post("http://localhost:3001/footer_api/new_footer",{
+//                     email:input.email,
+//                     comment:input.comment
+//                 },{withCredentials:true})
     }
 
     return (

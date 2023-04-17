@@ -48,26 +48,29 @@ function Header() {
             }
 
 
-            else {
-                const { data } = await axios.post(
-                    "http://localhost:3001/auth_router",
-                    {
-                        withCredentials: true,
-                    }
-                );
-                if (!data.status) {
-                    // removeCookie("jwt");
-                    removeCookie("jwt2");
-                } else
-                    toast(`Hi ${data.user} 🦄`, {
-                        theme: "dark"
-                    });
-            }
+        //     else {
+        //         const { data } = await axios.post(
+        //             "http://localhost:3001/auth_router",
+        //             {
+        //                 withCredentials: true,
+        //             }
+        //         );
+        //         if (!data.status) {
+        //             // removeCookie("jwt");
+        //             removeCookie("jwt2");
+        //         } else{
+        //             console.log(data.users);
+        //             // toast(`Hi ${data.users} 🦄`, {
+        //             //     theme: "dark"
+        //             // });
+        //         }
+                
+        //     }
         };
         
         verifyUser();
         logOuthide()
-    }, [cookies, nav, removeCookie]);
+    }, [cookies, nav, logout]);
 
     const logOuthide = () => {
         if (!cookies.jwt2) {
@@ -295,7 +298,7 @@ function Header() {
                                                     <div className="offcanvas_menu_item_img">
                                                         <img className="offcanvas_font_img" src={booking} alt="settings"></img>
                                                     </div>
-                                                    <div className="offcanvas_menu_item_name">
+                                                    <div className="offcanvas_menu_item_name" onClick={()=>nav('/Bookings')}>
                                                         <h6>Bookings</h6>
                                                     </div>
                                                 </div>

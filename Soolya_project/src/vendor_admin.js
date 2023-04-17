@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Vendor_admin = () => {
 
     const [orderdetails,setorderdetails] = useState([])
-    const [getuser,setGetuser] = useState([])
+    const [getuser,setGetuser] = useState()
+
 
 
     const getdata = () => {
@@ -15,26 +17,68 @@ const Vendor_admin = () => {
             })
     }
     let a = 1;
-    const [cookies] = useCookies(["cookie-name"]);
+    const [cookies, setCookie, removeCookie] = useCookies([]);
 
 
     const nav = useNavigate()
 
     const getdatabyid = (id) => {
-        axios.get(`http://localhost:3001/vendor_register/fetch_by_id/${id}`).then((res)=>{
-                setorderdetails(res.data)
-            })
+        // axios.get(`http://localhost:3001/vendor_register/fetch_by_id/${id}`).then((res)=>{
+        //         setorderdetails(res.data)
+        //     })
     }
     useEffect(() => {
-
-      
+        const verifyUser = async () => {
             if (!cookies.vjwt2) {
                 nav("/service_man")
+            } else {
+              const { data } = await axios.post(
+                "http://localhost:3001/vendor_register",
+                {},
+                {
+                  withCredentials: true,
+                }
+              );
+              if (!data.status) {
+                console.log(data.status);
+                removeCookie("vjwt2");
+                // nav("/");
+              } else
+              setGetuser(data.Vendor)
+                toast(`Hi ${data.Vendor} 🦄`, {
+                  theme: "dark",
+                });
             }
-       
+          };
+      
+            // if (!cookies.vjwt2) {
+            //     nav("/service_man")
+            // }
+            // else {
+            //     const { data } = await axios.post(
+            //       "http://localhost:3001/",
+            //       {},
+            //       {
+            //         withCredentials: true,
+            //       }
+            //     );
+            //     if (!data.status) {
+            //       removeCookie("jwt");
+            //       navigate("/login");
+            //     } else
+            //       toast(`Hi ${data.user} 🦄`, {
+            //         theme: "dark",
+            //       });
+            //   }
+            verifyUser()
         getdata()
         getdatabyid()
     },[cookies,nav])
+
+    const logout = () => {
+        removeCookie("vjwt2");
+        nav("/service_man")
+    }
   
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
 
@@ -86,9 +130,9 @@ const Vendor_admin = () => {
     </li>
 
     <li className="nav-item active">
-        <a className="nav-link" href="/application">
+        <a className="nav-link" href="/PendingOrders">
             <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Application</span></a>
+            <span>Pending Orders</span></a>
     </li>
 
     {/* <!-- Divider --> */}
@@ -383,7 +427,7 @@ const Vendor_admin = () => {
                 <li className="nav-item dropdown no-arrow">
                     <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span className="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span className="mr-2 d-none d-lg-inline text-gray-600 small">{getuser}</span>
                         <img className="img-profile rounded-circle"
                             src="img/undraw_profile.svg"
                             alt='...' />
@@ -404,10 +448,10 @@ const Vendor_admin = () => {
                             Activity Log
                         </a>
                         <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">
+                        <button className="dropdown-item" href="/" onClick={logout} data-toggle="modal" data-target="#logoutModal">
                             <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
-                        </a>
+                        </button>
                     </div>
                 </li>
 

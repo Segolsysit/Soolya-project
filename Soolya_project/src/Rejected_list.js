@@ -48,7 +48,16 @@ const Rejected_list = () => {
         })
     }
 
+    const [orderdetails, setorderdetails] = useState([])
+
+
+    const getdata2 = () => {
+        axios.get("http://localhost:3001/booking_api/booking_data").then((res) => {
+            setorderdetails(res.data)
+        })}
+
     useEffect(()=>{
+        getdata2()
         getrejected_list()
         verify()
     })
@@ -110,7 +119,9 @@ const Rejected_list = () => {
                         <li className="nav-item">
                             <a className="nav-link" href="/orders">
                                 <i class="fa-regular fa-link-horizontal"></i>
-                                <span>Orders</span></a>
+                                <span>Orders
+                                <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
+                                    </span></a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
@@ -482,11 +493,11 @@ const Rejected_list = () => {
                         </div>
                         <div class="modal-body">
                                 <div>
-                                <h3>Name : {viewdata.FirstName} {viewdata.LastName} </h3><br/>
-                                <h3>Mobile Number : {viewdata.MobilePhoneNumber}</h3><br/>
-                                <h3>Email : {viewdata.Email}</h3><br/>
-                                <h3>Work Type : {viewdata.WorkType}</h3><br/>
-                                <h3>Address : {viewdata.StreetAddress}</h3><br/>
+                                <h4>Name : {viewdata.FirstName} {viewdata.LastName} </h4><br/>
+                                <h4>Mobile Number : {viewdata.MobilePhoneNumber}</h4><br/>
+                                <h4>Email : {viewdata.Email}</h4><br/>
+                                <h4>Work Type : {viewdata.WorkType}</h4><br/>
+                                <h4>Address : {viewdata.StreetAddress}</h4><br/>
                                 <Button>Reject</Button>
                                 <Button>Accept</Button>
                                 </div>

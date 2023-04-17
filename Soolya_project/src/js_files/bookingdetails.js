@@ -105,7 +105,7 @@ street,setstreet,city,setcity,zip,setzip,person,setperson,number,setnumber }) {
                                             setzip( e.target.value );
                                             error.zip = null;
                                             setError({ ...error, custom_error: null });
-                                        }} type="tel"></input>
+                                        }} type="number"></input>
                                     </div>
                                     {error.zip ?
                                         (<div id="d_flex" className="sign_in_form_validation">
@@ -141,7 +141,7 @@ street,setstreet,city,setcity,zip,setzip,person,setperson,number,setnumber }) {
                                             setnumber( e.target.value );
                                             error.number = null;
                                             setError({ ...error, custom_error: null });
-                                        }} type="text"></input>
+                                        }} type="number"></input>
                                     </div>
                                     {error.number ?
                                         (<div id="d_flex" className="sign_in_form_validation">
