@@ -9,9 +9,9 @@ function BookingBill({bookingdata,setbookingdata}) {
     const number =localStorage.getItem("number")
 
     useEffect(() => {
-        axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res) => {
-            console.log(res.data);
-        })
+        // axios.get("https://63bd5802d660062388a24683.mockapi.io/Soolya").then((res) => {
+        //     console.log(res.data);
+        // })
         axios.get(`http://localhost:3001/service_api/new_fetch_service_items/${id}`).then((res) => {
             setbookingdata(res.data)
         })

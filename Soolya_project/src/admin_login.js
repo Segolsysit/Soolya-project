@@ -7,7 +7,7 @@ import Header from './header';
 import Footer from './footer';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import bcrypt from 'bcryptjs';
 
 
 const Admin_login = () => {
@@ -18,6 +18,8 @@ const Admin_login = () => {
     const [email,setemail] = useState("")
     const [password,setpassword] = useState("")
 
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
     const [values, setValues] = useState({ email: "", password: "" });
     const generateError = (error) =>
         toast.error(error, {
@@ -29,11 +31,11 @@ const Admin_login = () => {
         console.log(password);
       if(admin_email === email && admin_password === password){
         localStorage.setItem("adminemail",admin_email)
-        localStorage.setItem("adminpassword",admin_password)
+        localStorage.setItem("adminpassword",hashedPassword)
         nav("/admin_home")
       }
       else{
-        toast.error("Email or Password was wrong", {
+        toast.error("Email or Password Is Invalid", {
             position: "top-center",
         });
       }

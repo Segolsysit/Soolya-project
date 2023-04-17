@@ -10,12 +10,13 @@ const Orders = () => {
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
     const [orderdetails,setorderdetails] = useState([])
     const aemail = localStorage.getItem("adminemail")
-    const apassword = localStorage.getItem("adminpassword")
+    const apassword = localStorage.getItem("adminpassword");
+    const [notificationCount, setNotificationCount] = useState(0);
     const nav = useNavigate()
 
 
     const verify = ()=>{
-        if(aemail === null && apassword === null){
+        if(aemail === null || apassword === null){
             nav("/admin")
         }
     }
@@ -41,6 +42,7 @@ const Orders = () => {
     const getdata = () => {
         axios.get("http://localhost:3001/booking_api/booking_data").then((res)=>{
                 setorderdetails(res.data)
+                setNotificationCount(orderdetails.length)
             })
     }
     let a = 1;
@@ -49,7 +51,14 @@ const Orders = () => {
     useEffect(()=>{
         getdata()
         verify()
+
+      
     })
+
+    // function resetNoti() {
+    //     setNotificationCount("")
+    // }
+
 
     return (
         <div>
@@ -99,10 +108,10 @@ const Orders = () => {
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="/orders">
+                            <a  className="nav-link" href="/orders">
                                 <i class="fa-regular fa-link-horizontal"></i>
                                 <span>Orders
-                            <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
+                            <span className="badge badge-danger badge-counter">{notificationCount}</span>
                                     </span></a>
                         </li>
                         <li className="nav-item">
@@ -435,6 +444,7 @@ const Orders = () => {
                                             <TableCell>Price</TableCell>
                                             <TableCell>Address</TableCell>
                                             <TableCell>Number</TableCell>
+                                            <TableCell>paymentMethod</TableCell>
 
 
 
@@ -453,6 +463,7 @@ const Orders = () => {
                                                     <TableCell><p>{data.price}</p></TableCell>
                                                     <TableCell><p>{data.address}</p></TableCell>
                                                     <TableCell><p>{data.number}</p></TableCell>
+                                                    <TableCell><p>{data.paymentMethod}</p></TableCell>
                                                 </TableRow>
 
 

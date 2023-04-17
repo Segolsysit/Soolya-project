@@ -130,9 +130,9 @@ const Vendor_admin = () => {
     </li>
 
     <li className="nav-item active">
-        <a className="nav-link" href="/application">
+        <a className="nav-link" href="/PendingOrders">
             <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Application</span></a>
+            <span>Pending Orders</span></a>
     </li>
 
     {/* <!-- Divider --> */}

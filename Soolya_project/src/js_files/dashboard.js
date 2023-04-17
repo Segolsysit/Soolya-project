@@ -18,33 +18,33 @@ function DashBoard(){
           else{
             // alert("payment gateway open");
 
-            var options = {
-                key:"rzp_test_1SnQnLm783h5Op",
-                key_secret:"W3x1XiUXiyqIKQJrSBqaXGmE",
-                amount:amount *100,
-                currency:"INR",
-                name:"SOOLYA",
-                description:"Payment here",
-                handler:function(res){
-                    console.log(res);
-                    alert(res.razorpay_payment_id);
-                },
-                prefill:{
-                    name:'vignesh',
-                    email:"vigneshvignesh4727@gmail.com",
-                    contact:"9791823953"
-                },
-                notes:{
-                    address:"Segolsys software solutions"
-                },
-                theme:{
-                    color:"#3399cc"
-                }
-            };
+            // var options = {
+            //     key:"rzp_test_1SnQnLm783h5Op",
+            //     key_secret:"W3x1XiUXiyqIKQJrSBqaXGmE",
+            //     amount:amount *100,
+            //     currency:"INR",
+            //     name:"SOOLYA",
+            //     description:"Payment here",
+            //     handler:function(res){
+            //         console.log(res);
+            //         alert(res.razorpay_payment_id);
+            //     },
+            //     prefill:{
+            //         name:'vignesh',
+            //         email:"vigneshvignesh4727@gmail.com",
+            //         contact:"9791823953"
+            //     },
+            //     notes:{
+            //         address:"Segolsys software solutions"
+            //     },
+            //     theme:{
+            //         color:"#3399cc"
+            //     }
+            // };
 
-            var pay = new window.Razorpay(options);
+            // var pay = new window.Razorpay(options);
 
-            pay.open();
+            // pay.open();
           }
     }
 

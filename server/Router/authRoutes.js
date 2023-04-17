@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const nodemailer = require('nodemailer');
 const auth_router = require("express").Router();
 const maxAge = 3 * 24 * 60 * 60;
+
 const createToken = (id) => {
   return jwt.sign({ id }, "soolya super secret key", );
 };
@@ -45,18 +46,18 @@ const handleErrors = (err) => {
 };
 
 auth_router.post("/", (req, res, next) => {
-    const token = req.cookies.jwt;
+    const token = req.cookies.jwt2;
     if (token) {
       jwt.verify(
         token,
-        "soolya sheth super secret key",
+        "soolya super secret key",
         async (err, decodedToken) => {
           if (err) {
             res.json({ status: false });
             next();
           } else {
             const user = await User.findById(decodedToken.id);
-            if (user) res.json({ status: true, user: user.email });
+            if (user) res.json({ status: true, users: user.firstName });
             else res.json({ status: false });
             next();
           }
@@ -89,6 +90,13 @@ auth_router.post("/", (req, res, next) => {
     }
   });
 
+  auth_router.get("/fetch_email/:id",async(req,res) => {
+  
+    const user_email = await User.findById(req.params.id)
+    res.json(user_email)
+ 
+})
+
 
   auth_router.post("/login",  async (req, res) => {
     const { email, password } = req.body;
@@ -102,6 +110,8 @@ auth_router.post("/", (req, res, next) => {
       res.json({ errors, status: false });
     }
   });
+
+ 
 
   auth_router.post("/forgot_password", async (req, res , next) => {
     const { email } = req.body;
@@ -183,6 +193,7 @@ auth_router.post("/", (req, res, next) => {
         }
         const secret = "soolya sheth super secret key" + oldUser.password;
         try {
+          console.log(password);
           const verify = jwt.verify(token, secret);
           const salt = await bcrypt.genSalt();
           const  encryptedpassword = await bcrypt.hash(password, salt);

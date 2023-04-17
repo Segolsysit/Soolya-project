@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Admin.css"
+import bcrypt from 'bcryptjs';
 
 export const Admin = () => {
     const [style, setstyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
@@ -33,9 +34,10 @@ export const Admin = () => {
             setstyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
         }
     }
+    // const isPasswordCorrect = bcrypt.compareSync(apassword, hashedPassword);
 
     const verify = ()=>{
-        if(aemail === null && apassword === null){
+        if(aemail === null || apassword === null){
             nav("/admin")
         }
     }
@@ -184,9 +186,9 @@ export const Admin = () => {
 
                         {/* <!-- Nav Item - Charts --> */}
                         <li className="nav-item">
-                            <a className="nav-link" href="charts.js">
+                            <a className="nav-link" href="/feedbacks">
                                 <i className="fas fa-fw fa-chart-area"></i>
-                                <span>Charts</span></a>
+                                <span>FeedBacks</span></a>
                         </li>
 
                         {/* <!-- Nav Item - Tables --> */}
@@ -392,7 +394,7 @@ export const Admin = () => {
                                     <li className="nav-item dropdown no-arrow">
                                         <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Soolya Admin</span>
                                             <img className="img-profile rounded-circle"
                                                 src="img/undraw_profile.svg"
                                                 alt='...' />

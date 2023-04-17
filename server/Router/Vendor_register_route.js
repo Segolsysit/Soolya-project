@@ -1,4 +1,4 @@
-const User = require("../Schema/Vendor_register_schema");
+const Vendor_register_schema = require("../Schema/Vendor_register_schema");
 const Vendor_register_router = require("express").Router();
 const nodemailer = require('nodemailer');
 const bcrypt = require("bcrypt");
@@ -46,7 +46,7 @@ const handleErrors = (err) => {
 };
 
 Vendor_register_router.post("/", (req, res, next) => {
-    const token = req.cookies.vjwt;
+    const token = req.cookies.vjwt2;
     if (token) {
         vjwt.verify(
             token,
@@ -96,7 +96,7 @@ Vendor_register_router.post("/register", async (req, res, next) => {
   Vendor_register_router.post("/login",  async (req, res) => {
     const { Email, Password } = req.body;
     try {
-      const user = await User.login(Email, Password);
+      const user = await Vendor_register_schema.login(Email, Password);
       const token = createToken2(user._id);
       res.cookie("vjwt2", token, { httpOnly: false, maxAge: maxAge * 1000 });
       res.status(200).json({ user: user._id, status: true });
@@ -113,18 +113,17 @@ Vendor_register_router.post("/register", async (req, res, next) => {
   // })
     
 
-  // Vendor_register_router.get("/fetch_by_id/:id",async(req,res) => {
-  //   const getbyid = await User.findById(req.params.id)
-  //    getbyid.save()
-  //   res.json(getbyid)
-  // })
+  Vendor_register_router.get("/fetch_vendor/:id",async(req,res) => {
+    const getbyid = await Vendor_register_schema.findById(req.params.id)
+    res.json(getbyid)
+  })
 
 
 
   Vendor_register_router.post("/forgot_password", async (req, res , next) => {
     const { Email } = req.body;
     try {
-      const oldUser = await User.findOne({ Email });
+      const oldUser = await Vendor_register_schema.findOne({ Email });
       if (!oldUser) {
         console.log("user not exist");
         return res.json({ status: "User Not Exists!!" });
@@ -173,14 +172,14 @@ Vendor_register_router.post("/register", async (req, res, next) => {
         const { id, token } = req.params;
         console.log(req.params);
         // res.send("Done")
-        const oldUser = await User.findOne({ _id: id });
+        const oldUser = await Vendor_register_schema.findOne({ _id: id });
         if (!oldUser) {
           return res.json({ status: "User Not Exists!!" });
         }
         const secret = "soolya sheth super secret key" + oldUser.Password;
         try {
           const verify = vjwt.verify(token, secret);
-          res.render( "index" ,{Email:verify.Email,status:"Not Verified"} );
+          res.render( "main" ,{Email:verify.Email,status:"Not Verified"} );
         } catch (error) {
           console.log(error);
           res.send("Not Verified");
@@ -195,17 +194,18 @@ Vendor_register_router.post("/register", async (req, res, next) => {
         const {Password} = req.body;
         // console.log(req.params);
         // res.send("Done")
-        const oldUser = await User.findOne({ _id: id });
+        const oldUser = await Vendor_register_schema.findOne({ _id: id });
         if (!oldUser) {
           return res.json({ status: "User Not Exists!!" });
         }
         const secret = "soolya sheth super secret key" + oldUser.Password;
         try {
+          console.log(Password);
           const verify = vjwt.verify(token, secret);
-          const salt = await bcrypt.genSalt();
+          const salt = await bcrypt.genSalt(10);
           const  encryptedpassword = await bcrypt.hash(Password, salt);
 
-          await User.updateOne(
+          await Vendor_register_schema.updateOne(
           {
             _id:id
           },
@@ -217,7 +217,7 @@ Vendor_register_router.post("/register", async (req, res, next) => {
           )
 
             // res.json({status:"password updated"})
-            res.render( "index" ,{Email:verify.Email,status:"verified"} );
+            res.render( "main" ,{Email:verify.Email,status:"verified"} );
 
 
         } catch (error) {

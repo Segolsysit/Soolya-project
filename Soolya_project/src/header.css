@@ -305,14 +305,14 @@
 
   .sign_up__buttton:hover {
     background-color: #f1f3f6;
-    color: rgb(63, 63, 63);
+    color: rgb(17, 17, 17);
     font-weight: 500;
     transition: 0.1s;
   }
 
   .sign_in__buttton:hover {
     background-color: #f1f3f6;
-    color: rgb(63, 63, 63);
+    color: rgb(2, 2, 2);
     font-weight: 500;
     transition: 0.1s;
   }

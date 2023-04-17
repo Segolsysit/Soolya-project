@@ -19,7 +19,7 @@ const bookingdetails_router = require("./Router/bookingdetails_router");
 const RejectedList_router = require("./Router/RejectedList_router");
 const Vendor_register_router = require("./Router/Vendor_register_route");
 const Footer_form_router = require("./Router/Footer_form_router");
-
+const feedback_api = require ("./Router/feedback")
 // server.on("request", app)
 app.use(express.urlencoded({extended:false}))
 app.set("view engine","ejs")
@@ -42,6 +42,8 @@ app.use("/booking_api",bookingdetails_router);
 app.use("/reject_api",RejectedList_router);
 app.use("/vendor_register",Vendor_register_router);
 app.use("/footer_api",Footer_form_router);
+app.use("/feedback_api",feedback_api);
+
 app.use(express.static(path.join(__dirname, "js")));
 app.use(express.static(path.join(__dirname, "files&img")));
 
