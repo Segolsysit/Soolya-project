@@ -111,6 +111,7 @@ Vendor_register_router.post("/register", async (req, res, next) => {
   //  getdata.save()
   //   res.json(getbyid)
   // })
+  
     
 
   // Vendor_register_router.get("/fetch_by_id/:id",async(req,res) => {
