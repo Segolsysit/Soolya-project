@@ -4,18 +4,21 @@ import "../css_files/bookingsteps.css";
 import BookingDetails from "./bookingdetails";
 import BookingBill from "./bookingbill";
 import BookingFinish from "./bookingfinish";
+import Payment from "./Payment";
 import { useState,useEffect} from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-
+import jwt_decode from 'jwt-decode';
 import axios from "axios";
 
 
 function BookingSteps() {
 
-    const [cookies] = useCookies(["cookie-name"]);
-    const navigate = useNavigate();
-
+    const [cookies, setCookie, removeCookie] = useCookies([]);
+    const [myorders,setMyorders] = useState([])
+    // const [paymentMethod,setPaymentMethod] = useState('')
+    // const [user_email,setUseremail] = useState([])
+    const nav = useNavigate();
 
     // details page
 
@@ -28,18 +31,44 @@ function BookingSteps() {
     //     number:null,
     //     custom_error:null
     // }
+    const token = cookies.jwt2;
+    const decodedToken = jwt_decode(token);
+    const userId = decodedToken.id;
+// console.log(`The user ID is: ${userId}`);
 
-    const nav = useNavigate();
+const tokenVerify = () => {
+    if(!cookies.jwt2){
+        // nav("/sign_in")
+        console.log("invalid token");
+    }
+}
 
+const orders = () => {
+    axios.get(`http://localhost:3001/auth_router/fetch_email/${userId}`)
+    .then((res) => {
+        console.log(res.data);
+        setMyorders(res.data)
+    })
+
+  }
     useEffect(() => {
-      const tokenVerify = () => {
-        if(!cookies.jwt2){
-            navigate("/sign_in")
-        }
-      }
-      tokenVerify()
+     
+     
+      
+        // if(!cookies.jwt2){
+        //     nav("/sign_in")
+        // }
+        tokenVerify()
+   
+    //   setUseremail(myorders.email)
+    // setPaymentMethod()
+    orders()
 
     }, [])
+    // console.log(paymentMethod);
+    
+   
+        
     
 
     const [error, setError] = useState({
@@ -74,8 +103,11 @@ function BookingSteps() {
         } else if (page === 2) {
             return <BookingBill setpage={setPage}  {...props}></BookingBill>
         } else if (page === 3) {
-            return <BookingFinish setpage={setPage}  {...props}></BookingFinish>
+            return <Payment setpage={setPage} {...props}></Payment>
         }
+     else if (page === 4) {
+        return <BookingFinish setpage={setPage}  {...props}></BookingFinish>
+    }
     }
 
     const detailSubmit = (e) => {
@@ -104,7 +136,7 @@ function BookingSteps() {
             hasError = true;
         }
 
-        else if (zip.length < 6 || zip.length > 6) {
+         if (zip.length < 6 || zip.length > 6) {
             error.zip = "Post Code must have 6 digit";
             hasError = true;
         }
@@ -121,7 +153,7 @@ function BookingSteps() {
             hasError = true;
         }
 
-        else if (number.length < 10 || number.length > 10) {
+        if (number.length < 10 || number.length > 10) {
             error.number = "Number must have 10 digit";
             hasError = true;
         }
@@ -175,9 +207,10 @@ function BookingSteps() {
                 icon: "success",
                 button: "Ok",
             }).then(()=>{
-                nav("/Bookings")
+                nav("/myorders")
             })
             axios.post("http://localhost:3001/booking_api/new_booking", {
+            user_email: myorders.email,
             address,
             street,
             city,
@@ -186,8 +219,11 @@ function BookingSteps() {
             number,
             Service:bookingdata.Service,
             Category:bookingdata.Category,
-            price:bookingdata.price
+            price:bookingdata.price,
+            paymentMethod:localStorage.getItem("paymentType")
         })
+       
+
         }
 
         else {
@@ -198,7 +234,7 @@ function BookingSteps() {
                 button: "Ok",
             });
             console.log("captcha error");
-
+            
         }
 
     }
@@ -207,15 +243,7 @@ function BookingSteps() {
         input, setInput, error, setError, address, setaddress, street, setstreet, city, setcity, zip, setzip,
         person, setperson, number, setnumber, onChange, bookingdata, setbookingdata
     }
-
-
-
-
-
-
-
-
-    return (
+ return (
         <div>
 
 
@@ -232,14 +260,9 @@ function BookingSteps() {
                                         <ul id="progressbar">
                                             <li class={page === 1 ? "active" : " "} id="account"><strong>Details</strong></li>
                                             <li class={page === 2 ? "active" : " "} id="personal1"><strong>Bill</strong></li>
-                                            {/* <li class={page === 3  ? "active" : " "}  id="payment"><strong>payment</strong></li> */}
-                                            <li class={page === 3 ? "active" : " "} id="confirm"><strong>Finish</strong></li>
+                                            <li class={page === 3  ? "active" : " "}  id="payment"><strong>payment</strong></li>
+                                            <li class={page === 4 ? "active" : " "} id="confirm"><strong>Finish</strong></li>
                                         </ul>
-
-
-
-
-
                                         <div>
                                             {PageDisplay()}
                                         </div>
@@ -251,10 +274,13 @@ function BookingSteps() {
                                                         class="previous action-button-previous" value="Previous" />
                                                         <input type="button" name="next" onClick={() => { setPage((currentpage) => currentpage + 1) }}
                                                             class="next action-button" value="Continue Booking" /></div>) :
+                                                            page === 4?
                                                     (<div> <input type="button" name="previous" onClick={() => { setPage((currentpage) => currentpage - 1) }}
                                                         class="previous action-button-previous" value="Previous"></input>
                                                         <input type="submit" name="make_payment" onClick={captchaSubmit}
-                                                            class="next action-button" value="Confirm Booking" /></div>)
+                                                            class="next action-button" value="Confirm Booking" /></div>):
+                                                            <input type="button" name="previous" onClick={() => { setPage((currentpage) => currentpage - 1) }}
+                                                            class="previous action-button-previous" value="Previous" />
                                             ))}
 
 

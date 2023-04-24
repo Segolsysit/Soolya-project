@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { toast } from 'react-toastify';
+import jwt_decode from 'jwt-decode';
 
 
 
@@ -14,10 +15,16 @@ const Vendor_Orders = () => {
     const aemail = localStorage.getItem("adminemail")
     const apassword = localStorage.getItem("adminpassword")
     const [cookies] = useCookies(["cookie-name"]);
-    const [getuser,setGetuser] = useState()
+    const [getuser,setGetuser] = useState();
+    const [vendorDetails, setVendorDetails] = useState(null);
+
+
 
 
     const nav = useNavigate()
+    const token = cookies.vjwt2;
+    const decodedToken = jwt_decode(token);
+    const vendorId = decodedToken.id;
 
     // useEffect(() => {
 
@@ -29,6 +36,16 @@ const Vendor_Orders = () => {
     //     getdata()
     //     verify()
     // },[cookies])
+
+    function get_vendor(){
+
+       axios.get(`http://localhost:3001/vendor_register/fetch_vendor/${vendorId}`)
+       .then((res)=>{
+        setVendorDetails(res.data)
+       })
+    }
+    // console.log(vendorDetails);
+
 
     useEffect(() => {
         const verifyUser = async () => {
@@ -55,9 +72,9 @@ const Vendor_Orders = () => {
           };
       
            
-            verifyUser()
+        verifyUser()
         getdata()
-       
+        get_vendor()
     },[cookies])
 
    
@@ -87,14 +104,25 @@ const Vendor_Orders = () => {
     }
     let a = 1;
 
-
+const acceptOrder = (order) => {
+    axios.post(`http://localhost:3001/booking_api/pending_orders/${order._id}`,{
+        vendor_email:vendorDetails.Email,
+        address: order.address,
+        street:order.street,
+        city:order.city,
+        zip:order.zip,
+        number:order.number,
+        Service:order.Service,
+        Category: order.Category,
+        price:order.price
+    })
+    axios.delete(`http://localhost:3001/booking_api/delete_item/${order._id}`)
+    alert("posted")
+    getdata()
+}
   
 
-    const [activeButton, setActiveButton] = useState('');
 
-    const handleClick = (buttonValue) => {
-      setActiveButton(buttonValue);
-    }
 
     return (
         <div>
@@ -122,25 +150,25 @@ const Vendor_Orders = () => {
                         <hr className="sidebar-divider my-0" />
 
                         {/* <!-- Nav Item - Dashboard --> */}
-                        <li className="nav-item active">
+                        {/* <li className="nav-item active">
                             <a className="nav-link" href="/admin">
                                 <i className="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Dashboard</span></a>
-                        </li>
-
+                        </li> */}
+{/* 
                         <li className="nav-item active">
                             <a className="nav-link" href="/application">
                                 <i className="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Application</span></a>
-                        </li>
+                        </li> */}
 
                         {/* <!-- Divider --> */}
                         <hr className="sidebar-divider" />
 
                         {/* <!-- Heading --> */}
-                        <div className="sidebar-heading">
+                        {/* <div className="sidebar-heading">
                             SERVICE MANAGEMENT
-                        </div>
+                        </div> */}
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
@@ -150,7 +178,7 @@ const Vendor_Orders = () => {
                                     <span className="badge badge-danger badge-counter">{orderdetails.length}</span>
                                 </span></a>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseTwo"
                                 aria-expanded="true" aria-controls="collapseTwo">
                                 <i class="fa-solid fa-shapes"></i>
@@ -158,15 +186,15 @@ const Vendor_Orders = () => {
                             </a>
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
-                                    {/* <h6 className="collapse-header">Custom Components:</h6> */}
+                                    <h6 className="collapse-header">Custom Components:</h6>
                                     <a className="collapse-item" href="/categorysetup">Category Setup</a>
                                     <a className="collapse-item" href="/subcategorysetup">Sub Category Setup</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
 
                         {/* <!-- Nav Item - Utilities Collapse Menu --> */}
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapseUtilities"
                                 aria-expanded="true" aria-controls="collapseUtilities">
                                 <i className="fas fa-fw fa-wrench"></i>
@@ -175,25 +203,25 @@ const Vendor_Orders = () => {
                             <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities"
                                 data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
-                                    {/* <h6 className="collapse-header">Custom Utilities:</h6> */}
+                                    <h6 className="collapse-header">Custom Utilities:</h6>
                                     <a className="collapse-item" href="/Servicelist">Service List</a>
                                     <a className="collapse-item" href="/Add_new_service">Add New Service</a>
-                                    {/* <a className="collapse-item" href="utilities-animation.js">Animations</a>
-                    <a className="collapse-item" href="utilities-other.js">Other</a> */}
+                                    <a className="collapse-item" href="utilities-animation.js">Animations</a>
+                    <a className="collapse-item" href="utilities-other.js">Other</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
 
                         {/* <!-- Divider --> */}
                         <hr className="sidebar-divider" />
 
                         {/* <!-- Heading --> */}
-                        <div className="sidebar-heading">
+                        {/* <div className="sidebar-heading">
                             SERVICE MAN MANAGEMENT
-                        </div>
+                        </div> */}
 
                         {/* <!-- Nav Item - Pages Collapse Menu --> */}
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages1"
                                 aria-expanded="true" aria-controls="collapsePages1">
                                 <i className="fas fa-fw fa-user"></i>
@@ -201,12 +229,12 @@ const Vendor_Orders = () => {
                             </a>
                             <div id="collapsePages1" className="collapse" aria-labelledby="headingPages1" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
-                                    {/* <h6 className="collapse-header">Login Screens:</h6> */}
+                                    <h6 className="collapse-header">Login Screens:</h6>
                                     <a className="collapse-item" href="/servicemanlist">Service Man List</a>
                                     <a className="collapse-item" href="/rejectedlist">Rejected List</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePages"
                                 aria-expanded="true" aria-controls="collapsePages">
@@ -495,12 +523,13 @@ const Vendor_Orders = () => {
                                                 <TableRow key={index}>
                                                     <TableCell>{a++}</TableCell>
 
+                                                    <TableCell><p>{data.person}</p></TableCell>
                                                     <TableCell><p>{data.Service}</p></TableCell>
                                                     <TableCell><p>{data.Category}</p> </TableCell>
                                                     <TableCell><p>{data.price}</p></TableCell>
                                                     <TableCell><p>{data.address}</p></TableCell>
                                                     <TableCell><p>{data.number}</p></TableCell>
-                                                    <TableCell><Button variant='outlined' color='success'><i class="fa-solid fa-check"></i></Button></TableCell>
+                                                    <TableCell><Button onClick={()=>acceptOrder(data)} variant='outlined' color='success'><i class="fa-solid fa-check"></i></Button></TableCell>
                                                     <TableCell><Button variant='outlined' color="error"><i class="fa-solid fa-xmark" ></i></Button></TableCell>
                                                 </TableRow>
 

@@ -50,6 +50,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from './header';
 import Footer from './footer';
+import { useCookies } from "react-cookie";
 
 import axios from "axios";
 // import video_back from "./videos/video_background.mp4";
@@ -63,6 +64,7 @@ function Home(props) {
     const [getData, setgetData] = useState([]);
     const [getData_sub, setgetDataSub] = useState([]);
     const [categorysearch, setCategorysearch] = useState([])
+    const [cookies, setCookie, removeCookie] = useCookies([]);
 
     useEffect(() => {
         axios.get("http://localhost:3001/api/fetch_items").then((res) => {
@@ -77,6 +79,40 @@ function Home(props) {
         if (search.length > 0) {
             setShow(true)
         }
+
+        const verifyUser = async () => {
+
+            // if (cookies.jwt) {
+            //     setlogOut(false)
+            // }
+
+           
+
+
+            
+                const { data } = await axios.post(
+                    "http://localhost:3001/auth_router",
+                    {
+                        withCredentials: true,
+                    }
+                );
+                if (!data.status) {
+                    // removeCookie("jwt");
+                    removeCookie("jwt2");
+                } else{
+                    console.log(data.users);
+                    // toast(`Hi ${data.users} 🦄`, {
+                    //     theme: "dark"
+                    // });
+                }
+                
+            }
+      
+        
+        verifyUser();
+       
+    
+
 
     }, [])
 
